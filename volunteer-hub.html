@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaathiSeva Volunteer Hub | SaathiGhar</title>
+<meta name="description" content="SaathiGhar Volunteer Hub — Adopt a grandparent, schedule visits, and share your skills.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/header.css">
+<style>
+  :root {
+    --vol-primary: #8E44AD; /* Purple for volunteers */
+    --vol-light: #F4ECF7;
+    --vol-dark: #4A235A;
+  }
+  body { background: #F8F9FA; font-family: 'Nunito', sans-serif; color: var(--text-dark); }
+  
+  /* Hero */
+  .vol-hero {
+    background: linear-gradient(135deg, var(--vol-dark), var(--vol-primary));
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+  }
+  .vol-hero h1 { font-size: 2.5rem; margin-bottom: 16px; font-weight: 900; }
+  .vol-hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto 30px; }
+  .badge-strip { display: flex; justify-content: center; gap: 20px; }
+  .badge { background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; }
+  
+  /* Main Container */
+  .vol-container { max-width: 1200px; margin: 40px auto; padding: 0 24px; display: grid; grid-template-columns: 3fr 1fr; gap: 30px; }
+  
+  /* Sections */
+  .vol-section { background: white; border-radius: 16px; padding: 30px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  .vol-section h2 { font-size: 1.5rem; color: var(--vol-dark); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  
+  /* Adopt Grid */
+  .adopt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .adopt-card { border: 1px solid #E2E8F0; border-radius: 12px; padding: 20px; display: flex; gap: 16px; transition: transform 0.2s; cursor: pointer; }
+  .adopt-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); border-color: var(--vol-primary); }
+  .ac-avatar { width: 60px; height: 60px; border-radius: 50%; background: var(--vol-light); color: var(--vol-primary); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0; }
+  .ac-info h3 { font-size: 1.1rem; margin-bottom: 4px; }
+  .ac-meta { font-size: 0.85rem; color: #666; margin-bottom: 10px; }
+  .tag-container { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { font-size: 0.7rem; background: #F1F5F9; padding: 4px 10px; border-radius: 12px; font-weight: 700; color: #475569; }
+  
+  /* Schedule */
+  .schedule-list { display: flex; flex-direction: column; gap: 16px; }
+  .schedule-item { display: flex; align-items: center; justify-content: space-between; padding: 16px; background: #F8FAFC; border-radius: 8px; border-left: 4px solid var(--vol-primary); }
+  .si-date { font-weight: 800; color: var(--vol-dark); width: 100px; }
+  .si-details { flex: 1; }
+  .si-details strong { display: block; font-size: 1rem; }
+  .si-details span { font-size: 0.85rem; color: #64748B; }
+  
+  /* Sidebar */
+  .profile-card { background: white; border-radius: 16px; padding: 30px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 30px; }
+  .pc-avatar { width: 100px; height: 100px; border-radius: 50%; background: var(--vol-primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 16px; }
+  .pc-name { font-size: 1.3rem; font-weight: 800; margin-bottom: 4px; }
+  .pc-role { font-size: 0.9rem; color: #666; margin-bottom: 20px; }
+  .pc-stats { display: flex; justify-content: space-around; border-top: 1px solid #E2E8F0; padding-top: 20px; }
+  .stat-val { font-size: 1.5rem; font-weight: 900; color: var(--vol-primary); }
+  .stat-label { font-size: 0.75rem; color: #666; font-weight: 700; text-transform: uppercase; }
+  
+  .btn-vol { background: var(--vol-primary); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+  .btn-vol:hover { background: var(--vol-dark); }
+  .btn-vol-outline { background: transparent; color: var(--vol-primary); border: 2px solid var(--vol-primary); padding: 8px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+  .btn-vol-outline:hover { background: var(--vol-primary); color: white; }
+
+  /* Responsive */
+  @media(max-width: 900px) {
+    .vol-container { grid-template-columns: 1fr; }
+    .adopt-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header" id="siteHeader" style="position:relative;background:white;">
+    <div class="container header-inner">
+      <a href="index.html" class="header-logo">
+        <img src="assets/images/logo.png" alt="SaathiGhar Logo">
+        <div class="logo-text">
+          <span class="logo-name">SaathiGhar</span>
+          <span class="logo-tagline">Volunteer Hub</span>
+        </div>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="#" class="nav-link active">My Hub</a>
+        <a href="#" class="nav-link">Leaderboard</a>
+      </nav>
+      <div class="header-controls">
+        <button class="btn btn-vol">Log Out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="vol-hero">
+    <div class="container">
+      <h1>Welcome back, Amit!</h1>
+      <p>Thank you for being the family someone needed today. Your presence makes a world of difference.</p>
+      <div class="badge-strip">
+        <div class="badge">&#127941; Gold Volunteer Badge</div>
+        <div class="badge">&#11088; 4.9 Rating (Ashram Staff)</div>
+        <div class="badge">&#128336; 45 Hours Contributed</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="vol-container">
+    
+    <div class="main-col">
+      <!-- Adopt a Grandparent -->
+      <section class="vol-section">
+        <h2>&#129309; Adopt-a-Grandparent Matches</h2>
+        <p style="margin-bottom:20px;color:#666;">Based on your location (Mumbai) and languages (Hindi, Marathi).</p>
+        <div class="adopt-grid">
+          <div class="adopt-card" onclick="alert('Opening profile for Narayan Ji...')">
+            <div class="ac-avatar">&#128116;</div>
+            <div class="ac-info">
+              <h3>Narayan Ji, 78</h3>
+              <div class="ac-meta">Sunrise Home, Andheri East</div>
+              <div class="tag-container">
+                <span class="tag">Speaks Marathi</span>
+                <span class="tag">Loves Chess</span>
+                <span class="tag">No family visits in 6 mos</span>
+              </div>
+            </div>
+          </div>
+          <div class="adopt-card" onclick="alert('Opening profile for Vimla Devi...')">
+            <div class="ac-avatar">&#128117;</div>
+            <div class="ac-info">
+              <h3>Vimla Devi, 72</h3>
+              <div class="ac-meta">Shanti Ashram, Borivali</div>
+              <div class="tag-container">
+                <span class="tag">Speaks Hindi</span>
+                <span class="tag">Enjoys Music</span>
+                <span class="tag">Visually Impaired</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Upcoming Visits -->
+      <section class="vol-section">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+          <h2 style="margin:0;">&#128197; My Visit Schedule</h2>
+          <button class="btn-vol-outline">+ Book New Visit</button>
+        </div>
+        <div class="schedule-list">
+          <div class="schedule-item">
+            <div class="si-date">Tomorrow<br><span style="font-size:0.8rem;font-weight:400;color:#666;">10:00 AM</span></div>
+            <div class="si-details">
+              <strong>Reading Session with Ramesh Ji</strong>
+              <span>Shanti Ashram, Borivali (Confirmed)</span>
+            </div>
+            <button class="btn-vol-outline" style="border-color:#E2E8F0;color:#64748B;">Reschedule</button>
+          </div>
+          <div class="schedule-item">
+            <div class="si-date">Sunday<br><span style="font-size:0.8rem;font-weight:400;color:#666;">4:00 PM</span></div>
+            <div class="si-details">
+              <strong>Smartphone Training Workshop</strong>
+              <span>Sunrise Home, Andheri East (Group: 8 Residents)</span>
+            </div>
+            <button class="btn-vol-outline" style="border-color:#E2E8F0;color:#64748B;">Reschedule</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skill Sharing -->
+      <section class="vol-section">
+        <h2>&#127912; Skill Sharing Sessions</h2>
+        <p style="margin-bottom:20px;color:#666;">Ashrams are looking for volunteers with specific skills.</p>
+        <div style="background:#F1F5F9;padding:20px;border-radius:8px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <div>
+            <strong style="display:block;margin-bottom:4px;">Yoga Instructor Needed</strong>
+            <span style="font-size:0.85rem;color:#64748B;">Karuna Sadan (Dadar) is requesting a gentle yoga session for 15 residents this weekend.</span>
+          </div>
+          <button class="btn-vol">Volunteer</button>
+        </div>
+        <div style="background:#F1F5F9;padding:20px;border-radius:8px;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <strong style="display:block;margin-bottom:4px;">Classical Music Performance</strong>
+            <span style="font-size:0.85rem;color:#64748B;">Anand Van (Thane) is looking for a singer/musician for their monthly Sunday gathering.</span>
+          </div>
+          <button class="btn-vol">Volunteer</button>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Sidebar -->
+    <div class="side-col">
+      <div class="profile-card">
+        <div class="pc-avatar">A</div>
+        <div class="pc-name">Amit Patel</div>
+        <div class="pc-role">SaathiSeva Volunteer<br>Mumbai, MH</div>
+        <div class="pc-stats">
+          <div>
+            <div class="stat-val">12</div>
+            <div class="stat-label">Visits</div>
+          </div>
+          <div>
+            <div class="stat-val">3</div>
+            <div class="stat-label">Elders</div>
+          </div>
+          <div>
+            <div class="stat-val">45</div>
+            <div class="stat-label">Hours</div>
+          </div>
+        </div>
+        <button class="btn-vol" style="width:100%;margin-top:20px;">Edit Profile</button>
+      </div>
+
+      <div class="profile-card" style="text-align:left;padding:20px;">
+        <h3 style="font-size:1.1rem;margin-bottom:12px;color:var(--vol-dark);">Corporate CSR</h3>
+        <p style="font-size:0.85rem;color:#666;margin-bottom:16px;">Link your company to log hours towards your corporate CSR goals.</p>
+        <button class="btn-vol-outline" style="width:100%;">Link Company</button>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

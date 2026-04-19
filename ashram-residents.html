@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Residents Management | SaathiGhar</title>
+<meta name="description" content="SaathiGhar Ashram Manager Portal — manage residents, daily logs, medical events.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/header.css">
+<link rel="stylesheet" href="assets/css/ashram-portal.css">
+</head>
+<body class="portal-body">
+
+<!-- Sidebar -->
+<aside class="portal-sidebar" id="portalSidebar">
+  <a href="index.html" class="sidebar-logo" style="text-decoration: none;">
+    <img src="assets/images/logo.png" alt="SaathiGhar">
+    <div>
+      <div class="sidebar-brand">SaathiGhar</div>
+      <div class="sidebar-sub">Ashram Portal</div>
+    </div>
+  </a>
+  <nav class="sidebar-nav">
+    <a href="ashram-dashboard.html" class="sidebar-link" id="sn-dash">
+      <span class="sn-icon">&#127968;</span><span>Dashboard</span>
+    </a>
+    <a href="ashram-residents.html" class="sidebar-link active" id="sn-res">
+      <span class="sn-icon">&#128106;</span><span>Residents</span>
+    </a>
+    <a href="ashram-families.html" class="sidebar-link" id="sn-fam">
+      <span class="sn-icon">&#128149;</span><span>Families</span>
+    </a>
+    <a href="ashram-payments.html" class="sidebar-link" id="sn-pay">
+      <span class="sn-icon">&#128184;</span><span>Payments</span>
+    </a>
+    <a href="ashram-profile.html" class="sidebar-link" id="sn-prof">
+      <span class="sn-icon">&#9881;&#65039;</span><span>Profile</span>
+    </a>
+    <a href="ashram-reports.html" class="sidebar-link" id="sn-rep">
+      <span class="sn-icon">&#128202;</span><span>Reports</span>
+    </a>
+  </nav>
+  <div class="sidebar-user">
+    <div class="sidebar-avatar">&#128104;&#8205;&#9877;&#65039;</div>
+    <div>
+      <div class="sidebar-uname">Rajesh Sharma</div>
+      <div class="sidebar-urole">Ashram Manager</div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="portal-main">
+
+  <!-- Top Bar -->
+  <div class="portal-topbar">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&#9776;</button>
+    <div class="topbar-title">
+      <h1>Residents Management</h1>
+      <span class="topbar-ashram">&#127968; Sunrise Senior Home, Pune</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn btn-primary btn-sm" id="addResidentBtn">&#43; Add New Resident</button>
+      <div class="topbar-search">
+        <span style="font-size:1.2rem;color:var(--text-light);">&#128269;</span>
+        <input type="text" placeholder="Search residents..." style="border:none;background:transparent;padding:8px 12px;font-family:inherit;font-size:0.95rem;outline:none;">
+      </div>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <section class="portal-section">
+    <div class="filter-bar">
+      <select class="form-select" style="padding:8px 12px;border-radius:8px;border:1px solid #E2E8F0;">
+        <option>All Status</option>
+        <option>Active</option>
+        <option>Monitoring</option>
+        <option>Needs Care</option>
+        <option>Hospitalised</option>
+        <option>Discharged</option>
+      </select>
+      <select class="form-select" style="padding:8px 12px;border-radius:8px;border:1px solid #E2E8F0;">
+        <option>All Rooms</option>
+        <option>Ground Floor</option>
+        <option>First Floor</option>
+        <option>Second Floor</option>
+      </select>
+      <button class="btn btn-sm" style="background:var(--cream);color:var(--teal);border:1px solid rgba(26,82,118,0.2);" data-toast="Filters reset" data-toast-type="info">Reset Filters</button>
+      <div style="margin-left:auto;font-weight:700;color:var(--text-mid);">Showing <strong style="color:var(--teal);">48 residents</strong></div>
+    </div>
+  </section>
+
+  <!-- Residents Table -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#128101; All Residents</h2>
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-sm btn-outline">&#128196; Export CSV</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="portal-table">
+          <thead>
+            <tr>
+              <th>Resident</th>
+              <th>Room</th>
+              <th>Age</th>
+              <th>Medical Conditions</th>
+              <th>Status</th>
+              <th>Last Log Update</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="res-cell"><div class="res-avatar">&#128116;</div><div><strong>Ramesh Ji</strong><div class="res-cond">Hypertension, Diabetes</div></div></div></td>
+              <td>A-14</td><td>78</td>
+              <td><span class="condition-tag">BP</span><span class="condition-tag">Diabetes</span></td>
+              <td><span class="status-badge status-active">Active</span></td>
+              <td>Today, 9am</td>
+              <td>
+                <button class="btn btn-sm btn-outline" data-toast="Opening Ramesh Ji's profile..." data-toast-type="info">View</button>
+                <button class="btn btn-sm btn-outline" data-toast="Daily log form opening..." data-toast-type="info">Log</button>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="res-cell"><div class="res-avatar">&#128117;</div><div><strong>Savitri Devi</strong><div class="res-cond">Arthritis</div></div></div></td>
+              <td>B-07</td><td>71</td>
+              <td><span class="condition-tag">Arthritis</span></td>
+              <td><span class="status-badge status-monitor">Monitoring</span></td>
+              <td>Today, 8am</td>
+              <td>
+                <button class="btn btn-sm btn-outline" data-toast="Opening Savitri Devi's profile..." data-toast-type="info">View</button>
+                <button class="btn btn-sm btn-outline" data-toast="Daily log form opening..." data-toast-type="info">Log</button>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="res-cell"><div class="res-avatar">&#129491;</div><div><strong>Krishnamurthy</strong><div class="res-cond">None</div></div></div></td>
+              <td>C-03</td><td>82</td>
+              <td><span class="condition-tag" style="background:var(--green);color:#fff;">None</span></td>
+              <td><span class="status-badge status-active">Active</span></td>
+              <td>Yesterday</td>
+              <td>
+                <button class="btn btn-sm btn-outline" data-toast="Opening Krishnamurthy's profile..." data-toast-type="info">View</button>
+                <button class="btn btn-sm btn-outline" data-toast="Daily log form opening..." data-toast-type="info">Log</button>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="res-cell"><div class="res-avatar">&#128116;</div><div><strong>Abdul Karim</strong><div class="res-cond">BP, Cardiac</div></div></div></td>
+              <td>A-22</td><td>75</td>
+              <td><span class="condition-tag">BP</span><span class="condition-tag">Cardiac</span></td>
+              <td><span class="status-badge status-care">Needs Care</span></td>
+              <td>Today, 7am</td>
+              <td>
+                <button class="btn btn-sm btn-outline" data-toast="Opening Abdul Karim's profile..." data-toast-type="info">View</button>
+                <button class="btn btn-sm btn-outline" data-toast="Daily log form opening..." data-toast-type="info">Log</button>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="res-cell"><div class="res-avatar">&#128117;</div><div><strong>Meera Bai</strong><div class="res-cond">Dementia (mild)</div></div></div></td>
+              <td>D-01</td><td>69</td>
+              <td><span class="condition-tag">Dementia</span></td>
+              <td><span class="status-badge status-monitor">Monitoring</span></td>
+              <td>Today, 6am</td>
+              <td>
+                <button class="btn btn-sm btn-outline" data-toast="Opening Meera Bai's profile..." data-toast-type="info">View</button>
+                <button class="btn btn-sm btn-outline" data-toast="Daily log form opening..." data-toast-type="info">Log</button>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="res-cell"><div class="res-avatar">&#128116;</div><div><strong>Lakshmi Devi</strong><div class="res-cond">None</div></div></div></td>
+              <td>A-05</td><td>76</td>
+              <td><span class="condition-tag" style="background:var(--green);color:#fff;">None</span></td>
+              <td><span class="status-badge status-active">Active</span></td>
+              <td>Yesterday</td>
+              <td>
+                <button class="btn btn-sm btn-outline" data-toast="Opening Lakshmi Devi's profile..." data-toast-type="info">View</button>
+                <button class="btn btn-sm btn-outline" data-toast="Daily log form opening..." data-toast-type="info">Log</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding:16px;display:flex;justify-content:space-between;align-items:center;">
+        <div style="font-size:0.85rem;color:var(--text-light);">Showing 1-6 of 48 residents</div>
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-sm" style="background:var(--cream);" disabled>&#8592; Previous</button>
+          <button class="btn btn-sm btn-teal">Next &#8594;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Activity Log -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#128196; Recent Daily Logs</h2>
+        <button class="btn btn-sm btn-teal">View All Logs</button>
+      </div>
+      <div class="activity-log">
+        <div class="log-entry">
+          <div class="log-time">Today, 9:30 AM</div>
+          <div class="log-resident"><strong>Ramesh Ji</strong> (A-14)</div>
+          <div class="log-details">
+            <span class="log-tag mood">Mood: Good</span>
+            <span class="log-tag health">Health: Stable</span>
+            <span class="log-tag med">Medications: Taken</span>
+          </div>
+          <div class="log-note">Attended morning yoga, breakfast completed</div>
+          <div class="log-author">- Staff: Priya</div>
+        </div>
+        <div class="log-entry">
+          <div class="log-time">Today, 8:15 AM</div>
+          <div class="log-resident"><strong>Savitri Devi</strong> (B-07)</div>
+          <div class="log-details">
+            <span class="log-tag mood" style="background:#FEF3C7;color:#92400E;">Mood: Fair</span>
+            <span class="log-tag health">Health: Stable</span>
+            <span class="log-tag med">Medications: Taken</span>
+          </div>
+          <div class="log-note">Complained of joint pain in knees, physiotherapy scheduled at 10 AM</div>
+          <div class="log-author">- Staff: Anjali</div>
+        </div>
+        <div class="log-entry">
+          <div class="log-time">Today, 7:45 AM</div>
+          <div class="log-resident"><strong>Abdul Karim</strong> (A-22)</div>
+          <div class="log-details">
+            <span class="log-tag mood" style="background:#FEE3E3;color:#C0392B;">Mood: Poor</span>
+            <span class="log-tag health" style="background:#FEE3E3;color:#C0392B;">Health: Concern</span>
+            <span class="log-tag med">Medications: Taken</span>
+          </div>
+          <div class="log-note">Blood pressure elevated (150/95), doctor notified</div>
+          <div class="log-author">- Staff: Rajesh</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Medical Events -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&128137; Medical Event Log</h2>
+        <button class="btn btn-sm btn-primary">&#43; Log Medical Event</button>
+      </div>
+      <div class="medical-events">
+        <div class="medical-event">
+          <div class="me-icon">&#128137;</div>
+          <div class="me-details">
+            <div class="me-title">Doctor Visit - Dr. Sharma</div>
+            <div class="me-resident">Abdul Karim (A-22)</div>
+            <div class="me-desc">Routine checkup for BP monitoring. Medication adjusted: Amlodipine increased to 5mg.</div>
+            <div class="me-meta"><span class="me-date">April 18, 2025, 11:00 AM</span><span class="me-staff">Staff: Rajesh</span></div>
+          </div>
+        </div>
+        <div class="medical-event">
+          <div class="me-icon" style="background:linear-gradient(135deg,#E74C3C,#C0392B);">&#128680;</div>
+          <div class="me-details">
+            <div class="me-title">Hospital Trip - Ruby Hall Clinic</div>
+            <div class="me-resident">Meera Bai (D-01)</div>
+            <div class="me-desc">Fall in bathroom, minor injury. X-ray done, no fractures. Discharged same day.</div>
+            <div class="me-meta"><span class="me-date">April 15, 2025, 3:30 PM</span><span class="me-staff">Staff: Priya</span></div>
+          </div>
+        </div>
+        <div class="medical-event">
+          <div class="me-icon" style="background:linear-gradient(135deg,#F39C12,#E67E22);">&#128308;</div>
+          <div class="me-details">
+            <div class="me-title">Medication Change</div>
+            <div class="me-resident">Savitri Devi (B-07)</div>
+            <div class="me-desc">Pain medication changed from Ibuprofen to Paracetamol due to stomach sensitivity.</div>
+            <div class="me-meta"><span class="me-date">April 12, 2025, 10:00 AM</span><span class="me-staff">Staff: Dr. Patel</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Toast Notification -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+// Sidebar toggle
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+  document.getElementById('portalSidebar').classList.toggle('sidebar-collapsed');
+  document.querySelector('.portal-main').classList.toggle('main-expanded');
+});
+
+// Toast notifications
+function showToast(msg, type='info') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  const icons = {success:'&#9989;', error:'&#128680;', info:'&#8505;&#65039;'};
+  toast.innerHTML = `<span>${icons[type]||'ℹ️'}</span><span>${msg}</span>`;
+  container.appendChild(toast);
+  setTimeout(() => toast.classList.add('toast-visible'), 10);
+  setTimeout(() => { toast.classList.remove('toast-visible'); setTimeout(() => toast.remove(), 400); }, 3500);
+}
+document.querySelectorAll('[data-toast]').forEach(el => {
+  el.addEventListener('click', function(e) {
+    e.preventDefault();
+    showToast(this.dataset.toast, this.dataset.toastType || 'info');
+  });
+});
+</script>
+
+<style>
+.filter-bar { display:flex; gap:12px; align-items:center; padding:16px; background:var(--white); border-radius:12px; box-shadow:var(--shadow-sm); }
+.condition-tag { font-size:0.7rem; padding:3px 8px; border-radius:12px; background:#E2E8F0; color:#475569; font-weight:700; margin-right:4px; }
+.status-badge { padding:4px 10px; border-radius:20px; font-size:0.75rem; font-weight:700; }
+.status-active { background:rgba(39,174,96,0.12); color:#27AE60; }
+.status-monitor { background:rgba(243,156,18,0.12); color:#F39C12; }
+.status-care { background:rgba(231,76,60,0.12); color:#E74C3C; }
+.activity-log { display:flex; flex-direction:column; gap:16px; }
+.log-entry { padding:16px; background:var(--cream); border-radius:12px; border-left:3px solid var(--teal); }
+.log-time { font-size:0.8rem; color:var(--text-light); font-weight:700; margin-bottom:4px; }
+.log-resident { font-weight:800; color:var(--teal-dark); margin-bottom:8px; }
+.log-details { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px; }
+.log-tag { font-size:0.7rem; padding:3px 8px; border-radius:12px; font-weight:700; }
+.log-tag.mood { background:rgba(39,174,96,0.15); color:#27AE60; }
+.log-tag.health { background:rgba(46,134,193,0.15); color:#2E86C1; }
+.log-tag.med { background:rgba(155,89,182,0.15); color:#9B59B6; }
+.log-note { font-size:0.9rem; color:var(--text-mid); margin-bottom:4px; font-style:italic; }
+.log-author { font-size:0.8rem; color:var(--text-light); }
+.medical-events { display:flex; flex-direction:column; gap:16px; }
+.medical-event { display:flex; gap:16px; padding:16px; background:var(--cream); border-radius:12px; }
+.me-icon { width:48px; height:48px; border-radius:12px; background:linear-gradient(135deg,#27AE60,#1E8449); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0; }
+.me-details { flex:1; }
+.me-title { font-weight:800; color:var(--teal-dark); margin-bottom:4px; }
+.me-resident { font-size:0.85rem; color:var(--text-mid); margin-bottom:6px; }
+.me-desc { font-size:0.9rem; color:var(--text-mid); margin-bottom:8px; line-height:1.5; }
+.me-meta { display:flex; gap:16px; font-size:0.8rem; color:var(--text-light); }
+</style>
+</body>
+</html>

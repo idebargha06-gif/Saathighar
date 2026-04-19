@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Family Management | SaathiGhar</title>
+<meta name="description" content="SaathiGhar Ashram Manager Portal — manage families, engagement, communication.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/header.css">
+<link rel="stylesheet" href="assets/css/ashram-portal.css">
+</head>
+<body class="portal-body">
+
+<!-- Sidebar -->
+<aside class="portal-sidebar" id="portalSidebar">
+  <a href="index.html" class="sidebar-logo" style="text-decoration: none;">
+    <img src="assets/images/logo.png" alt="SaathiGhar">
+    <div>
+      <div class="sidebar-brand">SaathiGhar</div>
+      <div class="sidebar-sub">Ashram Portal</div>
+    </div>
+  </a>
+  <nav class="sidebar-nav">
+    <a href="ashram-dashboard.html" class="sidebar-link" id="sn-dash">
+      <span class="sn-icon">&#127968;</span><span>Dashboard</span>
+    </a>
+    <a href="ashram-residents.html" class="sidebar-link" id="sn-res">
+      <span class="sn-icon">&#128106;</span><span>Residents</span>
+    </a>
+    <a href="ashram-families.html" class="sidebar-link active" id="sn-fam">
+      <span class="sn-icon">&#128149;</span><span>Families</span>
+    </a>
+    <a href="ashram-payments.html" class="sidebar-link" id="sn-pay">
+      <span class="sn-icon">&#128184;</span><span>Payments</span>
+    </a>
+    <a href="ashram-profile.html" class="sidebar-link" id="sn-prof">
+      <span class="sn-icon">&#9881;&#65039;</span><span>Profile</span>
+    </a>
+    <a href="ashram-reports.html" class="sidebar-link" id="sn-rep">
+      <span class="sn-icon">&#128202;</span><span>Reports</span>
+    </a>
+  </nav>
+  <div class="sidebar-user">
+    <div class="sidebar-avatar">&#128104;&#8205;&#9877;&#65039;</div>
+    <div>
+      <div class="sidebar-uname">Rajesh Sharma</div>
+      <div class="sidebar-urole">Ashram Manager</div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="portal-main">
+
+  <!-- Top Bar -->
+  <div class="portal-topbar">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&#9776;</button>
+    <div class="topbar-title">
+      <h1>Family Management</h1>
+      <span class="topbar-ashram">&#127968; Sunrise Senior Home, Pune</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn btn-primary btn-sm" id="broadcastBtn">&#128233; Send Broadcast</button>
+      <div class="topbar-search">
+        <span style="font-size:1.2rem;color:var(--text-light);">&#128269;</span>
+        <input type="text" placeholder="Search families..." style="border:none;background:transparent;padding:8px 12px;font-family:inherit;font-size:0.95rem;outline:none;">
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary Cards -->
+  <section class="portal-section">
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#1A5276,#2E86C1)">&#128149;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">41</div>
+          <div class="summary-card-label">Active Families</div>
+          <div class="summary-card-sub">Linked to residents</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#27AE60,#1E8449)">&#11088;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">34</div>
+          <div class="summary-card-label">High Engagement</div>
+          <div class="summary-card-sub">Score 80%+</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#F39C12,#E67E22)">&#9888;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">7</div>
+          <div class="summary-card-label">Low Engagement</div>
+          <div class="summary-card-sub">Needs attention</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#9B59B6,#8E44AD)">&#128172;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">127</div>
+          <div class="summary-card-label">Family Members</div>
+          <div class="summary-card-sub">Total contacts</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Low Engagement Alert -->
+  <section class="portal-section">
+    <div class="portal-card" style="border:2px solid #F39C12;background:rgba(243,156,18,0.05);">
+      <div class="portal-card-header">
+        <h2 style="color:#E67E22;">&#9888; Low Engagement Families</h2>
+        <button class="btn btn-sm" style="background:var(--cream);color:#E67E22;border:1px solid #E67E22;" data-toast="Engagement reminders sent to 7 families" data-toast-type="success">Send Reminders</button>
+      </div>
+      <div class="low-engagement-list">
+        <div class="le-item">
+          <div class="le-resident">Resident: <strong>Ramesh Ji</strong> (A-14)</div>
+          <div class="le-family">Primary Contact: <strong>Priya Venkatesh</strong> (Daughter)</div>
+          <div class="le-metrics">
+            <span class="le-metric">Last Visit: <strong>45 days ago</strong></span>
+            <span class="le-metric">Last Call: <strong>32 days ago</strong></span>
+            <span class="le-metric">Payment: <strong style="color:#E74C3C;">32 days overdue</strong></span>
+          </div>
+          <div class="le-score">Engagement Score: <strong style="color:#E74C3C;">35%</strong></div>
+          <button class="btn btn-sm btn-outline" data-toast="Message form opened for Priya Venkatesh" data-toast-type="info">Send Message</button>
+        </div>
+        <div class="le-item">
+          <div class="le-resident">Resident: <strong>Priya Nair</strong> (C-09)</div>
+          <div class="le-family">Primary Contact: <strong>Suresh Iyer</strong> (Son)</div>
+          <div class="le-metrics">
+            <span class="le-metric">Last Visit: <strong>38 days ago</strong></span>
+            <span class="le-metric">Last Call: <strong>21 days ago</strong></span>
+            <span class="le-metric">Payment: <strong style="color:#F39C12;">21 days overdue</strong></span>
+          </div>
+          <div class="le-score">Engagement Score: <strong style="color:#F39C12;">42%</strong></div>
+          <button class="btn btn-sm btn-outline" data-toast="Message form opened for Suresh Iyer" data-toast-type="info">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Families Table -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#128101; All Families</h2>
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-sm btn-outline">&#128196; Export CSV</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="portal-table">
+          <thead>
+            <tr>
+              <th>Resident</th>
+              <th>Primary Contact</th>
+              <th>Secondary Contacts</th>
+              <th>Last Visit</th>
+              <th>Engagement Score</th>
+              <th>Payment Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="res-cell"><div class="res-avatar">&#128116;</div><div><strong>Ramesh Ji</strong><div class="res-cond">A-14</div></div></div></td>
+              <td><div><strong>Priya Venkatesh</strong><div class="f-contact">Daughter • London</div></div></td>
+              <td><span class="contact-count">3 more</span></td>
+              <td>45 days ago</td>
+              <td><span class="engagement-score low">35%</span></td>
+              <td><span class="payment-status overdue">32 days overdue</span></td>
+              <td>
+                <button class="btn btn-sm btn-outline" data-toast="Opening family details..." data-toast-type="info">View</button>
+                <button class="btn btn-sm btn-outline" data-toast="Message form opening..." data-toast-type="info">Message</button>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="res-cell"><div class="res-avatar">&#128117;</div><div><strong>Savitri Devi</strong><div class="res-cond">B-07</div></div></div></td>
+              <td><div><strong>Arjun Mehta</strong><div class="f-contact">Son • Bangalore</div></div></td>
+              <td><span class="contact-count">2 more</span></td>
+              <td>12 days ago</td>
+              <td><span class="engagement-score high">87%</span></td>
+              <td><span class="payment-status good">Paid</span></td>
+              <td>
+                <button class="btn btn-sm btn-outline" data-toast="Opening family details..." data-toast-type="info">View</button>
+                <button class="btn btn-sm btn-outline" data-toast="Message form opening..." data-toast-type="info">Message</button>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="res-cell"><div class="res-avatar">&#129491;</div><div><strong>Krishnamurthy</strong><div class="res-cond">C-03</div></div></div></td>
+              <td><div><strong>Lakshmi Krishnan</strong><div class="f-contact">Daughter • Chennai</div></div></td>
+              <td><span class="contact-count">4 more</span></td>
+              <td>8 days ago</td>
+              <td><span class="engagement-score high">92%</span></td>
+              <td><span class="payment-status good">Paid</span></td>
+              <td>
+                <button class="btn btn-sm btn-outline" data-toast="Opening family details..." data-toast-type="info">View</button>
+                <button class="btn btn-sm btn-outline" data-toast="Message form opening..." data-toast-type="info">Message</button>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="res-cell"><div class="res-avatar">&#128116;</div><div><strong>Abdul Karim</strong><div class="res-cond">A-22</div></div></div></td>
+              <td><div><strong>Zakir Ahmed</strong><div class="f-contact">Son • Lucknow</div></div></td>
+              <td><span class="contact-count">1 more</span></td>
+              <td>5 days ago</td>
+              <td><span class="engagement-score medium">68%</span></td>
+              <td><span class="payment-status good">Paid</span></td>
+              <td>
+                <button class="btn btn-sm btn-outline" data-toast="Opening family details..." data-toast-type="info">View</button>
+                <button class="btn btn-sm btn-outline" data-toast="Message form opening..." data-toast-type="info">Message</button>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="res-cell"><div class="res-avatar">&#128117;</div><div><strong>Meera Bai</strong><div class="res-cond">D-01</div></div></div></td>
+              <td><div><strong>Vijay Kumar</strong><div class="f-contact">Son • Kolkata</div></div></td>
+              <td><span class="contact-count">2 more</span></td>
+              <td>15 days ago</td>
+              <td><span class="engagement-score medium">74%</span></td>
+              <td><span class="payment-status good">Paid</span></td>
+              <td>
+                <button class="btn btn-sm btn-outline" data-toast="Opening family details..." data-toast-type="info">View</button>
+                <button class="btn btn-sm btn-outline" data-toast="Message form opening..." data-toast-type="info">Message</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Family Visit Log -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#128197; Family Visit Log</h2>
+        <button class="btn btn-sm btn-primary">&#43; Log Visit</button>
+      </div>
+      <div class="visit-log">
+        <div class="visit-entry">
+          <div class="visit-date">April 18, 2025</div>
+          <div class="visit-time">2:30 PM - 5:45 PM</div>
+          <div class="visit-resident"><strong>Savitri Devi</strong> (B-07)</div>
+          <div class="visit-family">Visited by: <strong>Arjun Mehta</strong> (Son) + Family</div>
+          <div class="visit-duration">Duration: 3 hours 15 minutes</div>
+          <div class="visit-notes">Brought homemade sweets, spent time in garden, video called with grandchildren in Canada</div>
+        </div>
+        <div class="visit-entry">
+          <div class="visit-date">April 17, 2025</div>
+          <div class="visit-time">11:00 AM - 1:00 PM</div>
+          <div class="visit-resident"><strong>Krishnamurthy</strong> (C-03)</div>
+          <div class="visit-family">Visited by: <strong>Lakshmi Krishnan</strong> (Daughter)</div>
+          <div class="visit-duration">Duration: 2 hours</div>
+          <div class="visit-notes">Doctor appointment accompaniment, lunch together</div>
+        </div>
+        <div class="visit-entry">
+          <div class="visit-date">April 15, 2025</div>
+          <div class="visit-time">4:00 PM - 6:30 PM</div>
+          <div class="visit-resident"><strong>Abdul Karim</strong> (A-22)</div>
+          <div class="visit-family">Visited by: <strong>Zakir Ahmed</strong> (Son)</div>
+          <div class="visit-duration">Duration: 2 hours 30 minutes</div>
+          <div class="visit-notes">Evening prayer together, dinner at ashram</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Message Centre -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#128172; Message Centre</h2>
+        <button class="btn btn-sm btn-primary">&#43; New Message</button>
+      </div>
+      <div class="message-centre">
+        <div class="message-thread">
+          <div class="msg-header">
+            <div class="msg-to">To: <strong>Priya Venkatesh</strong> (Ramesh Ji's Daughter)</div>
+            <div class="msg-date">April 18, 2025, 10:30 AM</div>
+          </div>
+          <div class="msg-content">
+            <div class="msg-bubble msg-out">
+              <div class="msg-text">Namaste Priya Ji. This is a gentle reminder that Ramesh Ji's payment is 32 days overdue. Please arrange payment at your earliest convenience. Also, we haven't seen you visit in over a month - Ramesh Ji misses you greatly.</div>
+              <div class="msg-time">10:30 AM • Sent</div>
+            </div>
+            <div class="msg-bubble msg-in">
+              <div class="msg-text">Thank you for the reminder. I have been very busy with work in London. I will transfer the payment today and try to visit next month.</div>
+              <div class="msg-time">11:45 AM • Received</div>
+            </div>
+          </div>
+          <div class="msg-reply">
+            <input type="text" placeholder="Type your reply..." style="flex:1;padding:10px 14px;border:1px solid #E2E8F0;border-radius:8px;font-family:inherit;">
+            <button class="btn btn-sm btn-primary">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Toast Notification -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+// Sidebar toggle
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+  document.getElementById('portalSidebar').classList.toggle('sidebar-collapsed');
+  document.querySelector('.portal-main').classList.toggle('main-expanded');
+});
+
+// Toast notifications
+function showToast(msg, type='info') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  const icons = {success:'&#9989;', error:'&#128680;', info:'&#8505;&#65039;'};
+  toast.innerHTML = `<span>${icons[type]||'ℹ️'}</span><span>${msg}</span>`;
+  container.appendChild(toast);
+  setTimeout(() => toast.classList.add('toast-visible'), 10);
+  setTimeout(() => { toast.classList.remove('toast-visible'); setTimeout(() => toast.remove(), 400); }, 3500);
+}
+document.querySelectorAll('[data-toast]').forEach(el => {
+  el.addEventListener('click', function(e) {
+    e.preventDefault();
+    showToast(this.dataset.toast, this.dataset.toastType || 'info');
+  });
+});
+</script>
+
+<style>
+.f-contact { font-size:0.8rem; color:var(--text-light); }
+.contact-count { font-size:0.75rem; background:var(--cream); padding:3px 8px; border-radius:12px; color:var(--text-mid); }
+.engagement-score { padding:4px 10px; border-radius:20px; font-size:0.75rem; font-weight:700; }
+.engagement-score.high { background:rgba(39,174,96,0.15); color:#27AE60; }
+.engagement-score.medium { background:rgba(243,156,18,0.15); color:#F39C12; }
+.engagement-score.low { background:rgba(231,76,60,0.15); color:#E74C3C; }
+.payment-status { font-size:0.8rem; font-weight:700; }
+.payment-status.good { color:#27AE60; }
+.payment-status.overdue { color:#E74C3C; }
+.low-engagement-list { display:flex; flex-direction:column; gap:16px; }
+.le-item { padding:16px; background:rgba(255,255,255,0.6); border-radius:12px; border:1px solid rgba(243,156,18,0.3); }
+.le-resident { font-weight:800; color:var(--teal-dark); margin-bottom:4px; }
+.le-family { font-size:0.9rem; color:var(--text-mid); margin-bottom:8px; }
+.le-metrics { display:flex; gap:16px; margin-bottom:8px; flex-wrap:wrap; }
+.le-metric { font-size:0.85rem; color:var(--text-mid); }
+.le-score { font-size:0.9rem; margin-bottom:12px; }
+.visit-log { display:flex; flex-direction:column; gap:16px; }
+.visit-entry { padding:16px; background:var(--cream); border-radius:12px; border-left:3px solid var(--teal); }
+.visit-date { font-weight:800; color:var(--teal-dark); }
+.visit-time { font-size:0.85rem; color:var(--text-light); margin-bottom:4px; }
+.visit-resident { font-weight:700; color:var(--text-mid); margin-bottom:4px; }
+.visit-family { font-size:0.9rem; color:var(--text-mid); margin-bottom:4px; }
+.visit-duration { font-size:0.85rem; color:var(--text-light); margin-bottom:6px; }
+.visit-notes { font-size:0.9rem; color:var(--text-mid); font-style:italic; }
+.message-thread { background:var(--cream); border-radius:12px; padding:20px; }
+.msg-header { display:flex; justify-content:space-between; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid rgba(26,82,118,0.1); }
+.msg-to { font-weight:800; color:var(--teal-dark); }
+.msg-date { font-size:0.85rem; color:var(--text-light); }
+.msg-content { display:flex; flex-direction:column; gap:12px; margin-bottom:16px; }
+.msg-bubble { padding:12px 16px; border-radius:12px; max-width:80%; }
+.msg-bubble.msg-out { background:var(--teal); color:#fff; align-self:flex-end; }
+.msg-bubble.msg-in { background:#fff; border:1px solid #E2E8F0; align-self:flex-start; }
+.msg-text { font-size:0.9rem; line-height:1.5; margin-bottom:4px; }
+.msg-time { font-size:0.75rem; opacity:0.8; }
+.msg-reply { display:flex; gap:8px; }
+</style>
+</body>
+</html>

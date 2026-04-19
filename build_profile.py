@@ -62,7 +62,7 @@ profile = """<!DOCTYPE html>
     <div class="header-controls">
       <div class="font-size-toggle"><button class="fs-toggle-btn" data-scale="0.9">A-</button><button class="fs-toggle-btn active" data-scale="1">A</button><button class="fs-toggle-btn" data-scale="1.2">A+</button></div>
       <button class="sos-btn" id="sosBtn">&#128682; <span>Emergency</span></button>
-      <div class="login-dropdown" id="loginDropdown"><button class="login-btn">Login &#9660;</button><div class="login-menu"><a href="dashboard.html" class="login-menu-item"><span class="menu-icon">&#128106;</span><div><strong>Family Member</strong></div></a><a href="#" class="login-menu-item" data-toast="Ashram portal coming soon!" data-toast-type="info"><span class="menu-icon">&#127969;</span><div><strong>Ashram Manager</strong></div></a></div></div>
+      <div class="login-dropdown" id="loginDropdown"><button class="login-btn">Login &#9660;</button><div class="login-menu"><a href="dashboard.html" class="login-menu-item"><span class="menu-icon">&#128106;</span><div><strong>Family Member</strong></div></a><a href="ashram-dashboard.html" class="login-menu-item"><span class="menu-icon">&#127969;</span><div><strong>Ashram Manager</strong></div></a></div></div>
       <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
     </div>
   </div>

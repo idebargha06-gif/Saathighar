@@ -13,15 +13,14 @@
 <div class="dashboard-wrapper">
   
   <!-- Sidebar -->
-  <aside class="dashboard-sidebar">
-    <div class="sidebar-brand">
+  <aside class="dashboard-sidebar" id="dashboardSidebar">
+    <a href="index.html" class="sidebar-brand" style="text-decoration: none; display: flex; align-items: center;">
       <img src="assets/images/logo.png" alt="Logo">
       <div class="brand-text">
         <div class="brand-name">SaathiGhar</div>
         <div class="brand-sub">FAMILY PORTAL</div>
       </div>
-      <div class="sidebar-close" id="sidebarToggle">&#10005;</div>
-    </div>
+    </a>
     
     <div class="sidebar-user">
       <div class="sidebar-avatar">&#128105;</div>
@@ -58,7 +57,7 @@
     
     <header class="dashboard-topbar">
       <div style="display:flex;align-items:center;gap:16px;">
-        <button id="sidebarToggle" class="topbar-icon-btn" style="display:none;" aria-label="Menu">&#9776;</button>
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&#9776;</button>
         <div class="topbar-greeting">
           <h2>Namaste, Priya.</h2>
           <p>Your Amma is doing well today.</p>
@@ -318,10 +317,10 @@
         <div class="widget"><div class="widget-header"><div class="widget-title">&#128203; Check-In Log</div><div class="widget-action">Export PDF</div></div><div class="widget-body">
           <div style="display:flex;flex-direction:column;gap:10px;">
             <div class="timeline">
-              <div class="timeline-item"><strong>April 18 &mdash; Video Call</strong><div style="font-size:0.85rem;color:var(--text-mid);">Duration: 24 mins &bull; "Amma seemed happy, talked about the garden."</div></div>
-              <div class="timeline-item"><strong>April 16 &mdash; Voice Call</strong><div style="font-size:0.85rem;color:var(--text-mid);">Duration: 12 mins &bull; Reminded about medication schedule.</div></div>
-              <div class="timeline-item"><strong>April 11 &mdash; Physical Visit</strong><div style="font-size:0.85rem;color:var(--text-mid);">3.5 hours &bull; Took her to the garden, shared lunch. Added memory to wall.</div></div>
-              <div class="timeline-item"><strong>April 6 &mdash; Video Call</strong><div style="font-size:0.85rem;color:var(--text-mid);">Duration: 18 mins &bull; Birthday planning discussed.</div></div>
+              <div class="timeline-item"><strong>April 18 &mdash; Video Call</strong><div style="font-size:0.85rem;color:var(--text-mid);">&#128249; Video &bull; 24 mins &bull; Initiated by you</div><div style="font-size:0.78rem;color:var(--text-light);margin-top:2px;font-style:italic;">"Amma sounded cheerful, talked about the garden flowers"</div></div>
+              <div class="timeline-item"><strong>April 16 &mdash; Voice Call</strong><div style="font-size:0.85rem;color:var(--text-mid);">&#128222; Voice &bull; 12 mins &bull; Initiated by you</div></div>
+              <div class="timeline-item"><strong>April 11 &mdash; Physical Visit</strong><div style="font-size:0.85rem;color:var(--text-mid);">&#128249; Video &bull; 18 mins &bull; During physical visit</div></div>
+              <div class="timeline-item"><strong>April 6 &mdash; Video Call</strong><div style="font-size:0.85rem;color:var(--text-mid);">&#128249; Group Video &bull; 45 mins &bull; Birthday call with siblings</div></div>
             </div>
           </div>
         </div></div>
@@ -417,35 +416,9 @@
 
 <script src="assets/js/main.js"></script>
 <script>
-  // Extra responsive logic for dashboard
-  const st = document.getElementById('sidebarToggle');
-  const sb = document.querySelector('.dashboard-sidebar');
-  const so = document.getElementById('sidebarOverlay');
-  
-  if (window.innerWidth <= 1024) {
-    document.querySelector('.topbar-icon-btn#sidebarToggle').style.display = 'flex';
-  }
-  
-  window.addEventListener('resize', () => {
-    if (window.innerWidth <= 1024) {
-      document.querySelector('.topbar-icon-btn#sidebarToggle').style.display = 'flex';
-    } else {
-      document.querySelector('.topbar-icon-btn#sidebarToggle').style.display = 'none';
-      sb.classList.remove('open');
-      if(so) so.style.display = 'none';
-    }
-  });
-  
-  document.querySelectorAll('#sidebarToggle').forEach(btn => {
-    btn.addEventListener('click', () => {
-      sb.classList.toggle('open');
-      if (so) so.style.display = sb.classList.contains('open') ? 'block' : 'none';
-    });
-  });
-  
-  if(so) so.addEventListener('click', () => {
-    sb.classList.remove('open');
-    so.style.display = 'none';
+  document.getElementById('sidebarToggle').addEventListener('click', function() {
+    document.getElementById('dashboardSidebar').classList.toggle('sidebar-collapsed');
+    document.querySelector('.dashboard-main').classList.toggle('main-expanded');
   });
 </script>
 </body>

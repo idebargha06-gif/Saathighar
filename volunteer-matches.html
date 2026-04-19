@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matches | SaathiSeva Volunteer Hub</title>
+<meta name="description" content="SaathiGhar Volunteer Hub — Find your adopt-a-grandparent matches.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/header.css">
+<link rel="stylesheet" href="assets/css/ashram-portal.css">
+<style>
+  .adopt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .adopt-card { border: 1px solid #E2E8F0; border-radius: var(--radius-sm); padding: 20px; display: flex; gap: 16px; transition: var(--transition); cursor: pointer; background: white; }
+  .adopt-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--saffron); }
+  .ac-avatar { width: 60px; height: 60px; border-radius: 50%; background: var(--cream); color: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0; }
+  .ac-info h3 { font-size: 1.1rem; margin-bottom: 4px; color: var(--text-dark); }
+  .ac-meta { font-size: 0.85rem; color: var(--text-mid); margin-bottom: 10px; }
+  .tag-container { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { font-size: 0.7rem; background: #F1F5F9; padding: 4px 10px; border-radius: 12px; font-weight: 700; color: var(--text-mid); }
+  
+  .filter-bar { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+  .filter-select { padding: 10px 16px; border: 1px solid #E2E8F0; border-radius: var(--radius-sm); background: white; font-family: var(--font-main); font-size: 0.9rem; }
+  
+  @media(max-width: 900px) {
+    .adopt-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body class="portal-body">
+
+<!-- Sidebar -->
+<aside class="portal-sidebar" id="portalSidebar">
+  <a href="index.html" class="sidebar-logo" style="text-decoration: none;">
+    <img src="assets/images/logo.png" alt="SaathiGhar">
+    <div>
+      <div class="sidebar-brand">SaathiGhar</div>
+      <div class="sidebar-sub">Volunteer Hub</div>
+    </div>
+  </a>
+  <nav class="sidebar-nav">
+    <a href="volunteer-hub.html" class="sidebar-link" id="sn-hub">
+      <span class="sn-icon">&#127968;</span><span>My Hub</span>
+    </a>
+    <a href="volunteer-matches.html" class="sidebar-link active" id="sn-matches">
+      <span class="sn-icon">&#129309;</span><span>Matches</span>
+    </a>
+    <a href="volunteer-visits.html" class="sidebar-link" id="sn-visits">
+      <span class="sn-icon">&#128197;</span><span>Visits</span>
+    </a>
+    <a href="volunteer-skills.html" class="sidebar-link" id="sn-skills">
+      <span class="sn-icon">&#127912;</span><span>Skill Share</span>
+    </a>
+    <a href="volunteer-leaderboard.html" class="sidebar-link" id="sn-leaderboard">
+      <span class="sn-icon">&#127941;</span><span>Leaderboard</span>
+    </a>
+  </nav>
+  <div class="sidebar-user">
+    <div class="sidebar-avatar">&#128104;&#8205;&#129309;</div>
+    <div>
+      <div class="sidebar-uname">Amit Patel</div>
+      <div class="sidebar-urole">SaathiSeva Volunteer</div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="portal-main">
+
+  <!-- Top Bar -->
+  <div class="portal-topbar">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&#9776;</button>
+    <div class="topbar-title">
+      <h1>Matches</h1>
+      <span class="topbar-ashram">&#129309; Mumbai, Maharashtra</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn btn-primary btn-sm" data-toast="Finding new matches..." data-toast-type="info">Find New Matches</button>
+    </div>
+  </div>
+
+  <!-- Filter Bar -->
+  <section class="portal-section">
+    <div class="filter-bar">
+      <select class="filter-select">
+        <option>All Locations</option>
+        <option>Andheri East</option>
+        <option>Borivali</option>
+        <option>Dadar</option>
+        <option>Thane</option>
+      </select>
+      <select class="filter-select">
+        <option>All Languages</option>
+        <option>Hindi</option>
+        <option>Marathi</option>
+        <option>Gujarati</option>
+        <option>Tamil</option>
+      </select>
+      <select class="filter-select">
+        <option>All Interests</option>
+        <option>Chess</option>
+        <option>Music</option>
+        <option>Yoga</option>
+        <option>Reading</option>
+      </select>
+      <select class="filter-select">
+        <option>Priority: High Need</option>
+        <option>No visits in 6+ months</option>
+        <option>Recently Added</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- Active Matches -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#129309; Your Active Matches</h2>
+        <span style="font-size: 0.9rem; color: var(--text-mid);">3 matches</span>
+      </div>
+      <div class="adopt-grid">
+        <div class="adopt-card" data-toast="Opening profile for Narayan Ji..." data-toast-type="info">
+          <div class="ac-avatar">&#128116;</div>
+          <div class="ac-info">
+            <h3>Narayan Ji, 78</h3>
+            <div class="ac-meta">Sunrise Home, Andheri East</div>
+            <div class="tag-container">
+              <span class="tag">Speaks Marathi</span>
+              <span class="tag">Loves Chess</span>
+              <span class="tag" style="background: rgba(232,112,10,0.1); color: var(--saffron);">No visits in 6 mos</span>
+            </div>
+          </div>
+        </div>
+        <div class="adopt-card" data-toast="Opening profile for Vimla Devi..." data-toast-type="info">
+          <div class="ac-avatar">&#128117;</div>
+          <div class="ac-info">
+            <h3>Vimla Devi, 72</h3>
+            <div class="ac-meta">Shanti Ashram, Borivali</div>
+            <div class="tag-container">
+              <span class="tag">Speaks Hindi</span>
+              <span class="tag">Enjoys Music</span>
+              <span class="tag">Visually Impaired</span>
+            </div>
+          </div>
+        </div>
+        <div class="adopt-card" data-toast="Opening profile for Krishnamurthy..." data-toast-type="info">
+          <div class="ac-avatar">&#129491;</div>
+          <div class="ac-info">
+            <h3>Krishnamurthy, 82</h3>
+            <div class="ac-meta">Karuna Sadan, Dadar</div>
+            <div class="tag-container">
+              <span class="tag">Speaks Tamil</span>
+              <span class="tag">Enjoys Reading</span>
+              <span class="tag" style="background: rgba(232,112,10,0.1); color: var(--saffron);">No visits in 4 mos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Suggested Matches -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#128065; Suggested Matches</h2>
+        <span style="font-size: 0.9rem; color: var(--text-mid);">Based on your preferences</span>
+      </div>
+      <div class="adopt-grid">
+        <div class="adopt-card" data-toast="Opening profile for Savitri Devi..." data-toast-type="info">
+          <div class="ac-avatar">&#128117;</div>
+          <div class="ac-info">
+            <h3>Savitri Devi, 71</h3>
+            <div class="ac-meta">Anand Van, Thane</div>
+            <div class="tag-container">
+              <span class="tag">Speaks Hindi</span>
+              <span class="tag">Arthritis</span>
+              <span class="tag" style="background: #E8F5E9; color: #27AE60;">New Match</span>
+            </div>
+          </div>
+        </div>
+        <div class="adopt-card" data-toast="Opening profile for Abdul Karim..." data-toast-type="info">
+          <div class="ac-avatar">&#128116;</div>
+          <div class="ac-info">
+            <h3>Abdul Karim, 75</h3>
+            <div class="ac-meta">Sunrise Home, Andheri East</div>
+            <div class="tag-container">
+              <span class="tag">Speaks Hindi/Urdu</span>
+              <span class="tag">BP, Cardiac</span>
+              <span class="tag" style="background: #E8F5E9; color: #27AE60;">New Match</span>
+            </div>
+          </div>
+        </div>
+        <div class="adopt-card" data-toast="Opening profile for Meera Bai..." data-toast-type="info">
+          <div class="ac-avatar">&#128117;</div>
+          <div class="ac-info">
+            <h3>Meera Bai, 69</h3>
+            <div class="ac-meta">Shanti Ashram, Borivali</div>
+            <div class="tag-container">
+              <span class="tag">Speaks Marathi</span>
+              <span class="tag">Dementia (mild)</span>
+              <span class="tag" style="background: #E8F5E9; color: #27AE60;">New Match</span>
+            </div>
+          </div>
+        </div>
+        <div class="adopt-card" data-toast="Opening profile for Lakshmi Devi..." data-toast-type="info">
+          <div class="ac-avatar">&#128117;</div>
+          <div class="ac-info">
+            <h3>Lakshmi Devi, 76</h3>
+            <div class="ac-meta">Karuna Sadan, Dadar</div>
+            <div class="tag-container">
+              <span class="tag">Speaks Gujarati</span>
+              <span class="tag">Enjoys Cooking</span>
+              <span class="tag" style="background: #E8F5E9; color: #27AE60;">New Match</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Toast Notification -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+// Sidebar toggle
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+  document.getElementById('portalSidebar').classList.toggle('sidebar-collapsed');
+  document.querySelector('.portal-main').classList.toggle('main-expanded');
+});
+
+// Toast notifications
+function showToast(msg, type='info') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  const icons = {success:'&#9989;', error:'&#128680;', info:'&#8505;&#65039;'};
+  toast.innerHTML = `<span>${icons[type]||'ℹ️'}</span><span>${msg}</span>`;
+  container.appendChild(toast);
+  setTimeout(() => toast.classList.add('toast-visible'), 10);
+  setTimeout(() => { toast.classList.remove('toast-visible'); setTimeout(() => toast.remove(), 400); }, 3500);
+}
+document.querySelectorAll('[data-toast]').forEach(el => {
+  el.addEventListener('click', function(e) {
+    e.preventDefault();
+    showToast(this.dataset.toast, this.dataset.toastType || 'info');
+  });
+});
+</script>
+
+</body>
+</html>

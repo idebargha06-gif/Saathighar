@@ -34,11 +34,11 @@ HEADER = """
             <span class="menu-icon">&#128106;</span>
             <div><strong>Family Member</strong><br><small>Track your parent's care</small></div>
           </a>
-          <a href="#" class="login-menu-item" data-toast="Ashram portal coming soon!" data-toast-type="info">
+          <a href="ashram-dashboard.html" class="login-menu-item">
             <span class="menu-icon">&#127969;</span>
             <div><strong>Ashram Manager</strong><br><small>Manage residents</small></div>
           </a>
-          <a href="#" class="login-menu-item" data-toast="Volunteer hub coming soon!" data-toast-type="info">
+          <a href="volunteer-hub.html" class="login-menu-item">
             <span class="menu-icon">&#129309;</span>
             <div><strong>Volunteer / NGO</strong><br><small>Adopt a grandparent</small></div>
           </a>

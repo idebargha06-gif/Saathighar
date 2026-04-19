@@ -46,8 +46,8 @@ page = """<!DOCTYPE html>
         <button class="login-btn">Login &#9660;</button>
         <div class="login-menu">
           <a href="dashboard.html" class="login-menu-item"><span class="menu-icon">&#128106;</span><div><strong>Family Member</strong><br><small>Track your parent</small></div></a>
-          <a href="#" class="login-menu-item" data-toast="Ashram portal coming soon!" data-toast-type="info"><span class="menu-icon">&#127969;</span><div><strong>Ashram Manager</strong><br><small>Manage residents</small></div></a>
-          <a href="#" class="login-menu-item" data-toast="Volunteer hub coming soon!" data-toast-type="info"><span class="menu-icon">&#129309;</span><div><strong>Volunteer / NGO</strong><br><small>Adopt a grandparent</small></div></a>
+          <a href="ashram-dashboard.html" class="login-menu-item"><span class="menu-icon">&#127969;</span><div><strong>Ashram Manager</strong><br><small>Manage residents</small></div></a>
+          <a href="volunteer-hub.html" class="login-menu-item"><span class="menu-icon">&#129309;</span><div><strong>Volunteer / NGO</strong><br><small>Adopt a grandparent</small></div></a>
         </div>
       </div>
       <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>

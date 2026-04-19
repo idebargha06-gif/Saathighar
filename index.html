@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Because Every Parent Deserves to Be Remembered | SaathiGhar</title>
+<meta name="description" content="SaathiGhar keeps families connected with elderly parents in ashrams.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/header.css">
+<link rel="stylesheet" href="assets/css/home.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+
+</head>
+<body>
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="assets/images/logo.png" alt="SaathiGhar Logo">
+      <div class="logo-text">
+        <span class="logo-name">SaathiGhar</span>
+        <span class="logo-tagline">Doori Door Nahi Karti</span>
+      </div>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link" id="nav-home">Home</a>
+      <a href="find-ashrams.html" class="nav-link" id="nav-ashrams">Find Ashrams</a>
+      <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+      <a href="index.html#stories" class="nav-link">Stories</a>
+      <a href="index.html#donate" class="nav-link">Donate</a>
+      <a href="index.html#about" class="nav-link">About</a>
+    </nav>
+    <div class="header-controls">
+      <div class="font-size-toggle">
+        <button class="fs-toggle-btn fs-sm" data-scale="0.9">A-</button>
+        <button class="fs-toggle-btn fs-md active" data-scale="1">A</button>
+        <button class="fs-toggle-btn fs-lg-btn" data-scale="1.2">A+</button>
+      </div>
+      <button class="sos-btn" id="sosBtn">&#128682; <span>Emergency</span></button>
+      <div class="login-dropdown" id="loginDropdown">
+        <button class="login-btn">Login &#9660;</button>
+        <div class="login-menu">
+          <a href="dashboard.html" class="login-menu-item">
+            <span class="menu-icon">&#128106;</span>
+            <div><strong>Family Member</strong><br><small>Track your parent's care</small></div>
+          </a>
+          <a href="ashram-dashboard.html" class="login-menu-item">
+            <span class="menu-icon">&#127969;</span>
+            <div><strong>Ashram Manager</strong><br><small>Manage residents</small></div>
+          </a>
+          <a href="#" class="login-menu-item" data-toast="Volunteer hub coming soon!" data-toast-type="info">
+            <span class="menu-icon">&#129309;</span>
+            <div><strong>Volunteer / NGO</strong><br><small>Adopt a grandparent</small></div>
+          </a>
+        </div>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="find-ashrams.html" class="nav-link">Find Ashrams</a>
+  <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+  <a href="index.html#stories" class="nav-link">Stories</a>
+  <a href="index.html#donate" class="nav-link">Donate</a>
+  <div class="mobile-menu-actions">
+    <button class="btn btn-primary btn-sm" onclick="document.getElementById('sosBtn').click()">Emergency</button>
+    <a href="dashboard.html" class="btn btn-teal btn-sm">Login</a>
+  </div>
+</div>
+<div class="overlay" id="sosModal" style="display:none;">
+  <div class="modal" style="text-align:center;">
+    <button class="modal-close">&#10005;</button>
+    <div style="font-size:3rem;margin-bottom:12px;">&#128682;</div>
+    <h2 style="color:#C0392B;margin-bottom:8px;">Emergency Help</h2>
+    <p style="margin-bottom:24px;">Contact these helplines immediately for urgent assistance.</p>
+    <div class="helpline-numbers">
+      <div class="helpline-item"><span>SaathiGhar Helpline</span><span class="number">1800-SAATHI</span></div>
+      <div class="helpline-item"><span>Elder Helpline (Govt)</span><span class="number">14567</span></div>
+      <div class="helpline-item"><span>National Emergency</span><span class="number">112</span></div>
+      <div class="helpline-item"><span>Ambulance</span><span class="number">108</span></div>
+    </div>
+    <button class="btn btn-primary" style="margin-top:24px;width:100%;"
+      onclick="document.getElementById('sosModal').style.display='none'">Close</button>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="assets/images/hero-elderly.png" alt="Elderly woman">
+  </div>
+  <div class="container">
+    <div class="hero-content animate-fade-up">
+      <div class="hero-eyebrow">&#127942; India's First Family Accountability Platform for Elderly Care</div>
+      <h1>Your Parents Gave You <span class="highlight serif">Everything.</span><br>Give Them One Promise.</h1>
+      <p class="sub">SaathiGhar keeps families connected across every distance — one check-in at a time. Never let your parent feel forgotten.</p>
+      <div class="hero-ctas">
+        <a href="dashboard.html" class="btn btn-primary btn-lg">&#129309; Connect With My Parent's Ashram</a>
+        <a href="find-ashrams.html" class="btn btn-outline btn-lg">&#127969; Find an Ashram</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">&#8595;</div>
+  <div class="hero-counter-strip">
+    <div class="counter-strip-inner">
+      <div class="counter-item"><span class="counter-num"><span class="count-val" data-target="4200">0</span>+</span><span class="counter-label">Elderly Residents Connected</span></div>
+      <div class="counter-item"><span class="counter-num"><span class="count-val" data-target="820">0</span>+</span><span class="counter-label">Families Active</span></div>
+      <div class="counter-item"><span class="counter-num"><span class="count-val" data-target="230">0</span>+</span><span class="counter-label">Ashrams Registered</span></div>
+      <div class="counter-item"><span class="counter-num"><span class="count-val" data-target="96">0</span>%</span><span class="counter-label">Family Satisfaction Rate</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="problem-strip section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">The Reality We Must Face</span>
+      <h2 style="color:#fff">Numbers That Should Break Your Heart</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="stat-cards">
+      <div class="stat-card reveal delay-1"><div class="stat-icon">&#128148;</div><div class="stat-number">70%</div><div class="stat-desc">of ashram residents receive no family visits after 6 months of placement</div></div>
+      <div class="stat-card reveal delay-2"><div class="stat-icon">&#128116;</div><div class="stat-number">18M</div><div class="stat-desc">elderly people are homeless or abandoned in India alone</div></div>
+      <div class="stat-card reveal delay-3"><div class="stat-icon">&#128184;</div><div class="stat-number">1 in 3</div><div class="stat-desc">ashrams face payment abandonment within the first year of a resident's placement</div></div>
+    </div>
+    <p class="stat-caption reveal serif">"SaathiGhar exists because these numbers should never exist."</p>
+  </div>
+</section>
+
+<section class="how-it-works section" id="how-it-works">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Simple, Powerful Steps</span>
+      <h2>How SaathiGhar Works</h2>
+      <div class="divider"></div>
+      <p>A four-step system that turns good intentions into consistent, accountable care.</p>
+    </div>
+    <div class="steps-track">
+      <div class="step-item reveal delay-1">
+        <div class="step-circle"><span class="step-icon">&#128203;</span></div>
+        <div class="step-title">Register Your Parent</div>
+        <div class="step-desc">Add your parent's profile and link their ashram. Takes under 5 minutes.</div>
+      </div>
+      <div class="step-item reveal delay-2">
+        <div class="step-circle"><span class="step-icon">&#129309;</span></div>
+        <div class="step-title">Commit to a Care Plan</div>
+        <div class="step-desc">Set your goal — weekly calls, monthly visits, timely payments. Your promise, your pace.</div>
+      </div>
+      <div class="step-item reveal delay-3">
+        <div class="step-circle"><span class="step-icon">&#128276;</span></div>
+        <div class="step-title">Get Gentle Reminders</div>
+        <div class="step-desc">We nudge you before check-ins are due — SMS, email, or app. No more forgetting.</div>
+      </div>
+      <div class="step-item reveal delay-4">
+        <div class="step-circle"><span class="step-icon">&#9989;</span></div>
+        <div class="step-title">Ashram Confirms Care</div>
+        <div class="step-desc">Your ashram verifies each interaction. Full accountability, both ways, always.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="audience-section section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Who SaathiGhar Is For</span>
+      <h2>Built for Everyone Who Cares</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card reveal delay-1">
+        <div class="audience-card-img">
+          <span class="audience-card-type">For Families</span>
+          <img src="assets/images/family-call.png" alt="Family video call with elderly parent">
+        </div>
+        <div class="audience-card-body">
+          <h3>Your parent is away. But they should never feel forgotten.</h3>
+          <p>Track wellness, schedule visits, pay fees, share memories — all in one warm, personal dashboard designed around love.</p>
+          <a href="dashboard.html" class="btn btn-teal btn-sm">Open Family Dashboard &#8594;</a>
+        </div>
+      </div>
+      <div class="audience-card reveal delay-2">
+        <div class="audience-card-img">
+          <span class="audience-card-type">For Ashrams</span>
+          <img src="assets/images/hero-elderly.png" alt="Ashram care">
+        </div>
+        <div class="audience-card-body">
+          <h3>Manage residents, track families, receive payments — all in one place.</h3>
+          <p>SaathiGhar gives ashram managers powerful tools to communicate with families, flag concerns, and ensure care never slips.</p>
+          <button class="btn btn-teal btn-sm" data-toast="Ashram portal registration opening soon!" data-toast-type="info">Register Your Ashram &#8594;</button>
+        </div>
+      </div>
+      <div class="audience-card reveal delay-3">
+        <div class="audience-card-img">
+          <span class="audience-card-type">For Volunteers</span>
+          <img src="assets/images/volunteer.png" alt="Volunteer with elderly">
+        </div>
+        <div class="audience-card-body">
+          <h3>Be the family they no longer have. Adopt a grandparent today.</h3>
+          <p>Visit, donate, skill-share or simply listen. Every act of kindness is tracked, verified, and celebrated.</p>
+          <button class="btn btn-teal btn-sm" data-toast="Volunteer hub launching soon!" data-toast-type="success">Become a SaathiSeva &#8594;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story-wall section" id="stories">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Moments That Matter</span>
+      <h2>Real Stories, Real Impact</h2>
+      <div class="divider"></div>
+      <p>Shared with resident consent. Every story is a promise kept.</p>
+    </div>
+  </div>
+  <div class="story-scroll-outer">
+    <div class="story-scroll-track">
+      <div class="story-card"><div class="story-card-header"><div class="story-avatar">&#128116;</div><div><div class="story-name">Ramesh Ji, 78</div><div class="story-location">&#128205; Pune, Maharashtra</div></div></div><p class="story-text">"His daughter called for the first time in 4 months — after SaathiGhar sent her a gentle reminder. He cried tears of joy."</p><div class="story-date">2 days ago</div></div>
+      <div class="story-card"><div class="story-card-header"><div class="story-avatar">&#128117;</div><div><div class="story-name">Savitri Devi, 71</div><div class="story-location">&#128205; Jaipur, Rajasthan</div></div></div><p class="story-text">"Her son set up auto-pay so she never worries about her room. She says she sleeps better knowing he hasn't forgotten."</p><div class="story-date">5 days ago</div></div>
+      <div class="story-card"><div class="story-card-header"><div class="story-avatar">&#129491;</div><div><div class="story-name">Krishnamurthy, 82</div><div class="story-location">&#128205; Chennai, Tamil Nadu</div></div></div><p class="story-text">"His grandchildren in Canada send voice messages every Sunday through the Memory Wall. Staff plays them at breakfast."</p><div class="story-date">1 week ago</div></div>
+      <div class="story-card"><div class="story-card-header"><div class="story-avatar">&#128116;</div><div><div class="story-name">Abdul Karim, 75</div><div class="story-location">&#128205; Lucknow, UP</div></div></div><p class="story-text">"His daughter raised a care request for his blood pressure medication. The ashram responded in 3 hours. She felt heard."</p><div class="story-date">2 weeks ago</div></div>
+      <div class="story-card"><div class="story-card-header"><div class="story-avatar">&#128117;</div><div><div class="story-name">Meera Bai, 69</div><div class="story-location">&#128205; Kolkata, WB</div></div></div><p class="story-text">"Her check-in streak hit 12 weeks. The platform gave her daughter a Champion Family badge. She printed it for her desk."</p><div class="story-date">3 weeks ago</div></div>
+      <div class="story-card"><div class="story-card-header"><div class="story-avatar">&#128116;</div><div><div class="story-name">Ramesh Ji, 78</div><div class="story-location">&#128205; Pune, Maharashtra</div></div></div><p class="story-text">"His daughter called for the first time in 4 months — after SaathiGhar sent her a gentle reminder. He cried tears of joy."</p><div class="story-date">2 days ago</div></div>
+      <div class="story-card"><div class="story-card-header"><div class="story-avatar">&#128117;</div><div><div class="story-name">Savitri Devi, 71</div><div class="story-location">&#128205; Jaipur, Rajasthan</div></div></div><p class="story-text">"Her son set up auto-pay so she never worries about her room. She says she sleeps better knowing he hasn't forgotten."</p><div class="story-date">5 days ago</div></div>
+      <div class="story-card"><div class="story-card-header"><div class="story-avatar">&#129491;</div><div><div class="story-name">Krishnamurthy, 82</div><div class="story-location">&#128205; Chennai, Tamil Nadu</div></div></div><p class="story-text">"His grandchildren in Canada send voice messages every Sunday through the Memory Wall. Staff plays them at breakfast."</p><div class="story-date">1 week ago</div></div>
+    </div>
+  </div>
+  <div class="story-wall-ctas reveal" style="margin-top:40px;">
+    <button class="btn btn-teal" data-toast="Story submission coming soon!" data-toast-type="info">Share Your Story</button>
+    <button class="btn" style="background:transparent;color:var(--teal);border:2px solid var(--teal);" data-toast="Full story archive coming soon!" data-toast-type="info">Read All Stories</button>
+  </div>
+</section>
+
+<section class="map-section section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Across India &amp; Beyond</span>
+      <h2>Ashrams in Your City</h2>
+      <div class="divider"></div>
+      <p>Every ashram on SaathiGhar is verified, rated, and actively monitored for quality.</p>
+    </div>
+    <div class="map-container reveal">
+      <div class="map-placeholder">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12rem;opacity:0.08;color:var(--teal);">&#127757;</div>
+        <div style="position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:40px;justify-content:center;padding:40px;">
+          <div class="map-pin"><div class="pin-dot"></div><div class="pin-tooltip">Mumbai — 24 Ashrams &#11088; 4.6</div></div>
+          <div class="map-pin"><div class="pin-dot"></div><div class="pin-tooltip">Delhi — 31 Ashrams &#11088; 4.4</div></div>
+          <div class="map-pin"><div class="pin-dot"></div><div class="pin-tooltip">Pune — 18 Ashrams &#11088; 4.7</div></div>
+          <div class="map-pin"><div class="pin-dot"></div><div class="pin-tooltip">Bangalore — 22 Ashrams &#11088; 4.5</div></div>
+          <div class="map-pin"><div class="pin-dot"></div><div class="pin-tooltip">Chennai — 15 Ashrams &#11088; 4.3</div></div>
+          <div class="map-pin"><div class="pin-dot"></div><div class="pin-tooltip">Kolkata — 19 Ashrams &#11088; 4.5</div></div>
+          <div class="map-pin"><div class="pin-dot"></div><div class="pin-tooltip">Jaipur — 11 Ashrams &#11088; 4.6</div></div>
+          <div class="map-pin"><div class="pin-dot"></div><div class="pin-tooltip">Hyderabad — 14 Ashrams &#11088; 4.4</div></div>
+        </div>
+        <div class="map-cta-overlay"><a href="find-ashrams.html" class="btn btn-primary">&#128205; Find an Ashram Near You</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="volunteer-donate section" id="donate">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Take Action Today</span>
+      <h2>Give Your Time or Your Support</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="vol-donate-grid reveal">
+      <div class="vol-card">
+        <div class="vol-card-bg"><img src="assets/images/volunteer.png" alt="Volunteer with elderly"></div>
+        <div class="vol-card-content">
+          <h3>Adopt a Grandparent &#129309;</h3>
+          <p>Visit, talk, listen, or teach. Be the family they no longer have. Every act is tracked and celebrated.</p>
+          <button class="btn btn-primary" data-toast="Volunteer registration opening soon!" data-toast-type="success">Become a SaathiSeva Volunteer</button>
+        </div>
+      </div>
+      <div class="donate-card">
+        <div class="donate-card-bg"><img src="assets/images/hero-elderly.png" alt="Elderly resident"></div>
+        <div class="donate-card-content">
+          <h3>Donate to a Resident &#128155;</h3>
+          <p>&#8377;1,500 sponsors a full month of care for an abandoned elderly resident. 100% goes to verified ashrams.</p>
+          <button class="btn btn-gold" data-toast="Donation portal opening soon!" data-toast-type="info">Sponsor a Month of Care &#8212; &#8377;1,500</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials-section section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow" style="color:var(--gold);">What Families Say</span>
+      <h2 style="color:#fff;">Stories of Reconnection</h2>
+    </div>
+    <div class="testimonials-track">
+      <div class="testimonial-slide active">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">I live in London and used to feel terrible guilt every time I thought about Amma. SaathiGhar gave me a way to stay close even from 8,000 kilometres away. The check-in streaks actually motivate me.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">&#128105;</div>
+          <div class="testimonial-info"><div class="testimonial-name">Priya Venkatesh</div><div class="testimonial-role">Daughter of resident, London &#8594; Coimbatore</div></div>
+        </div>
+        <div class="stars" style="margin-top:16px;text-align:center;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      </div>
+      <div class="testimonial-slide">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">As an ashram manager, I used to spend hours chasing families for payments. SaathiGhar automated all of it. Now I focus entirely on the residents — which is why I started this work.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">&#128104;</div>
+          <div class="testimonial-info"><div class="testimonial-name">Rajesh Sharma</div><div class="testimonial-role">Manager, Sunrise Senior Home, Pune</div></div>
+        </div>
+        <div class="stars" style="margin-top:16px;text-align:center;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      </div>
+      <div class="testimonial-slide">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">My father hadn't heard my voice in 3 months. SaathiGhar's reminder came at the right moment. I called him that evening. He said it was the best Diwali gift he ever received.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">&#129489;</div>
+          <div class="testimonial-info"><div class="testimonial-name">Arjun Mehta</div><div class="testimonial-role">Son of resident, Bangalore &#8594; Ahmedabad</div></div>
+        </div>
+        <div class="stars" style="margin-top:16px;text-align:center;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      </div>
+    </div>
+    <div class="testimonial-controls">
+      <button class="t-arrow" id="tPrev">&#8592;</button>
+      <div class="t-dots">
+        <span class="t-dot active"></span>
+        <span class="t-dot"></span>
+        <span class="t-dot"></span>
+      </div>
+      <button class="t-arrow" id="tNext">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" id="about">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-wrap">
+          <img src="assets/images/logo.png" alt="SaathiGhar Logo">
+          <div><div class="brand-name">SaathiGhar</div><div class="brand-tagline">Doori Door Nahi Karti</div></div>
+        </div>
+        <p>India's first family accountability platform for elderly care in ashrams. Keeping connections alive, one check-in at a time.</p>
+        <div class="helpline-display">
+          <span class="helpline-label">24/7 Helpline</span>
+          <span class="helpline-number">1800-SAATHI</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="find-ashrams.html">Find Ashrams</a>
+          <a href="dashboard.html">Family Dashboard</a>
+          <a href="index.html#how-it-works">How It Works</a>
+          <a href="index.html#stories">Stories</a>
+          <a href="index.html#donate">Donate</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contact &amp; Support</h4>
+        <div class="footer-links">
+          <a href="mailto:support@saathighar.org">support@saathighar.org</a>
+          <a href="#">Report an Issue</a>
+          <a href="#">Grievance Officer</a>
+          <a href="#">Media Enquiries</a>
+          <a href="#">Ashram Verification</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:14px;">Stay connected with stories and updates.</p>
+        <div class="social-links">
+          <a class="social-link" href="#" title="Facebook">f</a>
+          <a class="social-link" href="#" title="Instagram">&#128247;</a>
+          <a class="social-link" href="#" title="Twitter">X</a>
+          <a class="social-link" href="#" title="YouTube">&#9654;</a>
+          <a class="social-link" href="#" title="LinkedIn">in</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 SaathiGhar. All rights reserved. Made with &#10084; for every parent who deserves to be remembered.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Grievance Officer</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body></html>

@@ -1,0 +1,10 @@
+{
+  "name": "saathighar",
+  "version": "1.0.0",
+  "description": "SaathiGhar - Because Every Parent Deserves to Be Remembered",
+  "scripts": {
+    "dev": "python -m http.server 3000 --bind 127.0.0.1"
+  },
+  "author": "",
+  "license": "ISC"
+}

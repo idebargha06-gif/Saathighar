@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notification Engine | SaathiGhar</title>
+<meta name="description" content="SaathiGhar Admin Portal — notification and reminder engine configuration.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/styles.css">
+<link rel="stylesheet" href="../../assets/css/header.css">
+<link rel="stylesheet" href="../../assets/css/ashram-portal.css">
+</head>
+<body class="portal-body">
+
+<!-- Sidebar -->
+<aside class="portal-sidebar" id="portalSidebar">
+  <a href="../../index.html" class="sidebar-logo" style="text-decoration: none;">
+    <img src="../../assets/images/logo.png" alt="SaathiGhar">
+    <div>
+      <div class="sidebar-brand">SaathiGhar</div>
+      <div class="sidebar-sub">Admin Portal</div>
+    </div>
+  </a>
+  <nav class="sidebar-nav">
+    <a href="admin-dashboard.html" class="sidebar-link" id="sn-dash">
+      <span class="sn-icon">&#127968;</span><span>Dashboard</span>
+    </a>
+    <a href="admin-verification.html" class="sidebar-link" id="sn-verify">
+      <span class="sn-icon">&#10004;</span><span>Ashram Verification</span>
+    </a>
+    <a href="admin-abuse.html" class="sidebar-link" id="sn-abuse">
+      <span class="sn-icon">&#9888;</span><span>Abuse Detection</span>
+    </a>
+    <a href="admin-content.html" class="sidebar-link" id="sn-content">
+      <span class="sn-icon">&#128196;</span><span>Content Management</span>
+    </a>
+    <a href="admin-analytics.html" class="sidebar-link" id="sn-analytics">
+      <span class="sn-icon">&#128200;</span><span>Analytics</span>
+    </a>
+    <a href="admin-payments.html" class="sidebar-link" id="sn-payments">
+      <span class="sn-icon">&#128179;</span><span>Payments</span>
+    </a>
+    <a href="admin-notifications.html" class="sidebar-link active" id="sn-notif">
+      <span class="sn-icon">&#128246;</span><span>Notifications</span>
+    </a>
+  </nav>
+  <div class="sidebar-user">
+    <div class="sidebar-avatar">&#128104;&#8205;&#9877;&#65039;</div>
+    <div>
+      <div class="sidebar-uname">Admin User</div>
+      <div class="sidebar-urole">Super Admin</div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="portal-main">
+
+  <!-- Top Bar -->
+  <div class="portal-topbar">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&#9776;</button>
+    <div class="topbar-title">
+      <h1>Notification & Reminder Engine</h1>
+      <span class="topbar-ashram">&#128246; Configure automated notifications</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn btn-primary btn-sm">&#43; New Notification Rule</button>
+    </div>
+  </div>
+
+  <!-- Summary Cards -->
+  <section class="portal-section">
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#1A5276,#2E86C1)">&#128246;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">7</div>
+          <div class="summary-card-label">Active Rules</div>
+          <div class="summary-card-sub">Notification triggers</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#27AE60,#1E8449)">&#128233;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">1,247</div>
+          <div class="summary-card-label">Sent Today</div>
+          <div class="summary-card-sub">Across all channels</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#F39C12,#E67E22)">&#9888;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">3</div>
+          <div class="summary-card-label">SOS Alerts</div>
+          <div class="summary-card-sub">This month</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#9B59B6,#8E44AD)">&#128222;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">98.5%</div>
+          <div class="summary-card-label">Delivery Rate</div>
+          <div class="summary-card-sub">WhatsApp + SMS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notification Rules -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#128246; Notification Rules</h2>
+        <button class="btn btn-sm btn-outline" data-toast="Opening template management..." data-toast-type="info">Manage Templates</button>
+      </div>
+      <div class="widget-body">
+        <div class="table-wrap">
+          <table class="portal-table">
+            <thead>
+              <tr>
+                <th>Trigger</th>
+                <th>Channel</th>
+                <th>Timing</th>
+                <th>Status</th>
+                <th style="text-align:right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div style="font-weight:700;">No family contact for 14 days</div>
+                  <div style="font-size:0.8rem;color:var(--text-light);">"Amma has been asking about you..."</div>
+                </td>
+                <td>WhatsApp + Push</td>
+                <td>Day 14, 21, 30</td>
+                <td><span class="status-pill approved">Active</span></td>
+                <td style="text-align:right;">
+                  <button class="btn btn-sm btn-outline" data-toast="Editing rule..." data-toast-type="info">Edit</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight:700;">Payment due reminder</div>
+                  <div style="font-size:0.8rem;color:var(--text-light);">"A small reminder — Papa's care fee is due Friday"</div>
+                </td>
+                <td>SMS + Email + Push</td>
+                <td>7 days, 3 days, 1 day before</td>
+                <td><span class="status-pill approved">Active</span></td>
+                <td style="text-align:right;">
+                  <button class="btn btn-sm btn-outline" data-toast="Editing rule..." data-toast-type="info">Edit</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight:700;">Parent's birthday</div>
+                  <div style="font-size:0.8rem;color:var(--text-light);">"Bade Papa's birthday is in 7 days. Plan something special?"</div>
+                </td>
+                <td>Email + Push</td>
+                <td>7 days before</td>
+                <td><span class="status-pill approved">Active</span></td>
+                <td style="text-align:right;">
+                  <button class="btn btn-sm btn-outline" data-toast="Editing rule..." data-toast-type="info">Edit</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight:700;">No payment for 30 days</div>
+                  <div style="font-size:0.8rem;color:var(--text-light);">Warm concern tone, offer help options</div>
+                </td>
+                <td>Call + SMS</td>
+                <td>Day 30, 45</td>
+                <td><span class="status-pill approved">Active</span></td>
+                <td style="text-align:right;">
+                  <button class="btn btn-sm btn-outline" data-toast="Editing rule..." data-toast-type="info">Edit</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight:700;">Health log updated</div>
+                  <div style="font-size:0.8rem;color:var(--text-light);">Weekly summary of parent's wellbeing</div>
+                </td>
+                <td>Push + Email digest</td>
+                <td>Weekly every Sunday</td>
+                <td><span class="status-pill approved">Active</span></td>
+                <td style="text-align:right;">
+                  <button class="btn btn-sm btn-outline" data-toast="Editing rule..." data-toast-type="info">Edit</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight:700;">Volunteer visit completed</div>
+                  <div style="font-size:0.8rem;color:var(--text-light);">"A volunteer visited Papa today and spent 2 hours with him"</div>
+                </td>
+                <td>Push to family</td>
+                <td>Same day</td>
+                <td><span class="status-pill approved">Active</span></td>
+                <td style="text-align:right;">
+                  <button class="btn btn-sm btn-outline" data-toast="Editing rule..." data-toast-type="info">Edit</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight:700; color:#C0392B;">Resident SOS triggered</div>
+                  <div style="font-size:0.8rem;color:var(--text-light);">Emergency alert to family + ashram + admin</div>
+                </td>
+                <td>Immediate call</td>
+                <td>Instantly</td>
+                <td><span class="status-pill approved" style="background:#FADBD8;color:#C0392B;">Active (Critical)</span></td>
+                <td style="text-align:right;">
+                  <button class="btn btn-sm btn-outline" data-toast="Editing rule..." data-toast-type="info">Edit</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notification Channels -->
+  <section class="portal-section">
+    <div class="dashboard-grid-2">
+      <div class="portal-card">
+        <div class="portal-card-header">
+          <h2>&#128242; WhatsApp Integration</h2>
+          <button class="btn btn-sm btn-outline" data-toast="Opening WhatsApp configuration..." data-toast-type="info">Configure</button>
+        </div>
+        <div class="widget-body" style="padding:24px;">
+          <div style="text-align:center;padding:32px 0;border-bottom:1px solid #E2E8F0;margin-bottom:24px;">
+            <div style="font-size:4rem;margin-bottom:12px;">&#128242;</div>
+            <div style="font-weight:900;font-size:1.3rem;margin-bottom:8px;">WhatsApp Business API</div>
+            <div style="font-size:1.5rem;font-weight:900;color:var(--green);">Connected</div>
+            <p style="color:var(--text-light);font-size:0.9rem;margin-top:12px;">Sending notifications to 4,892 families</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(--cream);border-radius:8px;">
+              <span style="font-size:0.9rem;color:var(--text-mid);">Messages sent today</span>
+              <span style="font-size:1.2rem;font-weight:900;color:var(--teal);">847</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(--cream);border-radius:8px;">
+              <span style="font-size:0.9rem;color:var(--text-mid);">Delivery rate</span>
+              <span style="font-size:1.2rem;font-weight:900;color:var(--green);">98.5%</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:rgba(192,57,43,0.05);border-radius:8px;border-left:4px solid #C0392B;">
+              <span style="font-size:0.9rem;color:var(--text-mid);">Failed messages</span>
+              <span style="font-size:1.2rem;font-weight:900;color:#C0392B;">13</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="portal-card">
+        <div class="portal-card-header">
+          <h2>&#128231; SMS Gateway</h2>
+          <button class="btn btn-sm btn-outline" data-toast="Opening SMS configuration..." data-toast-type="info">Configure</button>
+        </div>
+        <div class="widget-body" style="padding:24px;">
+          <div style="text-align:center;padding:32px 0;border-bottom:1px solid #E2E8F0;margin-bottom:24px;">
+            <div style="font-size:4rem;margin-bottom:12px;">&#128231;</div>
+            <div style="font-weight:900;font-size:1.3rem;margin-bottom:8px;">Twilio Integration</div>
+            <div style="font-size:1.5rem;font-weight:900;color:var(--green);">Connected</div>
+            <p style="color:var(--text-light);font-size:0.9rem;margin-top:12px;">SMS for payment reminders & SOS</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(--cream);border-radius:8px;">
+              <span style="font-size:0.9rem;color:var(--text-mid);">SMS sent today</span>
+              <span style="font-size:1.2rem;font-weight:900;color:var(--teal);">312</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(--cream);border-radius:8px;">
+              <span style="font-size:0.9rem;color:var(--text-mid);">Delivery rate</span>
+              <span style="font-size:1.2rem;font-weight:900;color:var(--green);">96.2%</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:rgba(192,57,43,0.05);border-radius:8px;border-left:4px solid #C0392B;">
+              <span style="font-size:0.9rem;color:var(--text-mid);">Failed messages</span>
+              <span style="font-size:1.2rem;font-weight:900;color:#C0392B;">12</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Message Templates -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#128196; Message Templates</h2>
+        <button class="btn btn-sm btn-outline" data-toast="Opening template creator..." data-toast-type="info">Create New</button>
+      </div>
+      <div class="widget-body" style="padding:24px;">
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
+          <div style="padding:24px;background:var(--cream);border-radius:12px;border-left:4px solid var(--saffron);">
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:12px;">
+              <div style="font-weight:800;font-size:1.1rem;color:var(--saffron);">14-Day Contact Reminder</div>
+              <span style="font-size:1.5rem;">&#128242;</span>
+            </div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-bottom:16px;padding:12px;background:white;border-radius:8px;">"Amma has been asking about you... She misses your voice. Call her today?"</div>
+            <div style="font-size:0.85rem;color:var(--text-light);">WhatsApp • 98% engagement • 2,341 sent</div>
+          </div>
+          <div style="padding:24px;background:var(--cream);border-radius:12px;border-left:4px solid var(--teal);">
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:12px;">
+              <div style="font-weight:800;font-size:1.1rem;color:var(--teal);">Payment Due Reminder</div>
+              <span style="font-size:1.5rem;">&#128231;</span>
+            </div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-bottom:16px;padding:12px;background:white;border-radius:8px;">"A small reminder — Papa's care fee is due Friday. Keep his care uninterrupted."</div>
+            <div style="font-size:0.85rem;color:var(--text-light);">SMS + Email • 85% on-time payment • 1,847 sent</div>
+          </div>
+          <div style="padding:24px;background:var(--cream);border-radius:12px;border-left:4px solid var(--gold);">
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:12px;">
+              <div style="font-weight:800;font-size:1.1rem;color:var(--gold);">Birthday Alert</div>
+              <span style="font-size:1.5rem;">&#127874;</span>
+            </div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-bottom:16px;padding:12px;background:white;border-radius:8px;">"Bade Papa's birthday is in 7 days. Plan something special to make his day!"</div>
+            <div style="font-size:0.85rem;color:var(--text-light);">Email + Push • 92% response • 456 sent</div>
+          </div>
+          <div style="padding:24px;background:#FADBD8;border-radius:12px;border-left:4px solid #C0392B;">
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:12px;">
+              <div style="font-weight:800;font-size:1.1rem;color:#C0392B;">SOS Emergency Alert</div>
+              <span style="font-size:1.5rem;">&#9888;</span>
+            </div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-bottom:16px;padding:12px;background:white;border-radius:8px;">"EMERGENCY: Savitri Devi triggered SOS. Immediate action required."</div>
+            <div style="font-size:0.85rem;color:var(--text-light);">Call + SMS • 100% response • 3 alerts this month</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// Sidebar toggle
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+  document.getElementById('portalSidebar').classList.toggle('sidebar-collapsed');
+  document.querySelector('.portal-main').classList.toggle('main-expanded');
+});
+
+// Toast notification system
+document.addEventListener('DOMContentLoaded', function() {
+  const buttons = document.querySelectorAll('[data-toast]');
+  buttons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      const message = this.getAttribute('data-toast');
+      const type = this.getAttribute('data-toast-type') || 'info';
+      showToast(message, type);
+    });
+  });
+
+  function showToast(message, type) {
+    const container = document.querySelector('.toast-container') || createToastContainer();
+    const toast = document.createElement('div');
+    toast.className = 'toast toast-' + type;
+    toast.innerHTML = `<span>${message}</span>`;
+    container.appendChild(toast);
+    
+    setTimeout(() => toast.classList.add('toast-visible'), 10);
+    setTimeout(() => {
+      toast.classList.remove('toast-visible');
+      setTimeout(() => toast.remove(), 350);
+    }, 3000);
+  }
+
+  function createToastContainer() {
+    const container = document.createElement('div');
+    container.className = 'toast-container';
+    document.body.appendChild(container);
+    return container;
+  }
+});
+</script>
+
+</body>
+</html>

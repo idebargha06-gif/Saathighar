@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashram Verification | SaathiGhar</title>
+<meta name="description" content="SaathiGhar Admin Portal — verify and manage ashram applications.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/styles.css">
+<link rel="stylesheet" href="../../assets/css/header.css">
+<link rel="stylesheet" href="../../assets/css/ashram-portal.css">
+</head>
+<body class="portal-body">
+
+<!-- Sidebar -->
+<aside class="portal-sidebar" id="portalSidebar">
+  <a href="../../index.html" class="sidebar-logo" style="text-decoration: none;">
+    <img src="../../assets/images/logo.png" alt="SaathiGhar">
+    <div>
+      <div class="sidebar-brand">SaathiGhar</div>
+      <div class="sidebar-sub">Admin Portal</div>
+    </div>
+  </a>
+  <nav class="sidebar-nav">
+    <a href="admin-dashboard.html" class="sidebar-link" id="sn-dash">
+      <span class="sn-icon">&#127968;</span><span>Dashboard</span>
+    </a>
+    <a href="admin-verification.html" class="sidebar-link active" id="sn-verify">
+      <span class="sn-icon">&#10004;</span><span>Ashram Verification</span>
+    </a>
+    <a href="admin-abuse.html" class="sidebar-link" id="sn-abuse">
+      <span class="sn-icon">&#9888;</span><span>Abuse Detection</span>
+    </a>
+    <a href="admin-content.html" class="sidebar-link" id="sn-content">
+      <span class="sn-icon">&#128196;</span><span>Content Management</span>
+    </a>
+    <a href="admin-analytics.html" class="sidebar-link" id="sn-analytics">
+      <span class="sn-icon">&#128200;</span><span>Analytics</span>
+    </a>
+    <a href="admin-payments.html" class="sidebar-link" id="sn-payments">
+      <span class="sn-icon">&#128179;</span><span>Payments</span>
+    </a>
+    <a href="admin-notifications.html" class="sidebar-link" id="sn-notif">
+      <span class="sn-icon">&#128246;</span><span>Notifications</span>
+    </a>
+  </nav>
+  <div class="sidebar-user">
+    <div class="sidebar-avatar">&#128104;&#8205;&#9877;&#65039;</div>
+    <div>
+      <div class="sidebar-uname">Admin User</div>
+      <div class="sidebar-urole">Super Admin</div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="portal-main">
+
+  <!-- Top Bar -->
+  <div class="portal-topbar">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&#9776;</button>
+    <div class="topbar-title">
+      <h1>Ashram Verification</h1>
+      <span class="topbar-ashram">&#10003; Manage ashram applications & verification</span>
+    </div>
+    <div class="topbar-actions">
+      <select class="form-input" style="width:200px;">
+        <option>All Applications</option>
+        <option>Pending Review</option>
+        <option>Under Review</option>
+        <option>Approved</option>
+        <option>Rejected</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Summary Cards -->
+  <section class="portal-section">
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#F39C12,#E67E22)">&#10003;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">23</div>
+          <div class="summary-card-label">Pending Review</div>
+          <div class="summary-card-sub">Awaiting action</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#1A5276,#2E86C1)">&#128269;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">8</div>
+          <div class="summary-card-label">Under Verification</div>
+          <div class="summary-card-sub">Field visits scheduled</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#27AE60,#1E8449)">&#127970;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">15</div>
+          <div class="summary-card-label">Approved This Month</div>
+          <div class="summary-card-sub">New verified ashrams</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#9B59B6,#8E44AD)">&#128200;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">92%</div>
+          <div class="summary-card-label">Approval Rate</div>
+          <div class="summary-card-sub">Last 30 days</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Queue -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#127970; Application Queue</h2>
+        <button class="btn btn-sm btn-outline" data-toast="Exporting application list..." data-toast-type="success">Export List</button>
+      </div>
+      <div class="widget-body">
+        <div class="table-wrap">
+          <table class="portal-table">
+            <thead>
+              <tr>
+                <th>Ashram Name</th>
+                <th>Location</th>
+                <th>Submitted</th>
+                <th>Status</th>
+                <th style="text-align:right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div style="font-weight:700;">Shanti Care Home</div>
+                  <div style="font-size:0.8rem;color:var(--text-light);">ID: #ASH-2024-089</div>
+                </td>
+                <td>Mumbai, Maharashtra</td>
+                <td>2 hours ago</td>
+                <td><span class="status-pill pending">Pending Review</span></td>
+                <td style="text-align:right;">
+                  <button class="btn btn-sm btn-primary" data-toast="Opening review panel..." data-toast-type="info">Review</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight:700;">Golden Years Ashram</div>
+                  <div style="font-size:0.8rem;color:var(--text-light);">ID: #ASH-2024-088</div>
+                </td>
+                <td>Delhi, NCR</td>
+                <td>5 hours ago</td>
+                <td><span class="status-pill pending">Pending Review</span></td>
+                <td style="text-align:right;">
+                  <button class="btn btn-sm btn-primary" data-toast="Opening review panel..." data-toast-type="info">Review</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight:700;">Peaceful Living</div>
+                  <div style="font-size:0.8rem;color:var(--text-light);">ID: #ASH-2024-087</div>
+                </td>
+                <td>Chennai, Tamil Nadu</td>
+                <td>Yesterday</td>
+                <td><span class="status-pill reviewing">Under Verification</span></td>
+                <td style="text-align:right;">
+                  <button class="btn btn-sm btn-outline" data-toast="Opening details..." data-toast-type="info">View Details</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight:700;">Sunrise Senior Home</div>
+                  <div style="font-size:0.8rem;color:var(--text-light);">ID: #ASH-2024-086</div>
+                </td>
+                <td>Pune, Maharashtra</td>
+                <td>2 days ago</td>
+                <td><span class="status-pill approved">Approved</span></td>
+                <td style="text-align:right;">
+                  <button class="btn btn-sm btn-outline" data-toast="Opening certificate..." data-toast-type="success">View Certificate</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight:700;">Anand Van</div>
+                  <div style="font-size:0.8rem;color:var(--text-light);">ID: #ASH-2024-085</div>
+                </td>
+                <td>Bengaluru, Karnataka</td>
+                <td>3 days ago</td>
+                <td><span class="status-pill approved">Approved</span></td>
+                <td style="text-align:right;">
+                  <button class="btn btn-sm btn-outline" data-toast="Opening certificate..." data-toast-type="success">View Certificate</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight:700;">Snehalaya Old Age Home</div>
+                  <div style="font-size:0.8rem;color:var(--text-light);">ID: #ASH-2024-084</div>
+                </td>
+                <td>Hyderabad, Telangana</td>
+                <td>4 days ago</td>
+                <td><span class="status-pill rejected">Rejected</span></td>
+                <td style="text-align:right;">
+                  <button class="btn btn-sm btn-outline" data-toast="Opening rejection details..." data-toast-type="info">View Details</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Verification Checklist & Stats -->
+  <section class="portal-section">
+    <div class="dashboard-grid-2">
+      <div class="portal-card">
+        <div class="portal-card-header">
+          <h2>&#128196; Verification Checklist</h2>
+          <button class="btn btn-sm btn-outline" data-toast="Downloading template..." data-toast-type="success">Download Template</button>
+        </div>
+        <div class="widget-body" style="padding:24px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+            <div>
+              <h4 style="margin-bottom:16px;font-weight:700;color:var(--text-dark);">Required Documents</h4>
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <label style="display:flex;align-items:center;gap:12px;padding:8px;background:var(--cream);border-radius:6px;cursor:pointer;">
+                  <input type="checkbox" checked style="width:18px;height:18px;"> Legal Registration Certificate
+                </label>
+                <label style="display:flex;align-items:center;gap:12px;padding:8px;background:var(--cream);border-radius:6px;cursor:pointer;">
+                  <input type="checkbox" checked style="width:18px;height:18px;"> Fire Safety Certificate
+                </label>
+                <label style="display:flex;align-items:center;gap:12px;padding:8px;background:var(--cream);border-radius:6px;cursor:pointer;">
+                  <input type="checkbox" style="width:18px;height:18px;"> Food Safety License
+                </label>
+                <label style="display:flex;align-items:center;gap:12px;padding:8px;background:var(--cream);border-radius:6px;cursor:pointer;">
+                  <input type="checkbox" style="width:18px;height:18px;"> Staff Qualifications Records
+                </label>
+                <label style="display:flex;align-items:center;gap:12px;padding:8px;background:var(--cream);border-radius:6px;cursor:pointer;">
+                  <input type="checkbox" style="width:18px;height:18px;"> Kitchen Hygiene Certificate
+                </label>
+              </div>
+            </div>
+            <div>
+              <h4 style="margin-bottom:16px;font-weight:700;color:var(--text-dark);">Safety Standards</h4>
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <label style="display:flex;align-items:center;gap:12px;padding:8px;background:var(--cream);border-radius:6px;cursor:pointer;">
+                  <input type="checkbox" checked style="width:18px;height:18px;"> 24/7 Medical Support
+                </label>
+                <label style="display:flex;align-items:center;gap:12px;padding:8px;background:var(--cream);border-radius:6px;cursor:pointer;">
+                  <input type="checkbox" checked style="width:18px;height:18px;"> Emergency Exit Routes
+                </label>
+                <label style="display:flex;align-items:center;gap:12px;padding:8px;background:var(--cream);border-radius:6px;cursor:pointer;">
+                  <input type="checkbox" style="width:18px;height:18px;"> CCTV Surveillance
+                </label>
+                <label style="display:flex;align-items:center;gap:12px;padding:8px;background:var(--cream);border-radius:6px;cursor:pointer;">
+                  <input type="checkbox" style="width:18px;height:18px;"> Staff Background Verification
+                </label>
+                <label style="display:flex;align-items:center;gap:12px;padding:8px;background:var(--cream);border-radius:6px;cursor:pointer;">
+                  <input type="checkbox" style="width:18px;height:18px;"> Resident Agreement Template
+                </label>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:24px;padding-top:24px;border-top:1px solid #E2E8F0;">
+            <h4 style="margin-bottom:16px;font-weight:700;color:var(--text-dark);">Field Visit Notes</h4>
+            <textarea class="form-input" style="width:100%;height:100px;padding:12px;border-radius:8px;border:1px solid #E2E8F0;" placeholder="Enter field visit observations..."></textarea>
+            <div style="margin-top:16px;display:flex;gap:12px;">
+              <button class="btn btn-primary" data-toast="Application approved..." data-toast-type="success">Approve Application</button>
+              <button class="btn btn-outline" data-toast="Requesting more information..." data-toast-type="info">Request More Info</button>
+              <button class="btn" style="background:#FEE3E3;color:#C0392B;" data-toast="Application rejected..." data-toast-type="error">Reject Application</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="portal-card">
+        <div class="portal-card-header">
+          <h2>&#128200; Verification Statistics</h2>
+          <select class="form-select" style="padding:6px 12px;border-radius:6px;border:1px solid #E2E8F0;font-size:0.9rem;">
+            <option>This Month</option>
+            <option>Last Month</option>
+            <option>This Quarter</option>
+          </select>
+        </div>
+        <div class="widget-body" style="padding:24px;">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="padding:20px;background:rgba(39,174,96,0.05);border-radius:12px;border-left:4px solid var(--green);">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                <div>
+                  <div style="font-weight:700;color:var(--text-dark);">Approved Applications</div>
+                  <div style="font-size:0.75rem;color:var(--text-light);margin-top:2px;">Successfully verified</div>
+                </div>
+                <div style="font-size:2rem;font-weight:900;color:var(--green);">15</div>
+              </div>
+              <div style="background:#E2E8F0;height:8px;border-radius:4px;overflow:hidden;">
+                <div style="background:var(--green);width:65%;height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="font-size:0.8rem;color:var(--text-light);margin-top:4px;">65% of total applications</div>
+            </div>
+            <div style="padding:20px;background:rgba(243,156,18,0.05);border-radius:12px;border-left:4px solid var(--saffron);">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                <div>
+                  <div style="font-weight:700;color:var(--text-dark);">Pending Review</div>
+                  <div style="font-size:0.75rem;color:var(--text-light);margin-top:2px;">Awaiting action</div>
+                </div>
+                <div style="font-size:2rem;font-weight:900;color:var(--saffron);">23</div>
+              </div>
+              <div style="background:#E2E8F0;height:8px;border-radius:4px;overflow:hidden;">
+                <div style="background:var(--saffron);width:30%;height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="font-size:0.8rem;color:var(--text-light);margin-top:4px;">30% of total applications</div>
+            </div>
+            <div style="padding:20px;background:rgba(192,57,43,0.05);border-radius:12px;border-left:4px solid #C0392B;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                <div>
+                  <div style="font-weight:700;color:var(--text-dark);">Rejected Applications</div>
+                  <div style="font-size:0.75rem;color:var(--text-light);margin-top:2px;">Failed verification</div>
+                </div>
+                <div style="font-size:2rem;font-weight:900;color:#C0392B;">5</div>
+              </div>
+              <div style="background:#E2E8F0;height:8px;border-radius:4px;overflow:hidden;">
+                <div style="background:#C0392B;width:5%;height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="font-size:0.8rem;color:var(--text-light);margin-top:4px;">5% of total applications</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// Sidebar toggle
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+  document.getElementById('portalSidebar').classList.toggle('sidebar-collapsed');
+  document.querySelector('.portal-main').classList.toggle('main-expanded');
+});
+
+// Toast notification system
+document.addEventListener('DOMContentLoaded', function() {
+  const buttons = document.querySelectorAll('[data-toast]');
+  buttons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      const message = this.getAttribute('data-toast');
+      const type = this.getAttribute('data-toast-type') || 'info';
+      showToast(message, type);
+    });
+  });
+
+  function showToast(message, type) {
+    const container = document.querySelector('.toast-container') || createToastContainer();
+    const toast = document.createElement('div');
+    toast.className = 'toast toast-' + type;
+    toast.innerHTML = `<span>${message}</span>`;
+    container.appendChild(toast);
+    
+    setTimeout(() => toast.classList.add('toast-visible'), 10);
+    setTimeout(() => {
+      toast.classList.remove('toast-visible');
+      setTimeout(() => toast.remove(), 350);
+    }, 3000);
+  }
+
+  function createToastContainer() {
+    const container = document.createElement('div');
+    container.className = 'toast-container';
+    document.body.appendChild(container);
+    return container;
+  }
+});
+</script>
+
+</body>
+</html>

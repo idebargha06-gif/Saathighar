@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytics Dashboard | SaathiGhar</title>
+<meta name="description" content="SaathiGhar Admin Portal — platform analytics and metrics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/styles.css">
+<link rel="stylesheet" href="../../assets/css/header.css">
+<link rel="stylesheet" href="../../assets/css/ashram-portal.css">
+</head>
+<body class="portal-body">
+
+<!-- Sidebar -->
+<aside class="portal-sidebar" id="portalSidebar">
+  <a href="../../index.html" class="sidebar-logo" style="text-decoration: none;">
+    <img src="../../assets/images/logo.png" alt="SaathiGhar">
+    <div>
+      <div class="sidebar-brand">SaathiGhar</div>
+      <div class="sidebar-sub">Admin Portal</div>
+    </div>
+  </a>
+  <nav class="sidebar-nav">
+    <a href="admin-dashboard.html" class="sidebar-link" id="sn-dash">
+      <span class="sn-icon">&#127968;</span><span>Dashboard</span>
+    </a>
+    <a href="admin-verification.html" class="sidebar-link" id="sn-verify">
+      <span class="sn-icon">&#10004;</span><span>Ashram Verification</span>
+    </a>
+    <a href="admin-abuse.html" class="sidebar-link" id="sn-abuse">
+      <span class="sn-icon">&#9888;</span><span>Abuse Detection</span>
+    </a>
+    <a href="admin-content.html" class="sidebar-link" id="sn-content">
+      <span class="sn-icon">&#128196;</span><span>Content Management</span>
+    </a>
+    <a href="admin-analytics.html" class="sidebar-link active" id="sn-analytics">
+      <span class="sn-icon">&#128200;</span><span>Analytics</span>
+    </a>
+    <a href="admin-payments.html" class="sidebar-link" id="sn-payments">
+      <span class="sn-icon">&#128179;</span><span>Payments</span>
+    </a>
+    <a href="admin-notifications.html" class="sidebar-link" id="sn-notif">
+      <span class="sn-icon">&#128246;</span><span>Notifications</span>
+    </a>
+  </nav>
+  <div class="sidebar-user">
+    <div class="sidebar-avatar">&#128104;&#8205;&#9877;&#65039;</div>
+    <div>
+      <div class="sidebar-uname">Admin User</div>
+      <div class="sidebar-urole">Super Admin</div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="portal-main">
+
+  <!-- Top Bar -->
+  <div class="portal-topbar">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&#9776;</button>
+    <div class="topbar-title">
+      <h1>Platform Analytics</h1>
+      <span class="topbar-ashram">&#128200; Track platform performance & user engagement</span>
+    </div>
+    <div class="topbar-actions">
+      <select class="form-input" style="width:180px;">
+        <option>Last 30 Days</option>
+        <option>Last 90 Days</option>
+        <option>Last 6 Months</option>
+        <option>Last Year</option>
+      </select>
+      <button class="btn btn-primary btn-sm">&#128196; Export Report</button>
+    </div>
+  </div>
+
+  <!-- Summary Cards -->
+  <section class="portal-section">
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#1A5276,#2E86C1)">&#128101;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">5,234</div>
+          <div class="summary-card-label">Total Users</div>
+          <div class="summary-card-sub">+12% from last month</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#27AE60,#1E8449)">&#127970;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">156</div>
+          <div class="summary-card-label">Active Ashrams</div>
+          <div class="summary-card-sub">+8 new this month</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#F39C12,#E67E22)">&#128247;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">3,892</div>
+          <div class="summary-card-label">Monthly Active Users</div>
+          <div class="summary-card-sub">74% of total users</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#9B59B6,#8E44AD)">&#128200;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">92%</div>
+          <div class="summary-card-label">Retention Rate</div>
+          <div class="summary-card-sub">8% churn rate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Engagement Metrics -->
+  <section class="portal-section">
+    <div class="dashboard-grid-2">
+      <div class="portal-card">
+        <div class="portal-card-header">
+          <h2>&#128247; Check-In Frequency</h2>
+          <div style="font-size:0.9rem;color:var(--text-mid);">Avg: 18 days</div>
+        </div>
+        <div class="widget-body" style="padding:24px;">
+          <div style="margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <span style="font-size:0.9rem;font-weight:600;color:var(--text-dark);">Weekly Check-ins</span>
+              <span style="font-weight:800;color:var(--teal);">45%</span>
+            </div>
+            <div style="background:#E2E8F0;height:12px;border-radius:6px;overflow:hidden;">
+              <div style="background:linear-gradient(90deg,var(--teal),var(--teal-dark));width:45%;height:100%;border-radius:6px;"></div>
+            </div>
+            <div style="font-size:0.8rem;color:var(--text-light);margin-top:4px;">2,355 users</div>
+          </div>
+          <div style="margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <span style="font-size:0.9rem;font-weight:600;color:var(--text-dark);">Bi-weekly Check-ins</span>
+              <span style="font-weight:800;color:var(--saffron);">30%</span>
+            </div>
+            <div style="background:#E2E8F0;height:12px;border-radius:6px;overflow:hidden;">
+              <div style="background:linear-gradient(90deg,var(--saffron),#D35400);width:30%;height:100%;border-radius:6px;"></div>
+            </div>
+            <div style="font-size:0.8rem;color:var(--text-light);margin-top:4px;">1,570 users</div>
+          </div>
+          <div style="margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <span style="font-size:0.9rem;font-weight:600;color:var(--text-dark);">Monthly Check-ins</span>
+              <span style="font-weight:800;color:var(--gold);">15%</span>
+            </div>
+            <div style="background:#E2E8F0;height:12px;border-radius:6px;overflow:hidden;">
+              <div style="background:linear-gradient(90deg,var(--gold),#B7950B);width:15%;height:100%;border-radius:6px;"></div>
+            </div>
+            <div style="font-size:0.8rem;color:var(--text-light);margin-top:4px;">785 users</div>
+          </div>
+          <div style="padding:16px;background:rgba(192,57,43,0.05);border-radius:8px;border-left:4px solid #C0392B;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <span style="font-size:0.9rem;font-weight:600;color:var(--text-dark);">30+ Days No Contact</span>
+              <span style="font-weight:800;color:#C0392B;">10%</span>
+            </div>
+            <div style="background:#E2E8F0;height:12px;border-radius:6px;overflow:hidden;">
+              <div style="background:#C0392B;width:10%;height:100%;border-radius:6px;"></div>
+            </div>
+            <div style="font-size:0.8rem;color:var(--text-light);margin-top:4px;">523 users - needs attention</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="portal-card">
+        <div class="portal-card-header">
+          <h2>&#128184; Payment Health</h2>
+          <select class="form-select" style="padding:6px 12px;border-radius:6px;border:1px solid #E2E8F0;font-size:0.9rem;">
+            <option>This Month</option>
+            <option>Last Month</option>
+            <option>This Quarter</option>
+          </select>
+        </div>
+        <div class="widget-body" style="padding:24px;">
+          <div style="text-align:center;padding:24px 0;border-bottom:1px solid #E2E8F0;margin-bottom:24px;">
+            <div style="font-size:3.5rem;font-weight:900;color:var(--green);">87%</div>
+            <p style="color:var(--text-light);font-size:1rem;margin-top:8px;">On-Time Payments</p>
+            <div style="margin-top:12px;font-size:0.9rem;color:#27AE60;font-weight:700;">+5% from last month</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+            <div style="text-align:center;padding:20px;background:rgba(39,174,96,0.1);border-radius:8px;border:1px solid rgba(39,174,96,0.2);">
+              <div style="font-size:2rem;font-weight:900;color:var(--green);">87%</div>
+              <div style="font-size:0.85rem;color:var(--text-mid);margin-top:8px;">On Time</div>
+              <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;">4,553 payments</div>
+            </div>
+            <div style="text-align:center;padding:20px;background:rgba(243,156,18,0.1);border-radius:8px;border:1px solid rgba(243,156,18,0.2);">
+              <div style="font-size:2rem;font-weight:900;color:var(--saffron);">8%</div>
+              <div style="font-size:0.85rem;color:var(--text-mid);margin-top:8px;">Overdue</div>
+              <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;">419 payments</div>
+            </div>
+            <div style="text-align:center;padding:20px;background:rgba(192,57,43,0.1);border-radius:8px;border:1px solid rgba(192,57,43,0.2);">
+              <div style="font-size:2rem;font-weight:900;color:#C0392B;">5%</div>
+              <div style="font-size:0.85rem;color:var(--text-mid);margin-top:8px;">Late Fee</div>
+              <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;">262 payments</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Geographic Distribution -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#127960; Geographic Distribution</h2>
+        <button class="btn btn-sm btn-outline" data-toast="Opening map view..." data-toast-type="info">View Map</button>
+      </div>
+      <div class="widget-body" style="padding:24px;">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+          <div style="text-align:center;padding:24px;background:var(--cream);border-radius:12px;transition:var(--transition);cursor:pointer;">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--teal);">45</div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-top:8px;font-weight:600;">Pune</div>
+            <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;">29% of total</div>
+          </div>
+          <div style="text-align:center;padding:24px;background:var(--cream);border-radius:12px;transition:var(--transition);cursor:pointer;">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--teal);">38</div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-top:8px;font-weight:600;">Mumbai</div>
+            <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;">24% of total</div>
+          </div>
+          <div style="text-align:center;padding:24px;background:var(--cream);border-radius:12px;transition:var(--transition);cursor:pointer;">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--teal);">32</div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-top:8px;font-weight:600;">Bengaluru</div>
+            <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;">21% of total</div>
+          </div>
+          <div style="text-align:center;padding:24px;background:var(--cream);border-radius:12px;transition:var(--transition);cursor:pointer;">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--teal);">28</div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-top:8px;font-weight:600;">Delhi NCR</div>
+            <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;">18% of total</div>
+          </div>
+          <div style="text-align:center;padding:24px;background:var(--cream);border-radius:12px;transition:var(--transition);cursor:pointer;">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--teal);">15</div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-top:8px;font-weight:600;">Chennai</div>
+            <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;">10% of total</div>
+          </div>
+          <div style="text-align:center;padding:24px;background:var(--cream);border-radius:12px;transition:var(--transition);cursor:pointer;">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--teal);">12</div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-top:8px;font-weight:600;">Hyderabad</div>
+            <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;">8% of total</div>
+          </div>
+          <div style="text-align:center;padding:24px;background:var(--cream);border-radius:12px;transition:var(--transition);cursor:pointer;">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--teal);">8</div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-top:8px;font-weight:600;">Kolkata</div>
+            <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;">5% of total</div>
+          </div>
+          <div style="text-align:center;padding:24px;background:var(--cream);border-radius:12px;transition:var(--transition);cursor:pointer;">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--teal);">5</div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-top:8px;font-weight:600;">Others</div>
+            <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;">3% of total</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- User Breakdown & Retention -->
+  <section class="portal-section">
+    <div class="dashboard-grid-2">
+      <div class="portal-card">
+        <div class="portal-card-header">
+          <h2>&#128101; User Breakdown</h2>
+          <button class="btn btn-sm btn-outline" data-toast="Exporting user data..." data-toast-type="success">Export</button>
+        </div>
+        <div class="widget-body" style="padding:24px;">
+          <div style="margin-bottom:24px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <span style="font-size:0.95rem;font-weight:600;color:var(--text-dark);">&#128105; Family Members</span>
+              <span style="font-weight:800;color:var(--teal);">4,892</span>
+            </div>
+            <div style="background:#E2E8F0;height:12px;border-radius:6px;overflow:hidden;">
+              <div style="background:linear-gradient(90deg,var(--teal),var(--teal-dark));width:93%;height:100%;border-radius:6px;"></div>
+            </div>
+            <div style="font-size:0.8rem;color:var(--text-light);margin-top:4px;">93% of total users</div>
+          </div>
+          <div style="margin-bottom:24px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <span style="font-size:0.95rem;font-weight:600;color:var(--text-dark);">&#127970; Ashram Managers</span>
+              <span style="font-weight:800;color:var(--saffron);">156</span>
+            </div>
+            <div style="background:#E2E8F0;height:12px;border-radius:6px;overflow:hidden;">
+              <div style="background:linear-gradient(90deg,var(--saffron),#D35400);width:3%;height:100%;border-radius:6px;"></div>
+            </div>
+            <div style="font-size:0.8rem;color:var(--text-light);margin-top:4px;">3% of total users</div>
+          </div>
+          <div style="margin-bottom:24px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <span style="font-size:0.95rem;font-weight:600;color:var(--text-dark);">&#129309; Volunteers</span>
+              <span style="font-weight:800;color:var(--gold);">128</span>
+            </div>
+            <div style="background:#E2E8F0;height:12px;border-radius:6px;overflow:hidden;">
+              <div style="background:linear-gradient(90deg,var(--gold),#B7950B);width:2%;height:100%;border-radius:6px;"></div>
+            </div>
+            <div style="font-size:0.8rem;color:var(--text-light);margin-top:4px;">2% of total users</div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <span style="font-size:0.95rem;font-weight:600;color:var(--text-dark);">&#128105;&#8205;&#9877;&#65039; Elderly Residents</span>
+              <span style="font-weight:800;color:var(--green);">58</span>
+            </div>
+            <div style="background:#E2E8F0;height:12px;border-radius:6px;overflow:hidden;">
+              <div style="background:linear-gradient(90deg,var(--green),#1E8449);width:1%;height:100%;border-radius:6px;"></div>
+            </div>
+            <div style="font-size:0.8rem;color:var(--text-light);margin-top:4px;">1% of total users</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="portal-card">
+        <div class="portal-card-header">
+          <h2>&#128200; Retention Metrics</h2>
+          <select class="form-select" style="padding:6px 12px;border-radius:6px;border:1px solid #E2E8F0;font-size:0.9rem;">
+            <option>This Month</option>
+            <option>Last Month</option>
+            <option>This Quarter</option>
+          </select>
+        </div>
+        <div class="widget-body" style="padding:24px;">
+          <div style="text-align:center;padding:32px 0;border-bottom:1px solid #E2E8F0;margin-bottom:24px;">
+            <div style="font-size:4rem;font-weight:900;color:var(--teal);">92%</div>
+            <p style="color:var(--text-light);font-size:1rem;margin-top:8px;">Retention Rate</p>
+            <div style="margin-top:12px;font-size:0.9rem;color:#27AE60;font-weight:700;">+3% from last month</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;background:rgba(192,57,43,0.05);border-radius:8px;border-left:4px solid #C0392B;">
+              <div>
+                <div style="font-size:0.9rem;color:var(--text-mid);">Churn Rate</div>
+                <div style="font-size:0.75rem;color:var(--text-light);margin-top:2px;">Users who left</div>
+              </div>
+              <div style="font-size:1.8rem;font-weight:900;color:#C0392B;">8%</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;background:rgba(39,174,96,0.05);border-radius:8px;border-left:4px solid var(--green);">
+              <div>
+                <div style="font-size:0.9rem;color:var(--text-mid);">Re-engagement</div>
+                <div style="font-size:0.75rem;color:var(--text-light);margin-top:2px;">Returned users</div>
+              </div>
+              <div style="font-size:1.8rem;font-weight:900;color:var(--green);">65%</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;background:rgba(26,82,118,0.05);border-radius:8px;border-left:4px solid var(--teal);">
+              <div>
+                <div style="font-size:0.9rem;color:var(--text-mid);">New Signups</div>
+                <div style="font-size:0.75rem;color:var(--text-light);margin-top:2px;">This month</div>
+              </div>
+              <div style="font-size:1.8rem;font-weight:900;color:var(--teal);">+234</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// Sidebar toggle
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+  document.getElementById('portalSidebar').classList.toggle('sidebar-collapsed');
+  document.querySelector('.portal-main').classList.toggle('main-expanded');
+});
+
+// Toast notification system
+document.addEventListener('DOMContentLoaded', function() {
+  const buttons = document.querySelectorAll('[data-toast]');
+  buttons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      const message = this.getAttribute('data-toast');
+      const type = this.getAttribute('data-toast-type') || 'info';
+      showToast(message, type);
+    });
+  });
+
+  function showToast(message, type) {
+    const container = document.querySelector('.toast-container') || createToastContainer();
+    const toast = document.createElement('div');
+    toast.className = 'toast toast-' + type;
+    toast.innerHTML = `<span>${message}</span>`;
+    container.appendChild(toast);
+    
+    setTimeout(() => toast.classList.add('toast-visible'), 10);
+    setTimeout(() => {
+      toast.classList.remove('toast-visible');
+      setTimeout(() => toast.remove(), 350);
+    }, 3000);
+  }
+
+  function createToastContainer() {
+    const container = document.createElement('div');
+    container.className = 'toast-container';
+    document.body.appendChild(container);
+    return container;
+  }
+});
+</script>
+
+</body>
+</html>

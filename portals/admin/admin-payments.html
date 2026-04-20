@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payments | SaathiGhar</title>
+<meta name="description" content="SaathiGhar Admin Portal — manage payments and revenue.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/styles.css">
+<link rel="stylesheet" href="../../assets/css/header.css">
+<link rel="stylesheet" href="../../assets/css/ashram-portal.css">
+</head>
+<body class="portal-body">
+
+<!-- Sidebar -->
+<aside class="portal-sidebar" id="portalSidebar">
+  <a href="../../index.html" class="sidebar-logo" style="text-decoration: none;">
+    <img src="../../assets/images/logo.png" alt="SaathiGhar">
+    <div>
+      <div class="sidebar-brand">SaathiGhar</div>
+      <div class="sidebar-sub">Admin Portal</div>
+    </div>
+  </a>
+  <nav class="sidebar-nav">
+    <a href="admin-dashboard.html" class="sidebar-link" id="sn-dash">
+      <span class="sn-icon">&#127968;</span><span>Dashboard</span>
+    </a>
+    <a href="admin-verification.html" class="sidebar-link" id="sn-verify">
+      <span class="sn-icon">&#10004;</span><span>Ashram Verification</span>
+    </a>
+    <a href="admin-abuse.html" class="sidebar-link" id="sn-abuse">
+      <span class="sn-icon">&#9888;</span><span>Abuse Detection</span>
+    </a>
+    <a href="admin-content.html" class="sidebar-link" id="sn-content">
+      <span class="sn-icon">&#128196;</span><span>Content Management</span>
+    </a>
+    <a href="admin-analytics.html" class="sidebar-link" id="sn-analytics">
+      <span class="sn-icon">&#128200;</span><span>Analytics</span>
+    </a>
+    <a href="admin-payments.html" class="sidebar-link active" id="sn-payments">
+      <span class="sn-icon">&#128179;</span><span>Payments</span>
+    </a>
+    <a href="admin-notifications.html" class="sidebar-link" id="sn-notif">
+      <span class="sn-icon">&#128246;</span><span>Notifications</span>
+    </a>
+  </nav>
+  <div class="sidebar-user">
+    <div class="sidebar-avatar">&#128104;&#8205;&#9877;&#65039;</div>
+    <div>
+      <div class="sidebar-uname">Admin User</div>
+      <div class="sidebar-urole">Super Admin</div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="portal-main">
+
+  <!-- Top Bar -->
+  <div class="portal-topbar">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&#9776;</button>
+    <div class="topbar-title">
+      <h1>Payments & Revenue</h1>
+      <span class="topbar-ashram">&#128179; Manage subscriptions, fees, and revenue</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn btn-primary btn-sm">&#128196; Export Report</button>
+    </div>
+  </div>
+
+  <!-- Summary Cards -->
+  <section class="portal-section">
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#27AE60,#1E8449)">&#8377;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">₹12.45L</div>
+          <div class="summary-card-label">Total Revenue (MTD)</div>
+          <div class="summary-card-sub">+18% from last month</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#1A5276,#2E86C1)">&#128269;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">142</div>
+          <div class="summary-card-label">Active Subscriptions</div>
+          <div class="summary-card-sub">₹2,000–₹8,000/month</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#F39C12,#E67E22)">&#9733;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">89</div>
+          <div class="summary-card-label">Premium Families</div>
+          <div class="summary-card-sub">₹299/month</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#9B59B6,#8E44AD)">&#128179;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">87%</div>
+          <div class="summary-card-label">Payment Success Rate</div>
+          <div class="summary-card-sub">+5% from last month</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Revenue Breakdown -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#128184; Revenue Breakdown</h2>
+        <select class="form-select" style="padding:6px 12px;border-radius:6px;border:1px solid #E2E8F0;font-size:0.9rem;">
+          <option>This Month</option>
+          <option>Last Month</option>
+          <option>This Quarter</option>
+        </select>
+      </div>
+      <div class="widget-body" style="padding:24px;">
+        <div style="text-align:center;padding:32px 0;border-bottom:1px solid #E2E8F0;margin-bottom:32px;">
+          <div style="font-size:4rem;font-weight:900;color:var(--saffron);">₹12,45,000</div>
+          <p style="color:var(--text-light);font-size:1rem;margin-top:8px;">Total Revenue</p>
+          <div style="margin-top:12px;font-size:0.9rem;color:#27AE60;font-weight:700;">+18% from last month</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+          <div style="text-align:center;padding:24px;background:rgba(26,82,118,0.05);border-radius:12px;border:1px solid rgba(26,82,118,0.1);">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--teal);">₹8.5L</div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-top:8px;font-weight:600;">Subscriptions</div>
+            <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;">68% of total</div>
+            <div style="font-size:0.8rem;color:var(--green);margin-top:8px;font-weight:700;">+12% growth</div>
+          </div>
+          <div style="text-align:center;padding:24px;background:rgba(232,112,10,0.05);border-radius:12px;border:1px solid rgba(232,112,10,0.1);">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--saffron);">₹2.5L</div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-top:8px;font-weight:600;">Listing Fees</div>
+            <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;">20% of total</div>
+            <div style="font-size:0.8rem;color:var(--green);margin-top:8px;font-weight:700;">+8% growth</div>
+          </div>
+          <div style="text-align:center;padding:24px;background:rgba(212,160,23,0.05);border-radius:12px;border:1px solid rgba(212,160,23,0.1);">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--gold);">₹1.45L</div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-top:8px;font-weight:600;">Premium Plans</div>
+            <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;">12% of total</div>
+            <div style="font-size:0.8rem;color:var(--green);margin-top:8px;font-weight:700;">+25% growth</div>
+          </div>
+          <div style="text-align:center;padding:24px;background:rgba(39,174,96,0.05);border-radius:12px;border:1px solid rgba(39,174,96,0.1);">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--green);">₹45K</div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-top:8px;font-weight:600;">Donation Fee</div>
+            <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;">4% of total</div>
+            <div style="font-size:0.8rem;color:var(--green);margin-top:8px;font-weight:700;">+15% growth</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription Tiers & Payment Health -->
+  <section class="portal-section">
+    <div class="dashboard-grid-2">
+      <div class="portal-card">
+        <div class="portal-card-header">
+          <h2>&#128269; Ashram Subscription Tiers</h2>
+          <button class="btn btn-sm btn-outline" data-toast="Opening tier management..." data-toast-type="info">Manage Tiers</button>
+        </div>
+        <div class="widget-body" style="padding:24px;">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="padding:20px;background:var(--cream);border-radius:12px;border:2px solid var(--teal);">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                <div>
+                  <div style="font-weight:800;font-size:1.1rem;color:var(--teal);">Basic</div>
+                  <div style="font-size:0.8rem;color:var(--text-light);">Small ashrams</div>
+                </div>
+                <div style="font-size:1.5rem;font-weight:900;color:var(--teal);">₹2,000/mo</div>
+              </div>
+              <div style="font-size:0.85rem;color:var(--text-mid);margin-bottom:12px;">Portal access, basic analytics</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:0.85rem;color:var(--text-mid);">48 active ashrams</span>
+                <button class="btn btn-sm btn-outline" data-toast="Editing Basic tier..." data-toast-type="info">Edit</button>
+              </div>
+            </div>
+            <div style="padding:20px;background:var(--cream);border-radius:12px;border:2px solid var(--saffron);">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                <div>
+                  <div style="font-weight:800;font-size:1.1rem;color:var(--saffron);">Standard</div>
+                  <div style="font-size:0.8rem;color:var(--text-light);">Medium ashrams</div>
+                </div>
+                <div style="font-size:1.5rem;font-weight:900;color:var(--saffron);">₹5,000/mo</div>
+              </div>
+              <div style="font-size:0.85rem;color:var(--text-mid);margin-bottom:12px;">+ Payment tools, resident management</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:0.85rem;color:var(--text-mid);">62 active ashrams</span>
+                <button class="btn btn-sm btn-outline" data-toast="Editing Standard tier..." data-toast-type="info">Edit</button>
+              </div>
+            </div>
+            <div style="padding:20px;background:var(--cream);border-radius:12px;border:2px solid var(--gold);">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                <div>
+                  <div style="font-weight:800;font-size:1.1rem;color:var(--gold);">Premium</div>
+                  <div style="font-size:0.8rem;color:var(--text-light);">Large ashrams</div>
+                </div>
+                <div style="font-size:1.5rem;font-weight:900;color:var(--gold);">₹8,000/mo</div>
+              </div>
+              <div style="font-size:0.85rem;color:var(--text-mid);margin-bottom:12px;">+ Advanced analytics, priority support, API access</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:0.85rem;color:var(--text-mid);">32 active ashrams</span>
+                <button class="btn btn-sm btn-outline" data-toast="Editing Premium tier..." data-toast-type="info">Edit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="portal-card">
+        <div class="portal-card-header">
+          <h2>&#128200; Payment Health</h2>
+          <select class="form-select" style="padding:6px 12px;border-radius:6px;border:1px solid #E2E8F0;font-size:0.9rem;">
+            <option>This Month</option>
+            <option>Last Month</option>
+          </select>
+        </div>
+        <div class="widget-body" style="padding:24px;">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="padding:20px;background:rgba(39,174,96,0.05);border-radius:12px;border-left:4px solid var(--green);">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                <div>
+                  <div style="font-weight:700;color:var(--text-dark);">Successful Payments</div>
+                  <div style="font-size:0.75rem;color:var(--text-light);margin-top:2px;">On-time payments</div>
+                </div>
+                <div style="font-size:2rem;font-weight:900;color:var(--green);">87%</div>
+              </div>
+              <div style="background:#E2E8F0;height:8px;border-radius:4px;overflow:hidden;">
+                <div style="background:var(--green);width:87%;height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="font-size:0.8rem;color:var(--text-light);margin-top:4px;">4,553 transactions</div>
+            </div>
+            <div style="padding:20px;background:rgba(243,156,18,0.05);border-radius:12px;border-left:4px solid var(--saffron);">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                <div>
+                  <div style="font-weight:700;color:var(--text-dark);">Pending Payments</div>
+                  <div style="font-size:0.75rem;color:var(--text-light);margin-top:2px;">Awaiting confirmation</div>
+                </div>
+                <div style="font-size:2rem;font-weight:900;color:var(--saffron);">8%</div>
+              </div>
+              <div style="background:#E2E8F0;height:8px;border-radius:4px;overflow:hidden;">
+                <div style="background:var(--saffron);width:8%;height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="font-size:0.8rem;color:var(--text-light);margin-top:4px;">419 transactions</div>
+            </div>
+            <div style="padding:20px;background:rgba(192,57,43,0.05);border-radius:12px;border-left:4px solid #C0392B;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                <div>
+                  <div style="font-weight:700;color:var(--text-dark);">Failed Payments</div>
+                  <div style="font-size:0.75rem;color:var(--text-light);margin-top:2px;">Requires retry</div>
+                </div>
+                <div style="font-size:2rem;font-weight:900;color:#C0392B;">5%</div>
+              </div>
+              <div style="background:#E2E8F0;height:8px;border-radius:4px;overflow:hidden;">
+                <div style="background:#C0392B;width:5%;height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="font-size:0.8rem;color:var(--text-light);margin-top:4px;">262 transactions</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Transactions -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#128179; Recent Transactions</h2>
+        <button class="btn btn-sm btn-outline" data-toast="Opening full transaction history..." data-toast-type="info">View All</button>
+      </div>
+      <div class="widget-body">
+        <div class="table-wrap">
+          <table class="portal-table">
+            <thead>
+              <tr>
+                <th>Transaction ID</th>
+                <th>Type</th>
+                <th>Ashram/Family</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="txn-id">#TXN-2024-0892</span></td>
+                <td><span class="txn-type subscription">Subscription</span></td>
+                <td>Sunrise Senior Home</td>
+                <td><span style="font-weight:700;">₹5,000</span></td>
+                <td>2 hours ago</td>
+                <td><span class="status-pill approved">Completed</span></td>
+              </tr>
+              <tr>
+                <td><span class="txn-id">#TXN-2024-0891</span></td>
+                <td><span class="txn-type premium">Premium Plan</span></td>
+                <td>Priya Sharma</td>
+                <td><span style="font-weight:700;">₹299</span></td>
+                <td>5 hours ago</td>
+                <td><span class="status-pill approved">Completed</span></td>
+              </tr>
+              <tr>
+                <td><span class="txn-id">#TXN-2024-0890</span></td>
+                <td><span class="txn-type listing">Listing Fee</span></td>
+                <td>Shanti Care Home</td>
+                <td><span style="font-weight:700;">₹5,000</span></td>
+                <td>Yesterday</td>
+                <td><span class="status-pill approved">Completed</span></td>
+              </tr>
+              <tr>
+                <td><span class="txn-id">#TXN-2024-0889</span></td>
+                <td><span class="txn-type subscription">Subscription</span></td>
+                <td>Golden Years Ashram</td>
+                <td><span style="font-weight:700;">₹8,000</span></td>
+                <td>Yesterday</td>
+                <td><span class="status-pill pending">Pending</span></td>
+              </tr>
+              <tr>
+                <td><span class="txn-id">#TXN-2024-0888</span></td>
+                <td><span class="txn-type premium">Premium Plan</span></td>
+                <td>Rahul Mehta</td>
+                <td><span style="font-weight:700;">₹299</span></td>
+                <td>2 days ago</td>
+                <td><span class="status-pill approved">Completed</span></td>
+              </tr>
+              <tr>
+                <td><span class="txn-id">#TXN-2024-0887</span></td>
+                <td><span class="txn-type subscription">Subscription</span></td>
+                <td>Anand Van</td>
+                <td><span style="font-weight:700;">₹2,000</span></td>
+                <td>2 days ago</td>
+                <td><span class="status-pill approved">Completed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// Sidebar toggle
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+  document.getElementById('portalSidebar').classList.toggle('sidebar-collapsed');
+  document.querySelector('.portal-main').classList.toggle('main-expanded');
+});
+
+// Toast notification system
+document.addEventListener('DOMContentLoaded', function() {
+  const buttons = document.querySelectorAll('[data-toast]');
+  buttons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      const message = this.getAttribute('data-toast');
+      const type = this.getAttribute('data-toast-type') || 'info';
+      showToast(message, type);
+    });
+  });
+
+  function showToast(message, type) {
+    const container = document.querySelector('.toast-container') || createToastContainer();
+    const toast = document.createElement('div');
+    toast.className = 'toast toast-' + type;
+    toast.innerHTML = `<span>${message}</span>`;
+    container.appendChild(toast);
+    
+    setTimeout(() => toast.classList.add('toast-visible'), 10);
+    setTimeout(() => {
+      toast.classList.remove('toast-visible');
+      setTimeout(() => toast.remove(), 350);
+    }, 3000);
+  }
+
+  function createToastContainer() {
+    const container = document.createElement('div');
+    container.className = 'toast-container';
+    document.body.appendChild(container);
+    return container;
+  }
+});
+</script>
+
+</body>
+</html>

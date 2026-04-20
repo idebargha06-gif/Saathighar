@@ -184,13 +184,8 @@ body.portal-body {
 }
 
 /* ── Section ── */
-.portal-section { padding: 24px 32px; margin-bottom: 0; }
-.portal-section + .portal-section { margin-top: 32px; }
+.portal-section { padding: 24px 32px 0; }
 .portal-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-
-/* ── Dashboard Grids ── */
-.dashboard-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.dashboard-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
 /* ── Summary Cards ── */
 .summary-cards {

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | SaathiGhar</title>
+<meta name="description" content="SaathiGhar Admin Portal — manage ashram verification, abuse detection, content, and analytics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/styles.css">
+<link rel="stylesheet" href="../../assets/css/header.css">
+<link rel="stylesheet" href="../../assets/css/ashram-portal.css">
+</head>
+<body class="portal-body">
+
+<!-- Sidebar -->
+<aside class="portal-sidebar" id="portalSidebar">
+  <a href="../../index.html" class="sidebar-logo" style="text-decoration: none;">
+    <img src="../../assets/images/logo.png" alt="SaathiGhar">
+    <div>
+      <div class="sidebar-brand">SaathiGhar</div>
+      <div class="sidebar-sub">Admin Portal</div>
+    </div>
+  </a>
+  <nav class="sidebar-nav">
+    <a href="admin-dashboard.html" class="sidebar-link active" id="sn-dash">
+      <span class="sn-icon">&#127968;</span><span>Dashboard</span>
+    </a>
+    <a href="admin-verification.html" class="sidebar-link" id="sn-verify">
+      <span class="sn-icon">&#10004;</span><span>Ashram Verification</span>
+    </a>
+    <a href="admin-abuse.html" class="sidebar-link" id="sn-abuse">
+      <span class="sn-icon">&#9888;</span><span>Abuse Detection</span>
+    </a>
+    <a href="admin-content.html" class="sidebar-link" id="sn-content">
+      <span class="sn-icon">&#128196;</span><span>Content Management</span>
+    </a>
+    <a href="admin-analytics.html" class="sidebar-link" id="sn-analytics">
+      <span class="sn-icon">&#128200;</span><span>Analytics</span>
+    </a>
+    <a href="admin-payments.html" class="sidebar-link" id="sn-payments">
+      <span class="sn-icon">&#128179;</span><span>Payments</span>
+    </a>
+    <a href="admin-notifications.html" class="sidebar-link" id="sn-notif">
+      <span class="sn-icon">&#128246;</span><span>Notifications</span>
+    </a>
+  </nav>
+  <div class="sidebar-user">
+    <div class="sidebar-avatar">&#128104;&#8205;&#9877;&#65039;</div>
+    <div>
+      <div class="sidebar-uname">Admin User</div>
+      <div class="sidebar-urole">Super Admin</div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="portal-main">
+
+  <!-- Top Bar -->
+  <div class="portal-topbar">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&#9776;</button>
+    <div class="topbar-title">
+      <h1>Admin Dashboard</h1>
+      <span class="topbar-ashram">&#127968; SaathiGhar Administration</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn btn-primary btn-sm">&#43; New Ashram Application</button>
+      <div class="topbar-notif" title="Notifications">
+        &#128276;
+        <span class="notif-badge">12</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary Cards -->
+  <section class="portal-section">
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#F39C12,#E67E22)">&#10003;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">23</div>
+          <div class="summary-card-label">Pending Verifications</div>
+          <div class="summary-card-sub">Awaiting review</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#27AE60,#1E8449)">&#127970;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">156</div>
+          <div class="summary-card-label">Active Ashrams</div>
+          <div class="summary-card-sub">Verified & active</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#1A5276,#2E86C1)">&#128105;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">4,892</div>
+          <div class="summary-card-label">Total Families</div>
+          <div class="summary-card-sub">Connected families</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#9B59B6,#8E44AD)">&#128184;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">₹12.45L</div>
+          <div class="summary-card-label">Monthly Revenue</div>
+          <div class="summary-card-sub">+18% from last month</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Critical Alerts -->
+  <section class="portal-section">
+    <div class="portal-card" style="border:2px solid #E74C3C;background:rgba(231,76,60,0.05);">
+      <div class="portal-card-header">
+        <h2 style="color:#E74C3C;">&#9888; Critical Alerts</h2>
+        <button class="btn btn-sm" style="background:var(--cream);color:#E74C3C;border:1px solid #E74C3C;" data-toast="Loading all alerts..." data-toast-type="info">View All Alerts</button>
+      </div>
+      <div class="widget-body" style="padding:24px;">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="background:white;padding:20px;border-radius:12px;border-left:4px solid #E74C3C;display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+            <div style="font-size:2.5rem;">&#9888;</div>
+            <div style="flex:1;">
+              <div style="font-weight:800;color:#C0392B;margin-bottom:6px;">SOS Triggered - Sunrise Senior Home</div>
+              <div style="font-size:0.9rem;color:var(--text-mid);margin-bottom:8px;">Resident Savitri Devi triggered emergency alert 5 minutes ago. Immediate response required.</div>
+              <div style="font-size:0.8rem;color:var(--text-light);">&#128337; Just now</div>
+            </div>
+            <button class="btn btn-sm" style="background:#E74C3C;color:white;" data-toast="Emergency response team alerted" data-toast-type="success">Take Action</button>
+          </div>
+          <div style="background:white;padding:20px;border-radius:12px;border-left:4px solid #F39C12;display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+            <div style="font-size:2.5rem;">&#9888;</div>
+            <div style="flex:1;">
+              <div style="font-weight:800;color:#E67E22;margin-bottom:6px;">No Family Contact - 60+ Days</div>
+              <div style="font-size:0.9rem;color:var(--text-mid);margin-bottom:8px;">12 residents across 5 ashrams haven't had family contact. Auto-escalation triggered.</div>
+              <div style="font-size:0.8rem;color:var(--text-light);">&#128337; 2 hours ago</div>
+            </div>
+            <button class="btn btn-sm btn-outline" data-toast="Opening resident contact report..." data-toast-type="info">Review</button>
+          </div>
+          <div style="background:white;padding:20px;border-radius:12px;border-left:4px solid #3498DB;display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+            <div style="font-size:2.5rem;">&#128196;</div>
+            <div style="flex:1;">
+              <div style="font-weight:800;color:#2980B9;margin-bottom:6px;">New Abuse Report Filed</div>
+              <div style="font-size:0.9rem;color:var(--text-mid);margin-bottom:8px;">Anonymous complaint received against Golden Years Ashram. Investigation pending.</div>
+              <div style="font-size:0.8rem;color:var(--text-light);">&#128337; 5 hours ago</div>
+            </div>
+            <button class="btn btn-sm btn-outline" data-toast="Opening abuse investigation..." data-toast-type="info">Investigate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard Grid -->
+  <section class="portal-section">
+    <div class="dashboard-grid-2">
+      <!-- Recent Ashram Applications -->
+      <div class="portal-card">
+        <div class="portal-card-header">
+          <h2>&#127970; Recent Ashram Applications</h2>
+          <button class="btn btn-sm btn-outline" data-toast="Opening verification queue..." data-toast-type="info">View Queue</button>
+        </div>
+        <div class="widget-body" style="padding:24px;">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;gap:16px;align-items:center;padding:16px;background:var(--cream);border-radius:12px;">
+              <div style="width:56px;height:56px;background:linear-gradient(135deg,var(--teal),var(--teal-light));color:white;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;box-shadow:var(--shadow-sm);">&#127970;</div>
+              <div style="flex:1;">
+                <div style="font-weight:800;color:var(--text-dark);margin-bottom:4px;">Shanti Care Home</div>
+                <div style="font-size:0.85rem;color:var(--text-mid);">Mumbai, Maharashtra • Submitted 2 hours ago</div>
+              </div>
+              <button class="btn btn-sm btn-primary" data-toast="Opening application review..." data-toast-type="info">Review</button>
+            </div>
+            <div style="display:flex;gap:16px;align-items:center;padding:16px;background:var(--cream);border-radius:12px;">
+              <div style="width:56px;height:56px;background:linear-gradient(135deg,var(--teal),var(--teal-light));color:white;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;box-shadow:var(--shadow-sm);">&#127970;</div>
+              <div style="flex:1;">
+                <div style="font-weight:800;color:var(--text-dark);margin-bottom:4px;">Golden Years Ashram</div>
+                <div style="font-size:0.85rem;color:var(--text-mid);">Delhi, NCR • Submitted 5 hours ago</div>
+              </div>
+              <button class="btn btn-sm btn-primary" data-toast="Opening application review..." data-toast-type="info">Review</button>
+            </div>
+            <div style="display:flex;gap:16px;align-items:center;padding:16px;background:var(--cream);border-radius:12px;">
+              <div style="width:56px;height:56px;background:linear-gradient(135deg,var(--teal),var(--teal-light));color:white;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;box-shadow:var(--shadow-sm);">&#127970;</div>
+              <div style="flex:1;">
+                <div style="font-weight:800;color:var(--text-dark);margin-bottom:4px;">Peaceful Living</div>
+                <div style="font-size:0.85rem;color:var(--text-mid);">Chennai, Tamil Nadu • Submitted yesterday</div>
+              </div>
+              <button class="btn btn-sm btn-primary" data-toast="Opening application review..." data-toast-type="info">Review</button>
+            </div>
+            <div style="display:flex;gap:16px;align-items:center;padding:16px;background:var(--cream);border-radius:12px;">
+              <div style="width:56px;height:56px;background:linear-gradient(135deg(var(--saffron),#C0600A));color:white;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;box-shadow:var(--shadow-sm);">&#127970;</div>
+              <div style="flex:1;">
+                <div style="font-weight:800;color:var(--text-dark);margin-bottom:4px;">Anand Van</div>
+                <div style="font-size:0.85rem;color:var(--text-mid);">Bengaluru, Karnataka • Submitted 2 days ago</div>
+              </div>
+              <button class="btn btn-sm btn-primary" data-toast="Opening application review..." data-toast-type="info">Review</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Revenue Overview -->
+      <div class="portal-card">
+        <div class="portal-card-header">
+          <h2>&#128184; Revenue Overview</h2>
+          <select class="form-select" style="padding:8px 12px;border-radius:8px;border:1px solid #E2E8F0;font-size:0.9rem;">
+            <option>This Month</option>
+            <option>Last Month</option>
+            <option>This Quarter</option>
+          </select>
+        </div>
+        <div class="widget-body" style="padding:24px;">
+          <div style="text-align:center;padding:32px 0;border-bottom:1px solid #E2E8F0;margin-bottom:24px;">
+            <div style="font-size:3.5rem;font-weight:900;color:var(--saffron);line-height:1;">₹12,45,000</div>
+            <p style="color:var(--text-light);font-size:0.95rem;margin-top:12px;font-weight:600;">Total Revenue</p>
+            <div style="margin-top:12px;padding:8px 16px;background:rgba(39,174,96,0.1);border-radius:20px;display:inline-block;">
+              <span style="font-size:0.9rem;color:#27AE60;font-weight:800;">+18%</span>
+              <span style="font-size:0.85rem;color:var(--text-mid);font-weight:600;">from last month</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+            <div style="text-align:center;padding:20px;background:var(--cream);border-radius:12px;">
+              <div style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;font-weight:700;">Subscriptions</div>
+              <div style="font-size:1.5rem;font-weight:900;color:var(--teal);">₹8,50,000</div>
+              <div style="font-size:0.8rem;color:var(--text-mid);margin-top:6px;font-weight:700;">68%</div>
+            </div>
+            <div style="text-align:center;padding:20px;background:var(--cream);border-radius:12px;">
+              <div style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;font-weight:700;">Listing Fees</div>
+              <div style="font-size:1.5rem;font-weight:900;color:var(--teal);">₹2,50,000</div>
+              <div style="font-size:0.8rem;color:var(--text-mid);margin-top:6px;font-weight:700;">20%</div>
+            </div>
+            <div style="text-align:center;padding:20px;background:var(--cream);border-radius:12px;">
+              <div style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;font-weight:700;">Premium</div>
+              <div style="font-size:1.5rem;font-weight:900;color:var(--teal);">₹1,45,000</div>
+              <div style="font-size:0.8rem;color:var(--text-mid);margin-top:6px;font-weight:700;">12%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Metrics -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#128200; Platform Metrics</h2>
+        <button class="btn btn-sm btn-outline" data-toast="Exporting full report..." data-toast-type="success">Export Report</button>
+      </div>
+      <div class="widget-body" style="padding:24px;">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;">
+          <div style="text-align:center;padding:24px;background:linear-gradient(135deg,rgba(243,156,18,0.1),rgba(232,112,10,0.05));border-radius:16px;border:1px solid rgba(232,112,10,0.2);">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--saffron);line-height:1;">8,234</div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-top:8px;font-weight:700;">Total Residents</div>
+            <div style="font-size:0.8rem;color:var(--text-light);margin-top:6px;">+127 this month</div>
+          </div>
+          <div style="text-align:center;padding:24px;background:linear-gradient(135deg,rgba(39,174,96,0.1),rgba(30,132,73,0.05));border-radius:16px;border:1px solid rgba(39,174,96,0.2);">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--green);line-height:1;">2,456</div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-top:8px;font-weight:700;">Active Volunteers</div>
+            <div style="font-size:0.8rem;color:var(--text-light);margin-top:6px;">+89 this month</div>
+          </div>
+          <div style="text-align:center;padding:24px;background:linear-gradient(135deg,rgba(26,82,118,0.1),rgba(46,134,193,0.05));border-radius:16px;border:1px solid rgba(26,82,118,0.2);">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--teal);line-height:1;">45,678</div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-top:8px;font-weight:700;">Video Calls</div>
+            <div style="font-size:0.8rem;color:var(--text-light);margin-top:6px;">This month</div>
+          </div>
+          <div style="text-align:center;padding:24px;background:linear-gradient(135deg,rgba(155,89,182,0.1),rgba(142,68,173,0.05));border-radius:16px;border:1px solid rgba(155,89,182,0.2);">
+            <div style="font-size:2.5rem;font-weight:900;color:#9B59B6;line-height:1;">98.7%</div>
+            <div style="font-size:0.9rem;color:var(--text-mid);margin-top:8px;font-weight:700;">Uptime</div>
+            <div style="font-size:0.8rem;color:var(--text-light);margin-top:6px;">Last 30 days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Actions -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#9881; Quick Actions</h2>
+      </div>
+      <div class="widget-body" style="padding:24px;">
+        <div class="quick-actions">
+          <button class="qa-btn" data-toast="Opening new ashram application..." data-toast-type="info">&#43; New Ashram Application</button>
+          <button class="qa-btn" data-toast="Opening abuse report form..." data-toast-type="info">&#128172; File Abuse Report</button>
+          <button class="qa-btn" data-toast="Opening content editor..." data-toast-type="info">&#128196; Create Blog Post</button>
+          <button class="qa-btn" data-toast="Opening notification composer..." data-toast-type="info">&#128246; Send Notification</button>
+          <button class="qa-btn" data-toast="Generating analytics report..." data-toast-type="success">&#128200; Generate Report</button>
+          <button class="qa-btn qa-btn--alert" data-toast="Opening emergency contacts..." data-toast-type="error">&#128680; Emergency Contacts</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// Sidebar toggle
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+  document.getElementById('portalSidebar').classList.toggle('sidebar-collapsed');
+  document.querySelector('.portal-main').classList.toggle('main-expanded');
+});
+
+// Toast notification system
+document.addEventListener('DOMContentLoaded', function() {
+  const buttons = document.querySelectorAll('[data-toast]');
+  buttons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      const message = this.getAttribute('data-toast');
+      const type = this.getAttribute('data-toast-type') || 'info';
+      showToast(message, type);
+    });
+  });
+
+  function showToast(message, type) {
+    const container = document.querySelector('.toast-container') || createToastContainer();
+    const toast = document.createElement('div');
+    toast.className = 'toast toast-' + type;
+    toast.innerHTML = `<span>${message}</span>`;
+    container.appendChild(toast);
+    
+    setTimeout(() => toast.classList.add('toast-visible'), 10);
+    setTimeout(() => {
+      toast.classList.remove('toast-visible');
+      setTimeout(() => toast.remove(), 350);
+    }, 3000);
+  }
+
+  function createToastContainer() {
+    const container = document.createElement('div');
+    container.className = 'toast-container';
+    document.body.appendChild(container);
+    return container;
+  }
+});
+</script>
+
+</body>
+</html>

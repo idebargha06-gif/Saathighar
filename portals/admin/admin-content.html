@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Management | SaathiGhar</title>
+<meta name="description" content="SaathiGhar Admin Portal — manage content, testimonials, and notifications.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/styles.css">
+<link rel="stylesheet" href="../../assets/css/header.css">
+<link rel="stylesheet" href="../../assets/css/ashram-portal.css">
+</head>
+<body class="portal-body">
+
+<!-- Sidebar -->
+<aside class="portal-sidebar" id="portalSidebar">
+  <a href="../../index.html" class="sidebar-logo" style="text-decoration: none;">
+    <img src="../../assets/images/logo.png" alt="SaathiGhar">
+    <div>
+      <div class="sidebar-brand">SaathiGhar</div>
+      <div class="sidebar-sub">Admin Portal</div>
+    </div>
+  </a>
+  <nav class="sidebar-nav">
+    <a href="admin-dashboard.html" class="sidebar-link" id="sn-dash">
+      <span class="sn-icon">&#127968;</span><span>Dashboard</span>
+    </a>
+    <a href="admin-verification.html" class="sidebar-link" id="sn-verify">
+      <span class="sn-icon">&#10004;</span><span>Ashram Verification</span>
+    </a>
+    <a href="admin-abuse.html" class="sidebar-link" id="sn-abuse">
+      <span class="sn-icon">&#9888;</span><span>Abuse Detection</span>
+    </a>
+    <a href="admin-content.html" class="sidebar-link active" id="sn-content">
+      <span class="sn-icon">&#128196;</span><span>Content Management</span>
+    </a>
+    <a href="admin-analytics.html" class="sidebar-link" id="sn-analytics">
+      <span class="sn-icon">&#128200;</span><span>Analytics</span>
+    </a>
+    <a href="admin-payments.html" class="sidebar-link" id="sn-payments">
+      <span class="sn-icon">&#128179;</span><span>Payments</span>
+    </a>
+    <a href="admin-notifications.html" class="sidebar-link" id="sn-notif">
+      <span class="sn-icon">&#128246;</span><span>Notifications</span>
+    </a>
+  </nav>
+  <div class="sidebar-user">
+    <div class="sidebar-avatar">&#128104;&#8205;&#9877;&#65039;</div>
+    <div>
+      <div class="sidebar-uname">Admin User</div>
+      <div class="sidebar-urole">Super Admin</div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="portal-main">
+
+  <!-- Top Bar -->
+  <div class="portal-topbar">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&#9776;</button>
+    <div class="topbar-title">
+      <h1>Content Management</h1>
+      <span class="topbar-ashram">&#128196; Manage platform content & notifications</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn btn-primary btn-sm">&#43; New Blog Post</button>
+    </div>
+  </div>
+
+  <!-- Summary Cards -->
+  <section class="portal-section">
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#F39C12,#E67E22)">&#128248;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">8</div>
+          <div class="summary-card-label">Pending Submissions</div>
+          <div class="summary-card-sub">Story wall content</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#27AE60,#1E8449)">&#127970;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">2</div>
+          <div class="summary-card-label">Featured Ashrams</div>
+          <div class="summary-card-sub">Currently active</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#1A5276,#2E86C1)">&#128483;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">15</div>
+          <div class="summary-card-label">Testimonials</div>
+          <div class="summary-card-sub">Published reviews</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#9B59B6,#8E44AD)">&#128246;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">1,247</div>
+          <div class="summary-card-label">Notifications Sent</div>
+          <div class="summary-card-sub">This month</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story Wall Queue -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#128248; Story Wall Submissions</h2>
+        <button class="btn btn-sm btn-outline" data-toast="Viewing all submissions..." data-toast-type="info">View All (8 pending)</button>
+      </div>
+      <div class="widget-body">
+        <div class="table-wrap">
+          <table class="portal-table">
+            <thead>
+              <tr>
+                <th>Content</th>
+                <th>Submitted By</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th style="text-align:right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div style="display:flex;align-items:center;gap:12px;">
+                    <div style="width:60px;height:60px;background:#E3F2FD;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">&#127881;</div>
+                    <div>
+                      <div style="font-weight:700;">Amma's Diwali Celebration</div>
+                      <div style="font-size:0.8rem;color:var(--text-light);">Photo of Amma celebrating Diwali at Sunrise Senior Home</div>
+                    </div>
+                  </div>
+                </td>
+                <td>Priya Sharma (Family)</td>
+                <td><span class="content-type photo">Photo</span></td>
+                <td>2 hours ago</td>
+                <td style="text-align:right;">
+                  <button class="btn btn-sm btn-primary" data-toast="Content approved..." data-toast-type="success">Approve</button>
+                  <button class="btn btn-sm" style="background:#FEE3E3;color:#C0392B;" data-toast="Content rejected..." data-toast-type="error">Reject</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="display:flex;align-items:center;gap:12px;">
+                    <div style="width:60px;height:60px;background:#FFF3E0;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">&#128248;</div>
+                    <div>
+                      <div style="font-weight:700;">Memory Wall Update</div>
+                      <div style="font-size:0.8rem;color:var(--text-light);">New photo added to memory wall</div>
+                    </div>
+                  </div>
+                </td>
+                <td>Sunrise Senior Home (Ashram)</td>
+                <td><span class="content-type photo">Photo</span></td>
+                <td>5 hours ago</td>
+                <td style="text-align:right;">
+                  <button class="btn btn-sm btn-primary" data-toast="Content approved..." data-toast-type="success">Approve</button>
+                  <button class="btn btn-sm" style="background:#FEE3E3;color:#C0392B;" data-toast="Content rejected..." data-toast-type="error">Reject</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="display:flex;align-items:center;gap:12px;">
+                    <div style="width:60px;height:60px;background:#E8F5E9;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">&#128269;</div>
+                    <div>
+                      <div style="font-weight:700;">Birthday Celebration</div>
+                      <div style="font-size:0.8rem;color:var(--text-light);">Video of 80th birthday celebration</div>
+                    </div>
+                  </div>
+                </td>
+                <td>Rajesh Kumar (Family)</td>
+                <td><span class="content-type video">Video</span></td>
+                <td>Yesterday</td>
+                <td style="text-align:right;">
+                  <button class="btn btn-sm btn-primary" data-toast="Content approved..." data-toast-type="success">Approve</button>
+                  <button class="btn btn-sm" style="background:#FEE3E3;color:#C0392B;" data-toast="Content rejected..." data-toast-type="error">Reject</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="display:flex;align-items:center;gap:12px;">
+                    <div style="width:60px;height:60px;background:#F3E5F5;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">&#128394;</div>
+                    <div>
+                      <div style="font-weight:700;">Family Visit Memory</div>
+                      <div style="font-size:0.8rem;color:var(--text-light);">Photo of family visit to Anand Van</div>
+                    </div>
+                  </div>
+                </td>
+                <td>Anita Desai (Family)</td>
+                <td><span class="content-type photo">Photo</span></td>
+                <td>2 days ago</td>
+                <td style="text-align:right;">
+                  <button class="btn btn-sm btn-primary" data-toast="Content approved..." data-toast-type="success">Approve</button>
+                  <button class="btn btn-sm" style="background:#FEE3E3;color:#C0392B;" data-toast="Content rejected..." data-toast-type="error">Reject</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Ashrams & Testimonials -->
+  <section class="portal-section">
+    <div class="dashboard-grid-2">
+      <div class="portal-card">
+        <div class="portal-card-header">
+          <h2>&#127970; Featured Ashrams</h2>
+          <button class="btn btn-sm btn-outline" data-toast="Opening management..." data-toast-type="info">Manage</button>
+        </div>
+        <div class="widget-body" style="padding:24px;">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div class="featured-item" style="display:flex;justify-content:space-between;align-items:center;padding:16px;background:var(--cream);border-radius:8px;">
+              <div class="featured-info">
+                <div class="featured-name" style="font-weight:700;">Sunrise Senior Home</div>
+                <div class="featured-location" style="font-size:0.85rem;color:var(--text-light);">Pune, Maharashtra</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="featured-item" style="display:flex;justify-content:space-between;align-items:center;padding:16px;background:var(--cream);border-radius:8px;">
+              <div class="featured-info">
+                <div class="featured-name" style="font-weight:700;">Shanti Care Home</div>
+                <div class="featured-location" style="font-size:0.85rem;color:var(--text-light);">Mumbai, Maharashtra</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="featured-item" style="display:flex;justify-content:space-between;align-items:center;padding:16px;background:var(--cream);border-radius:8px;">
+              <div class="featured-info">
+                <div class="featured-name" style="font-weight:700;">Golden Years Ashram</div>
+                <div class="featured-location" style="font-size:0.85rem;color:var(--text-light);">Delhi, NCR</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="featured-item" style="display:flex;justify-content:space-between;align-items:center;padding:16px;background:var(--cream);border-radius:8px;">
+              <div class="featured-info">
+                <div class="featured-name" style="font-weight:700;">Peaceful Living</div>
+                <div class="featured-location" style="font-size:0.85rem;color:var(--text-light);">Chennai, Tamil Nadu</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portal-card">
+        <div class="portal-card-header">
+          <h2>&#128483; Testimonials</h2>
+          <button class="btn btn-sm btn-outline" data-toast="Opening testimonial creator..." data-toast-type="info">Add New</button>
+        </div>
+        <div class="widget-body" style="padding:24px;">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div class="testimonial-item" style="padding:20px;background:rgba(26,82,118,0.05);border-radius:12px;border-left:4px solid var(--teal);">
+              <div class="testimonial-quote" style="font-style:italic;color:var(--text-mid);margin-bottom:12px;">"SaathiGhar has given me peace of mind knowing my mother is being cared for and I can stay connected."</div>
+              <div class="testimonial-author" style="font-weight:700;color:var(--text-dark);">- Priya Sharma, Daughter</div>
+              <div class="testimonial-actions" style="margin-top:12px;display:flex;gap:8px;">
+                <button class="btn btn-sm btn-outline" data-toast="Editing testimonial..." data-toast-type="info">Edit</button>
+                <button class="btn btn-sm" style="background:#FEE3E3;color:#C0392B;" data-toast="Removing testimonial..." data-toast-type="error">Remove</button>
+              </div>
+            </div>
+            <div class="testimonial-item" style="padding:20px;background:rgba(26,82,118,0.05);border-radius:12px;border-left:4px solid var(--teal);">
+              <div class="testimonial-quote" style="font-style:italic;color:var(--text-mid);margin-bottom:12px;">"The check-in reminders keep me accountable. I visit my father regularly now."</div>
+              <div class="testimonial-author" style="font-weight:700;color:var(--text-dark);">- Rajesh Kumar, Son</div>
+              <div class="testimonial-actions" style="margin-top:12px;display:flex;gap:8px;">
+                <button class="btn btn-sm btn-outline" data-toast="Editing testimonial..." data-toast-type="info">Edit</button>
+                <button class="btn btn-sm" style="background:#FEE3E3;color:#C0392B;" data-toast="Removing testimonial..." data-toast-type="error">Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Push Notification Broadcaster -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#128246; Push Notification Broadcaster</h2>
+        <button class="btn btn-sm btn-outline" data-toast="Viewing notification history..." data-toast-type="info">History</button>
+      </div>
+      <div class="widget-body" style="padding:24px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+          <div>
+            <div style="margin-bottom:16px;">
+              <label style="display:block;margin-bottom:8px;font-weight:700;color:var(--text-dark);">Target Audience</label>
+              <select class="form-input" style="padding:12px;border-radius:8px;border:1px solid #E2E8F0;">
+                <option>All Users</option>
+                <option>Family Members Only</option>
+                <option>Ashram Managers Only</option>
+                <option>Volunteers Only</option>
+                <option>Specific City</option>
+              </select>
+            </div>
+            <div style="margin-bottom:16px;">
+              <label style="display:block;margin-bottom:8px;font-weight:700;color:var(--text-dark);">Notification Title</label>
+              <input type="text" class="form-input" style="padding:12px;border-radius:8px;border:1px solid #E2E8F0;" placeholder="Enter notification title...">
+            </div>
+            <div style="margin-bottom:16px;">
+              <label style="display:block;margin-bottom:8px;font-weight:700;color:var(--text-dark);">Message</label>
+              <textarea class="form-input" style="height:120px;padding:12px;border-radius:8px;border:1px solid #E2E8F0;" placeholder="Enter notification message..."></textarea>
+            </div>
+            <div style="display:flex;gap:12px;">
+              <button class="btn btn-primary" data-toast="Notification sent successfully..." data-toast-type="success">Send Notification</button>
+              <button class="btn btn-outline" data-toast="Opening scheduler..." data-toast-type="info">Schedule</button>
+            </div>
+          </div>
+          <div>
+            <h4 style="margin-bottom:16px;font-weight:700;color:var(--text-dark);">Recent Notifications</h4>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="padding:16px;background:var(--cream);border-radius:8px;">
+                <div style="font-weight:700;margin-bottom:4px;">New Feature Launch</div>
+                <div style="font-size:0.85rem;color:var(--text-mid);margin-bottom:8px;">Check out our new video call feature for families!</div>
+                <div style="font-size:0.75rem;color:var(--text-light);">Sent 2 hours ago • 4,521 delivered</div>
+              </div>
+              <div style="padding:16px;background:var(--cream);border-radius:8px;">
+                <div style="font-weight:700;margin-bottom:4px;">Payment Reminder</div>
+                <div style="font-size:0.85rem;color:var(--text-mid);margin-bottom:8px;">Your subscription payment is due in 3 days</div>
+                <div style="font-size:0.75rem;color:var(--text-light);">Sent yesterday • 3,847 delivered</div>
+              </div>
+              <div style="padding:16px;background:var(--cream);border-radius:8px;">
+                <div style="font-weight:700;margin-bottom:4px;">Check-in Reminder</div>
+                <div style="font-size:0.85rem;color:var(--text-mid);margin-bottom:8px;">It's been 14 days since your last check-in</div>
+                <div style="font-size:0.75rem;color:var(--text-light);">Sent 3 days ago • 2,156 delivered</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// Sidebar toggle
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+  document.getElementById('portalSidebar').classList.toggle('sidebar-collapsed');
+  document.querySelector('.portal-main').classList.toggle('main-expanded');
+});
+
+// Toast notification system
+document.addEventListener('DOMContentLoaded', function() {
+  const buttons = document.querySelectorAll('[data-toast]');
+  buttons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      const message = this.getAttribute('data-toast');
+      const type = this.getAttribute('data-toast-type') || 'info';
+      showToast(message, type);
+    });
+  });
+
+  function showToast(message, type) {
+    const container = document.querySelector('.toast-container') || createToastContainer();
+    const toast = document.createElement('div');
+    toast.className = 'toast toast-' + type;
+    toast.innerHTML = `<span>${message}</span>`;
+    container.appendChild(toast);
+    
+    setTimeout(() => toast.classList.add('toast-visible'), 10);
+    setTimeout(() => {
+      toast.classList.remove('toast-visible');
+      setTimeout(() => toast.remove(), 350);
+    }, 3000);
+  }
+
+  function createToastContainer() {
+    const container = document.createElement('div');
+    container.className = 'toast-container';
+    document.body.appendChild(container);
+    return container;
+  }
+});
+</script>
+
+</body>
+</html>

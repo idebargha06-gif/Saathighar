@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSR Partnerships | SaathiGhar</title>
+<meta name="description" content="SaathiGhar Ashram Manager Portal — manage corporate CSR partnerships and volunteer programs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/styles.css">
+<link rel="stylesheet" href="../../assets/css/header.css">
+<link rel="stylesheet" href="../../assets/css/ashram-portal.css">
+</head>
+<body class="portal-body">
+
+<!-- Sidebar -->
+<aside class="portal-sidebar" id="portalSidebar">
+  <a href="../../index.html" class="sidebar-logo" style="text-decoration: none;">
+    <img src="../../assets/images/logo.png" alt="SaathiGhar">
+    <div>
+      <div class="sidebar-brand">SaathiGhar</div>
+      <div class="sidebar-sub">Ashram Portal</div>
+    </div>
+  </a>
+  <nav class="sidebar-nav">
+    <a href="ashram-dashboard.html" class="sidebar-link" id="sn-dash">
+      <span class="sn-icon">&#127968;</span><span>Dashboard</span>
+    </a>
+    <a href="ashram-residents.html" class="sidebar-link" id="sn-res">
+      <span class="sn-icon">&#128106;</span><span>Residents</span>
+    </a>
+    <a href="ashram-families.html" class="sidebar-link" id="sn-fam">
+      <span class="sn-icon">&#128149;</span><span>Families</span>
+    </a>
+    <a href="ashram-payments.html" class="sidebar-link" id="sn-pay">
+      <span class="sn-icon">&#128184;</span><span>Payments</span>
+    </a>
+    <a href="ashram-csr.html" class="sidebar-link active" id="sn-csr">
+      <span class="sn-icon">&#129309;</span><span>CSR Partnerships</span>
+    </a>
+    <a href="ashram-profile.html" class="sidebar-link" id="sn-prof">
+      <span class="sn-icon">&#9881;&#65039;</span><span>Profile</span>
+    </a>
+    <a href="ashram-reports.html" class="sidebar-link" id="sn-rep">
+      <span class="sn-icon">&#128202;</span><span>Reports</span>
+    </a>
+  </nav>
+  <div class="sidebar-user">
+    <div class="sidebar-avatar">&#128104;&#8205;&#9877;&#65039;</div>
+    <div>
+      <div class="sidebar-uname">Rajesh Sharma</div>
+      <div class="sidebar-urole">Ashram Manager</div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="portal-main">
+
+  <!-- Top Bar -->
+  <div class="portal-topbar">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&#9776;</button>
+    <div class="topbar-title">
+      <h1>CSR Partnerships</h1>
+      <span class="topbar-ashram">&#129309; Manage corporate partnerships & volunteer programs</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn btn-primary btn-sm">&#43; New Partnership</button>
+    </div>
+  </div>
+
+  <!-- CSR Overview -->
+  <div class="dashboard-grid-3">
+    <div class="widget">
+      <div class="widget-header"><div class="widget-title">Active Partnerships</div></div>
+      <div class="widget-body" style="text-align:center;">
+        <div style="font-size:3rem;line-height:1;margin-bottom:8px;">&#129309;</div>
+        <div class="stat-number">3</div>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-top:8px;">Corporate partners</p>
+      </div>
+    </div>
+    
+    <div class="widget">
+      <div class="widget-header"><div class="widget-title">Total Funding</div></div>
+      <div class="widget-body" style="text-align:center;">
+        <div style="font-size:3rem;line-height:1;margin-bottom:8px;">&#8377;</div>
+        <div class="stat-number">4.5L</div>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-top:8px;">This fiscal year</p>
+      </div>
+    </div>
+    
+    <div class="widget">
+      <div class="widget-header"><div class="widget-title">Volunteer Days</div></div>
+      <div class="widget-body" style="text-align:center;">
+        <div style="font-size:3rem;line-height:1;margin-bottom:8px;">&#129309;</div>
+        <div class="stat-number">24</div>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-top:8px;">Completed this month</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Active Partnerships -->
+  <div class="widget">
+    <div class="widget-header">
+      <div class="widget-title">&#129309; Active Corporate Partnerships</div>
+      <div class="widget-action">View History</div>
+    </div>
+    <div class="widget-body">
+      <table style="width:100%;border-collapse:collapse;">
+        <thead>
+          <tr style="border-bottom:2px solid #eee;">
+            <th style="text-align:left;padding:16px 8px;font-size:0.85rem;color:var(--text-light);">Company</th>
+            <th style="text-align:left;padding:16px 8px;font-size:0.85rem;color:var(--text-light);">Partnership Type</th>
+            <th style="text-align:left;padding:16px 8px;font-size:0.85rem;color:var(--text-light);">Annual Value</th>
+            <th style="text-align:left;padding:16px 8px;font-size:0.85rem;color:var(--text-light);">Status</th>
+            <th style="text-align:right;padding:16px 8px;font-size:0.85rem;color:var(--text-light);">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #eee;">
+            <td style="padding:16px 8px;">
+              <div style="font-weight:700;">TechCorp India Pvt Ltd</div>
+              <div style="font-size:0.8rem;color:var(--text-light);">IT Services</div>
+            </td>
+            <td style="padding:16px 8px;">Employee Volunteer Program</td>
+            <td style="padding:16px 8px;"><span style="font-weight:700;">₹2,00,000/year</span></td>
+            <td style="padding:16px 8px;"><span class="status-pill approved">Active</span></td>
+            <td style="padding:16px 8px;text-align:right;">
+              <button class="btn btn-sm btn-outline">View Details</button>
+            </td>
+          </tr>
+          <tr style="border-bottom:1px solid #eee;">
+            <td style="padding:16px 8px;">
+              <div style="font-weight:700;">GreenLeaf Pharmaceuticals</div>
+              <div style="font-size:0.8rem;color:var(--text-light);">Healthcare</div>
+            </td>
+            <td style="padding:16px 8px;">Sponsorship + Medicine Supply</td>
+            <td style="padding:16px 8px;"><span style="font-weight:700;">₹1,50,000/year</span></td>
+            <td style="padding:16px 8px;"><span class="status-pill approved">Active</span></td>
+            <td style="padding:16px 8px;text-align:right;">
+              <button class="btn btn-sm btn-outline">View Details</button>
+            </td>
+          </tr>
+          <tr style="border-bottom:1px solid #eee;">
+            <td style="padding:16px 8px;">
+              <div style="font-weight:700;">City Bank India</div>
+              <div style="font-size:0.8rem;color:var(--text-light);">Banking</div>
+            </td>
+            <td style="padding:16px 8px;">Financial Literacy Program</td>
+            <td style="padding:16px 8px;"><span style="font-weight:700;">₹1,00,000/year</span></td>
+            <td style="padding:16px 8px;"><span class="status-pill reviewing">Pending Renewal</span></td>
+            <td style="padding:16px 8px;text-align:right;">
+              <button class="btn btn-sm btn-outline">View Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Partnership Benefits -->
+  <div class="widget">
+    <div class="widget-header">
+      <div class="widget-title">&#9733; Partnership Benefits</div>
+    </div>
+    <div class="widget-body">
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;">
+        <div style="padding:16px;background:var(--cream);border-radius:8px;">
+          <div style="font-size:1.5rem;margin-bottom:8px;">&#129309;</div>
+          <div style="font-weight:700;margin-bottom:4px;">Volunteer Days</div>
+          <div style="font-size:0.85rem;color:var(--text-light);">Corporate volunteers visit residents, organize activities, and provide companionship</div>
+        </div>
+        <div style="padding:16px;background:var(--cream);border-radius:8px;">
+          <div style="font-size:1.5rem;margin-bottom:8px;">&#128196;</div>
+          <div style="font-weight:700;margin-bottom:4px;">Impact Reports</div>
+          <div style="font-size:0.85rem;color:var(--text-light);">Quarterly reports on social impact, resident stories, and community engagement</div>
+        </div>
+        <div style="padding:16px;background:var(--cream);border-radius:8px;">
+          <div style="font-size:1.5rem;margin-bottom:8px;">&#127757;</div>
+          <div style="font-weight:700;margin-bottom:4px;">Co-Branding</div>
+          <div style="font-size:0.85rem;color:var(--text-light);">Logo placement on ashram materials, event sponsorship, media mentions</div>
+        </div>
+        <div style="padding:16px;background:var(--cream);border-radius:8px;">
+          <div style="font-size:1.5rem;margin-bottom:8px;">&#127760;</div>
+          <div style="font-weight:700;margin-bottom:4px;">Tax Benefits</div>
+          <div style="font-size:0.85rem;color:var(--text-light);">CSR contribution tax exemption under Section 80G</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upcoming Volunteer Days -->
+  <div class="widget">
+    <div class="widget-header">
+      <div class="widget-title">&#128197; Upcoming Volunteer Days</div>
+      <div class="widget-action">Schedule New</div>
+    </div>
+    <div class="widget-body">
+      <div class="activity-list">
+        <div class="activity-item">
+          <div class="activity-avatar">&#129309;</div>
+          <div class="activity-info">
+            <div class="activity-title">TechCorp India - Employee Visit</div>
+            <div class="activity-desc">15 volunteers scheduled for Diwali celebration with residents</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-weight:700;">Oct 25, 2024</div>
+            <div style="font-size:0.75rem;color:var(--text-light);">10:00 AM</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-avatar">&#129309;</div>
+          <div class="activity-info">
+            <div class="activity-title">GreenLeaf - Health Checkup Camp</div>
+            <div class="activity-desc">Free health screening for all residents</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-weight:700;">Nov 2, 2024</div>
+            <div style="font-size:0.75rem;color:var(--text-light);">9:00 AM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+// Sidebar toggle
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+  document.getElementById('portalSidebar').classList.toggle('sidebar-collapsed');
+  document.querySelector('.portal-main').classList.toggle('main-expanded');
+});
+</script>
+
+</body>
+</html>

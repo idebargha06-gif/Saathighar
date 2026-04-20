@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abuse Detection | SaathiGhar</title>
+<meta name="description" content="SaathiGhar Admin Portal — detect and investigate abuse & neglect reports.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/styles.css">
+<link rel="stylesheet" href="../../assets/css/header.css">
+<link rel="stylesheet" href="../../assets/css/ashram-portal.css">
+</head>
+<body class="portal-body">
+
+<!-- Sidebar -->
+<aside class="portal-sidebar" id="portalSidebar">
+  <a href="../../index.html" class="sidebar-logo" style="text-decoration: none;">
+    <img src="../../assets/images/logo.png" alt="SaathiGhar">
+    <div>
+      <div class="sidebar-brand">SaathiGhar</div>
+      <div class="sidebar-sub">Admin Portal</div>
+    </div>
+  </a>
+  <nav class="sidebar-nav">
+    <a href="admin-dashboard.html" class="sidebar-link" id="sn-dash">
+      <span class="sn-icon">&#127968;</span><span>Dashboard</span>
+    </a>
+    <a href="admin-verification.html" class="sidebar-link" id="sn-verify">
+      <span class="sn-icon">&#10004;</span><span>Ashram Verification</span>
+    </a>
+    <a href="admin-abuse.html" class="sidebar-link active" id="sn-abuse">
+      <span class="sn-icon">&#9888;</span><span>Abuse Detection</span>
+    </a>
+    <a href="admin-content.html" class="sidebar-link" id="sn-content">
+      <span class="sn-icon">&#128196;</span><span>Content Management</span>
+    </a>
+    <a href="admin-analytics.html" class="sidebar-link" id="sn-analytics">
+      <span class="sn-icon">&#128200;</span><span>Analytics</span>
+    </a>
+    <a href="admin-payments.html" class="sidebar-link" id="sn-payments">
+      <span class="sn-icon">&#128179;</span><span>Payments</span>
+    </a>
+    <a href="admin-notifications.html" class="sidebar-link" id="sn-notif">
+      <span class="sn-icon">&#128246;</span><span>Notifications</span>
+    </a>
+  </nav>
+  <div class="sidebar-user">
+    <div class="sidebar-avatar">&#128104;&#8205;&#9877;&#65039;</div>
+    <div>
+      <div class="sidebar-uname">Admin User</div>
+      <div class="sidebar-urole">Super Admin</div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="portal-main">
+
+  <!-- Top Bar -->
+  <div class="portal-topbar">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&#9776;</button>
+    <div class="topbar-title">
+      <h1>Abuse & Neglect Detection</h1>
+      <span class="topbar-ashram">&#9888; Monitor and investigate safety concerns</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn btn-saffron btn-sm">&#128172; Anonymous Tip Line</button>
+      <div class="topbar-notif" title="Notifications">
+        &#128276;
+        <span class="notif-badge">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary Cards -->
+  <section class="portal-section">
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#C0392B,#922B21)">&#9888;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">12</div>
+          <div class="summary-card-label">AI-Flagged Alerts</div>
+          <div class="summary-card-sub">Critical attention needed</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#F39C12,#E67E22)">&#128172;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">5</div>
+          <div class="summary-card-label">Active Cases</div>
+          <div class="summary-card-sub">Under investigation</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#27AE60,#1E8449)">&#10004;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">23</div>
+          <div class="summary-card-label">Resolved This Month</div>
+          <div class="summary-card-sub">Cases closed</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon" style="background:linear-gradient(135deg,#1A5276,#2E86C1)">&#128302;</div>
+        <div class="summary-card-body">
+          <div class="summary-card-num">2</div>
+          <div class="summary-card-label">Legal Referrals</div>
+          <div class="summary-card-sub">This month</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Alerts -->
+  <section class="portal-section">
+    <div class="portal-card" style="border:2px solid #E74C3C;background:rgba(231,76,60,0.03);">
+      <div class="portal-card-header">
+        <h2 style="color:#E74C3C;">&#129302; AI-Flagged Critical Alerts</h2>
+        <button class="btn btn-sm" style="background:var(--cream);color:#E74C3C;border:1px solid #E74C3B;" data-toast="Viewing all alerts..." data-toast-type="info">View All (12)</button>
+      </div>
+      <div class="widget-body" style="padding:24px;">
+        <div class="alert-list" style="display:flex;flex-direction:column;gap:16px;">
+          <div class="alert-item critical" style="padding:20px;background:rgba(192,57,43,0.08);border-radius:12px;border-left:4px solid #C0392B;">
+            <div style="display:flex;gap:16px;align-items:start;">
+              <div class="alert-icon" style="font-size:2rem;">&#9888;</div>
+              <div class="alert-content" style="flex:1;">
+                <div class="alert-title" style="font-weight:800;font-size:1.1rem;color:#C0392B;margin-bottom:8px;">No Family Contact - 67 Days</div>
+                <div class="alert-desc" style="color:var(--text-mid);margin-bottom:12px;">Savitri Devi at Sunrise Senior Home hasn't had family contact for 67 days. Auto-escalation triggered.</div>
+                <div class="alert-meta" style="display:flex;gap:16px;font-size:0.85rem;color:var(--text-light);">
+                  <span class="alert-ashram">&#127970; Sunrise Senior Home, Pune</span>
+                  <span class="alert-time">&#128337; Flagged 2 hours ago</span>
+                </div>
+              </div>
+              <div class="alert-actions" style="display:flex;flex-direction:column;gap:8px;">
+                <button class="btn btn-sm btn-saffron" data-toast="Escalating case..." data-toast-type="error">Escalate</button>
+                <button class="btn btn-sm btn-outline" data-toast="Contacting family..." data-toast-type="info">Contact Family</button>
+              </div>
+            </div>
+          </div>
+          <div class="alert-item critical" style="padding:20px;background:rgba(192,57,43,0.08);border-radius:12px;border-left:4px solid #C0392B;">
+            <div style="display:flex;gap:16px;align-items:start;">
+              <div class="alert-icon" style="font-size:2rem;">&#9888;</div>
+              <div class="alert-content" style="flex:1;">
+                <div class="alert-title" style="font-weight:800;font-size:1.1rem;color:#C0392B;margin-bottom:8px;">No Family Contact - 62 Days</div>
+                <div class="alert-desc" style="color:var(--text-mid);margin-bottom:12px;">Ramesh Kumar at Shanti Care Home hasn't had family contact for 62 days. Auto-escalation triggered.</div>
+                <div class="alert-meta" style="display:flex;gap:16px;font-size:0.85rem;color:var(--text-light);">
+                  <span class="alert-ashram">&#127970; Shanti Care Home, Mumbai</span>
+                  <span class="alert-time">&#128337; Flagged 5 hours ago</span>
+                </div>
+              </div>
+              <div class="alert-actions" style="display:flex;flex-direction:column;gap:8px;">
+                <button class="btn btn-sm btn-saffron" data-toast="Escalating case..." data-toast-type="error">Escalate</button>
+                <button class="btn btn-sm btn-outline" data-toast="Contacting family..." data-toast-type="info">Contact Family</button>
+              </div>
+            </div>
+          </div>
+          <div class="alert-item warning" style="padding:20px;background:rgba(243,156,18,0.08);border-radius:12px;border-left:4px solid var(--saffron);">
+            <div style="display:flex;gap:16px;align-items:start;">
+              <div class="alert-icon" style="font-size:2rem;">&#9888;</div>
+              <div class="alert-content" style="flex:1;">
+                <div class="alert-title" style="font-weight:800;font-size:1.1rem;color:var(--saffron);margin-bottom:8px;">No Family Contact - 45 Days</div>
+                <div class="alert-desc" style="color:var(--text-mid);margin-bottom:12px;">3 residents approaching 60-day threshold. Review required.</div>
+                <div class="alert-meta" style="display:flex;gap:16px;font-size:0.85rem;color:var(--text-light);">
+                  <span class="alert-ashram">&#127970; Multiple Ashrams</span>
+                  <span class="alert-time">&#128337; Flagged yesterday</span>
+                </div>
+              </div>
+              <div class="alert-actions" style="display:flex;flex-direction:column;gap:8px;">
+                <button class="btn btn-sm btn-primary" data-toast="Opening review..." data-toast-type="info">Review</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Complaint Queue & Investigation -->
+  <section class="portal-section">
+    <div class="dashboard-grid-2">
+      <div class="portal-card">
+        <div class="portal-card-header">
+          <h2>&#128172; Complaint Queue</h2>
+          <select class="form-select" style="padding:6px 12px;border-radius:6px;border:1px solid #E2E8F0;font-size:0.9rem;">
+            <option>All Status</option>
+            <option>Pending</option>
+            <option>Investigating</option>
+            <option>Resolved</option>
+          </select>
+        </div>
+        <div class="widget-body">
+          <div class="table-wrap">
+            <table class="portal-table">
+              <thead>
+                <tr>
+                  <th>Case ID</th>
+                  <th>Type</th>
+                  <th>Ashram</th>
+                  <th>Status</th>
+                  <th style="text-align:right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="case-id">#CMP-2024-042</span></td>
+                  <td><span class="complaint-type severe">Severe Neglect</span></td>
+                  <td>Golden Years Ashram</td>
+                  <td><span class="status-pill investigating">Investigating</span></td>
+                  <td style="text-align:right;">
+                    <button class="btn btn-sm btn-primary" data-toast="Opening case details..." data-toast-type="info">View Case</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="case-id">#CMP-2024-041</span></td>
+                  <td><span class="complaint-type moderate">Staff Misconduct</span></td>
+                  <td>Peaceful Living</td>
+                  <td><span class="status-pill pending">Pending Assignment</span></td>
+                  <td style="text-align:right;">
+                    <button class="btn btn-sm btn-primary" data-toast="Opening assignment..." data-toast-type="info">Assign</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="case-id">#CMP-2024-040</span></td>
+                  <td><span class="complaint-type minor">Facility Issue</span></td>
+                  <td>Sunrise Senior Home</td>
+                  <td><span class="status-pill resolved">Resolved</span></td>
+                  <td style="text-align:right;">
+                    <button class="btn btn-sm btn-outline" data-toast="Opening report..." data-toast-type="success">View Report</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="case-id">#CMP-2024-039</span></td>
+                  <td><span class="complaint-type severe">Financial Exploitation</span></td>
+                  <td>Anand Van</td>
+                  <td><span class="status-pill investigating">Investigating</span></td>
+                  <td style="text-align:right;">
+                    <button class="btn btn-sm btn-primary" data-toast="Opening case details..." data-toast-type="info">View Case</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <div class="portal-card">
+        <div class="portal-card-header">
+          <h2>&#128200; Active Investigations</h2>
+          <button class="btn btn-sm btn-outline" data-toast="Viewing all investigations..." data-toast-type="info">View All</button>
+        </div>
+        <div class="widget-body" style="padding:24px;">
+          <div class="investigation-item" style="padding:20px;background:var(--cream);border-radius:12px;">
+            <div class="investigation-header" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+              <span class="case-id" style="font-weight:700;color:var(--teal);">#CMP-2024-042</span>
+              <span class="status-pill investigating">In Progress</span>
+            </div>
+            <div class="investigation-title" style="font-weight:700;margin-bottom:16px;">Severe Neglect - Golden Years Ashram</div>
+            <div class="investigation-timeline" style="display:flex;justify-content:space-between;margin-bottom:20px;">
+              <div class="timeline-step completed" style="text-align:center;flex:1;">
+                <div class="timeline-dot" style="width:24px;height:24px;background:var(--green);border-radius:50%;margin:0 auto 8px;"></div>
+                <div class="timeline-text" style="font-size:0.75rem;color:var(--text-mid);">Complaint Received</div>
+                <div class="timeline-date" style="font-size:0.7rem;color:var(--text-light);">Apr 15</div>
+              </div>
+              <div class="timeline-step completed" style="text-align:center;flex:1;">
+                <div class="timeline-dot" style="width:24px;height:24px;background:var(--green);border-radius:50%;margin:0 auto 8px;"></div>
+                <div class="timeline-text" style="font-size:0.75rem;color:var(--text-mid);">Case Assigned</div>
+                <div class="timeline-date" style="font-size:0.7rem;color:var(--text-light);">Apr 16</div>
+              </div>
+              <div class="timeline-step active" style="text-align:center;flex:1;">
+                <div class="timeline-dot" style="width:24px;height:24px;background:var(--saffron);border-radius:50%;margin:0 auto 8px;"></div>
+                <div class="timeline-text" style="font-size:0.75rem;color:var(--text-mid);">Field Visit</div>
+                <div class="timeline-date" style="font-size:0.7rem;color:var(--text-light);">Apr 20</div>
+              </div>
+              <div class="timeline-step" style="text-align:center;flex:1;">
+                <div class="timeline-dot" style="width:24px;height:24px;background:#E2E8F0;border-radius:50%;margin:0 auto 8px;"></div>
+                <div class="timeline-text" style="font-size:0.75rem;color:var(--text-mid);">Resolution</div>
+                <div class="timeline-date" style="font-size:0.7rem;color:var(--text-light);">Pending</div>
+              </div>
+            </div>
+            <button class="btn btn-sm btn-primary" style="width:100%;" data-toast="Updating progress..." data-toast-type="info">Update Progress</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Legal Referrals -->
+  <section class="portal-section">
+    <div class="portal-card">
+      <div class="portal-card-header">
+        <h2>&#128302; Legal Referrals</h2>
+        <button class="btn btn-sm btn-outline" data-toast="Generating referral letter..." data-toast-type="success">Generate Letter</button>
+      </div>
+      <div class="widget-body" style="padding:24px;">
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
+          <div class="referral-item" style="padding:20px;background:rgba(26,82,118,0.05);border-radius:12px;border-left:4px solid var(--teal);">
+            <div style="display:flex;gap:16px;align-items:start;">
+              <div class="referral-icon" style="font-size:2rem;">&#128302;</div>
+              <div class="referral-info" style="flex:1;">
+                <div class="referral-title" style="font-weight:700;margin-bottom:8px;">Senior Welfare Authority</div>
+                <div class="referral-desc" style="font-size:0.85rem;color:var(--text-mid);margin-bottom:8px;">Case #CMP-2024-042 referred for legal action</div>
+                <div class="referral-date" style="font-size:0.8rem;color:var(--text-light);">Referred Apr 18, 2024</div>
+              </div>
+              <button class="btn btn-sm btn-outline" data-toast="Downloading document..." data-toast-type="success">Download</button>
+            </div>
+          </div>
+          <div class="referral-item" style="padding:20px;background:rgba(26,82,118,0.05);border-radius:12px;border-left:4px solid var(--teal);">
+            <div style="display:flex;gap:16px;align-items:start;">
+              <div class="referral-icon" style="font-size:2rem;">&#128302;</div>
+              <div class="referral-info" style="flex:1;">
+                <div class="referral-title" style="font-weight:700;margin-bottom:8px;">State Commission</div>
+                <div class="referral-desc" style="font-size:0.85rem;color:var(--text-mid);margin-bottom:8px;">Case #CMP-2024-038 referred for investigation</div>
+                <div class="referral-date" style="font-size:0.8rem;color:var(--text-light);">Referred Apr 10, 2024</div>
+              </div>
+              <button class="btn btn-sm btn-outline" data-toast="Downloading document..." data-toast-type="success">Download</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// Sidebar toggle
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+  document.getElementById('portalSidebar').classList.toggle('sidebar-collapsed');
+  document.querySelector('.portal-main').classList.toggle('main-expanded');
+});
+
+// Toast notification system
+document.addEventListener('DOMContentLoaded', function() {
+  const buttons = document.querySelectorAll('[data-toast]');
+  buttons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      const message = this.getAttribute('data-toast');
+      const type = this.getAttribute('data-toast-type') || 'info';
+      showToast(message, type);
+    });
+  });
+
+  function showToast(message, type) {
+    const container = document.querySelector('.toast-container') || createToastContainer();
+    const toast = document.createElement('div');
+    toast.className = 'toast toast-' + type;
+    toast.innerHTML = `<span>${message}</span>`;
+    container.appendChild(toast);
+    
+    setTimeout(() => toast.classList.add('toast-visible'), 10);
+    setTimeout(() => {
+      toast.classList.remove('toast-visible');
+      setTimeout(() => toast.remove(), 350);
+    }, 3000);
+  }
+
+  function createToastContainer() {
+    const container = document.createElement('div');
+    container.className = 'toast-container';
+    document.body.appendChild(container);
+    return container;
+  }
+});
+</script>
+
+</body>
+</html>

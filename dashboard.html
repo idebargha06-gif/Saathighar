@@ -1,73 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Family Dashboard | SaathiGhar</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css">
-<link rel="stylesheet" href="assets/css/dashboard.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Family Dashboard | SaathiGhar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/ashram-portal.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
-<body>
+<body class="portal-body">
 
-<div class="dashboard-wrapper">
-  
   <!-- Sidebar -->
-  <aside class="dashboard-sidebar" id="dashboardSidebar">
-    <a href="index.html" class="sidebar-brand" style="text-decoration: none; display: flex; align-items: center;">
-      <img src="assets/images/logo.png" alt="Logo">
-      <div class="brand-text">
-        <div class="brand-name">SaathiGhar</div>
-        <div class="brand-sub">FAMILY PORTAL</div>
+  <aside class="portal-sidebar" id="portalSidebar">
+    <a href="index.html" class="sidebar-logo" style="text-decoration: none;">
+      <img src="assets/images/logo.png" alt="SaathiGhar">
+      <div>
+        <div class="sidebar-brand">SaathiGhar</div>
+        <div class="sidebar-sub">Family Portal</div>
       </div>
     </a>
     
     <div class="sidebar-user">
       <div class="sidebar-avatar">&#128105;</div>
-      <div class="sidebar-user-info">
-        <div class="user-name">Priya Sharma</div>
-        <div class="user-role">Daughter &bull; Primary Contact</div>
+      <div>
+        <div class="sidebar-uname">Priya Sharma</div>
+        <div class="sidebar-urole">Daughter &bull; Primary Contact</div>
       </div>
     </div>
-    
+
     <nav class="sidebar-nav">
-      <div class="sidebar-section-label">Main Menu</div>
-      <button class="sidebar-nav-item active" data-section="overview"><span class="nav-icon">&#127968;</span> Overview</button>
-      <button class="sidebar-nav-item" data-section="parent"><span class="nav-icon">&#128105;&#8205;&#9877;&#65039;</span> My Parent</button>
-      <button class="sidebar-nav-item" data-section="checkins"><span class="nav-icon">&#128197;</span> Check-In Tracker</button>
-      
-      <div class="sidebar-section-label" style="margin-top:16px;">Services</div>
-      <button class="sidebar-nav-item" data-section="payments"><span class="nav-icon">&#128179;</span> Payments <span class="nav-badge">Due</span></button>
-      <button class="sidebar-nav-item" data-section="memory"><span class="nav-icon">&#128248;</span> Memory Wall</button>
-      <button class="sidebar-nav-item" data-section="calls"><span class="nav-icon">&#128249;</span> Video Calls</button>
-      
-      <div class="sidebar-section-label" style="margin-top:16px;">Support</div>
-      <button class="sidebar-nav-item" data-section="care"><span class="nav-icon">&#129309;</span> Care Requests</button>
+      <a href="#" class="sidebar-link active" id="sn-overview" onclick="showSection('overview'); return false;">
+        <span class="sn-icon">&#127968;</span><span>Overview</span>
+      </a>
+      <a href="#" class="sidebar-link" id="sn-parent" onclick="showSection('parent'); return false;">
+        <span class="sn-icon">&#128105;&#8205;&#9877;&#65039;</span><span>My Parent</span>
+      </a>
+      <a href="#" class="sidebar-link" id="sn-checkins" onclick="showSection('checkins'); return false;">
+        <span class="sn-icon">&#128197;</span><span>Check-In Tracker</span>
+      </a>
+      <a href="#" class="sidebar-link" id="sn-payments" onclick="showSection('payments'); return false;">
+        <span class="sn-icon">&#128179;</span><span>Payments</span>
+      </a>
+      <a href="#" class="sidebar-link" id="sn-memory" onclick="showSection('memory'); return false;">
+        <span class="sn-icon">&#128248;</span><span>Memory Wall</span>
+      </a>
+      <a href="#" class="sidebar-link" id="sn-calls" onclick="showSection('calls'); return false;">
+        <span class="sn-icon">&#128249;</span><span>Video Calls</span>
+      </a>
+      <a href="#" class="sidebar-link" id="sn-care" onclick="showSection('care'); return false;">
+        <span class="sn-icon">&#129309;</span><span>Care Requests</span>
+      </a>
     </nav>
-    
-    <div class="sidebar-footer">
-      <a href="index.html">&#8592; Back to Website</a>
-      <a href="#">&#9881;&#65039; Settings</a>
-      <a href="#" style="color:var(--red);">&#128682; Logout</a>
-    </div>
+
+    <a href="index.html" class="sidebar-back">&#8592; Back to Website</a>
   </aside>
-  
+
   <!-- Main Content -->
-  <main class="dashboard-main">
-    
-    <header class="dashboard-topbar">
-      <div style="display:flex;align-items:center;gap:16px;">
-        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&#9776;</button>
-        <div class="topbar-greeting">
-          <h2>Namaste, Priya.</h2>
-          <p>Your Amma is doing well today.</p>
-        </div>
+  <main class="portal-main">
+    <!-- Top Bar -->
+    <div class="portal-topbar">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&#9776;</button>
+      <div class="topbar-title">
+        <h1>Family Dashboard</h1>
+        <span class="topbar-ashram">&#128105; Savitri Devi, Sunrise Senior Home</span>
       </div>
       <div class="topbar-actions">
-        <button class="topbar-icon-btn" title="Search">&#128269;</button>
-        <button class="topbar-icon-btn" title="Notifications">&#128276;<span class="notif-dot"></span></button>
+        <button class="btn btn-primary btn-sm">+ Schedule Call</button>
+        <div class="topbar-notif" title="Notifications">
+          &#128276;
+          <span class="notif-badge">3</span>
+        </div>
       </div>
-    </header>
+    </div>
     
     <div class="dashboard-content">
       
@@ -416,10 +424,32 @@
 
 <script src="assets/js/main.js"></script>
 <script>
+  // Sidebar toggle
   document.getElementById('sidebarToggle').addEventListener('click', function() {
-    document.getElementById('dashboardSidebar').classList.toggle('sidebar-collapsed');
-    document.querySelector('.dashboard-main').classList.toggle('main-expanded');
+    document.getElementById('portalSidebar').classList.toggle('sidebar-collapsed');
+    document.querySelector('.portal-main').classList.toggle('main-expanded');
   });
+
+  // Section navigation
+  function showSection(sectionName) {
+    // Hide all sections
+    document.querySelectorAll('.dash-section').forEach(function(section) {
+      section.style.display = 'none';
+    });
+    // Show selected section
+    var selectedSection = document.getElementById('section-' + sectionName);
+    if (selectedSection) {
+      selectedSection.style.display = 'block';
+    }
+    // Update sidebar active state
+    document.querySelectorAll('.sidebar-link').forEach(function(link) {
+      link.classList.remove('active');
+    });
+    var activeLink = document.getElementById('sn-' + sectionName);
+    if (activeLink) {
+      activeLink.classList.add('active');
+    }
+  }
 </script>
 </body>
 </html>

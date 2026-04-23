@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashram Manager Login — SaathiGhar</title>
+<meta name="description" content="Secure login for ashram managers with mandatory two-factor authentication.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/auth.css">
+<style>
+.login-split{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;}
+.login-brand-panel{background:linear-gradient(160deg,#0E3A54,#1A5276);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:60px 48px;position:relative;overflow:hidden;}
+.login-brand-panel::before{content:'🏡';font-size:18rem;position:absolute;right:-60px;bottom:-40px;opacity:0.06;line-height:1;}
+.brand-badge{background:rgba(212,160,23,0.15);border:1px solid rgba(212,160,23,0.35);border-radius:50px;padding:8px 18px;font-size:0.8rem;font-weight:800;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:28px;display:inline-block;}
+.brand-headline{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;color:#fff;line-height:1.2;margin-bottom:16px;}
+.brand-sub{font-size:1rem;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:36px;max-width:380px;}
+.brand-features{display:flex;flex-direction:column;gap:14px;}
+.brand-feat{display:flex;align-items:center;gap:14px;}
+.brand-feat-icon{width:40px;height:40px;background:rgba(255,255,255,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.brand-feat-text{font-size:0.88rem;color:rgba(255,255,255,0.8);font-weight:600;}
+.login-form-panel{display:flex;align-items:center;justify-content:center;padding:40px 32px;background:var(--cream);}
+.login-form-box{width:100%;max-width:420px;}
+.form-logo{display:flex;align-items:center;gap:12px;margin-bottom:32px;}
+.form-logo img{width:40px;}
+.form-logo-name{font-size:1.3rem;font-weight:900;color:var(--teal-dark);}
+.form-logo-tag{font-size:0.7rem;color:var(--text-light);letter-spacing:1px;text-transform:uppercase;}
+@media(max-width:768px){.login-split{grid-template-columns:1fr;}.login-brand-panel{padding:36px 24px;min-height:auto;}.login-brand-panel::before{font-size:8rem;}}
+</style>
+<style>
+  html { scroll-behavior: auto; }
+</style>
+<!-- Force scroll to top before anything renders -->
+<script>history.scrollRestoration = 'manual'; window.scrollTo(0, 0);</script></head>
+<body>
+<div class="login-split" id="login-page">
+
+  <div class="login-brand-panel">
+    <span class="brand-badge">Ashram Manager Portal</span>
+    <h1 class="brand-headline">Run your ashram<br>with full confidence.</h1>
+    <p class="brand-sub">Manage residents, communicate with families, track care records, receive payments — all in one secure, professional dashboard.</p>
+    <div class="brand-features">
+      <div class="brand-feat"><div class="brand-feat-icon">👥</div><div class="brand-feat-text">Resident profiles & care records</div></div>
+      <div class="brand-feat"><div class="brand-feat-icon">💬</div><div class="brand-feat-text">Family communication hub</div></div>
+      <div class="brand-feat"><div class="brand-feat-icon">💰</div><div class="brand-feat-text">Fee collection & payment tracking</div></div>
+      <div class="brand-feat"><div class="brand-feat-icon">📋</div><div class="brand-feat-text">CSR & compliance reports</div></div>
+    </div>
+    <div style="margin-top:32px;padding:16px 20px;background:rgba(212,160,23,0.12);border:1px solid rgba(212,160,23,0.3);border-radius:12px;">
+      <div style="font-size:0.82rem;color:var(--gold);font-weight:800;margin-bottom:4px;">🔐 Security Notice</div>
+      <div style="font-size:0.8rem;color:rgba(255,255,255,0.7);">2FA is mandatory for all ashram manager accounts. An OTP will be sent after password verification.</div>
+    </div>
+  </div>
+
+  <div class="login-form-panel">
+    <div class="login-form-box">
+      <div class="form-logo">
+        <img src="../assets/images/logo.png" alt="SaathiGhar">
+        <div><div class="form-logo-name">SaathiGhar</div><div class="form-logo-tag">Ashram Manager Portal</div></div>
+      </div>
+
+      <!-- Step 1: Credentials -->
+      <div id="ashram-step-1">
+        <h2 style="font-size:1.5rem;color:var(--teal-dark);margin-bottom:6px;">Ashram Manager Login</h2>
+        <p style="font-size:0.88rem;color:var(--text-mid);margin-bottom:28px;">Step 1 of 2 — Enter your credentials</p>
+
+        <div class="auth-2fa-notice">
+          <span class="notice-icon">🔐</span>
+          <span>Two-Factor Authentication is <strong>mandatory</strong> for all manager accounts. OTP will be sent to your registered mobile after this step.</span>
+        </div>
+
+        <form id="login-ashram-form" novalidate style="margin-top:20px;">
+          <div class="auth-form-group">
+            <label class="auth-label" for="email-ashram">Manager Email <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">📧</span>
+              <input class="auth-input" type="email" id="email-ashram" name="email" placeholder="manager@ashramname.org" required autocomplete="email">
+            </div>
+          </div>
+          <div class="auth-form-group">
+            <label class="auth-label" for="pw-ashram">Password <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">🔒</span>
+              <input class="auth-input" type="password" id="pw-ashram" name="password" placeholder="Enter your password" required autocomplete="current-password" style="padding-right:48px;">
+              <button type="button" class="auth-input-eye" id="eye-ashram" aria-label="Toggle password">👁️</button>
+            </div>
+          </div>
+          <button type="submit" class="auth-submit" id="btn-ashram-step1">
+            🏡 Verify Credentials &amp; Send OTP →
+          </button>
+        </form>
+      </div>
+
+      <!-- Step 2: 2FA OTP -->
+      <div id="ashram-step-2" style="display:none;">
+        <h2 style="font-size:1.5rem;color:var(--teal-dark);margin-bottom:6px;">Two-Factor Verification</h2>
+        <p style="font-size:0.88rem;color:var(--text-mid);margin-bottom:24px;">Step 2 of 2 — Enter the OTP sent to your mobile</p>
+
+        <div style="text-align:center;margin-bottom:20px;">
+          <div style="font-size:2.5rem;margin-bottom:10px;">📱</div>
+          <p class="otp-sent-to">OTP sent to your registered mobile number</p>
+        </div>
+
+        <div id="otp-ashram-2fa" class="otp-input-group">
+          <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 1">
+          <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 2">
+          <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 3">
+          <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 4">
+          <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 5">
+          <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 6">
+        </div>
+        <div class="otp-timer" style="margin-bottom:20px;">
+          <span id="otp-timer-ashram"></span>
+          <button class="otp-resend" id="otp-resend-ashram" disabled>Resend OTP</button>
+        </div>
+
+        <button class="auth-submit" id="btn-verify-2fa">✅ Verify &amp; Enter Ashram Portal</button>
+        <button type="button" onclick="document.getElementById('ashram-step-1').style.display='block';document.getElementById('ashram-step-2').style.display='none';"
+          style="width:100%;margin-top:12px;background:none;border:none;color:var(--teal);font-weight:700;cursor:pointer;font-size:0.9rem;padding:8px;">
+          ← Back to credentials
+        </button>
+      </div>
+
+      <div class="auth-footer" style="margin-top:24px;">
+        No account? <a href="register-ashram.html">Register Your Ashram</a>
+      </div>
+      <div class="auth-footer" style="margin-top:10px;">
+        <a href="../index.html" style="color:var(--text-light);">← Back to Home</a> &nbsp;·&nbsp;
+        <a href="login-family.html" style="color:var(--text-light);">Family Login</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>window._sb=supabase.createClient('https://hznsdikphjreklshgeyu.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6bnNkaWtwaGpyZWtsc2hnZXl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NzQ0NjUsImV4cCI6MjA5MjQ1MDQ2NX0.BATyEw2PslvmOs4g8xn0jiV-UUUFqPDBfqEtHsPp5Ak');</script>
+<script src="../assets/js/auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  redirectIfLoggedIn();
+  initPasswordToggle('eye-ashram','pw-ashram');
+  initOTPInput('otp-ashram-2fa');
+
+  document.getElementById('login-ashram-form')?.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const email=document.getElementById('email-ashram').value;
+    const pw=document.getElementById('pw-ashram').value;
+    if(!email||!pw){showToast('Please enter your email and password.','error');return;}
+    const btn=document.getElementById('btn-ashram-step1');
+    setLoading(btn,true,'Verifying credentials…');
+    const {data,error}=await getSB().auth.signInWithPassword({email,password:pw});
+    setLoading(btn,false);
+    if(error){showToast(error.message,'error');return;}
+    // Go to 2FA step
+    document.getElementById('ashram-step-1').style.display='none';
+    document.getElementById('ashram-step-2').style.display='block';
+    const phone=data.user?.user_metadata?.mobile;
+    if(phone) await sendPhoneOTP(phone);
+    startOTPTimer('otp-timer-ashram','otp-resend-ashram',60);
+  });
+
+  document.getElementById('btn-verify-2fa')?.addEventListener('click',async()=>{
+    const otp=getOTP('otp-ashram-2fa');
+    if(otp.length<6){showToast('Enter all 6 OTP digits.','error');return;}
+    const btn=document.getElementById('btn-verify-2fa');
+    setLoading(btn,true,'Verifying…');
+    const {data:{session}}=await getSB().auth.getSession();
+    const phone=session?.user?.user_metadata?.mobile;
+    let user;
+    if(phone){user=await verifyPhoneOTP(phone,otp);}
+    else{user=session?.user;} // fallback if phone not set
+    setLoading(btn,false);
+    if(user){showToast('Verified! Entering Ashram Portal…','success');setTimeout(()=>routeUser(user||session.user),800);}
+  });
+
+  document.getElementById('otp-resend-ashram')?.addEventListener('click',async()=>{
+    const {data:{session}}=await getSB().auth.getSession();
+    const phone=session?.user?.user_metadata?.mobile;
+    if(phone){await sendPhoneOTP(phone);startOTPTimer('otp-timer-ashram','otp-resend-ashram',60);}
+  });
+});
+</script>
+</body>
+</html>

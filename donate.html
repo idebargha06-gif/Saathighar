@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate — SaathiGhar | Support Elderly Residents</title>
+<meta name="description" content="Sponsor a resident's month, donate to an ashram, or support the SaathiGhar platform. Every rupee counts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+.donate-hero{background:linear-gradient(135deg,#7a4800,#D4A017);padding:80px 24px 60px;text-align:center;color:#fff;}
+.donate-hero h1{font-size:clamp(2rem,4vw,3rem);margin-bottom:12px;}
+.donate-hero p{opacity:.85;max-width:560px;margin:0 auto;}
+.donate-tabs{display:flex;gap:0;max-width:600px;margin:0 auto 40px;background:var(--cream);border-radius:16px;padding:6px;}
+.donate-tab{flex:1;padding:12px;text-align:center;border-radius:12px;cursor:pointer;font-weight:800;font-size:.9rem;color:var(--text-mid);transition:all .2s;}
+.donate-tab.active{background:#fff;color:var(--teal-dark);box-shadow:0 2px 10px rgba(0,0,0,.08);}
+.donate-panel{display:none;max-width:600px;margin:0 auto;}
+.donate-panel.active{display:block;}
+.amount-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0;}
+.amount-btn{border:2px solid #e8e0d8;background:#fff;border-radius:12px;padding:14px 8px;text-align:center;cursor:pointer;font-weight:800;font-size:1rem;color:var(--teal-dark);transition:all .15s;}
+.amount-btn:hover{border-color:var(--gold);}
+.amount-btn.selected{border-color:var(--gold);background:rgba(212,160,23,.08);}
+.amount-btn small{display:block;font-size:.68rem;font-weight:600;color:var(--text-light);margin-top:3px;}
+.custom-amount-wrap{position:relative;margin-top:6px;}
+.custom-amount-wrap span{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-weight:800;color:var(--teal-dark);font-size:1.1rem;}
+.custom-amount-wrap input{padding-left:30px;}
+.donate-card{background:#fff;border-radius:20px;box-shadow:var(--shadow-sm);padding:32px;}
+.impact-list{background:var(--cream);border-radius:12px;padding:18px 20px;margin:20px 0;}
+.impact-item{display:flex;align-items:center;gap:10px;font-size:.85rem;margin-bottom:8px;color:var(--text-mid);}
+.impact-item:last-child{margin-bottom:0;}
+.impact-icon{font-size:1.1rem;}
+.donate-submit{width:100%;padding:16px;border-radius:12px;background:linear-gradient(135deg,#D4A017,#F0C040);color:#5a3800;font-size:1rem;font-weight:900;border:none;cursor:pointer;margin-top:20px;transition:all .2s;}
+.donate-submit:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,160,23,.4);}
+.anon-toggle{display:flex;align-items:center;gap:10px;font-size:.85rem;font-weight:600;color:var(--text-mid);margin:12px 0;}
+</style>
+</head>
+<body>
+<div class="donate-hero">
+  <span class="eyebrow" style="color:#F0C040;opacity:1;">💛 Make a Difference</span>
+  <h1>Every Rupee Has a Face</h1>
+  <p>Behind every donation is a grandparent who deserves dignity, warmth, and the feeling of being loved — even from a distance.</p>
+</div>
+
+<div class="section">
+  <div class="container">
+
+    <div class="donate-tabs">
+      <div class="donate-tab active" data-panel="resident">👴 Sponsor a Resident</div>
+      <div class="donate-tab" data-panel="ashram">🏡 Donate to Ashram</div>
+      <div class="donate-tab" data-panel="platform">💙 Support Platform</div>
+    </div>
+
+    <!-- Panel 1: Sponsor a Resident -->
+    <div class="donate-panel active" id="panel-resident">
+      <div class="donate-card">
+        <h3 style="color:var(--teal-dark);margin-bottom:6px;">Sponsor a Resident's Month</h3>
+        <p style="font-size:.87rem;color:var(--text-mid);margin-bottom:20px;">Your donation covers meals, medicines, and small comforts for one elderly resident for a month. You receive a thank-you note with their first name.</p>
+
+        <label class="auth-label">Choose amount</label>
+        <div class="amount-grid" id="resident-amounts">
+          <div class="amount-btn selected" data-amount="500">₹500<small>1 week meals</small></div>
+          <div class="amount-btn" data-amount="1000">₹1,000<small>Monthly meds</small></div>
+          <div class="amount-btn" data-amount="2500">₹2,500<small>Half month care</small></div>
+          <div class="amount-btn" data-amount="5000">₹5,000<small>Full month</small></div>
+        </div>
+        <div class="custom-amount-wrap">
+          <span>₹</span>
+          <input class="auth-input" type="number" id="resident-custom" placeholder="Or enter custom amount" min="100">
+        </div>
+
+        <div class="impact-list">
+          <div class="impact-item"><span class="impact-icon">🍱</span> ₹500 sponsors nutritious meals for one week</div>
+          <div class="impact-item"><span class="impact-icon">💊</span> ₹1,000 covers a month of essential medicines</div>
+          <div class="impact-item"><span class="impact-icon">🎵</span> ₹2,500 funds activities, music, and therapy sessions</div>
+          <div class="impact-item"><span class="impact-icon">🏠</span> ₹5,000 covers complete care for a full month</div>
+        </div>
+
+        <div class="anon-toggle">
+          <input type="checkbox" id="anon-resident" style="width:18px;height:18px;">
+          <label for="anon-resident">Donate anonymously (your name will not be shown to the ashram)</label>
+        </div>
+        <div class="auth-form-group">
+          <label class="auth-label" for="donor-msg-resident">Personal message (optional)</label>
+          <textarea class="auth-input" id="donor-msg-resident" rows="2" placeholder="e.g. Wishing you warmth and happiness, Dadi…"></textarea>
+        </div>
+
+        <div style="font-size:.75rem;color:var(--text-light);margin-top:8px;">2% platform fee applies. 98% goes directly to the ashram.</div>
+        <button class="donate-submit" id="btn-donate-resident">💛 Donate Now via Razorpay</button>
+      </div>
+    </div>
+
+    <!-- Panel 2: Donate to Ashram -->
+    <div class="donate-panel" id="panel-ashram">
+      <div class="donate-card">
+        <h3 style="color:var(--teal-dark);margin-bottom:6px;">Donate to an Ashram</h3>
+        <p style="font-size:.87rem;color:var(--text-mid);margin-bottom:20px;">Support a specific ashram's operations, facility upgrades, or special resident care programs.</p>
+
+        <div class="auth-form-group">
+          <label class="auth-label" for="ashram-search-donate">Select Ashram</label>
+          <input class="auth-input" type="text" id="ashram-search-donate" placeholder="Search by name or city…">
+        </div>
+
+        <label class="auth-label">Choose amount</label>
+        <div class="amount-grid" id="ashram-amounts">
+          <div class="amount-btn selected" data-amount="1000">₹1,000</div>
+          <div class="amount-btn" data-amount="2500">₹2,500</div>
+          <div class="amount-btn" data-amount="5000">₹5,000</div>
+          <div class="amount-btn" data-amount="10000">₹10,000</div>
+        </div>
+        <div class="custom-amount-wrap">
+          <span>₹</span>
+          <input class="auth-input" type="number" id="ashram-custom" placeholder="Custom amount" min="100">
+        </div>
+
+        <div class="anon-toggle" style="margin-top:14px;">
+          <input type="checkbox" id="anon-ashram" style="width:18px;height:18px;">
+          <label for="anon-ashram">Donate anonymously</label>
+        </div>
+        <div style="font-size:.75rem;color:var(--text-light);margin-top:8px;">2% platform fee applies. 98% goes to the ashram.</div>
+        <button class="donate-submit" id="btn-donate-ashram">💛 Donate to Ashram</button>
+      </div>
+    </div>
+
+    <!-- Panel 3: Support Platform -->
+    <div class="donate-panel" id="panel-platform">
+      <div class="donate-card">
+        <h3 style="color:var(--teal-dark);margin-bottom:6px;">Support the SaathiGhar Platform</h3>
+        <p style="font-size:.87rem;color:var(--text-mid);margin-bottom:20px;">Your donation keeps the platform running, funds Dadi AI for residents who can't afford it, and supports our team working for abandoned residents.</p>
+
+        <div class="impact-list">
+          <div class="impact-item"><span class="impact-icon">🤖</span> Funds Dadi AI for elderly residents in under-resourced ashrams</div>
+          <div class="impact-item"><span class="impact-icon">👩‍💼</span> Supports staff who reach out to abandoned residents</div>
+          <div class="impact-item"><span class="impact-icon">🛡️</span> Keeps the platform free for families who can't afford premium plans</div>
+          <div class="impact-item"><span class="impact-icon">📡</span> Maintains the SOS emergency alert system 24/7</div>
+        </div>
+
+        <label class="auth-label">Choose amount</label>
+        <div class="amount-grid" id="platform-amounts">
+          <div class="amount-btn selected" data-amount="200">₹200</div>
+          <div class="amount-btn" data-amount="500">₹500</div>
+          <div class="amount-btn" data-amount="1000">₹1,000</div>
+          <div class="amount-btn" data-amount="2500">₹2,500</div>
+        </div>
+        <div class="custom-amount-wrap">
+          <span>₹</span>
+          <input class="auth-input" type="number" id="platform-custom" placeholder="Custom amount" min="50">
+        </div>
+
+        <div style="font-size:.75rem;color:var(--text-light);margin-top:14px;">100% of this donation goes to SaathiGhar operations. No platform fee.</div>
+        <button class="donate-submit" style="background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;" id="btn-donate-platform">
+          💙 Support SaathiGhar
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2025 SaathiGhar. Donations processed securely via Razorpay. <a href="privacy.html">Privacy Policy</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>window._sb=supabase.createClient('https://hznsdikphjreklshgeyu.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6bnNkaWtwaGpyZWtsc2hnZXl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NzQ0NjUsImV4cCI6MjA5MjQ1MDQ2NX0.BATyEw2PslvmOs4g8xn0jiV-UUUFqPDBfqEtHsPp5Ak');</script>
+<script src="assets/js/services.js"></script>
+<script>
+function showToast(msg,type='info'){
+  const el=document.createElement('div');el.className='toast '+type;
+  el.innerHTML=`${({success:'✅',error:'❌',info:'ℹ️'})[type]||'ℹ️'} <span>${msg}</span>`;
+  document.body.appendChild(el);setTimeout(()=>el.remove(),4500);
+}
+
+// Tabs
+document.querySelectorAll('.donate-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.donate-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.donate-panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-'+tab.dataset.panel)?.classList.add('active');
+  });
+});
+
+// Amount selector
+function initAmounts(gridId, customId) {
+  const grid=document.getElementById(gridId);
+  const custom=document.getElementById(customId);
+  if(!grid) return;
+  grid.querySelectorAll('.amount-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      grid.querySelectorAll('.amount-btn').forEach(b=>b.classList.remove('selected'));
+      btn.classList.add('selected');
+      if(custom) custom.value='';
+    });
+  });
+  custom?.addEventListener('input',()=>{
+    grid.querySelectorAll('.amount-btn').forEach(b=>b.classList.remove('selected'));
+  });
+}
+function getAmount(gridId, customId) {
+  const custom=document.getElementById(customId)?.value;
+  if(custom&&parseInt(custom)>0) return parseInt(custom);
+  const sel=document.querySelector(`#${gridId} .amount-btn.selected`);
+  return sel?parseInt(sel.dataset.amount):0;
+}
+
+initAmounts('resident-amounts','resident-custom');
+initAmounts('ashram-amounts','ashram-custom');
+initAmounts('platform-amounts','platform-custom');
+
+// Load Razorpay
+async function ensureRazorpay(){
+  if(window.Razorpay) return;
+  await new Promise(r=>{const s=document.createElement('script');s.src='https://checkout.razorpay.com/v1/checkout.js';s.onload=r;document.head.appendChild(s);});
+}
+
+// Donate — Resident
+document.getElementById('btn-donate-resident')?.addEventListener('click',async()=>{
+  const amount=getAmount('resident-amounts','resident-custom');
+  if(!amount||amount<100){showToast('Minimum donation is ₹100.','error');return;}
+  await ensureRazorpay();
+  const {data:{session}}=await getSB().auth.getSession();
+  await initiateDonation({
+    donorId:session?.user?.id||null,type:'resident',
+    targetResidentId:null,targetAshramId:null,
+    amountInr:amount,
+    isAnonymous:document.getElementById('anon-resident')?.checked||false,
+    message:document.getElementById('donor-msg-resident')?.value||'',
+  });
+});
+
+// Donate — Ashram
+document.getElementById('btn-donate-ashram')?.addEventListener('click',async()=>{
+  const amount=getAmount('ashram-amounts','ashram-custom');
+  if(!amount||amount<100){showToast('Minimum donation is ₹100.','error');return;}
+  await ensureRazorpay();
+  const {data:{session}}=await getSB().auth.getSession();
+  await initiateDonation({
+    donorId:session?.user?.id||null,type:'ashram',
+    targetResidentId:null,targetAshramId:null,
+    amountInr:amount,
+    isAnonymous:document.getElementById('anon-ashram')?.checked||false,
+    message:'',
+  });
+});
+
+// Donate — Platform
+document.getElementById('btn-donate-platform')?.addEventListener('click',async()=>{
+  const amount=getAmount('platform-amounts','platform-custom');
+  if(!amount||amount<50){showToast('Minimum donation is ₹50.','error');return;}
+  await ensureRazorpay();
+  const {data:{session}}=await getSB().auth.getSession();
+  await initiateDonation({
+    donorId:session?.user?.id||null,type:'platform',
+    targetResidentId:null,targetAshramId:null,
+    amountInr:amount,isAnonymous:false,message:'',
+  });
+});
+</script>
+</body>
+</html>

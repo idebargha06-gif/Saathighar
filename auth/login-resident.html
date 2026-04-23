@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resident Access — SaathiGhar</title>
+<meta name="description" content="Staff-assisted tablet login for elderly residents at SaathiGhar ashrams.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/auth.css">
+<style>
+.resident-page { min-height:100vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#7a4800,#D4A017,#F0C040); padding:32px 16px; }
+.resident-card { background:#fff; border-radius:28px; box-shadow:0 20px 60px rgba(0,0,0,0.2); max-width:480px; width:100%; overflow:hidden; animation:fadeInUp 0.5s ease; }
+.resident-card-header { background:linear-gradient(135deg,#7a4800,#D4A017); padding:36px; text-align:center; }
+.resident-card-header .emoji { font-size:4rem; margin-bottom:12px; }
+.resident-card-header h1 { font-size:1.6rem; color:#fff; margin-bottom:6px; }
+.resident-card-header p { font-size:0.88rem; color:rgba(255,255,255,0.8); }
+.resident-card-body { padding:36px; }
+.resident-notice { background:#fffbf0; border:2px solid #f0c040; border-radius:14px; padding:20px; margin-bottom:28px; text-align:center; }
+.resident-notice .notice-icon-big { font-size:2rem; margin-bottom:8px; }
+.resident-notice h3 { font-size:1rem; color:#7a4800; margin-bottom:6px; }
+.resident-notice p { font-size:0.85rem; color:#a06a00; margin:0; line-height:1.6; }
+.pin-keypad { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:24px 0; }
+.pin-key { aspect-ratio:1; border-radius:14px; border:2px solid #e8e0d8; background:#fff; font-size:1.4rem; font-weight:800; color:var(--teal-dark); cursor:pointer; transition:all 0.15s; display:flex; align-items:center; justify-content:center; flex-direction:column; }
+.pin-key:hover { background:var(--cream); border-color:var(--gold); transform:scale(0.97); }
+.pin-key:active { background:#f0c040; }
+.pin-key .key-sub { font-size:0.55rem; font-weight:600; color:var(--text-light); letter-spacing:1px; text-transform:uppercase; margin-top:2px; }
+.pin-display { display:flex; gap:10px; justify-content:center; margin-bottom:6px; }
+.pin-dot { width:14px; height:14px; border-radius:50%; border:2px solid var(--gold); background:transparent; transition:background 0.2s; }
+.pin-dot.filled { background:var(--gold); }
+</style>
+<style>
+  html { scroll-behavior: auto; }
+</style>
+<!-- Force scroll to top before anything renders -->
+<script>history.scrollRestoration = 'manual'; window.scrollTo(0, 0);</script></head>
+<body>
+<div class="resident-page" id="login-page">
+  <div class="resident-card">
+    <div class="resident-card-header">
+      <div class="emoji">🧓</div>
+      <h1>Resident Home Access</h1>
+      <p>Staff-Assisted Login — Ashram Tablet App</p>
+    </div>
+    <div class="resident-card-body">
+
+      <div class="resident-notice">
+        <div class="notice-icon-big">ℹ️</div>
+        <h3>No Password Required for Residents</h3>
+        <p>Elderly residents <strong>never</strong> need a password. Ashram staff enters the staff PIN below to unlock the resident home screen. The resident then taps their photo to enter their personal space.</p>
+      </div>
+
+      <label class="auth-label" style="text-align:center;display:block;margin-bottom:16px;font-size:1rem;color:var(--teal-dark);">Enter Ashram Staff PIN</label>
+
+      <!-- PIN display dots -->
+      <div class="pin-display" id="pin-display">
+        <div class="pin-dot" id="dot-0"></div>
+        <div class="pin-dot" id="dot-1"></div>
+        <div class="pin-dot" id="dot-2"></div>
+        <div class="pin-dot" id="dot-3"></div>
+        <div class="pin-dot" id="dot-4"></div>
+        <div class="pin-dot" id="dot-5"></div>
+      </div>
+
+      <!-- Visual keypad -->
+      <div class="pin-keypad" id="pin-keypad">
+        <button class="pin-key" data-key="1">1</button>
+        <button class="pin-key" data-key="2">2<span class="key-sub">ABC</span></button>
+        <button class="pin-key" data-key="3">3<span class="key-sub">DEF</span></button>
+        <button class="pin-key" data-key="4">4<span class="key-sub">GHI</span></button>
+        <button class="pin-key" data-key="5">5<span class="key-sub">JKL</span></button>
+        <button class="pin-key" data-key="6">6<span class="key-sub">MNO</span></button>
+        <button class="pin-key" data-key="7">7<span class="key-sub">PQRS</span></button>
+        <button class="pin-key" data-key="8">8<span class="key-sub">TUV</span></button>
+        <button class="pin-key" data-key="9">9<span class="key-sub">WXYZ</span></button>
+        <button class="pin-key" data-key="clear" style="color:var(--red);font-size:1rem;border-color:rgba(192,57,43,0.2);">⌫</button>
+        <button class="pin-key" data-key="0">0</button>
+        <button class="pin-key" data-key="submit" style="background:linear-gradient(135deg,#D4A017,#F0C040);border-color:transparent;color:#5a3800;font-size:0.85rem;">Enter ✓</button>
+      </div>
+
+      <div class="auth-footer" style="margin-top:16px;">
+        <a href="../index.html" style="color:var(--text-light);">← Back to Home</a> &nbsp;·&nbsp;
+        <a href="login-ashram.html" style="color:var(--text-light);">Ashram Manager Login</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>window._sb=supabase.createClient('https://hznsdikphjreklshgeyu.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6bnNkaWtwaGpyZWtsc2hnZXl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NzQ0NjUsImV4cCI6MjA5MjQ1MDQ2NX0.BATyEw2PslvmOs4g8xn0jiV-UUUFqPDBfqEtHsPp5Ak');</script>
+<script src="../assets/js/auth.js"></script>
+<script>
+let pin='';
+const MAX=6;
+function updateDots(){
+  for(let i=0;i<MAX;i++){
+    const d=document.getElementById('dot-'+i);
+    if(d) d.classList.toggle('filled',i<pin.length);
+  }
+}
+document.getElementById('pin-keypad')?.addEventListener('click',e=>{
+  const btn=e.target.closest('[data-key]');
+  if(!btn)return;
+  const k=btn.dataset.key;
+  if(k==='clear'){pin=pin.slice(0,-1);}
+  else if(k==='submit'){
+    if(pin.length<4){showToast('PIN must be at least 4 digits.','error');return;}
+    showToast('Staff PIN accepted. Opening resident selection…','success');
+    setTimeout(()=>{window.location.href='../portals/elderly/elderly-dashboard.html';},1200);
+    return;
+  } else if(pin.length<MAX){pin+=k;}
+  updateDots();
+  if(pin.length===MAX){
+    // auto-submit after short delay for UX
+    setTimeout(()=>{
+      showToast('Staff PIN accepted. Opening resident selection…','success');
+      setTimeout(()=>{window.location.href='../portals/elderly/elderly-dashboard.html';},900);
+    },400);
+  }
+});
+</script>
+</body>
+</html>

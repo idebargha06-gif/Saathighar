@@ -29,7 +29,7 @@
       <a href="find-ashrams.html" class="nav-link" id="nav-ashrams">Find Ashrams</a>
       <a href="index.html#how-it-works" class="nav-link">How It Works</a>
       <a href="index.html#stories" class="nav-link">Stories</a>
-      <a href="index.html#donate" class="nav-link">Donate</a>
+      <a href="donate.html" class="nav-link">Donate</a>
       <a href="index.html#about" class="nav-link">About</a>
     </nav>
     <div class="header-controls">
@@ -42,17 +42,25 @@
       <div class="login-dropdown" id="loginDropdown">
         <button class="login-btn">Login &#9660;</button>
         <div class="login-menu">
-          <a href="portals/family/dashboard.html" class="login-menu-item">
+          <a href="auth/login-family.html" class="login-menu-item" id="login-family-link">
             <span class="menu-icon">&#128106;</span>
             <div><strong>Family Member</strong><br><small>Track your parent's care</small></div>
           </a>
-          <a href="portals/ashram/ashram-dashboard.html" class="login-menu-item">
+          <a href="auth/login-ashram.html" class="login-menu-item" id="login-ashram-link">
             <span class="menu-icon">&#127969;</span>
-            <div><strong>Ashram Manager</strong><br><small>Manage residents</small></div>
+            <div><strong>Ashram Manager</strong><br><small>Manage residents &amp; families</small></div>
           </a>
-          <a href="portals/volunteer/volunteer-hub.html" class="login-menu-item">
+          <a href="auth/login-volunteer.html" class="login-menu-item" id="login-volunteer-link">
             <span class="menu-icon">&#129309;</span>
             <div><strong>Volunteer / NGO</strong><br><small>Adopt a grandparent</small></div>
+          </a>
+          <a href="auth/login-resident.html" class="login-menu-item" id="login-resident-link">
+            <span class="menu-icon">&#129491;</span>
+            <div><strong>Resident Access</strong><br><small>Staff-assisted tablet login</small></div>
+          </a>
+          <a href="auth/login-admin.html" class="login-menu-item" id="login-admin-link" style="border-top:1px solid #f0ece6;">
+            <span class="menu-icon">&#9881;&#65039;</span>
+            <div><strong>Admin Portal</strong><br><small>Restricted — authorised only</small></div>
           </a>
         </div>
       </div>
@@ -70,7 +78,7 @@
   <a href="index.html#donate" class="nav-link">Donate</a>
   <div class="mobile-menu-actions">
     <button class="btn btn-primary btn-sm" onclick="document.getElementById('sosBtn').click()">Emergency</button>
-    <a href="portals/family/dashboard.html" class="btn btn-teal btn-sm">Login</a>
+    <a href="auth/login-family.html" class="btn btn-teal btn-sm" id="mobile-login-btn">Login</a>
   </div>
 </div>
 <div class="overlay" id="sosModal" style="display:none;">
@@ -100,8 +108,8 @@
       <h1>Your Parents Gave You <span class="highlight serif">Everything.</span><br>Give Them One Promise.</h1>
       <p class="sub">SaathiGhar keeps families connected across every distance — one check-in at a time. Never let your parent feel forgotten.</p>
       <div class="hero-ctas">
-        <a href="portals/family/dashboard.html" class="btn btn-primary btn-lg">&#129309; Connect With My Parent's Ashram</a>
-        <a href="#" class="btn btn-outline btn-lg" data-toast="Ashram registration opening soon!" data-toast-type="info">&#127969; I Run an Ashram — Register Here</a>
+        <a href="auth/register-family.html" class="btn btn-primary btn-lg" id="hero-cta-family">&#129309; Connect With My Parent's Ashram</a>
+        <a href="auth/register-ashram.html" class="btn btn-outline btn-lg" id="hero-cta-ashram">&#127969; I Run an Ashram — Register Here</a>
       </div>
     </div>
   </div>
@@ -181,7 +189,8 @@
         <div class="audience-card-body">
           <h3>Your parent is away. But they should never feel forgotten.</h3>
           <p>Track wellness, schedule visits, pay fees, share memories — all in one warm, personal dashboard designed around love.</p>
-          <a href="portals/family/dashboard.html" class="btn btn-teal btn-sm">Open Family Dashboard &#8594;</a>
+          <a href="auth/login-family.html" class="btn btn-teal btn-sm" id="audience-login-family">Login to Family Dashboard &#8594;</a>
+          <a href="auth/register-family.html" style="font-size:0.82rem;color:var(--teal);font-weight:700;text-decoration:underline;display:block;margin-top:8px;" id="audience-reg-family">New? Register here</a>
         </div>
       </div>
       <div class="audience-card reveal delay-2">
@@ -192,7 +201,7 @@
         <div class="audience-card-body">
           <h3>Manage residents, track families, receive payments — all in one place.</h3>
           <p>SaathiGhar gives ashram managers powerful tools to communicate with families, flag concerns, and ensure care never slips.</p>
-          <button class="btn btn-teal btn-sm" data-toast="Ashram portal registration opening soon!" data-toast-type="info">Register Your Ashram &#8594;</button>
+          <a href="auth/register-ashram.html" class="btn btn-teal btn-sm" id="audience-reg-ashram">Register Your Ashram &#8594;</a>
         </div>
       </div>
       <div class="audience-card reveal delay-3">
@@ -203,7 +212,7 @@
         <div class="audience-card-body">
           <h3>Be the family they no longer have. Adopt a grandparent today.</h3>
           <p>Visit, donate, skill-share or simply listen. Every act of kindness is tracked, verified, and celebrated.</p>
-          <button class="btn btn-teal btn-sm" data-toast="Volunteer hub launching soon!" data-toast-type="success">Become a SaathiSeva &#8594;</button>
+          <a href="auth/register-volunteer.html" class="btn btn-teal btn-sm" id="audience-reg-volunteer">Become a SaathiSeva &#8594;</a>
         </div>
       </div>
     </div>
@@ -277,7 +286,7 @@
         <div class="vol-card-content">
           <h3>Adopt a Grandparent &#129309;</h3>
           <p>Visit, talk, listen, or teach. Be the family they no longer have. Every act is tracked and celebrated.</p>
-          <button class="btn btn-primary" data-toast="Volunteer registration opening soon!" data-toast-type="success">Become a SaathiSeva Volunteer</button>
+          <a href="auth/register-volunteer.html" class="btn btn-primary" id="donate-reg-volunteer">Become a SaathiSeva Volunteer</a>
         </div>
       </div>
       <div class="donate-card">

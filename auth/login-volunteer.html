@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volunteer Login — SaathiGhar</title>
+<meta name="description" content="Login to your SaathiGhar Volunteer Hub and make a difference in the lives of elderly residents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/auth.css">
+<style>
+.login-split{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;}
+.login-brand-panel{background:linear-gradient(160deg,#145a29,#1a6b38,#27AE60);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:60px 48px;position:relative;overflow:hidden;}
+.login-brand-panel::before{content:'🤝';font-size:18rem;position:absolute;right:-60px;bottom:-40px;opacity:0.08;line-height:1;}
+.brand-badge{background:rgba(240,192,64,0.15);border:1px solid rgba(240,192,64,0.35);border-radius:50px;padding:8px 18px;font-size:0.8rem;font-weight:800;color:#f0c040;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:28px;display:inline-block;}
+.brand-headline{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;color:#fff;line-height:1.2;margin-bottom:16px;}
+.brand-sub{font-size:1rem;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:36px;max-width:380px;}
+.brand-features{display:flex;flex-direction:column;gap:14px;}
+.brand-feat{display:flex;align-items:center;gap:14px;}
+.brand-feat-icon{width:40px;height:40px;background:rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.brand-feat-text{font-size:0.88rem;color:rgba(255,255,255,0.85);font-weight:600;}
+.login-form-panel{display:flex;align-items:center;justify-content:center;padding:40px 32px;background:var(--cream);}
+.login-form-box{width:100%;max-width:420px;}
+.form-logo{display:flex;align-items:center;gap:12px;margin-bottom:32px;}
+.form-logo img{width:40px;}
+.form-logo-name{font-size:1.3rem;font-weight:900;color:var(--teal-dark);}
+.form-logo-tag{font-size:0.7rem;color:var(--text-light);letter-spacing:1px;text-transform:uppercase;}
+@media(max-width:768px){.login-split{grid-template-columns:1fr;}.login-brand-panel{padding:36px 24px;min-height:auto;}.login-brand-panel::before{font-size:8rem;}}
+</style>
+<style>
+  html { scroll-behavior: auto; }
+</style>
+<!-- Force scroll to top before anything renders -->
+<script>history.scrollRestoration = 'manual'; window.scrollTo(0, 0);</script></head>
+<body>
+<div class="login-split" id="login-page">
+
+  <div class="login-brand-panel">
+    <span class="brand-badge">Volunteer Portal</span>
+    <h1 class="brand-headline">Be the family<br>they no longer have.</h1>
+    <p class="brand-sub">Every visit, every conversation, every skill you share — tracked, verified, and celebrated. Adopt a grandparent today.</p>
+    <div class="brand-features">
+      <div class="brand-feat"><div class="brand-feat-icon">🧓</div><div class="brand-feat-text">Browse & adopt a grandparent</div></div>
+      <div class="brand-feat"><div class="brand-feat-icon">📅</div><div class="brand-feat-text">Schedule & track your visits</div></div>
+      <div class="brand-feat"><div class="brand-feat-icon">🎓</div><div class="brand-feat-text">Share your skills at sessions</div></div>
+      <div class="brand-feat"><div class="brand-feat-icon">🏆</div><div class="brand-feat-text">Earn SaathiSeva badges & recognition</div></div>
+    </div>
+  </div>
+
+  <div class="login-form-panel">
+    <div class="login-form-box">
+      <div class="form-logo">
+        <img src="../assets/images/logo.png" alt="SaathiGhar">
+        <div><div class="form-logo-name">SaathiGhar</div><div class="form-logo-tag">Volunteer Hub</div></div>
+      </div>
+      <h2 style="font-size:1.5rem;color:var(--teal-dark);margin-bottom:6px;">Volunteer Login</h2>
+      <p style="font-size:0.88rem;color:var(--text-mid);margin-bottom:28px;">Welcome back, SaathiSeva. Sign in to your Volunteer Hub.</p>
+
+      <form id="login-volunteer-form" novalidate>
+        <div class="auth-form-group">
+          <label class="auth-label" for="email-volunteer">Email Address <span class="required">*</span></label>
+          <div class="auth-input-icon-wrap">
+            <span class="auth-input-icon">📧</span>
+            <input class="auth-input" type="email" id="email-volunteer" name="email" placeholder="volunteer@email.com" required autocomplete="email">
+          </div>
+        </div>
+        <div class="auth-form-group">
+          <label class="auth-label" for="pw-volunteer">Password <span class="required">*</span></label>
+          <div class="auth-input-icon-wrap">
+            <span class="auth-input-icon">🔒</span>
+            <input class="auth-input" type="password" id="pw-volunteer" name="password" placeholder="Enter your password" required autocomplete="current-password" style="padding-right:48px;">
+            <button type="button" class="auth-input-eye" id="eye-volunteer" aria-label="Toggle password">👁️</button>
+          </div>
+        </div>
+        <div style="text-align:right;margin-bottom:22px;">
+          <a href="forgot-password.html" style="font-size:0.85rem;color:#27AE60;font-weight:700;">Forgot password?</a>
+        </div>
+        <button type="submit" class="auth-submit" style="background:linear-gradient(135deg,#1a6b38,#27AE60);" id="btn-login-volunteer">
+          🤝 Go to Volunteer Hub
+        </button>
+      </form>
+
+      <div class="auth-divider">or</div>
+      <button class="btn-google" id="btn-google-volunteer">
+        <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Continue with Google
+      </button>
+
+      <div class="auth-footer" style="margin-top:24px;">
+        New volunteer? <a href="register-volunteer.html" style="color:#1a6b38;">Create your SaathiSeva account</a>
+      </div>
+      <div class="auth-footer" style="margin-top:10px;">
+        <a href="../index.html" style="color:var(--text-light);">← Back to Home</a> &nbsp;·&nbsp;
+        <a href="login-family.html" style="color:var(--text-light);">Family Login</a> &nbsp;·&nbsp;
+        <a href="login-ashram.html" style="color:var(--text-light);">Ashram Login</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>window._sb=supabase.createClient('https://hznsdikphjreklshgeyu.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6bnNkaWtwaGpyZWtsc2hnZXl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NzQ0NjUsImV4cCI6MjA5MjQ1MDQ2NX0.BATyEw2PslvmOs4g8xn0jiV-UUUFqPDBfqEtHsPp5Ak');</script>
+<script src="../assets/js/auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  redirectIfLoggedIn();
+  initPasswordToggle('eye-volunteer','pw-volunteer');
+  document.getElementById('login-volunteer-form')?.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const email=document.getElementById('email-volunteer').value;
+    const pw=document.getElementById('pw-volunteer').value;
+    if(!email||!pw){showToast('Please enter your email and password.','error');return;}
+    await doLogin(email,pw,'volunteer',document.getElementById('btn-login-volunteer'));
+  });
+  document.getElementById('btn-google-volunteer')?.addEventListener('click',()=>doGoogleLogin());
+});
+</script>
+</body>
+</html>

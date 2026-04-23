@@ -1,0 +1,33 @@
+{
+  "nodes": [
+    {"id": "saathighar_project", "label": "SaathiGhar — Elderly Care Accountability Platform", "file_type": "document", "source_file": "README.md", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null},
+    {"id": "design_system_css", "label": "Global Design System — Teal & Saffron Colors", "file_type": "code", "source_file": "public/style.css", "source_location": "lines 1-50", "source_url": null, "captured_at": null, "author": null, "contributor": null},
+    {"id": "build_system", "label": "Site Build System & Template Engine", "file_type": "code", "source_file": "scripts/seed.py", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null},
+    {"id": "main_js", "label": "Main JavaScript — Interactions & Events", "file_type": "code", "source_file": "public/js/main.js", "source_location": "lines 1-131", "source_url": null, "captured_at": null, "author": null, "contributor": null},
+    {"id": "home_page", "label": "Home Page — Value Proposition & CTA", "file_type": "code", "source_file": "index.html", "source_location": "lines 1-100", "source_url": null, "captured_at": null, "author": null, "contributor": null},
+    {"id": "ashram_finder", "label": "Ashram Finder — Directory & Search", "file_type": "code", "source_file": "find-ashrams.html", "source_location": "lines 85-150", "source_url": null, "captured_at": null, "author": null, "contributor": null},
+    {"id": "audience_personas", "label": "Three Personas — Families, Ashrams, Volunteers", "file_type": "document", "source_file": "README.md", "source_location": "section personas", "source_url": null, "captured_at": null, "author": null, "contributor": null},
+    {"id": "emergency_helpline", "label": "24/7 Emergency Helpline Feature", "file_type": "code", "source_file": "public/js/main.js", "source_location": "lines 64-79", "source_url": null, "captured_at": null, "author": null, "contributor": null},
+    {"id": "accessibility_layer", "label": "Font Scaling & Accessibility Controls", "file_type": "code", "source_file": "public/js/main.js", "source_location": "lines 24-27", "source_url": null, "captured_at": null, "author": null, "contributor": null},
+    {"id": "ashram_portal", "label": "Ashram Manager Dashboard", "file_type": "code", "source_file": "portals/ashram-details.html", "source_location": "lines 1-80", "source_url": null, "captured_at": null, "author": null, "contributor": null},
+    {"id": "user_reviews", "label": "User Reviews & Ratings System", "file_type": "code", "source_file": "portals/user-reviews.html", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}
+  ],
+  "edges": [
+    {"source": "saathighar_project", "target": "design_system_css", "relation": "shares_data_with", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "public/style.css", "source_location": null, "weight": 1.0},
+    {"source": "saathighar_project", "target": "build_system", "relation": "shares_data_with", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "scripts/seed.py", "source_location": null, "weight": 1.0},
+    {"source": "main_js", "target": "emergency_helpline", "relation": "calls", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "public/js/main.js", "source_location": "lines 64-70", "weight": 1.0},
+    {"source": "main_js", "target": "accessibility_layer", "relation": "calls", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "public/js/main.js", "source_location": "lines 24-30", "weight": 1.0},
+    {"source": "home_page", "target": "audience_personas", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "index.html", "source_location": null, "weight": 1.0},
+    {"source": "build_system", "target": "home_page", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "scripts/seed.py", "source_location": null, "weight": 1.0},
+    {"source": "ashram_finder", "target": "ashram_portal", "relation": "conceptually_related_to", "confidence": "INFERRED", "confidence_score": 0.85, "source_file": "find-ashrams.html", "source_location": null, "weight": 1.0},
+    {"source": "ashram_portal", "target": "audience_personas", "relation": "conceptually_related_to", "confidence": "INFERRED", "confidence_score": 0.9, "source_file": "portals/ashram-details.html", "source_location": null, "weight": 1.0},
+    {"source": "user_reviews", "target": "audience_personas", "relation": "conceptually_related_to", "confidence": "INFERRED", "confidence_score": 0.8, "source_file": "portals/user-reviews.html", "source_location": null, "weight": 1.0},
+    {"source": "emergency_helpline", "target": "accessibility_layer", "relation": "semantically_similar_to", "confidence": "INFERRED", "confidence_score": 0.7, "source_file": "public/js/main.js", "source_location": null, "weight": 1.0}
+  ],
+  "hyperedges": [
+    {"id": "multi_portal_system", "label": "Multi-Portal Architecture", "nodes": ["ashram_portal", "user_reviews", "audience_personas"], "relation": "implement", "confidence": "EXTRACTED", "confidence_score": 0.95, "source_file": "portals/"},
+    {"id": "accessibility_ux", "label": "Accessibility & User Experience", "nodes": ["emergency_helpline", "accessibility_layer", "design_system_css"], "relation": "participate_in", "confidence": "EXTRACTED", "confidence_score": 0.9, "source_file": "public/"}
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

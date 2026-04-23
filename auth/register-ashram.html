@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register Your Ashram — SaathiGhar</title>
+<meta name="description" content="Register your ashram on SaathiGhar — connect with families, manage residents, and build trust through accountability.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/auth.css">
+<style>
+  html { scroll-behavior: auto !important; }
+  body { overflow-anchor: none; }
+</style>
+<!-- Force scroll to top — runs in <head> AND on load to beat browser scroll restoration -->
+<script>
+  history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+  document.addEventListener('DOMContentLoaded', function() { window.scrollTo(0, 0); });
+  window.addEventListener('load', function() { window.scrollTo(0, 0); });
+</script>
+<body>
+<div class="auth-page">
+  <div class="auth-page-bg-blob"></div>
+  <div class="auth-page-bg-blob"></div>
+
+  <div class="auth-card auth-card-wide">
+
+    <div class="auth-card-header" style="background:linear-gradient(135deg,#0E3A54,#1A5276,#2c6e8a);">
+      <div class="auth-card-logo">
+        <img src="../assets/images/logo.png" alt="SaathiGhar Logo">
+        <div class="auth-card-logo-text">
+          <div class="auth-card-logo-name">SaathiGhar</div>
+          <div class="auth-card-logo-tagline">Doori Door Nahi Karti</div>
+        </div>
+      </div>
+      <div class="auth-card-title">🏡 Register Your Ashram</div>
+      <div class="auth-card-subtitle">Join India's accountability network for elderly care. Review takes 3–5 business days.</div>
+    </div>
+
+    <div class="auth-card-body">
+
+      <!-- Step Indicator -->
+      <div class="reg-step-indicator">
+        <div class="reg-step active">
+          <div class="reg-step-circle">1</div>
+          <div class="reg-step-label">Ashram Details</div>
+        </div>
+        <div class="reg-step">
+          <div class="reg-step-circle">2</div>
+          <div class="reg-step-label">Documents</div>
+        </div>
+        <div class="reg-step">
+          <div class="reg-step-circle">3</div>
+          <div class="reg-step-label">Manager Account</div>
+        </div>
+        <div class="reg-step">
+          <div class="reg-step-circle">4</div>
+          <div class="reg-step-label">Submit</div>
+        </div>
+      </div>
+
+      <form id="register-ashram-form" novalidate>
+
+        <!-- ── Step 1: Ashram Details ── -->
+        <div class="reg-step-panel active">
+          <div class="reg-step-title">Ashram Information</div>
+          <div class="reg-step-desc">Basic details about your ashram that will appear on the public directory.</div>
+
+          <div class="auth-form-group">
+            <label class="auth-label" for="ashram-name">Ashram Full Name <span class="required">*</span></label>
+            <input class="auth-input" type="text" id="ashram-name" placeholder="e.g. Sunrise Senior Home" required>
+          </div>
+
+          <div class="auth-form-group">
+            <label class="auth-label" for="ashram-address">Full Address <span class="required">*</span></label>
+            <textarea class="auth-input" id="ashram-address" rows="2" placeholder="Street, Area, Landmark" required style="resize:vertical;"></textarea>
+          </div>
+
+          <div class="auth-form-row">
+            <div class="auth-form-group">
+              <label class="auth-label" for="ashram-city">City <span class="required">*</span></label>
+              <input class="auth-input" type="text" id="ashram-city" placeholder="e.g. Pune" required>
+            </div>
+            <div class="auth-form-group">
+              <label class="auth-label" for="ashram-state">State <span class="required">*</span></label>
+              <select class="auth-select" id="ashram-state" required>
+                <option value="">Select state…</option>
+                <option>Andhra Pradesh</option><option>Assam</option><option>Bihar</option>
+                <option>Chhattisgarh</option><option>Delhi</option><option>Goa</option>
+                <option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option>
+                <option>Jharkhand</option><option>Karnataka</option><option>Kerala</option>
+                <option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option>
+                <option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option>
+                <option>Odisha</option><option>Punjab</option><option>Rajasthan</option>
+                <option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option>
+                <option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option>
+                <option>West Bengal</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="auth-form-row">
+            <div class="auth-form-group">
+              <label class="auth-label" for="ashram-pincode">Pincode <span class="required">*</span></label>
+              <input class="auth-input" type="text" id="ashram-pincode" placeholder="6-digit pincode" maxlength="6" inputmode="numeric" required>
+            </div>
+            <div class="auth-form-group">
+              <label class="auth-label" for="ashram-year">Year Established</label>
+              <input class="auth-input" type="number" id="ashram-year" placeholder="e.g. 2005" min="1900" max="2026">
+            </div>
+          </div>
+
+          <div class="auth-form-row">
+            <div class="auth-form-group">
+              <label class="auth-label" for="ashram-phone">Ashram Phone <span class="required">*</span></label>
+              <input class="auth-input" type="tel" id="ashram-phone" placeholder="+91 XXXXX XXXXX" required>
+            </div>
+            <div class="auth-form-group">
+              <label class="auth-label" for="ashram-email">Ashram Email <span class="required">*</span></label>
+              <input class="auth-input" type="email" id="ashram-email" placeholder="info@ashram.org" required>
+            </div>
+          </div>
+
+          <div class="auth-form-row">
+            <div class="auth-form-group">
+              <label class="auth-label" for="ashram-capacity">Total Bed Capacity <span class="required">*</span></label>
+              <input class="auth-input" type="number" id="ashram-capacity" placeholder="e.g. 60" min="1" required>
+            </div>
+            <div class="auth-form-group">
+              <label class="auth-label" for="ashram-type">Ashram Type</label>
+              <select class="auth-select" id="ashram-type">
+                <option value="">Select…</option>
+                <option value="trust">Charitable Trust</option>
+                <option value="ngo">NGO</option>
+                <option value="private">Private Home</option>
+                <option value="govt">Government</option>
+                <option value="religious">Religious Organisation</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="auth-form-group">
+            <label class="auth-label" for="ashram-gst">GST Number <small style="font-weight:400;">(if applicable)</small></label>
+            <input class="auth-input" type="text" id="ashram-gst" placeholder="15-digit GST number">
+          </div>
+
+          <div class="reg-nav">
+            <button type="button" class="auth-submit" data-next-step="1">
+              Continue — Upload Documents →
+            </button>
+          </div>
+          <div class="auth-footer" style="margin-top:16px;">
+            Already registered? <a href="login.html">Sign In as Ashram Manager</a>
+          </div>
+        </div>
+
+        <!-- ── Step 2: Documents ── -->
+        <div class="reg-step-panel">
+          <div class="reg-step-title">Legal Verification Documents</div>
+          <div class="reg-step-desc">These documents are reviewed by SaathiGhar admin within 3–5 business days. All documents are stored securely.</div>
+
+          <div class="auth-form-group">
+            <label class="auth-label">Registration Certificate <span class="required">*</span></label>
+            <div class="auth-file-upload" id="doc-upload-area">
+              <div class="auth-file-icon">📄</div>
+              <div class="auth-file-text"><strong>Click to upload</strong> or drag &amp; drop</div>
+              <div class="auth-file-types">PDF, JPG, PNG · Max 5 MB</div>
+            </div>
+            <input type="file" id="doc-upload-input" accept=".pdf,.jpg,.jpeg,.png" style="display:none;">
+            <div class="auth-hint">Trust deed, NGO registration, or society registration certificate</div>
+          </div>
+
+          <div class="auth-form-group" style="margin-top:20px;">
+            <label class="auth-label">Manager / Owner ID Proof <span class="required">*</span></label>
+            <div class="auth-file-upload" id="id-upload-area">
+              <div class="auth-file-icon">🪪</div>
+              <div class="auth-file-text"><strong>Click to upload</strong> or drag &amp; drop</div>
+              <div class="auth-file-types">PDF, JPG, PNG · Max 5 MB · Aadhaar / PAN / Passport</div>
+            </div>
+            <input type="file" id="id-upload-input" accept=".pdf,.jpg,.jpeg,.png" style="display:none;">
+          </div>
+
+          <div class="auth-2fa-notice" style="margin-top:20px;">
+            <span class="notice-icon">🔒</span>
+            <span>Your documents are encrypted and only accessible to SaathiGhar verification staff. They will not be shared publicly.</span>
+          </div>
+
+          <div class="reg-nav">
+            <button type="button" class="btn-back" data-prev-step="0">← Back</button>
+            <button type="button" class="auth-submit" data-next-step="2">
+              Continue — Manager Account →
+            </button>
+          </div>
+        </div>
+
+        <!-- ── Step 3: Manager Account ── -->
+        <div class="reg-step-panel">
+          <div class="reg-step-title">Create Manager Account</div>
+          <div class="reg-step-desc">This is the login account for the ashram manager. 2FA will be mandatory.</div>
+
+          <div class="auth-form-row">
+            <div class="auth-form-group">
+              <label class="auth-label" for="mgr-fname">Manager First Name <span class="required">*</span></label>
+              <input class="auth-input" type="text" id="mgr-fname" placeholder="Rajesh" required>
+            </div>
+            <div class="auth-form-group">
+              <label class="auth-label" for="mgr-lname">Last Name <span class="required">*</span></label>
+              <input class="auth-input" type="text" id="mgr-lname" placeholder="Sharma" required>
+            </div>
+          </div>
+
+          <div class="auth-form-group">
+            <label class="auth-label" for="mgr-designation">Designation <span class="required">*</span></label>
+            <input class="auth-input" type="text" id="mgr-designation" placeholder="e.g. Director / Manager / Secretary" required>
+          </div>
+
+          <div class="auth-form-row">
+            <div class="auth-form-group">
+              <label class="auth-label" for="mgr-email">Manager Email <span class="required">*</span></label>
+              <input class="auth-input" type="email" id="mgr-email" placeholder="manager@ashram.org" required>
+            </div>
+            <div class="auth-form-group">
+              <label class="auth-label" for="mgr-mobile">Direct Mobile <span class="required">*</span></label>
+              <input class="auth-input" type="tel" id="mgr-mobile" placeholder="+91 XXXXX XXXXX" required>
+            </div>
+          </div>
+
+          <div class="auth-form-group">
+            <label class="auth-label" for="pw-ashram-reg">Password <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">🔒</span>
+              <input class="auth-input" type="password" id="pw-ashram-reg" placeholder="Strong password required" required style="padding-right:48px;">
+              <button type="button" class="auth-input-eye" id="eye-ashram-reg" aria-label="Toggle password">👁️</button>
+            </div>
+            <div class="pw-strength">
+              <div class="pw-strength-bar"><div class="pw-strength-fill" id="pw-ashram-strength-bar"></div></div>
+              <div class="pw-strength-label" id="pw-ashram-strength-label"></div>
+            </div>
+          </div>
+
+          <div class="auth-2fa-notice" style="margin-top:8px;">
+            <span class="notice-icon">🔐</span>
+            <span>Two-Factor Authentication (OTP on every login) is <strong>mandatory</strong> for all Ashram Manager accounts. You will be guided to set it up after approval.</span>
+          </div>
+
+          <div class="reg-nav">
+            <button type="button" class="btn-back" data-prev-step="1">← Back</button>
+            <button type="button" class="auth-submit" data-next-step="3">
+              Continue — Review &amp; Submit →
+            </button>
+          </div>
+        </div>
+
+        <!-- ── Step 4: Review & Submit ── -->
+        <div class="reg-step-panel">
+          <div class="reg-step-title">Review &amp; Submit Application</div>
+          <div class="reg-step-desc">SaathiGhar admin will review your application within 3–5 business days. You may receive a verification call.</div>
+
+          <div style="background:var(--cream); border-radius:var(--radius-sm); padding:20px; margin-bottom:20px;">
+            <h4 style="color:var(--teal-dark); margin-bottom:14px; font-size:0.95rem;">📋 What Happens Next</h4>
+            <div class="timeline">
+              <div class="timeline-item">
+                <strong style="font-size:0.88rem; color:var(--teal-dark);">Application Submitted</strong>
+                <p style="font-size:0.82rem; margin:2px 0 0; color:var(--text-mid);">Your application is queued for review</p>
+              </div>
+              <div class="timeline-item">
+                <strong style="font-size:0.88rem; color:var(--teal-dark);">Document Verification (3–5 days)</strong>
+                <p style="font-size:0.82rem; margin:2px 0 0; color:var(--text-mid);">Admin reviews documents, may call for verification</p>
+              </div>
+              <div class="timeline-item">
+                <strong style="font-size:0.88rem; color:var(--teal-dark);">Approval Email Sent</strong>
+                <p style="font-size:0.82rem; margin:2px 0 0; color:var(--text-mid);">Login credentials + getting-started guide sent</p>
+              </div>
+              <div class="timeline-item">
+                <strong style="font-size:0.88rem; color:var(--teal-dark);">Ashram Portal Unlocked</strong>
+                <p style="font-size:0.82rem; margin:2px 0 0; color:var(--text-mid);">Add residents, set fees, go live on directory</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="auth-checkbox-group" style="margin-bottom:16px;">
+            <input class="auth-checkbox" type="checkbox" id="ashram-terms" required>
+            <label class="auth-checkbox-label" for="ashram-terms">
+              I confirm the information provided is accurate and I am authorised to register this ashram on SaathiGhar. I agree to the <a href="#">Terms of Service</a> and <a href="#">Ashram Partner Agreement</a>.
+            </label>
+          </div>
+
+          <div class="auth-checkbox-group" style="margin-bottom:24px;">
+            <input class="auth-checkbox" type="checkbox" id="ashram-verification-consent" required>
+            <label class="auth-checkbox-label" for="ashram-verification-consent">
+              I consent to SaathiGhar contacting me for document verification and allow physical or video inspection of the ashram if required.
+            </label>
+          </div>
+
+          <div class="reg-nav">
+            <button type="button" class="btn-back" data-prev-step="2">← Back</button>
+            <button type="submit" class="auth-submit" id="btn-ashram-submit">
+              📨 Submit Application for Review
+            </button>
+          </div>
+        </div>
+
+        <!-- ── Success State ── -->
+        <div class="reg-step-panel" id="ashram-success-panel">
+          <div class="auth-success-state">
+            <div class="auth-success-icon">📋</div>
+            <div class="auth-success-title">Application Submitted!</div>
+            <div class="auth-success-desc">Thank you for registering your ashram. Your application is now under review.</div>
+            <div class="auth-pending-status">
+              ⏳ Under Review — 3 to 5 business days
+            </div>
+            <div class="auth-success-desc" style="margin-top:12px;">
+              We will email you at your registered address with the decision. If approved, you will receive login credentials and a welcome package including your <strong>first 30 days free</strong>.
+            </div>
+            <a href="../index.html" class="auth-submit" style="display:flex; margin-top:28px; text-decoration:none;">
+              ← Back to SaathiGhar Home
+            </a>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <div style="text-align:center; padding:16px 40px 24px; border-top:1px solid #f0ece6;">
+      <a href="../index.html" style="font-size:0.85rem; color:var(--text-light); font-weight:600;">← Back to SaathiGhar Home</a>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>window._sb = supabase.createClient('https://hznsdikphjreklshgeyu.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6bnNkaWtwaGpyZWtsc2hnZXl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NzQ0NjUsImV4cCI6MjA5MjQ1MDQ2NX0.BATyEw2PslvmOs4g8xn0jiV-UUUFqPDBfqEtHsPp5Ak');</script>
+<script src="../assets/js/auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('register-ashram-form')?.addEventListener('submit', e => {
+    e.preventDefault();
+    const t1 = document.getElementById('ashram-terms')?.checked;
+    const t2 = document.getElementById('ashram-verification-consent')?.checked;
+    if (!t1 || !t2) { showToast('Please accept both declarations to submit.', 'error'); return; }
+    const btn = document.getElementById('btn-ashram-submit');
+    setLoading(btn, true, 'Submitting application…');
+    setTimeout(() => {
+      setLoading(btn, false);
+      document.querySelectorAll('.reg-step-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('ashram-success-panel')?.classList.add('active');
+    }, 2200);
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register as Family Member — SaathiGhar</title>
+<meta name="description" content="Create your SaathiGhar family account to stay connected with your parent in an ashram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/auth.css">
+<style>
+  /* Prevent any flash of cut-off header */
+  html { scroll-behavior: auto !important; }
+  body { overflow-anchor: none; }
+</style>
+<!-- Force scroll to top — runs in <head> AND on load to beat browser scroll restoration -->
+<script>
+  history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+  document.addEventListener('DOMContentLoaded', function() { window.scrollTo(0, 0); });
+  window.addEventListener('load', function() { window.scrollTo(0, 0); });
+</script>
+</head>
+<body>
+<div class="auth-page">
+  <div class="auth-page-bg-blob"></div>
+  <div class="auth-page-bg-blob"></div>
+
+  <div class="auth-card auth-card-wide">
+
+    <!-- Header -->
+    <div class="auth-card-header">
+      <div class="auth-card-logo">
+        <img src="../assets/images/logo.png" alt="SaathiGhar Logo">
+        <div class="auth-card-logo-text">
+          <div class="auth-card-logo-name">SaathiGhar</div>
+          <div class="auth-card-logo-tagline">Doori Door Nahi Karti</div>
+        </div>
+      </div>
+      <div class="auth-card-title">👨‍👩‍👧 Register as Family Member</div>
+      <div class="auth-card-subtitle">Stay connected with your parent's ashram care — takes under 5 minutes</div>
+    </div>
+
+    <div class="auth-card-body">
+
+      <!-- Step Indicator -->
+      <div class="reg-step-indicator" id="family-steps">
+        <div class="reg-step active">
+          <div class="reg-step-circle">1</div>
+          <div class="reg-step-label">Account</div>
+        </div>
+        <div class="reg-step">
+          <div class="reg-step-circle">2</div>
+          <div class="reg-step-label">Verify</div>
+        </div>
+        <div class="reg-step">
+          <div class="reg-step-circle">3</div>
+          <div class="reg-step-label">Relationship</div>
+        </div>
+        <div class="reg-step">
+          <div class="reg-step-circle">4</div>
+          <div class="reg-step-label">Link Ashram</div>
+        </div>
+        <div class="reg-step">
+          <div class="reg-step-circle">5</div>
+          <div class="reg-step-label">Care Plan</div>
+        </div>
+      </div>
+
+      <!-- Multi-Step Form -->
+      <form id="register-family-form" novalidate>
+
+        <!-- ── Step 1: Account Creation ── -->
+        <div class="reg-step-panel active">
+          <div class="reg-step-title">Create Your Account</div>
+          <div class="reg-step-desc">Basic details to set up your SaathiGhar family account.</div>
+
+          <div class="auth-form-row">
+            <div class="auth-form-group">
+              <label class="auth-label" for="fname-family">First Name <span class="required">*</span></label>
+              <input class="auth-input" type="text" id="fname-family" placeholder="Priya" required autocomplete="given-name">
+            </div>
+            <div class="auth-form-group">
+              <label class="auth-label" for="lname-family">Last Name <span class="required">*</span></label>
+              <input class="auth-input" type="text" id="lname-family" placeholder="Sharma" required autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="auth-form-group">
+            <label class="auth-label" for="email-family-reg">Email Address <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">📧</span>
+              <input class="auth-input" type="email" id="email-family-reg" placeholder="priya@email.com" required autocomplete="email">
+            </div>
+          </div>
+
+          <div class="auth-form-group">
+            <label class="auth-label" for="mobile-family">Mobile Number <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">📱</span>
+              <input class="auth-input" type="tel" id="mobile-family" placeholder="+91 98765 43210" required autocomplete="tel">
+            </div>
+            <div class="auth-hint">OTP will be sent here for verification</div>
+          </div>
+
+          <div class="auth-form-group">
+            <label class="auth-label" for="pw-family-reg">Password <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">🔒</span>
+              <input class="auth-input" type="password" id="pw-family-reg" placeholder="Min 8 chars, 1 number, 1 special char" required autocomplete="new-password" style="padding-right:48px;">
+              <button type="button" class="auth-input-eye" id="eye-family-reg" aria-label="Toggle password">👁️</button>
+            </div>
+            <div class="pw-strength">
+              <div class="pw-strength-bar"><div class="pw-strength-fill" id="pw-strength-bar"></div></div>
+              <div class="pw-strength-label" id="pw-strength-label"></div>
+            </div>
+          </div>
+
+          <div class="auth-form-group">
+            <label class="auth-label" for="pw-confirm-family">Confirm Password <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">🔒</span>
+              <input class="auth-input" type="password" id="pw-confirm-family" placeholder="Re-enter your password" required autocomplete="new-password">
+            </div>
+          </div>
+
+          <div class="reg-nav">
+            <button type="button" class="auth-submit auth-submit-saffron" data-next-step="1">
+              Continue — Verify Mobile →
+            </button>
+          </div>
+
+          <div class="auth-footer" style="margin-top:16px;">
+            Already have an account? <a href="login.html">Sign In</a>
+          </div>
+        </div>
+
+        <!-- ── Step 2: OTP Verification ── -->
+        <div class="reg-step-panel">
+          <div class="reg-step-title">Verify Your Mobile Number</div>
+          <div class="reg-step-desc">We've sent a 6-digit OTP to your mobile. Enter it below within 10 minutes.</div>
+
+          <div class="otp-sent-to">OTP sent to <strong id="display-mobile-family">your registered mobile</strong></div>
+
+          <div id="otp-family-reg" class="otp-input-group">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 1">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 2">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 3">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 4">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 5">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 6">
+          </div>
+
+          <div class="otp-timer" style="margin-bottom:24px;">
+            <span id="otp-timer-family">Resend in 60s</span>
+            <button type="button" class="otp-resend" id="otp-resend-family" disabled>Resend OTP</button>
+          </div>
+
+          <div class="reg-nav">
+            <button type="button" class="btn-back" data-prev-step="0">← Back</button>
+            <button type="button" class="auth-submit auth-submit-saffron" data-next-step="2">
+              ✅ Verify &amp; Continue
+            </button>
+          </div>
+        </div>
+
+        <!-- ── Step 3: Relationship ── -->
+        <div class="reg-step-panel">
+          <div class="reg-step-title">Your Relationship to the Resident</div>
+          <div class="reg-step-desc">Tell us about your parent or family member in the ashram.</div>
+
+          <div class="auth-form-group">
+            <label class="auth-label" for="relationship-select">Your Relationship <span class="required">*</span></label>
+            <select class="auth-select" id="relationship-select" required>
+              <option value="">Select relationship…</option>
+              <option value="son">Son</option>
+              <option value="daughter">Daughter</option>
+              <option value="spouse">Spouse</option>
+              <option value="sibling">Sibling (Brother/Sister)</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="auth-form-group">
+            <label class="auth-label" for="parent-name">Resident's Full Name <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">🧓</span>
+              <input class="auth-input" type="text" id="parent-name" placeholder="e.g. Savitri Devi" required>
+            </div>
+          </div>
+
+          <div class="auth-form-row">
+            <div class="auth-form-group">
+              <label class="auth-label" for="parent-age">Approximate Age</label>
+              <input class="auth-input" type="number" id="parent-age" placeholder="e.g. 74" min="55" max="120">
+            </div>
+            <div class="auth-form-group">
+              <label class="auth-label" for="parent-gender">Gender</label>
+              <select class="auth-select" id="parent-gender">
+                <option value="">Select…</option>
+                <option value="female">Female (She/Her)</option>
+                <option value="male">Male (He/Him)</option>
+                <option value="other">Other / Prefer not to say</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="reg-nav">
+            <button type="button" class="btn-back" data-prev-step="1">← Back</button>
+            <button type="button" class="auth-submit auth-submit-saffron" data-next-step="3">
+              Continue — Link Ashram →
+            </button>
+          </div>
+        </div>
+
+        <!-- ── Step 4: Ashram Linking ── -->
+        <div class="reg-step-panel">
+          <div class="reg-step-title">Link Your Parent's Ashram</div>
+          <div class="reg-step-desc">Search for the ashram by name or city. The ashram will confirm the link within 48 hours.</div>
+
+          <div class="auth-form-group">
+            <label class="auth-label" for="ashram-search-input">Search Ashram <span class="required">*</span></label>
+            <div class="ashram-search-wrap">
+              <div class="auth-input-icon-wrap">
+                <span class="auth-input-icon">🔍</span>
+                <input class="auth-input" type="text" id="ashram-search-input" placeholder="Type ashram name or city…" autocomplete="off">
+              </div>
+              <div class="ashram-search-results" id="ashram-search-results"></div>
+            </div>
+            <input type="hidden" id="ashram-selected" required>
+            <div class="auth-hint">Can't find your ashram? <a href="../find-ashrams.html" target="_blank" style="color:var(--teal);font-weight:700;">Browse full directory →</a></div>
+          </div>
+
+          <div class="auth-form-row">
+            <div class="auth-form-group">
+              <label class="auth-label" for="room-number">Room / Bed Number</label>
+              <input class="auth-input" type="text" id="room-number" placeholder="e.g. Room 12 or Bed A-4">
+            </div>
+            <div class="auth-form-group">
+              <label class="auth-label" for="resident-id">Resident ID <small style="font-weight:400;">(if known)</small></label>
+              <input class="auth-input" type="text" id="resident-id" placeholder="e.g. SG-1234">
+            </div>
+          </div>
+
+          <div class="auth-2fa-notice" style="margin-top:8px;">
+            <span class="notice-icon">ℹ️</span>
+            <span>After linking, the ashram gets a notification and approves or rejects within <strong>48 hours</strong>. You can use your dashboard while waiting.</span>
+          </div>
+
+          <div class="reg-nav">
+            <button type="button" class="btn-back" data-prev-step="2">← Back</button>
+            <button type="button" class="auth-submit auth-submit-saffron" data-next-step="4">
+              Continue — Care Plan →
+            </button>
+          </div>
+        </div>
+
+        <!-- ── Step 5: Care Commitment ── -->
+        <div class="reg-step-panel">
+          <div class="reg-step-title">Set Your Care Commitment 💛</div>
+          <div class="reg-step-desc">This is optional but encouraged. Making a promise keeps you accountable and helps us send gentle reminders.</div>
+
+          <div class="auth-form-group">
+            <label class="auth-label">How often will you <strong>call</strong>?</label>
+            <div class="care-options">
+              <div class="care-option selected" data-value="weekly">
+                <div class="opt-icon">📞</div>
+                <div class="opt-label">Weekly</div>
+                <div class="opt-sub">Every week</div>
+              </div>
+              <div class="care-option" data-value="biweekly">
+                <div class="opt-icon">📅</div>
+                <div class="opt-label">Bi-weekly</div>
+                <div class="opt-sub">Every 2 weeks</div>
+              </div>
+              <div class="care-option" data-value="monthly">
+                <div class="opt-icon">🗓️</div>
+                <div class="opt-label">Monthly</div>
+                <div class="opt-sub">Once a month</div>
+              </div>
+            </div>
+            <input type="hidden" id="call-frequency" value="weekly">
+          </div>
+
+          <div class="auth-form-group" style="margin-top:20px;">
+            <label class="auth-label">How often will you <strong>visit</strong>?</label>
+            <div class="care-options">
+              <div class="care-option" data-value="monthly-visit">
+                <div class="opt-icon">🚗</div>
+                <div class="opt-label">Monthly</div>
+                <div class="opt-sub">Once a month</div>
+              </div>
+              <div class="care-option selected" data-value="quarterly">
+                <div class="opt-icon">📆</div>
+                <div class="opt-label">Quarterly</div>
+                <div class="opt-sub">Every 3 months</div>
+              </div>
+              <div class="care-option" data-value="occasion">
+                <div class="opt-icon">🎉</div>
+                <div class="opt-label">Occasions</div>
+                <div class="opt-sub">Festivals &amp; birthdays</div>
+              </div>
+            </div>
+            <input type="hidden" id="visit-frequency" value="quarterly">
+          </div>
+
+          <div class="auth-checkbox-group" style="margin:20px 0;">
+            <input class="auth-checkbox" type="checkbox" id="terms-family" required>
+            <label class="auth-checkbox-label" for="terms-family">
+              I agree to SaathiGhar's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>. I understand my parent's data will be shared with verified ashrams only.
+            </label>
+          </div>
+
+          <div class="reg-nav">
+            <button type="button" class="btn-back" data-prev-step="3">← Back</button>
+            <button type="submit" class="auth-submit auth-submit-saffron" id="btn-family-submit">
+              🎉 Create My Account
+            </button>
+          </div>
+        </div>
+
+        <!-- ── Success State ── -->
+        <div class="reg-step-panel" id="family-success-panel">
+          <div class="auth-success-state">
+            <div class="auth-success-icon">🎉</div>
+            <div class="auth-success-title">Account Created Successfully!</div>
+            <div class="auth-success-desc">Welcome to SaathiGhar. Your account is active and ready.</div>
+            <div class="auth-success-status">
+              ✅ Mobile number verified · Account active
+            </div>
+            <div class="auth-pending-status">
+              ⏳ Waiting for ashram to confirm your link — usually within 48 hours
+            </div>
+            <div class="auth-success-desc" style="margin-top:16px;">
+              A confirmation email has been sent. Your Family Dashboard is ready — it will show <em>"Pending Ashram Confirmation"</em> until the ashram approves.
+            </div>
+            <a href="../portals/family/dashboard.html" class="auth-submit auth-submit-saffron" style="display:flex; margin-top:28px; text-decoration:none;">
+              🏠 Open My Family Dashboard →
+            </a>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <div style="text-align:center; padding:16px 40px 24px; border-top:1px solid #f0ece6;">
+      <a href="../index.html" style="font-size:0.85rem; color:var(--text-light); font-weight:600;">← Back to SaathiGhar Home</a>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>window._sb = supabase.createClient('https://hznsdikphjreklshgeyu.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6bnNkaWtwaGpyZWtsc2hnZXl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NzQ0NjUsImV4cCI6MjA5MjQ1MDQ2NX0.BATyEw2PslvmOs4g8xn0jiV-UUUFqPDBfqEtHsPp5Ak');</script>
+<script src="../assets/js/auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Display mobile in OTP step
+  document.querySelector('[data-next-step="1"]')?.addEventListener('click', () => {
+    const mobile = document.getElementById('mobile-family')?.value;
+    if (mobile) document.getElementById('display-mobile-family').textContent = mobile;
+    startOTPTimer('otp-timer-family', 'otp-resend-family', 60);
+  });
+
+  // Final submit
+  document.getElementById('register-family-form')?.addEventListener('submit', e => {
+    e.preventDefault();
+    const checked = document.getElementById('terms-family')?.checked;
+    if (!checked) { showToast('Please accept the Terms of Use to continue.', 'error'); return; }
+    const btn = document.getElementById('btn-family-submit');
+    setLoading(btn, true, 'Creating your account…');
+    setTimeout(() => {
+      setLoading(btn, false);
+      // Show success
+      document.querySelectorAll('.reg-step-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('family-success-panel')?.classList.add('active');
+    }, 2000);
+  });
+});
+</script>
+</body>
+</html>

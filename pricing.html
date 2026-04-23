@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashram Plans & Pricing — SaathiGhar</title>
+<meta name="description" content="Transparent pricing for ashrams. Start free for 30 days. No credit card required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/header.css">
+<style>
+.pricing-hero{background:linear-gradient(135deg,var(--teal-dark),var(--teal));padding:80px 0 60px;text-align:center;color:#fff;}
+.pricing-hero h1{font-size:clamp(2rem,4vw,3rem);margin-bottom:12px;}
+.pricing-hero p{font-size:1.05rem;opacity:.8;max-width:560px;margin:0 auto;}
+.billing-toggle{display:flex;align-items:center;justify-content:center;gap:14px;margin:32px 0;}
+.billing-toggle span{font-weight:700;color:var(--text-mid);}
+.toggle-switch{position:relative;width:52px;height:28px;cursor:pointer;}
+.toggle-switch input{display:none;}
+.toggle-track{position:absolute;inset:0;background:#ccc;border-radius:14px;transition:.3s;}
+.toggle-switch input:checked~.toggle-track{background:var(--teal);}
+.toggle-thumb{position:absolute;width:22px;height:22px;background:#fff;border-radius:50%;top:3px;left:3px;transition:.3s;box-shadow:0 1px 4px rgba(0,0,0,.2);}
+.toggle-switch input:checked~.toggle-track~.toggle-thumb,
+.toggle-switch input:checked+.toggle-track+.toggle-thumb{left:27px;}
+.save-badge{background:rgba(39,174,96,.15);color:#1a6b38;border:1px solid rgba(39,174,96,.3);border-radius:20px;padding:3px 10px;font-size:.75rem;font-weight:800;}
+.plans-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1200px;margin:0 auto;padding:60px 24px;}
+.plan-card{background:#fff;border-radius:20px;padding:32px 24px;box-shadow:var(--shadow-sm);border:2px solid transparent;transition:var(--transition);position:relative;}
+.plan-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
+.plan-card.popular{border-color:var(--teal);transform:scale(1.02);}
+.plan-card.popular:hover{transform:scale(1.02) translateY(-6px);}
+.popular-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--teal);color:#fff;font-size:.75rem;font-weight:800;padding:5px 16px;border-radius:20px;white-space:nowrap;}
+.plan-name{font-size:1rem;font-weight:800;color:var(--teal-dark);margin-bottom:4px;}
+.plan-tagline{font-size:.8rem;color:var(--text-light);margin-bottom:20px;}
+.plan-price{margin-bottom:20px;}
+.plan-price .amount{font-size:2.4rem;font-weight:900;color:var(--teal-dark);}
+.plan-price .period{font-size:.85rem;color:var(--text-light);}
+.plan-price .annual-note{font-size:.78rem;color:var(--green);font-weight:700;margin-top:2px;}
+.plan-residents{background:var(--cream);border-radius:10px;padding:10px 14px;font-size:.85rem;font-weight:700;color:var(--teal-dark);margin-bottom:18px;}
+.plan-features{display:flex;flex-direction:column;gap:9px;margin-bottom:24px;}
+.plan-feat{display:flex;align-items:flex-start;gap:8px;font-size:.84rem;color:var(--text-mid);}
+.plan-feat::before{content:'✓';color:var(--green);font-weight:900;flex-shrink:0;}
+.plan-feat.no::before{content:'✗';color:#ccc;}
+.plan-feat.no{color:#bbb;}
+.plan-cta{width:100%;padding:13px;border-radius:10px;font-weight:800;font-size:.95rem;cursor:pointer;border:none;transition:var(--transition);}
+.plan-cta.teal{background:var(--teal);color:#fff;}
+.plan-cta.teal:hover{background:var(--teal-dark);}
+.plan-cta.outline{background:transparent;color:var(--teal);border:2px solid var(--teal);}
+.plan-cta.outline:hover{background:var(--teal);color:#fff;}
+.plan-cta.saffron{background:var(--saffron);color:#fff;}
+.plan-cta.saffron:hover{background:var(--saffron-lt);}
+.fee-section{background:var(--teal-dark);padding:60px 24px;text-align:center;color:#fff;}
+.fee-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:800px;margin:40px auto 0;}
+.fee-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:28px 20px;text-align:center;}
+.fee-percent{font-size:2.5rem;font-weight:900;color:var(--gold);}
+.fee-label{font-size:.85rem;color:rgba(255,255,255,.7);margin-top:6px;}
+.free-badge{display:inline-block;background:rgba(39,174,96,.2);color:#4ade80;border:1px solid rgba(39,174,96,.3);border-radius:8px;padding:3px 10px;font-size:.75rem;font-weight:800;margin-top:6px;}
+.compare-table{max-width:1000px;margin:60px auto;padding:0 24px;}
+.compare-table table{width:100%;border-collapse:collapse;}
+.compare-table th{background:var(--teal);color:#fff;padding:14px 16px;text-align:left;font-size:.85rem;}
+.compare-table th:first-child{border-radius:10px 0 0 0;}
+.compare-table th:last-child{border-radius:0 10px 0 0;}
+.compare-table td{padding:13px 16px;border-bottom:1px solid #f0ece6;font-size:.85rem;color:var(--text-mid);}
+.compare-table tr:hover td{background:var(--cream);}
+.compare-table td:first-child{font-weight:700;color:var(--teal-dark);}
+@media(max-width:1024px){.plans-grid{grid-template-columns:repeat(2,1fr);}.fee-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.plans-grid{grid-template-columns:1fr;}.fee-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<!-- Minimal header -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="assets/images/logo.png" alt="SaathiGhar Logo">
+      <div class="logo-text"><span class="logo-name">SaathiGhar</span><span class="logo-tagline">Doori Door Nahi Karti</span></div>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="find-ashrams.html" class="nav-link">Find Ashrams</a>
+      <a href="pricing.html" class="nav-link active">Pricing</a>
+    </nav>
+    <div class="header-controls">
+      <a href="auth/register-ashram.html" class="btn btn-primary btn-sm">Register Ashram</a>
+      <a href="auth/login-ashram.html" class="btn btn-teal btn-sm">Login</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<div class="pricing-hero">
+  <div class="container">
+    <span class="badge badge-saffron" style="margin-bottom:16px;">🎉 First 30 days FREE — No credit card required</span>
+    <h1>Simple, Transparent Pricing</h1>
+    <p>Built for ashrams of every size. Start free. Scale when you're ready. Break-even at just 20 paying ashrams.</p>
+    <!-- Billing Toggle -->
+    <div class="billing-toggle">
+      <span id="label-monthly" style="color:#fff;">Monthly</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="billing-toggle">
+        <div class="toggle-track"></div>
+        <div class="toggle-thumb"></div>
+      </label>
+      <span id="label-annual" style="color:#fff;">Annual <span class="save-badge">Save 17%</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- Plans -->
+<div class="plans-grid">
+
+  <!-- Starter -->
+  <div class="plan-card">
+    <div class="plan-name">SaathiGhar Starter</div>
+    <div class="plan-tagline">Small ashrams & new registrations</div>
+    <div class="plan-price">
+      <span class="amount" data-monthly="1999" data-annual="1666">₹1,999</span>
+      <span class="period">/month</span>
+      <div class="annual-note" id="starter-annual-note" style="display:none;">₹19,999/year — save ₹3,989</div>
+    </div>
+    <div class="plan-residents">👥 Up to 25 residents · 1 manager login</div>
+    <div class="plan-features">
+      <div class="plan-feat">Resident profiles & family linking</div>
+      <div class="plan-feat">Family payment tracking</div>
+      <div class="plan-feat">Ashram directory listing</div>
+      <div class="plan-feat">Basic check-in tracking</div>
+      <div class="plan-feat no">Dadi AI companion</div>
+      <div class="plan-feat no">Memory Wall</div>
+      <div class="plan-feat no">Volunteer matching</div>
+    </div>
+    <button class="plan-cta outline" onclick="startAshramSubscription('starter')">Get Started Free →</button>
+  </div>
+
+  <!-- Care (Popular) -->
+  <div class="plan-card popular">
+    <div class="popular-badge">⭐ Most Popular</div>
+    <div class="plan-name">SaathiGhar Care</div>
+    <div class="plan-tagline">Mid-size ashrams, 30–75 beds</div>
+    <div class="plan-price">
+      <span class="amount" data-monthly="3999" data-annual="3333">₹3,999</span>
+      <span class="period">/month</span>
+      <div class="annual-note" id="care-annual-note" style="display:none;">₹39,999/year — save ₹7,989</div>
+    </div>
+    <div class="plan-residents">👥 Up to 75 residents · 3 manager logins</div>
+    <div class="plan-features">
+      <div class="plan-feat">Everything in Starter</div>
+      <div class="plan-feat">Dadi AI (5 residents)</div>
+      <div class="plan-feat">Memory Wall & photo sharing</div>
+      <div class="plan-feat">Volunteer matching</div>
+      <div class="plan-feat">Advanced care reports</div>
+      <div class="plan-feat">SOS emergency alerts</div>
+      <div class="plan-feat no">Custom ashram branding</div>
+    </div>
+    <button class="plan-cta teal" onclick="startAshramSubscription('care')">Start 30-Day Free Trial →</button>
+  </div>
+
+  <!-- Complete -->
+  <div class="plan-card">
+    <div class="plan-name">SaathiGhar Complete</div>
+    <div class="plan-tagline">Large ashrams, 75–200 beds</div>
+    <div class="plan-price">
+      <span class="amount" data-monthly="6999" data-annual="5833">₹6,999</span>
+      <span class="period">/month</span>
+      <div class="annual-note" id="complete-annual-note" style="display:none;">₹69,999/year — save ₹13,989</div>
+    </div>
+    <div class="plan-residents">👥 Up to 200 residents · 10 manager logins</div>
+    <div class="plan-features">
+      <div class="plan-feat">Everything in Care</div>
+      <div class="plan-feat">Dadi AI (unlimited residents)</div>
+      <div class="plan-feat">Custom ashram branding</div>
+      <div class="plan-feat">Priority support (4hr response)</div>
+      <div class="plan-feat">CSR partner badge</div>
+      <div class="plan-feat">White-label option</div>
+      <div class="plan-feat">SaathiGhar Verified badge</div>
+    </div>
+    <button class="plan-cta saffron" onclick="startAshramSubscription('complete')">Start 30-Day Free Trial →</button>
+  </div>
+
+  <!-- Enterprise -->
+  <div class="plan-card">
+    <div class="plan-name">Enterprise</div>
+    <div class="plan-tagline">Hospital chains & government homes</div>
+    <div class="plan-price">
+      <span class="amount" style="font-size:1.8rem;">Custom</span>
+      <div class="annual-note" style="display:block;">Starting ₹12,000/month</div>
+    </div>
+    <div class="plan-residents">👥 Unlimited residents · Unlimited logins</div>
+    <div class="plan-features">
+      <div class="plan-feat">Everything in Complete</div>
+      <div class="plan-feat">API access & integrations</div>
+      <div class="plan-feat">Dedicated support manager</div>
+      <div class="plan-feat">Custom SLA guarantee</div>
+      <div class="plan-feat">SOC2 compliance reports</div>
+      <div class="plan-feat">Government contract ready</div>
+      <div class="plan-feat">On-site training sessions</div>
+    </div>
+    <button class="plan-cta outline" onclick="showToast('Our team will contact you within 24 hours.','success'); document.getElementById('enterprise-form').scrollIntoView({behavior:'smooth'})">Contact Sales →</button>
+  </div>
+
+</div>
+
+<!-- Transaction Fees Section -->
+<div class="fee-section">
+  <div class="container">
+    <span class="eyebrow" style="color:var(--gold);">Transparent Transaction Fees</span>
+    <h2 style="color:#fff;margin:10px 0 8px;">Pay only when value is created</h2>
+    <p style="color:rgba(255,255,255,.7);">We earn a small percentage only when money flows through the platform.</p>
+    <div class="fee-grid">
+      <div class="fee-card">
+        <div class="fee-percent">1.5%</div>
+        <div class="fee-label">When family pays ashram fees via SaathiGhar platform</div>
+        <div class="free-badge">Free if paid directly to ashram</div>
+      </div>
+      <div class="fee-card">
+        <div class="fee-percent">2%</div>
+        <div class="fee-label">On donations to residents or ashrams</div>
+        <div class="free-badge">0% for donations to SaathiGhar itself</div>
+      </div>
+      <div class="fee-card">
+        <div class="fee-percent">10%</div>
+        <div class="fee-label">Management fee on CSR corporate donations</div>
+        <div class="free-badge">Includes quarterly impact reports</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Enterprise contact -->
+<div class="section" id="enterprise-form">
+  <div class="container" style="max-width:600px;text-align:center;">
+    <span class="eyebrow">Enterprise & Government</span>
+    <h2>Need a custom plan?</h2>
+    <p style="margin-bottom:32px;">For hospital chains, government elder homes, or NGO networks managing 200+ residents. We'll build a solution that fits.</p>
+    <form id="enterprise-contact-form" style="display:flex;flex-direction:column;gap:14px;text-align:left;">
+      <div class="auth-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div class="input-group"><label class="auth-label">Organisation Name</label><input class="form-input" id="ent-org" placeholder="e.g. Ministry of Social Justice" required></div>
+        <div class="input-group"><label class="auth-label">Your Name</label><input class="form-input" id="ent-name" placeholder="Full name" required></div>
+      </div>
+      <div class="input-group"><label class="auth-label">Email</label><input class="form-input" type="email" id="ent-email" placeholder="official@org.gov.in" required></div>
+      <div class="input-group"><label class="auth-label">Number of residents (approx)</label><input class="form-input" type="number" id="ent-residents" placeholder="e.g. 500" required></div>
+      <div class="input-group"><label class="auth-label">Requirements / Message</label><textarea class="form-input" id="ent-message" rows="3" placeholder="Describe your use case…"></textarea></div>
+      <button type="submit" class="btn btn-primary" style="align-self:center;">📨 Submit Enterprise Enquiry</button>
+    </form>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2025 SaathiGhar. All rights reserved. Made with ❤️ for every parent who deserves to be remembered.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>window._sb=supabase.createClient('https://hznsdikphjreklshgeyu.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6bnNkaWtwaGpyZWtsc2hnZXl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NzQ0NjUsImV4cCI6MjA5MjQ1MDQ2NX0.BATyEw2PslvmOs4g8xn0jiV-UUUFqPDBfqEtHsPp5Ak');</script>
+<script src="assets/js/services.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+function showToast(msg,type){
+  const el=document.createElement('div');el.className='toast '+type;el.textContent=msg;
+  document.body.appendChild(el);setTimeout(()=>el.remove(),4000);
+}
+// Billing toggle
+const toggle=document.getElementById('billing-toggle');
+const amounts=document.querySelectorAll('.amount[data-monthly]');
+const notes=document.querySelectorAll('.annual-note[id]');
+toggle?.addEventListener('change',()=>{
+  const annual=toggle.checked;
+  amounts.forEach(el=>{
+    const v=annual?el.dataset.annual:el.dataset.monthly;
+    if(v) el.textContent='₹'+parseInt(v).toLocaleString('en-IN');
+  });
+  document.querySelectorAll('.period').forEach(el=>el.textContent=annual?'/month (billed annually)':'/month');
+  ['starter','care','complete'].forEach(p=>{
+    const note=document.getElementById(p+'-annual-note');
+    if(note) note.style.display=annual?'block':'none';
+  });
+});
+// Enterprise form
+document.getElementById('enterprise-contact-form')?.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const btn=e.target.querySelector('button[type="submit"]');
+  btn.textContent='Sending…';btn.disabled=true;
+  await getSB().from('notifications').insert({
+    user_id:null,type:'enterprise_enquiry',
+    title:'Enterprise Enquiry: '+document.getElementById('ent-org').value,
+    body:document.getElementById('ent-message').value,
+    data:{org:document.getElementById('ent-org').value,name:document.getElementById('ent-name').value,email:document.getElementById('ent-email').value,residents:document.getElementById('ent-residents').value},
+    channel:['email']
+  }).catch(()=>{});
+  btn.textContent='✅ Submitted!';
+  showToast('Thank you! Our team will contact you within 24 hours.','success');
+});
+</script>
+</body>
+</html>

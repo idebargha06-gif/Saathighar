@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Become a Volunteer — SaathiGhar</title>
+<meta name="description" content="Join SaathiGhar as a SaathiSeva volunteer — visit elderly residents, share skills, and make a real difference.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/auth.css">
+<style>
+  html { scroll-behavior: auto !important; }
+  body { overflow-anchor: none; }
+</style>
+<!-- Force scroll to top — runs in <head> AND on load to beat browser scroll restoration -->
+<script>
+  history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+  document.addEventListener('DOMContentLoaded', function() { window.scrollTo(0, 0); });
+  window.addEventListener('load', function() { window.scrollTo(0, 0); });
+</script>
+<body>
+<div class="auth-page" style="background:linear-gradient(135deg,#1a6b38 0%, #27AE60 45%, #2ecc71 100%);">
+  <div class="auth-page-bg-blob" style="background:#f0c040;"></div>
+  <div class="auth-page-bg-blob" style="background:#27AE60;"></div>
+
+  <div class="auth-card auth-card-wide">
+
+    <div class="auth-card-header" style="background:linear-gradient(135deg,#145a29,#1a6b38,#27AE60);">
+      <div class="auth-card-logo">
+        <img src="../assets/images/logo.png" alt="SaathiGhar Logo">
+        <div class="auth-card-logo-text">
+          <div class="auth-card-logo-name">SaathiGhar</div>
+          <div class="auth-card-logo-tagline">Doori Door Nahi Karti</div>
+        </div>
+      </div>
+      <div class="auth-card-title">🤝 Become a SaathiSeva Volunteer</div>
+      <div class="auth-card-subtitle">Adopt a grandparent. Be the family they no longer have.</div>
+    </div>
+
+    <div class="auth-card-body">
+
+      <!-- Step Indicator -->
+      <div class="reg-step-indicator">
+        <div class="reg-step active">
+          <div class="reg-step-circle">1</div>
+          <div class="reg-step-label">Account</div>
+        </div>
+        <div class="reg-step">
+          <div class="reg-step-circle">2</div>
+          <div class="reg-step-label">Verify OTP</div>
+        </div>
+        <div class="reg-step">
+          <div class="reg-step-circle">3</div>
+          <div class="reg-step-label">Your Skills</div>
+        </div>
+        <div class="reg-step">
+          <div class="reg-step-circle">4</div>
+          <div class="reg-step-label">ID Verification</div>
+        </div>
+        <div class="reg-step">
+          <div class="reg-step-circle">5</div>
+          <div class="reg-step-label">Declaration</div>
+        </div>
+      </div>
+
+      <form id="register-volunteer-form" novalidate>
+
+        <!-- ── Step 1: Account ── -->
+        <div class="reg-step-panel active">
+          <div class="reg-step-title">Create Your Volunteer Account</div>
+          <div class="reg-step-desc">Basic account details to get started.</div>
+
+          <div class="auth-form-row">
+            <div class="auth-form-group">
+              <label class="auth-label" for="vol-fname">First Name <span class="required">*</span></label>
+              <input class="auth-input" type="text" id="vol-fname" placeholder="Ananya" required autocomplete="given-name">
+            </div>
+            <div class="auth-form-group">
+              <label class="auth-label" for="vol-lname">Last Name <span class="required">*</span></label>
+              <input class="auth-input" type="text" id="vol-lname" placeholder="Gupta" required autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="auth-form-group">
+            <label class="auth-label" for="vol-email">Email Address <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">📧</span>
+              <input class="auth-input" type="email" id="vol-email" placeholder="ananya@email.com" required autocomplete="email">
+            </div>
+          </div>
+
+          <div class="auth-form-row">
+            <div class="auth-form-group">
+              <label class="auth-label" for="vol-mobile">Mobile Number <span class="required">*</span></label>
+              <input class="auth-input" type="tel" id="vol-mobile" placeholder="+91 XXXXX XXXXX" required>
+            </div>
+            <div class="auth-form-group">
+              <label class="auth-label" for="vol-city">Your City <span class="required">*</span></label>
+              <input class="auth-input" type="text" id="vol-city" placeholder="e.g. Bangalore" required>
+            </div>
+          </div>
+
+          <div class="auth-form-group">
+            <label class="auth-label" for="pw-vol-reg">Password <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">🔒</span>
+              <input class="auth-input" type="password" id="pw-vol-reg" placeholder="Minimum 8 characters" required style="padding-right:48px;">
+              <button type="button" class="auth-input-eye" id="eye-vol-reg" aria-label="Toggle password">👁️</button>
+            </div>
+            <div class="pw-strength">
+              <div class="pw-strength-bar"><div class="pw-strength-fill" id="pw-vol-strength-bar"></div></div>
+              <div class="pw-strength-label" id="pw-vol-strength-label"></div>
+            </div>
+          </div>
+
+          <div class="reg-nav">
+            <button type="button" class="auth-submit" style="background:linear-gradient(135deg,#1a6b38,#27AE60);" data-next-step="1">
+              Continue — Verify Mobile →
+            </button>
+          </div>
+          <div class="auth-divider">or</div>
+          <button type="button" class="btn-google" id="btn-google-vol">
+            <svg style="width:20px;height:20px;" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+            Continue with Google
+          </button>
+          <div class="auth-footer" style="margin-top:16px;">
+            Already a volunteer? <a href="login.html">Sign In</a>
+          </div>
+        </div>
+
+        <!-- ── Step 2: OTP ── -->
+        <div class="reg-step-panel">
+          <div class="reg-step-title">Verify Your Mobile Number</div>
+          <div class="reg-step-desc">6-digit OTP sent to your mobile. Valid for 10 minutes.</div>
+
+          <div class="otp-sent-to">OTP sent to <strong id="display-mobile-vol">your registered mobile</strong></div>
+
+          <div id="otp-vol-reg" class="otp-input-group">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 1">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 2">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 3">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 4">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 5">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 6">
+          </div>
+
+          <div class="otp-timer" style="margin-bottom:24px;">
+            <span id="otp-timer-vol"></span>
+            <button type="button" class="otp-resend" id="otp-resend-vol" disabled>Resend OTP</button>
+          </div>
+
+          <div class="reg-nav">
+            <button type="button" class="btn-back" data-prev-step="0">← Back</button>
+            <button type="button" class="auth-submit" style="background:linear-gradient(135deg,#1a6b38,#27AE60);" data-next-step="2">
+              ✅ Verify &amp; Continue
+            </button>
+          </div>
+        </div>
+
+        <!-- ── Step 3: Skills & Availability ── -->
+        <div class="reg-step-panel">
+          <div class="reg-step-title">Your Skills &amp; Availability</div>
+          <div class="reg-step-desc">Help us match you with residents who need your specific talents.</div>
+
+          <div class="auth-form-group">
+            <label class="auth-label">Languages You Speak <span class="required">*</span></label>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;">
+              <label style="display:flex;align-items:center;gap:6px;font-size:0.88rem;cursor:pointer;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;" value="hindi"> Hindi</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:0.88rem;cursor:pointer;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;" value="english"> English</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:0.88rem;cursor:pointer;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;" value="bengali"> Bengali</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:0.88rem;cursor:pointer;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;" value="marathi"> Marathi</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:0.88rem;cursor:pointer;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;" value="tamil"> Tamil</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:0.88rem;cursor:pointer;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;" value="telugu"> Telugu</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:0.88rem;cursor:pointer;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;" value="kannada"> Kannada</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:0.88rem;cursor:pointer;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;" value="gujarati"> Gujarati</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:0.88rem;cursor:pointer;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;" value="punjabi"> Punjabi</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:0.88rem;cursor:pointer;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;" value="other"> Other</label>
+            </div>
+          </div>
+
+          <div class="auth-form-group" style="margin-top:16px;">
+            <label class="auth-label">Skills You Can Offer <span class="required">*</span></label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;">
+              <label style="display:flex;align-items:center;gap:8px;font-size:0.88rem;cursor:pointer;background:var(--cream);padding:10px 14px;border-radius:8px;border:1px solid #e8e0d8;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;"> 🩺 Doctor / Health</label>
+              <label style="display:flex;align-items:center;gap:8px;font-size:0.88rem;cursor:pointer;background:var(--cream);padding:10px 14px;border-radius:8px;border:1px solid #e8e0d8;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;"> 📚 Teacher / Tutor</label>
+              <label style="display:flex;align-items:center;gap:8px;font-size:0.88rem;cursor:pointer;background:var(--cream);padding:10px 14px;border-radius:8px;border:1px solid #e8e0d8;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;"> 🎵 Musician / Artist</label>
+              <label style="display:flex;align-items:center;gap:8px;font-size:0.88rem;cursor:pointer;background:var(--cream);padding:10px 14px;border-radius:8px;border:1px solid #e8e0d8;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;"> 👨‍🍳 Cook / Nutrition</label>
+              <label style="display:flex;align-items:center;gap:8px;font-size:0.88rem;cursor:pointer;background:var(--cream);padding:10px 14px;border-radius:8px;border:1px solid #e8e0d8;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;"> 💬 Companion / Listener</label>
+              <label style="display:flex;align-items:center;gap:8px;font-size:0.88rem;cursor:pointer;background:var(--cream);padding:10px 14px;border-radius:8px;border:1px solid #e8e0d8;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;"> 📱 Tech / Digital Help</label>
+              <label style="display:flex;align-items:center;gap:8px;font-size:0.88rem;cursor:pointer;background:var(--cream);padding:10px 14px;border-radius:8px;border:1px solid #e8e0d8;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;"> 🧘 Yoga / Wellness</label>
+              <label style="display:flex;align-items:center;gap:8px;font-size:0.88rem;cursor:pointer;background:var(--cream);padding:10px 14px;border-radius:8px;border:1px solid #e8e0d8;"><input type="checkbox" class="auth-checkbox" style="width:16px;height:16px;"> ✨ General Volunteer</label>
+            </div>
+          </div>
+
+          <div class="auth-form-row" style="margin-top:16px;">
+            <div class="auth-form-group">
+              <label class="auth-label" for="vol-availability">Availability</label>
+              <select class="auth-select" id="vol-availability">
+                <option value="">Select…</option>
+                <option>Weekdays only</option>
+                <option>Weekends only</option>
+                <option>Both weekdays &amp; weekends</option>
+                <option>Flexible — any day</option>
+              </select>
+            </div>
+            <div class="auth-form-group">
+              <label class="auth-label" for="vol-travel">Max Travel Distance</label>
+              <select class="auth-select" id="vol-travel">
+                <option value="">Select…</option>
+                <option>Within 5 km</option>
+                <option>Within 15 km</option>
+                <option>Within 30 km</option>
+                <option>Any distance (city-wide)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="reg-nav">
+            <button type="button" class="btn-back" data-prev-step="1">← Back</button>
+            <button type="button" class="auth-submit" style="background:linear-gradient(135deg,#1a6b38,#27AE60);" data-next-step="3">
+              Continue — ID Verification →
+            </button>
+          </div>
+        </div>
+
+        <!-- ── Step 4: Aadhaar Verification ── -->
+        <div class="reg-step-panel">
+          <div class="reg-step-title">ID Verification (Aadhaar)</div>
+          <div class="reg-step-desc">Mandatory for anyone who will visit residents in person. This ensures safety for our elderly residents.</div>
+
+          <div class="auth-2fa-notice" style="background:rgba(212,160,23,0.08); border-left-color:var(--gold);">
+            <span class="notice-icon">🔐</span>
+            <span>Your Aadhaar number is used <strong>only for identity verification</strong> via UIDAI. It is not stored on our servers after verification.</span>
+          </div>
+
+          <div class="auth-form-group" style="margin-top:16px;">
+            <label class="auth-label" for="aadhaar-input">Aadhaar Number <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">🪪</span>
+              <input class="auth-input" type="text" id="aadhaar-input" placeholder="XXXX XXXX XXXX" maxlength="14" inputmode="numeric">
+            </div>
+            <div class="auth-hint">Enter your 12-digit Aadhaar number. OTP will be sent to your Aadhaar-linked mobile.</div>
+          </div>
+
+          <button type="button" class="auth-submit" style="background:var(--gold); color:var(--text-dark); margin-bottom:20px;" id="btn-verify-aadhaar">
+            📱 Send OTP to Aadhaar-linked Mobile
+          </button>
+
+          <!-- Aadhaar OTP (hidden until Send OTP clicked) -->
+          <div id="aadhaar-otp-step" class="hidden" style="display:none;">
+            <div class="otp-sent-to">OTP sent to your <strong>Aadhaar-linked mobile number</strong></div>
+            <div id="otp-aadhaar-reg" class="otp-input-group">
+              <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 1">
+              <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 2">
+              <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 3">
+              <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 4">
+              <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 5">
+              <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 6">
+            </div>
+            <div class="otp-timer" style="margin-bottom:16px;">
+              <span id="otp-timer-aadhaar"></span>
+              <button type="button" class="otp-resend" id="otp-resend-aadhaar" disabled>Resend OTP</button>
+            </div>
+          </div>
+
+          <div class="reg-nav">
+            <button type="button" class="btn-back" data-prev-step="2">← Back</button>
+            <button type="button" class="auth-submit" style="background:linear-gradient(135deg,#1a6b38,#27AE60);" data-next-step="4">
+              ✅ Verified — Continue →
+            </button>
+          </div>
+        </div>
+
+        <!-- ── Step 5: Declaration ── -->
+        <div class="reg-step-panel">
+          <div class="reg-step-title">Background Declaration</div>
+          <div class="reg-step-desc">This declaration is required before your account can be approved for in-person visits.</div>
+
+          <div style="background:var(--cream); border-radius:var(--radius-sm); padding:20px; margin-bottom:20px;">
+            <h4 style="color:var(--teal-dark); margin-bottom:10px; font-size:0.95rem;">📋 Code of Conduct</h4>
+            <ul style="list-style:disc; padding-left:20px; font-size:0.85rem; color:var(--text-mid); line-height:2;">
+              <li>Treat all residents with dignity, respect, and patience</li>
+              <li>Never photograph or record residents without explicit consent</li>
+              <li>Do not share personal information of any resident outside the platform</li>
+              <li>Report any abuse or neglect immediately via the platform</li>
+              <li>Arrive on time for scheduled visits and notify in advance if unable to attend</li>
+              <li>Never solicit money, gifts, or personal favours from residents or their families</li>
+            </ul>
+          </div>
+
+          <div class="auth-checkbox-group" style="margin-bottom:14px;">
+            <input class="auth-checkbox" type="checkbox" id="vol-bg-check" required>
+            <label class="auth-checkbox-label" for="vol-bg-check">
+              <strong>I declare I have no criminal record</strong> involving harm to minors, elderly persons, or vulnerable individuals under Indian or any applicable law.
+            </label>
+          </div>
+
+          <div class="auth-checkbox-group" style="margin-bottom:14px;">
+            <input class="auth-checkbox" type="checkbox" id="vol-conduct" required>
+            <label class="auth-checkbox-label" for="vol-conduct">
+              I have read and agree to SaathiGhar's <a href="#">Volunteer Code of Conduct</a> and <a href="#">Terms of Service</a>.
+            </label>
+          </div>
+
+          <div class="auth-checkbox-group" style="margin-bottom:24px;">
+            <input class="auth-checkbox" type="checkbox" id="vol-privacy" required>
+            <label class="auth-checkbox-label" for="vol-privacy">
+              I consent to my Aadhaar verification result being used for background screening and understand that my account is <strong>pending admin approval</strong> (24–48 hours).
+            </label>
+          </div>
+
+          <div class="auth-2fa-notice" style="margin-bottom:20px;">
+            <span class="notice-icon">ℹ️</span>
+            <span>After submission, admin reviews your ID verification result. You will receive an SMS confirmation within 24–48 hours.</span>
+          </div>
+
+          <div class="reg-nav">
+            <button type="button" class="btn-back" data-prev-step="3">← Back</button>
+            <button type="submit" class="auth-submit" style="background:linear-gradient(135deg,#1a6b38,#27AE60);" id="btn-vol-submit">
+              🎉 Submit — Become a SaathiSeva Volunteer
+            </button>
+          </div>
+        </div>
+
+        <!-- ── Success ── -->
+        <div class="reg-step-panel" id="volunteer-success-panel">
+          <div class="auth-success-state">
+            <div class="auth-success-icon">🌟</div>
+            <div class="auth-success-title">Welcome, SaathiSeva Volunteer!</div>
+            <div class="auth-success-desc">Your application has been submitted. An admin will review your ID verification and approve your account.</div>
+            <div class="auth-pending-status">
+              ⏳ Pending Admin Approval — 24 to 48 hours
+            </div>
+            <div class="auth-success-desc" style="margin-top:12px;">
+              You will receive an <strong>SMS confirmation</strong> once approved. After that, you can browse grandparent profiles, book visits, and register for skill sessions.
+            </div>
+            <a href="../index.html" class="auth-submit" style="display:flex; margin-top:28px; text-decoration:none; background:linear-gradient(135deg,#1a6b38,#27AE60);">
+              ← Back to SaathiGhar Home
+            </a>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <div style="text-align:center; padding:16px 40px 24px; border-top:1px solid #f0ece6;">
+      <a href="../index.html" style="font-size:0.85rem; color:var(--text-light); font-weight:600;">← Back to SaathiGhar Home</a>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>window._sb = supabase.createClient('https://hznsdikphjreklshgeyu.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6bnNkaWtwaGpyZWtsc2hnZXl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NzQ0NjUsImV4cCI6MjA5MjQ1MDQ2NX0.BATyEw2PslvmOs4g8xn0jiV-UUUFqPDBfqEtHsPp5Ak');</script>
+<script src="../assets/js/auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector('[data-next-step="1"]')?.addEventListener('click', () => {
+    const mobile = document.getElementById('vol-mobile')?.value;
+    if (mobile) document.getElementById('display-mobile-vol').textContent = mobile;
+    startOTPTimer('otp-timer-vol', 'otp-resend-vol', 60);
+  });
+
+  document.getElementById('register-volunteer-form')?.addEventListener('submit', e => {
+    e.preventDefault();
+    const checks = ['vol-bg-check', 'vol-conduct', 'vol-privacy'];
+    const allChecked = checks.every(id => document.getElementById(id)?.checked);
+    if (!allChecked) { showToast('Please accept all declarations to submit.', 'error'); return; }
+    const btn = document.getElementById('btn-vol-submit');
+    setLoading(btn, true, 'Submitting application…');
+    setTimeout(() => {
+      setLoading(btn, false);
+      document.querySelectorAll('.reg-step-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('volunteer-success-panel')?.classList.add('active');
+    }, 2000);
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login — SaathiGhar | Elderly Care Accountability Platform</title>
+<meta name="description" content="Log in to your SaathiGhar account — Family, Ashram Manager, or Volunteer portal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/auth.css">
+</head>
+<body>
+<div id="login-page">
+<div class="auth-page">
+  <div class="auth-page-bg-blob"></div>
+  <div class="auth-page-bg-blob"></div>
+
+  <div class="auth-card" style="max-width:540px;">
+
+    <!-- Header -->
+    <div class="auth-card-header">
+      <div class="auth-card-logo">
+        <img src="../assets/images/logo.png" alt="SaathiGhar Logo">
+        <div class="auth-card-logo-text">
+          <div class="auth-card-logo-name">SaathiGhar</div>
+          <div class="auth-card-logo-tagline">Doori Door Nahi Karti</div>
+        </div>
+      </div>
+      <div class="auth-card-title">Welcome Back</div>
+      <div class="auth-card-subtitle">Sign in to continue to your portal</div>
+    </div>
+
+    <!-- Body -->
+    <div class="auth-card-body">
+
+      <!-- Role Tabs -->
+      <div class="auth-role-tabs" role="tablist" aria-label="Select your role">
+        <button class="auth-role-tab active" data-role="family" role="tab" aria-selected="true" id="tab-family">
+          <span class="tab-icon">👨‍👩‍👧</span>Family
+        </button>
+        <button class="auth-role-tab" data-role="ashram" role="tab" aria-selected="false" id="tab-ashram">
+          <span class="tab-icon">🏡</span>Ashram Mgr
+        </button>
+        <button class="auth-role-tab" data-role="volunteer" role="tab" aria-selected="false" id="tab-volunteer">
+          <span class="tab-icon">🤝</span>Volunteer
+        </button>
+        <button class="auth-role-tab" data-role="resident" role="tab" aria-selected="false" id="tab-resident">
+          <span class="tab-icon">🧓</span>Resident
+        </button>
+        <button class="auth-role-tab" data-role="admin" role="tab" aria-selected="false" id="tab-admin">
+          <span class="tab-icon">⚙️</span>Admin
+        </button>
+      </div>
+
+      <!-- ─── Family Panel ─── -->
+      <div class="auth-login-panel active" id="panel-family">
+        <form class="login-form" data-role="family" novalidate>
+          <div class="auth-form-group">
+            <label class="auth-label" for="email-family">Email or Phone <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">📧</span>
+              <input class="auth-input" type="text" id="email-family" name="email" placeholder="yourname@email.com or +91 XXXXX" required autocomplete="email">
+            </div>
+          </div>
+          <div class="auth-form-group">
+            <label class="auth-label" for="pw-family">Password <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">🔒</span>
+              <input class="auth-input" type="password" id="pw-family" name="password" placeholder="Enter your password" required autocomplete="current-password" style="padding-right:48px;">
+              <button type="button" class="auth-input-eye" id="eye-family" aria-label="Toggle password">👁️</button>
+            </div>
+          </div>
+          <div style="text-align:right; margin-bottom:20px;">
+            <a href="forgot-password.html" style="font-size:0.85rem; color:var(--teal); font-weight:700;">Forgot password?</a>
+          </div>
+          <button type="submit" class="auth-submit auth-submit-saffron" id="btn-login-family">
+            🏠 Go to My Family Dashboard
+          </button>
+        </form>
+        <div class="auth-divider">or</div>
+        <button class="btn-google" id="btn-google-family">
+          <svg class="btn-google-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Continue with Google
+        </button>
+        <div class="auth-footer">
+          New to SaathiGhar? <a href="register-family.html">Register as Family Member</a>
+        </div>
+      </div>
+
+      <!-- ─── Ashram Manager Panel ─── -->
+      <div class="auth-login-panel" id="panel-ashram">
+
+        <!-- Step 1: Credentials -->
+        <div id="ashram-login-step">
+          <div class="auth-2fa-notice">
+            <span class="notice-icon">🔐</span>
+            <span>Ashram Manager accounts require <strong>Two-Factor Authentication (2FA)</strong> on every login for security.</span>
+          </div>
+          <form class="login-form" data-role="ashram" novalidate>
+            <div class="auth-form-group">
+              <label class="auth-label" for="email-ashram">Manager Email <span class="required">*</span></label>
+              <div class="auth-input-icon-wrap">
+                <span class="auth-input-icon">📧</span>
+                <input class="auth-input" type="email" id="email-ashram" name="email" placeholder="manager@ashramname.org" required autocomplete="email">
+              </div>
+            </div>
+            <div class="auth-form-group">
+              <label class="auth-label" for="pw-ashram">Password <span class="required">*</span></label>
+              <div class="auth-input-icon-wrap">
+                <span class="auth-input-icon">🔒</span>
+                <input class="auth-input" type="password" id="pw-ashram" name="password" placeholder="Enter your password" required autocomplete="current-password" style="padding-right:48px;">
+                <button type="button" class="auth-input-eye" id="eye-ashram" aria-label="Toggle password">👁️</button>
+              </div>
+            </div>
+            <button type="submit" class="auth-submit" id="btn-login-ashram">
+              🏡 Login &amp; Verify with OTP
+            </button>
+          </form>
+        </div>
+
+        <!-- Step 2: 2FA OTP -->
+        <div id="ashram-2fa-step" class="hidden" style="display:none;">
+          <div style="text-align:center; margin-bottom:16px;">
+            <div style="font-size:2.5rem; margin-bottom:10px;">📱</div>
+            <h3 style="color:var(--teal-dark); margin-bottom:6px;">Two-Factor Verification</h3>
+            <p class="otp-sent-to">OTP sent to your registered backup email and mobile</p>
+          </div>
+          <div id="otp-ashram-2fa" class="otp-input-group">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 1">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 2">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 3">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 4">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 5">
+            <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" aria-label="Digit 6">
+          </div>
+          <div class="otp-timer" style="margin-bottom:16px;">
+            <span id="otp-timer-ashram"></span>
+            <button class="otp-resend" id="otp-resend-ashram" disabled>Resend OTP</button>
+          </div>
+          <button class="auth-submit" id="btn-verify-2fa">✅ Verify &amp; Enter Portal</button>
+          <button type="button" style="width:100%;margin-top:10px;background:none;border:none;color:var(--teal);font-weight:700;cursor:pointer;font-size:0.9rem;"
+            onclick="document.getElementById('ashram-2fa-step').style.display='none'; document.getElementById('ashram-login-step').style.display='block';">
+            ← Back
+          </button>
+        </div>
+
+        <div class="auth-footer" style="margin-top:20px;">
+          Don't have an account? <a href="register-ashram.html">Register Your Ashram</a>
+        </div>
+      </div>
+
+      <!-- ─── Volunteer Panel ─── -->
+      <div class="auth-login-panel" id="panel-volunteer">
+        <form class="login-form" data-role="volunteer" novalidate>
+          <div class="auth-form-group">
+            <label class="auth-label" for="email-volunteer">Email <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">📧</span>
+              <input class="auth-input" type="email" id="email-volunteer" name="email" placeholder="volunteer@email.com" required autocomplete="email">
+            </div>
+          </div>
+          <div class="auth-form-group">
+            <label class="auth-label" for="pw-volunteer">Password <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">🔒</span>
+              <input class="auth-input" type="password" id="pw-volunteer" name="password" placeholder="Enter your password" required autocomplete="current-password" style="padding-right:48px;">
+              <button type="button" class="auth-input-eye" id="eye-volunteer" aria-label="Toggle password">👁️</button>
+            </div>
+          </div>
+          <button type="submit" class="auth-submit" style="background:linear-gradient(135deg,#27AE60,#2ecc71);" id="btn-login-volunteer">
+            🤝 Go to Volunteer Hub
+          </button>
+        </form>
+        <div class="auth-divider">or</div>
+        <button class="btn-google" id="btn-google-volunteer">
+          <svg class="btn-google-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Continue with Google
+        </button>
+        <div class="auth-footer">
+          New volunteer? <a href="register-volunteer.html">Create your account</a>
+        </div>
+      </div>
+
+      <!-- ─── Resident Panel ─── -->
+      <div class="auth-login-panel" id="panel-resident">
+        <div class="auth-staff-notice">
+          <div class="notice-big-icon">🧓</div>
+          <h4>Staff-Assisted Login Only</h4>
+          <p>Residents do not log in with a password. Ashram staff opens the tablet app and enters the staff PIN to access the resident home screen.</p>
+        </div>
+        <div class="auth-form-group" style="margin-top:20px;">
+          <label class="auth-label" for="staff-pin-input">Ashram Staff PIN <span class="required">*</span></label>
+          <div class="auth-input-icon-wrap">
+            <span class="auth-input-icon">🔢</span>
+            <input class="auth-input" type="password" id="staff-pin-input" placeholder="Enter 4–6 digit staff PIN" maxlength="6" inputmode="numeric">
+          </div>
+          <div class="auth-hint">This PIN is set by your ashram manager in the Ashram Portal.</div>
+        </div>
+        <button class="auth-submit" id="btn-staff-pin" style="background:linear-gradient(135deg,var(--gold),var(--saffron));">
+          🏠 Open Resident Home Screen
+        </button>
+        <div class="auth-footer" style="margin-top:20px;">
+          Ashram staff? <a href="register-ashram.html">Register your ashram</a>
+        </div>
+      </div>
+
+      <!-- ─── Admin Panel ─── -->
+      <div class="auth-login-panel" id="panel-admin">
+        <div class="auth-2fa-notice" style="background:rgba(192,57,43,0.07); border-left-color:var(--red);">
+          <span class="notice-icon">⚠️</span>
+          <span>Admin portal access requires <strong>hardware 2FA (YubiKey)</strong> or <strong>Google Authenticator</strong>. Login is IP-restricted.</span>
+        </div>
+        <form class="login-form" data-role="admin" novalidate>
+          <div class="auth-form-group">
+            <label class="auth-label" for="email-admin">Admin Email <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">📧</span>
+              <input class="auth-input" type="email" id="email-admin" name="email" placeholder="admin@saathighar.org" required autocomplete="email">
+            </div>
+          </div>
+          <div class="auth-form-group">
+            <label class="auth-label" for="pw-admin">Password <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">🔒</span>
+              <input class="auth-input" type="password" id="pw-admin" name="password" placeholder="Enter your password" required autocomplete="current-password">
+            </div>
+          </div>
+          <div class="auth-form-group">
+            <label class="auth-label" for="totp-admin">Authenticator Code <span class="required">*</span></label>
+            <div class="auth-input-icon-wrap">
+              <span class="auth-input-icon">🔑</span>
+              <input class="auth-input" type="text" id="totp-admin" name="totp" placeholder="6-digit TOTP code" maxlength="6" inputmode="numeric">
+            </div>
+          </div>
+          <button type="submit" class="auth-submit" style="background:linear-gradient(135deg,#7B2D8B,#9B59B6);" id="btn-login-admin">
+            ⚙️ Login to Admin Panel
+          </button>
+        </form>
+        <div class="auth-footer" style="margin-top:16px;">
+          Admin portal is on a <strong>separate subdomain</strong>: <a href="#">admin.saathighar.org</a>
+        </div>
+      </div>
+
+    </div><!-- /auth-card-body -->
+
+    <!-- Back to home -->
+    <div style="text-align:center; padding: 0 40px 28px; border-top:1px solid #f0ece6; padding-top:20px;">
+      <a href="../index.html" style="font-size:0.85rem; color:var(--text-light); display:inline-flex; align-items:center; gap:6px; font-weight:600;">
+        ← Back to SaathiGhar Home
+      </a>
+    </div>
+
+  </div><!-- /auth-card -->
+</div><!-- /auth-page -->
+</div><!-- /login-page -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>window._sb = supabase.createClient('https://hznsdikphjreklshgeyu.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6bnNkaWtwaGpyZWtsc2hnZXl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NzQ0NjUsImV4cCI6MjA5MjQ1MDQ2NX0.BATyEw2PslvmOs4g8xn0jiV-UUUFqPDBfqEtHsPp5Ak');</script>
+<script src="../assets/js/auth.js"></script>
+<script>
+// Auto-select tab from URL hash: login.html#ashram
+(function() {
+  const hash = window.location.hash.replace('#', '');
+  if (hash) {
+    document.addEventListener('DOMContentLoaded', () => {
+      const tab = document.querySelector(`.auth-role-tab[data-role="${hash}"]`);
+      if (tab) tab.click();
+    });
+  }
+})();
+</script>
+</body>
+</html>

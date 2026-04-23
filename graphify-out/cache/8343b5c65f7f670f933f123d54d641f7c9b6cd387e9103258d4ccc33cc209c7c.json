@@ -1,0 +1,1 @@
+{"nodes": [{"id": "scripts_patch_links_py", "label": "patch_links.py", "file_type": "code", "source_file": "scripts\\patch_links.py", "source_location": "L1"}], "edges": [{"source": "scripts_patch_links_py", "target": "pathlib", "relation": "imports", "confidence": "EXTRACTED", "source_file": "scripts\\patch_links.py", "source_location": "L1", "weight": 1.0}], "raw_calls": []}

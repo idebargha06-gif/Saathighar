@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login — SaathiGhar</title>
+<meta name="description" content="Secure admin portal login — IP restricted with mandatory hardware 2FA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/auth.css">
+<style>
+.admin-page { min-height:100vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#1a0030,#4a0080,#7B2D8B); padding:32px 16px; }
+.admin-card { background:#fff; border-radius:24px; box-shadow:0 24px 80px rgba(0,0,0,0.35); max-width:460px; width:100%; overflow:hidden; animation:fadeInUp 0.5s ease; }
+.admin-card-header { background:linear-gradient(135deg,#1a0030,#7B2D8B); padding:32px 36px 28px; text-align:center; }
+.admin-security-ring { width:72px; height:72px; border-radius:50%; border:3px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; font-size:2rem; margin:0 auto 16px; }
+.admin-card-header h1 { font-size:1.4rem; color:#fff; margin-bottom:4px; }
+.admin-card-header p { font-size:0.82rem; color:rgba(255,255,255,0.65); }
+.admin-card-body { padding:32px 36px; }
+.admin-security-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
+.admin-tag { font-size:0.73rem; font-weight:800; padding:5px 12px; border-radius:20px; letter-spacing:0.5px; }
+.admin-tag.red { background:rgba(192,57,43,0.1); color:var(--red); border:1px solid rgba(192,57,43,0.2); }
+.admin-tag.purple { background:rgba(123,45,139,0.1); color:#7B2D8B; border:1px solid rgba(123,45,139,0.2); }
+</style>
+<style>
+  html { scroll-behavior: auto; }
+</style>
+<!-- Force scroll to top before anything renders -->
+<script>history.scrollRestoration = 'manual'; window.scrollTo(0, 0);</script></head>
+<body>
+<div class="admin-page" id="login-page">
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <div class="admin-security-ring">⚙️</div>
+      <h1>SaathiGhar Admin Portal</h1>
+      <p>Restricted access — authorised personnel only</p>
+    </div>
+    <div class="admin-card-body">
+
+      <div class="admin-security-tags">
+        <span class="admin-tag red">🔴 IP Restricted</span>
+        <span class="admin-tag purple">🔐 Hardware 2FA Required</span>
+        <span class="admin-tag red">⚠️ All sessions logged</span>
+      </div>
+
+      <div class="auth-2fa-notice" style="background:rgba(192,57,43,0.06);border-left-color:var(--red);margin-bottom:24px;">
+        <span class="notice-icon">⚠️</span>
+        <span>This portal is accessible <strong>only from registered IP addresses</strong>. All login attempts are logged and monitored. Unauthorised access is a criminal offence.</span>
+      </div>
+
+      <form id="login-admin-form" novalidate>
+        <div class="auth-form-group">
+          <label class="auth-label" for="email-admin">Admin Email <span class="required">*</span></label>
+          <div class="auth-input-icon-wrap">
+            <span class="auth-input-icon">📧</span>
+            <input class="auth-input" type="email" id="email-admin" name="email" placeholder="admin@saathighar.org" required autocomplete="email">
+          </div>
+        </div>
+        <div class="auth-form-group">
+          <label class="auth-label" for="pw-admin">Password <span class="required">*</span></label>
+          <div class="auth-input-icon-wrap">
+            <span class="auth-input-icon">🔒</span>
+            <input class="auth-input" type="password" id="pw-admin" name="password" placeholder="Enter your password" required autocomplete="current-password" style="padding-right:48px;">
+            <button type="button" class="auth-input-eye" id="eye-admin" aria-label="Toggle password">👁️</button>
+          </div>
+        </div>
+        <div class="auth-form-group">
+          <label class="auth-label" for="totp-admin">Authenticator Code <span class="required">*</span></label>
+          <div class="auth-input-icon-wrap">
+            <span class="auth-input-icon">🔑</span>
+            <input class="auth-input" type="text" id="totp-admin" name="totp" placeholder="6-digit TOTP (Google Authenticator / YubiKey)" maxlength="6" inputmode="numeric" required>
+          </div>
+          <div class="auth-hint">Use your Google Authenticator app or hardware YubiKey.</div>
+        </div>
+        <button type="submit" class="auth-submit" style="background:linear-gradient(135deg,#4a0080,#7B2D8B);" id="btn-login-admin">
+          ⚙️ Login to Admin Panel
+        </button>
+      </form>
+
+      <div class="auth-footer" style="margin-top:20px;">
+        <a href="../index.html" style="color:var(--text-light);">← Back to SaathiGhar Home</a>
+      </div>
+      <div style="text-align:center;margin-top:12px;font-size:0.75rem;color:var(--text-light);">
+        Production admin portal: <strong>admin.saathighar.org</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>window._sb=supabase.createClient('https://hznsdikphjreklshgeyu.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6bnNkaWtwaGpyZWtsc2hnZXl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NzQ0NjUsImV4cCI6MjA5MjQ1MDQ2NX0.BATyEw2PslvmOs4g8xn0jiV-UUUFqPDBfqEtHsPp5Ak');</script>
+<script src="../assets/js/auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  redirectIfLoggedIn();
+  initPasswordToggle('eye-admin','pw-admin');
+  document.getElementById('login-admin-form')?.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const email=document.getElementById('email-admin').value;
+    const pw=document.getElementById('pw-admin').value;
+    const totp=document.getElementById('totp-admin').value;
+    if(!email||!pw){showToast('Enter your email and password.','error');return;}
+    if(!totp||totp.length!==6){showToast('Enter your 6-digit authenticator code.','error');return;}
+    await doLogin(email,pw,'admin',document.getElementById('btn-login-admin'));
+  });
+});
+</script>
+</body>
+</html>

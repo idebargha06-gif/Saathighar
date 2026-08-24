@@ -219,8 +219,20 @@ async function ensureRazorpay(){
   await new Promise(r=>{const s=document.createElement('script');s.src='https://checkout.razorpay.com/v1/checkout.js';s.onload=r;document.head.appendChild(s);});
 }
 
+// Guard: check if payments are configured
+function isPaymentReady(){
+  // Will be truthy only once a real key is set in services.js
+  const key = (typeof RAZORPAY_KEY !== 'undefined') ? RAZORPAY_KEY : '';
+  if(!key || key.includes('REPLACE_WITH_YOUR_KEY')){
+    showToast('💳 Online payments are being set up. Please contact us at support@saathighar.org to donate directly.','info');
+    return false;
+  }
+  return true;
+}
+
 // Donate — Resident
 document.getElementById('btn-donate-resident')?.addEventListener('click',async()=>{
+  if(!isPaymentReady()) return;
   const amount=getAmount('resident-amounts','resident-custom');
   if(!amount||amount<100){showToast('Minimum donation is ₹100.','error');return;}
   await ensureRazorpay();
@@ -236,6 +248,7 @@ document.getElementById('btn-donate-resident')?.addEventListener('click',async()
 
 // Donate — Ashram
 document.getElementById('btn-donate-ashram')?.addEventListener('click',async()=>{
+  if(!isPaymentReady()) return;
   const amount=getAmount('ashram-amounts','ashram-custom');
   if(!amount||amount<100){showToast('Minimum donation is ₹100.','error');return;}
   await ensureRazorpay();
@@ -251,6 +264,7 @@ document.getElementById('btn-donate-ashram')?.addEventListener('click',async()=>
 
 // Donate — Platform
 document.getElementById('btn-donate-platform')?.addEventListener('click',async()=>{
+  if(!isPaymentReady()) return;
   const amount=getAmount('platform-amounts','platform-custom');
   if(!amount||amount<50){showToast('Minimum donation is ₹50.','error');return;}
   await ensureRazorpay();
@@ -261,6 +275,7 @@ document.getElementById('btn-donate-platform')?.addEventListener('click',async()
     amountInr:amount,isAnonymous:false,message:'',
   });
 });
+
 </script>
 </body>
 </html>

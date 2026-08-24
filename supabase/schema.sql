@@ -34,6 +34,8 @@ create table if not exists public.ashrams (
   city              text,
   state             text,
   pincode           text,
+  latitude          numeric(9,6),
+  longitude         numeric(9,6),
   phone             text,
   email             text,
   year_established  int,

@@ -6,6 +6,159 @@
 /* ── Supabase (already initialised via supabase-config.js) ── */
 function getSB(){ return window._sb; }
 
+/* ── Free OpenStreetMap Geocoding (One-Time during Ashram Registration) ── */
+async function geocodeAddress(address='', city='', state='') {
+  const query = [address, city, state, 'India'].filter(Boolean).join(', ');
+  const fallbackCoords = {
+    'mumbai': { lat: 19.0760, lng: 72.8777 },
+    'delhi': { lat: 28.7041, lng: 77.1025 },
+    'pune': { lat: 18.5204, lng: 73.8567 },
+    'bangalore': { lat: 12.9716, lng: 77.5946 },
+    'chennai': { lat: 13.0827, lng: 80.2707 },
+    'kolkata': { lat: 22.5726, lng: 88.3639 },
+    'jaipur': { lat: 26.9124, lng: 75.7873 },
+    'hyderabad': { lat: 17.3850, lng: 78.4867 },
+  };
+
+  try {
+    const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=1`, {
+      headers: { 'Accept-Language': 'en', 'User-Agent': 'SaathiGhar/1.0' }
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data[0]) {
+        return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
+      }
+    }
+  } catch (err) {
+    console.warn('Geocoding offline or network error, using city fallback coordinates:', err);
+  }
+
+  // Fallback to city default or center of India
+  const cityKey = (city || '').toLowerCase().trim();
+  return fallbackCoords[cityKey] || { lat: 20.5937, lng: 78.9629 };
+}
+
+// ============================================================
+//  OPENWEATHERMAP & IP AUTO-LOCATION WEATHER INTEGRATION
+// ============================================================
+const OPENWEATHER_API_KEY = '014726480da25650b1eb141508dbdae6';
+
+// 1. Detect user's current city & coordinates automatically from IP
+async function detectUserLocation() {
+  try {
+    const res = await fetch('http://ip-api.com/json', { timeout: 3000 });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.city && data.lat && data.lon) {
+        return { city: data.city, lat: data.lat, lon: data.lon };
+      }
+    }
+  } catch (e) {}
+
+  try {
+    const res2 = await fetch('https://get.geojs.io/v1/ip/geo.json', { timeout: 3000 });
+    if (res2.ok) {
+      const data2 = await res2.json();
+      if (data2 && data2.city && data2.latitude && data2.longitude) {
+        return { city: data2.city, lat: parseFloat(data2.latitude), lon: parseFloat(data2.longitude) };
+      }
+    }
+  } catch (e) {}
+
+  return null;
+}
+
+// 2. Fetch weather via OpenWeatherMap (or Open-Meteo as high-accuracy fallback)
+async function fetchLiveWeather(city = null, lat = null, lon = null) {
+  const weatherIcons = {
+    Clear: '☀️', Clouds: '⛅', Rain: '🌧️', Drizzle: '🌦️',
+    Thunderstorm: '🌩️', Snow: '❄️', Mist: '🌫️', Fog: '🌫️', Haze: '🌫️'
+  };
+
+  // If city/lat/lon not provided, auto-detect location from IP
+  if (!lat || !lon || !city) {
+    const autoLoc = await detectUserLocation();
+    if (autoLoc) {
+      city = city || autoLoc.city;
+      lat = lat || autoLoc.lat;
+      lon = lon || autoLoc.lon;
+    }
+  }
+
+  const targetCity = city || 'Bhubaneswar';
+
+  // PATH A: Try OpenWeatherMap API
+  try {
+    let owmUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(targetCity)},IN&units=metric&appid=${OPENWEATHER_API_KEY}`;
+    if (lat && lon) {
+      owmUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${OPENWEATHER_API_KEY}`;
+    }
+
+    const res = await fetch(owmUrl);
+    if (res.ok) {
+      const data = await res.json();
+      const temp = Math.round(data.main.temp);
+      const condition = data.weather?.[0]?.main || 'Clear';
+      const desc = data.weather?.[0]?.description || 'Pleasant';
+      const icon = weatherIcons[condition] || '☀️';
+      const cityName = data.name || targetCity;
+      return {
+        temp: `${icon} ${temp}°C`,
+        desc: `${desc.charAt(0).toUpperCase() + desc.slice(1)} in ${cityName}`,
+        condition,
+        city: cityName
+      };
+    }
+  } catch (err) {
+    console.warn("OpenWeatherMap fetch notice:", err);
+  }
+
+  // PATH B: Try Open-Meteo Live API (Zero key required, instant live weather for lat/lon)
+  if (lat && lon) {
+    try {
+      const omUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+      const res2 = await fetch(omUrl);
+      if (res2.ok) {
+        const data2 = await res2.json();
+        const temp = Math.round(data2.current_weather.temperature);
+        const code = data2.current_weather.weathercode;
+        let condName = 'Pleasant';
+        let icon = '☀️';
+        if (code >= 1 && code <= 3) { condName = 'Partly Cloudy'; icon = '⛅'; }
+        else if (code >= 45 && code <= 48) { condName = 'Foggy'; icon = '🌫️'; }
+        else if (code >= 51 && code <= 67) { condName = 'Rainy'; icon = '🌧️'; }
+        else if (code >= 80 && code <= 99) { condName = 'Stormy'; icon = '🌩️'; }
+
+        return {
+          temp: `${icon} ${temp}°C`,
+          desc: `${condName} in ${targetCity}`,
+          condition: condName,
+          city: targetCity
+        };
+      }
+    } catch (e) {}
+  }
+
+  return {
+    temp: '☀️ 28°C',
+    desc: `Pleasant in ${targetCity}`,
+    condition: 'Clear',
+    city: targetCity
+  };
+}
+
+async function initWeatherWidget(tempElId = 'weatherTemp', descElId = 'weatherDesc', fallbackCity = null) {
+  const tempEl = document.getElementById(tempElId);
+  const descEl = document.getElementById(descElId);
+  if (!tempEl && !descEl) return;
+
+  // Auto-fetch live weather by auto location
+  const weather = await fetchLiveWeather(fallbackCity);
+  if (tempEl) tempEl.innerHTML = weather.temp;
+  if (descEl) descEl.textContent = weather.desc;
+}
+
 // ============================================================
 //  CLOUDINARY — Image Upload
 // ============================================================

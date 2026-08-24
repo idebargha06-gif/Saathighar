@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/home.css">
 <link rel="stylesheet" href="assets/css/dashboard.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 
 </head>
 <body>
@@ -254,24 +256,91 @@
       <div class="divider"></div>
       <p>Every ashram on SaathiGhar is verified, rated, and actively monitored for quality.</p>
     </div>
-    <div class="map-container reveal">
-      <div class="map-placeholder">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12rem;opacity:0.08;color:var(--teal);">&#127757;</div>
-        <div style="position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:40px;justify-content:center;padding:40px;">
-          <div class="map-pin"><div class="pin-dot"></div><div class="pin-tooltip">Mumbai — 24 Ashrams &#11088; 4.6</div></div>
-          <div class="map-pin"><div class="pin-dot"></div><div class="pin-tooltip">Delhi — 31 Ashrams &#11088; 4.4</div></div>
-          <div class="map-pin"><div class="pin-dot"></div><div class="pin-tooltip">Pune — 18 Ashrams &#11088; 4.7</div></div>
-          <div class="map-pin"><div class="pin-dot"></div><div class="pin-tooltip">Bangalore — 22 Ashrams &#11088; 4.5</div></div>
-          <div class="map-pin"><div class="pin-dot"></div><div class="pin-tooltip">Chennai — 15 Ashrams &#11088; 4.3</div></div>
-          <div class="map-pin"><div class="pin-dot"></div><div class="pin-tooltip">Kolkata — 19 Ashrams &#11088; 4.5</div></div>
-          <div class="map-pin"><div class="pin-dot"></div><div class="pin-tooltip">Jaipur — 11 Ashrams &#11088; 4.6</div></div>
-          <div class="map-pin"><div class="pin-dot"></div><div class="pin-tooltip">Hyderabad — 14 Ashrams &#11088; 4.4</div></div>
+    <div class="map-container reveal" style="position:relative;">
+      <!-- Search bar overlay -->
+      <div style="position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:1000;width:min(480px,90%);display:flex;gap:8px;">
+        <div style="flex:1;position:relative;">
+          <input id="mapSearchInput" type="text" placeholder="Search a city or ashram..." autocomplete="off"
+            style="width:100%;padding:12px 16px 12px 42px;border-radius:12px;border:none;box-shadow:0 4px 20px rgba(0,0,0,0.18);font-size:0.95rem;font-family:inherit;outline:none;background:#fff;">
+          <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.1rem;">🔍</span>
+          <div id="mapSearchResults" style="display:none;position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.15);overflow:hidden;max-height:220px;overflow-y:auto;z-index:2000;"></div>
         </div>
-        <div class="map-cta-overlay"><a href="find-ashrams.html" class="btn btn-primary">&#128205; Find an Ashram Near You</a></div>
+        <button id="mapLocateBtn" title="Use my location"
+          style="padding:12px 14px;border-radius:12px;border:none;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.18);cursor:pointer;font-size:1.1rem;transition:all .2s;"
+          onmouseover="this.style.background='#f0f8ff'" onmouseout="this.style.background='#fff'">📍</button>
       </div>
+      <div id="sg-map-home" style="width:100%;height:460px;border-radius:20px;overflow:hidden;"></div>
     </div>
+    <div class="map-cta-overlay" style="margin-top:24px;text-align:center;"><a href="find-ashrams.html" class="btn btn-primary">&#128205; Find an Ashram Near You</a></div>
   </div>
 </section>
+
+<!-- Leaflet map init -->
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  const CITIES=[
+    {name:'Mumbai',lat:19.0760,lng:72.8777,count:24,rating:4.6},
+    {name:'Delhi',lat:28.7041,lng:77.1025,count:31,rating:4.4},
+    {name:'Pune',lat:18.5204,lng:73.8567,count:18,rating:4.7},
+    {name:'Bangalore',lat:12.9716,lng:77.5946,count:22,rating:4.5},
+    {name:'Chennai',lat:13.0827,lng:80.2707,count:15,rating:4.3},
+    {name:'Kolkata',lat:22.5726,lng:88.3639,count:19,rating:4.5},
+    {name:'Jaipur',lat:26.9124,lng:75.7873,count:11,rating:4.6},
+    {name:'Hyderabad',lat:17.3850,lng:78.4867,count:14,rating:4.4},
+  ];
+
+  const map=L.map('sg-map-home',{zoomControl:true,scrollWheelZoom:false}).setView([22,80],5);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains:'abcd',maxZoom:19
+  }).addTo(map);
+
+  CITIES.forEach(c=>{
+    const icon=L.divIcon({
+      className:'',
+      html:`<div style="background:linear-gradient(135deg,#1A5276,#2980B9);color:#fff;padding:6px 12px;border-radius:20px;font-size:0.75rem;font-weight:800;white-space:nowrap;box-shadow:0 3px 12px rgba(26,82,118,0.4);border:2px solid #fff;font-family:Nunito,sans-serif;">${c.count} Ashrams</div>`,
+      iconAnchor:[40,16]
+    });
+    const marker=L.marker([c.lat,c.lng],{icon}).addTo(map);
+    marker.bindPopup(`<div style="font-family:Nunito,sans-serif;min-width:160px;"><strong style="font-size:1rem;color:#1A5276;">${c.name}</strong><br><span style="font-size:0.85rem;color:#555;">🏡 ${c.count} verified ashrams</span><br><span style="font-size:0.85rem;color:#D4A017;">⭐ ${c.rating} avg rating</span><br><a href="find-ashrams.html" style="display:inline-block;margin-top:8px;padding:6px 12px;background:#1A5276;color:#fff;border-radius:8px;font-size:0.8rem;font-weight:700;text-decoration:none;">View Ashrams →</a></div>`,{maxWidth:200});
+  });
+
+  // Location button
+  document.getElementById('mapLocateBtn')?.addEventListener('click',()=>{
+    if(!navigator.geolocation){alert('Geolocation not supported.');return;}
+    navigator.geolocation.getCurrentPosition(pos=>{
+      map.setView([pos.coords.latitude,pos.coords.longitude],10);
+      L.marker([pos.coords.latitude,pos.coords.longitude],{
+        icon:L.divIcon({className:'',html:'<div style="background:#e74c3c;width:16px;height:16px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.3);"></div>',iconAnchor:[8,8]})
+      }).addTo(map).bindPopup('📍 You are here').openPopup();
+    },()=>{alert('Could not get your location.');});
+  });
+
+  // City search
+  const inp=document.getElementById('mapSearchInput');
+  const res=document.getElementById('mapSearchResults');
+  inp?.addEventListener('input',()=>{
+    const q=inp.value.toLowerCase().trim();
+    if(!q){res.style.display='none';return;}
+    const matches=CITIES.filter(c=>c.name.toLowerCase().includes(q));
+    if(!matches.length){res.style.display='none';return;}
+    res.style.display='block';
+    res.innerHTML=matches.map(c=>`<div data-lat="${c.lat}" data-lng="${c.lng}" data-name="${c.name}" style="padding:12px 16px;cursor:pointer;font-family:Nunito,sans-serif;font-size:0.9rem;border-bottom:1px solid #f5f0ea;"><strong>${c.name}</strong> <span style="color:#888;font-size:0.8rem;">— ${c.count} ashrams</span></div>`).join('');
+    res.querySelectorAll('[data-lat]').forEach(el=>{
+      el.addEventListener('mouseover',()=>el.style.background='#f5f0ea');
+      el.addEventListener('mouseout',()=>el.style.background='');
+      el.addEventListener('click',()=>{
+        map.setView([parseFloat(el.dataset.lat),parseFloat(el.dataset.lng)],12);
+        inp.value=el.dataset.name;
+        res.style.display='none';
+      });
+    });
+  });
+  document.addEventListener('click',e=>{if(!inp?.contains(e.target)&&!res?.contains(e.target))res.style.display='none';});
+});
+</script>
+
 
 <section class="volunteer-donate section" id="donate">
   <div class="container">

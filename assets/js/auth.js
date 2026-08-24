@@ -86,23 +86,51 @@ function validateStep(form,idx){
 }
 
 /* ── Ashram search ── */
-const ASHRAMS=[
+const ASHRAMS_FALLBACK=[
   {name:'Sunrise Senior Home',city:'Pune'},{name:'Shanti Niwas Ashram',city:'Mumbai'},
   {name:'Anand Vriddhashram',city:'Delhi'},{name:'Prem Sagar Elder Care',city:'Bangalore'},
   {name:'Vrindavan Ashram',city:'Jaipur'},{name:'Seva Sadan Home',city:'Chennai'},
   {name:'Sneha Bhavan',city:'Kolkata'},{name:'Asha Jyoti Ashram',city:'Hyderabad'},
 ];
+function renderAshramResults(res,items,inp,hid){
+  res.innerHTML=items.length
+    ?items.map(a=>`<div class="ashram-result-item" data-name="${a.name}" data-city="${a.city}" data-id="${a.id||''}"><strong>${a.name}</strong><div class="city">📍 ${a.city}${a.state?', '+a.state:''}</div></div>`).join('')
+    :'<div class="ashram-result-item" style="color:var(--text-light)">No results found</div>';
+  res.classList.add('open');
+}
 function initAshramSearch(inId,resId,hidId){
   const inp=document.getElementById(inId),res=document.getElementById(resId),hid=document.getElementById(hidId);
   if(!inp||!res)return;
+  let debounceTimer;
   inp.addEventListener('input',()=>{
     const q=inp.value.toLowerCase().trim();
     if(!q){res.classList.remove('open');return;}
-    const m=ASHRAMS.filter(a=>a.name.toLowerCase().includes(q)||a.city.toLowerCase().includes(q));
-    res.innerHTML=m.length?m.map(a=>`<div class="ashram-result-item" data-name="${a.name}" data-city="${a.city}"><strong>${a.name}</strong><div class="city">📍 ${a.city}</div></div>`).join(''):'<div class="ashram-result-item" style="color:var(--text-light)">No results</div>';
-    res.classList.add('open');
+    clearTimeout(debounceTimer);
+    debounceTimer=setTimeout(async()=>{
+      // Try Supabase first
+      try{
+        const sb=typeof getSB==='function'?getSB():null;
+        if(sb){
+          const {data,error}=await sb.from('ashrams')
+            .select('id,name,city,state').eq('is_active',true).eq('is_verified',true)
+            .or(`name.ilike.%${q}%,city.ilike.%${q}%`).limit(8);
+          if(!error&&data&&data.length>=0){
+            renderAshramResults(res,data,inp,hid);return;
+          }
+        }
+      }catch(e){ /* fall through to local */ }
+      // Fallback to local list
+      const m=ASHRAMS_FALLBACK.filter(a=>a.name.toLowerCase().includes(q)||a.city.toLowerCase().includes(q));
+      renderAshramResults(res,m,inp,hid);
+    },250);
   });
-  res.addEventListener('click',e=>{const it=e.target.closest('[data-name]');if(!it)return;inp.value=`${it.dataset.name}, ${it.dataset.city}`;if(hid)hid.value=it.dataset.name;res.classList.remove('open');});
+  res.addEventListener('click',e=>{
+    const it=e.target.closest('[data-name]');
+    if(!it)return;
+    inp.value=`${it.dataset.name}, ${it.dataset.city}`;
+    if(hid)hid.value=it.dataset.id||it.dataset.name;
+    res.classList.remove('open');
+  });
   document.addEventListener('click',e=>{if(!inp.contains(e.target)&&!res.contains(e.target))res.classList.remove('open');});
 }
 
@@ -141,7 +169,7 @@ const PORTAL={
   ashram:'../../portals/ashram/ashram-dashboard.html',
   volunteer:'../../portals/volunteer/volunteer-hub.html',
   elderly:'../../portals/elderly/elderly-dashboard.html',
-  admin:'../../admin/dashboard.html',
+  admin:'../../portals/admin/admin-dashboard.html',
 };
 
 function getSB(){return window._sb;}
@@ -385,13 +413,27 @@ function initAshramReg(){
     try{
       const email=document.getElementById('mgr-email').value;
       const pw=document.getElementById('pw-ashram-reg').value;
+      const ashramName  = document.getElementById('ashram-name')?.value || '';
+      const ashramCity  = document.getElementById('ashram-city')?.value || '';
+      const ashramState = document.getElementById('ashram-state')?.value || '';
+      const ashramAddr  = document.getElementById('ashram-address')?.value || ashramCity;
+
+      // Convert text address into latitude and longitude coordinates once during registration
+      let coords = { lat: 20.5937, lng: 78.9629 };
+      if (typeof geocodeAddress === 'function') {
+        coords = await geocodeAddress(ashramAddr, ashramCity, ashramState);
+      }
+
       await doSignUp(email,pw,{
         role:'ashram',status:'pending',
         full_name:`${document.getElementById('mgr-fname').value} ${document.getElementById('mgr-lname').value}`,
         mobile:document.getElementById('mgr-mobile').value,
-        ashram_name:document.getElementById('ashram-name').value,
-        ashram_city:document.getElementById('ashram-city').value,
-        ashram_state:document.getElementById('ashram-state').value,
+        ashram_name:ashramName,
+        ashram_city:ashramCity,
+        ashram_state:ashramState,
+        ashram_address:ashramAddr,
+        latitude:coords.lat,
+        longitude:coords.lng,
         designation:document.getElementById('mgr-designation').value,
       });
       setLoading(btn,false);

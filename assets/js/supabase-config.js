@@ -11,7 +11,7 @@ const PORTAL = {
   ashram:    '../../portals/ashram/ashram-dashboard.html',
   volunteer: '../../portals/volunteer/volunteer-hub.html',
   elderly:   '../../portals/elderly/elderly-dashboard.html',
-  admin:     '../../admin/dashboard.html',
+  admin:     '../../portals/admin/admin-dashboard.html',
 };
 
 // Redirect to correct portal based on role in user metadata

@@ -118,14 +118,89 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => window.showToast(btn.dataset.toast, btn.dataset.toastType || 'info'));
   });
 
-  // ── Ashram search filter ──
+  // ── Ashram listing filter engine ──
   const searchInput = document.getElementById('ashramSearch');
-  if (searchInput) {
-    searchInput.addEventListener('input', () => {
-      const q = searchInput.value.toLowerCase();
-      document.querySelectorAll('.ashram-card').forEach(card => {
-        card.style.display = card.textContent.toLowerCase().includes(q) ? '' : 'none';
-      });
+  const stateSelect = document.getElementById('stateFilter');
+  const countEl    = document.getElementById('ashramCount');
+  const listingsEl  = document.querySelector('.ashram-listings');
+  const ratingBtns  = document.querySelectorAll('.star-filter-btn');
+
+  let activeMinRating = 0; // start open — no rating filter by default
+
+  function applyAshramFilters() {
+    const q     = (searchInput?.value || '').toLowerCase().trim();
+    const state = (stateSelect?.value || '').trim();
+    const allCards = document.querySelectorAll('.ashram-card');
+    let   visible  = 0;
+    const visibleIds = new Set();
+
+    allCards.forEach(card => {
+      const name      = (card.dataset.name  || card.querySelector('.ashram-name')?.textContent || '').toLowerCase();
+      const city      = (card.dataset.city  || '').toLowerCase();
+      const cardState = (card.dataset.state || '');
+      const rating    = parseFloat(card.dataset.rating || '5');
+      const fullText  = card.textContent.toLowerCase();
+
+      const okSearch = !q     || name.includes(q) || city.includes(q) || fullText.includes(q);
+      const okState  = !state || state === 'All States' || cardState === state;
+      const okRating = activeMinRating === 0 || rating >= activeMinRating;
+
+      const show = okSearch && okState && okRating;
+      card.style.display = show ? '' : 'none';
+      if (show) {
+        visible++;
+        visibleIds.add(card.id);
+      }
     });
+
+    if (countEl) countEl.textContent = visible;
+
+    // Sync map pins with visible cards
+    if (typeof window._sgMapUpdatePins === 'function') {
+      window._sgMapUpdatePins(visibleIds);
+    }
+    // No-results message
+    let noRes = listingsEl?.querySelector('.sg-no-results');
+    if (visible === 0 && listingsEl) {
+      if (!noRes) {
+        noRes = document.createElement('div');
+        noRes.className = 'sg-no-results';
+        noRes.style.cssText = 'padding:48px;text-align:center;color:var(--text-mid);font-size:1rem;grid-column:1/-1;';
+        noRes.innerHTML = '<div style="font-size:2.5rem;margin-bottom:10px;">🔍</div><strong>No ashrams match your search</strong><br><span style="font-size:0.85rem;opacity:0.65;">Try a different city or reset your filters.</span>';
+        listingsEl.appendChild(noRes);
+      }
+    } else {
+      noRes?.remove();
+    }
   }
+
+  // Wire text search
+  searchInput?.addEventListener('input', applyAshramFilters);
+
+  // Wire state dropdown
+  stateSelect?.addEventListener('change', applyAshramFilters);
+
+  // Wire star rating buttons
+  ratingBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      ratingBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      // e.g. "4★+" → 4, "4.5★+" → 4.5
+      activeMinRating = parseFloat(btn.textContent) || 0;
+      applyAshramFilters();
+    });
+  });
+
+  // Reset filters button
+  document.querySelector('.reset-filters')?.addEventListener('click', () => {
+    if (searchInput) searchInput.value = '';
+    if (stateSelect) stateSelect.value = '';
+    activeMinRating = 0;
+    ratingBtns.forEach(b => b.classList.remove('active'));
+    applyAshramFilters();
+    window.showToast('Filters reset', 'info');
+  });
+
+  // Initial sync
+  applyAshramFilters();
 });

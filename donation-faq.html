@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donation FAQs & 80G Tax Guidance — SaathiGhar</title>
+<meta name="description" content="Frequently asked questions about donating to SaathiGhar, 80G tax receipts, payment security, and direct ashram care transparency.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/header.css">
+<link rel="stylesheet" href="assets/css/home.css">
+
+<style>
+.faq-hero {
+  background: linear-gradient(135deg, var(--teal-dark) 0%, #104364 50%, var(--teal) 100%);
+  padding: 70px 24px 45px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.faq-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(240, 192, 64, 0.35);
+  color: var(--gold-light);
+  padding: 6px 18px;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.faq-hero h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin-bottom: 12px;
+}
+
+.faq-hero p {
+  font-size: 1.02rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.faq-main-section {
+  padding: 50px 24px;
+  background: var(--cream);
+}
+
+.faq-container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.faq-category-title {
+  font-size: 1.2rem;
+  color: var(--teal-dark);
+  font-weight: 800;
+  margin: 32px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.faq-category-title:first-of-type {
+  margin-top: 0;
+}
+
+.faq-card-item {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e5e0d8;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(14, 58, 84, 0.04);
+  transition: all 0.2s ease;
+}
+
+.faq-card-item:hover {
+  border-color: var(--teal);
+}
+
+.faq-card-header {
+  padding: 18px 20px;
+  font-weight: 800;
+  font-size: 0.98rem;
+  color: var(--teal-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.faq-card-header .arrow {
+  font-size: 0.82rem;
+  color: var(--saffron);
+  transition: transform 0.25s ease;
+}
+
+.faq-card-item.open .faq-card-header .arrow {
+  transform: rotate(180deg);
+}
+
+.faq-card-body {
+  padding: 0 20px 18px;
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  line-height: 1.55;
+  display: none;
+  border-top: 1px solid #f5f0e8;
+  margin-top: 4px;
+  padding-top: 14px;
+}
+
+.faq-card-item.open .faq-card-body {
+  display: block;
+}
+
+.help-banner-card {
+  background: linear-gradient(135deg, #ffffff, #FFFDF9);
+  border: 2px solid rgba(232, 112, 10, 0.2);
+  border-radius: 18px;
+  padding: 28px 24px;
+  text-align: center;
+  margin-top: 40px;
+  box-shadow: var(--shadow-sm);
+}
+
+.help-banner-card h3 {
+  font-size: 1.25rem;
+  color: var(--teal-dark);
+  margin-bottom: 6px;
+  font-weight: 800;
+}
+
+.help-banner-card p {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  margin-bottom: 18px;
+}
+
+.help-contact-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.help-btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.help-btn.primary {
+  background: var(--teal-dark);
+  color: #ffffff;
+}
+
+.help-btn.primary:hover {
+  background: var(--teal);
+}
+
+.help-btn.secondary {
+  background: var(--saffron);
+  color: #ffffff;
+}
+
+.help-btn.secondary:hover {
+  background: var(--saffron-lt);
+}
+
+/* ── Sleek Compact Landing-Footer Overrides ── */
+.site-footer {
+  padding: 38px 0 0 !important;
+  background: var(--teal-dark) !important;
+}
+
+.footer-grid {
+  gap: 28px !important;
+  padding-bottom: 24px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.footer-brand .footer-logo img {
+  height: 34px !important;
+  width: auto !important;
+}
+
+.footer-brand .logo-name {
+  font-size: 1.15rem !important;
+}
+
+.footer-desc {
+  font-size: 0.84rem !important;
+  line-height: 1.45 !important;
+  margin-bottom: 12px !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.helpline-badge {
+  padding: 6px 12px !important;
+  border-radius: 8px !important;
+}
+
+.helpline-badge .helpline-label {
+  font-size: 0.65rem !important;
+}
+
+.helpline-badge .helpline-number {
+  font-size: 1.05rem !important;
+}
+
+.footer-col h4 {
+  font-size: 0.82rem !important;
+  margin-bottom: 10px !important;
+  letter-spacing: 0.8px !important;
+}
+
+.footer-links {
+  gap: 6px !important;
+}
+
+.footer-links a, .footer-links span {
+  font-size: 0.84rem !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.social-link {
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 0.85rem !important;
+}
+
+.footer-bottom {
+  padding: 14px 0 !important;
+  font-size: 0.78rem !important;
+}
+
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 20px !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header Component -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="assets/images/logo.png" alt="SaathiGhar Logo">
+      <div class="logo-text">
+        <span class="logo-name">SaathiGhar</span>
+        <span class="logo-tagline">Doori Door Nahi Karti</span>
+      </div>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="find-ashrams.html" class="nav-link">Find Ashrams</a>
+      <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+      <a href="index.html#stories" class="nav-link">Stories</a>
+      <a href="donate.html" class="nav-link">Donate</a>
+      <a href="index.html#about" class="nav-link">About</a>
+    </nav>
+    <div class="header-controls">
+      <div class="font-size-toggle">
+        <button class="fs-toggle-btn fs-sm" data-scale="0.9">A-</button>
+        <button class="fs-toggle-btn fs-md active" data-scale="1">A</button>
+        <button class="fs-toggle-btn fs-lg-btn" data-scale="1.2">A+</button>
+      </div>
+      <button class="sos-btn" id="sosBtn">&#128682; <span>Emergency</span></button>
+      <div class="login-dropdown" id="loginDropdown">
+        <button class="login-btn">Login &#9660;</button>
+        <div class="login-menu">
+          <a href="auth/login-family.html" class="login-menu-item" id="login-family-link">
+            <span class="menu-icon">&#128106;</span>
+            <div><strong>Family Member</strong><br><small>Track your parent's care</small></div>
+          </a>
+          <a href="auth/login-ashram.html" class="login-menu-item" id="login-ashram-link">
+            <span class="menu-icon">&#127969;</span>
+            <div><strong>Ashram Manager</strong><br><small>Manage residents &amp; families</small></div>
+          </a>
+          <a href="auth/login-volunteer.html" class="login-menu-item" id="login-volunteer-link">
+            <span class="menu-icon">&#129309;</span>
+            <div><strong>Volunteer / NGO</strong><br><small>Adopt a grandparent</small></div>
+          </a>
+          <a href="auth/login-resident.html" class="login-menu-item" id="login-resident-link">
+            <span class="menu-icon">&#129491;</span>
+            <div><strong>Resident Access</strong><br><small>Staff-assisted tablet login</small></div>
+          </a>
+          <a href="auth/login-admin.html" class="login-menu-item" id="login-admin-link" style="border-top:1px solid #f0ece6;">
+            <span class="menu-icon">&#9881;&#65039;</span>
+            <div><strong>Admin Portal</strong><br><small>Restricted — authorised only</small></div>
+          </a>
+        </div>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="find-ashrams.html" class="nav-link">Find Ashrams</a>
+  <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+  <a href="index.html#stories" class="nav-link">Stories</a>
+  <a href="donate.html" class="nav-link">Donate</a>
+  <div class="mobile-menu-actions">
+    <button class="btn btn-primary btn-sm" onclick="document.getElementById('sosBtn').click()">Emergency</button>
+    <a href="auth/login-family.html" class="btn btn-teal btn-sm" id="mobile-login-btn">Login</a>
+  </div>
+</div>
+
+<!-- SOS Emergency Modal -->
+<div class="overlay" id="sosModal" style="display:none;">
+  <div class="modal" style="text-align:center;">
+    <button class="modal-close" onclick="document.getElementById('sosModal').style.display='none'">&#10005;</button>
+    <div style="font-size:3rem;margin-bottom:12px;">&#128682;</div>
+    <h2 style="color:#C0392B;margin-bottom:8px;">Emergency Help</h2>
+    <p style="margin-bottom:24px;">Contact these helplines immediately for urgent assistance.</p>
+    <div class="helpline-numbers">
+      <div class="helpline-item"><span>SaathiGhar Helpline</span><span class="number">1800-SAATHI</span></div>
+      <div class="helpline-item"><span>Elder Helpline (Govt)</span><span class="number">14567</span></div>
+      <div class="helpline-item"><span>National Emergency</span><span class="number">112</span></div>
+      <div class="helpline-item"><span>Ambulance</span><span class="number">108</span></div>
+    </div>
+    <button class="btn btn-primary" style="margin-top:24px;width:100%;"
+      onclick="document.getElementById('sosModal').style.display='none'">Close</button>
+  </div>
+</div>
+
+<!-- Hero Section -->
+<section class="faq-hero">
+  <div class="container">
+    <div class="faq-hero-badge">
+      <span>📜 Donor Help &amp; Tax Guidelines</span>
+    </div>
+    <h1>Donation Frequently Asked Questions</h1>
+    <p>Find answers regarding 80G tax exemption receipts, payment security, direct elder impact, and anonymity options.</p>
+  </div>
+</section>
+
+<!-- Main FAQ Content -->
+<section class="faq-main-section">
+  <div class="faq-container">
+
+    <!-- Category 1 -->
+    <div class="faq-category-title">
+      <span>📜</span> 80G Tax Exemption &amp; Receipts
+    </div>
+
+    <div class="faq-card-item open">
+      <div class="faq-card-header">
+        <span>Is my donation eligible for 80G tax exemption?</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-card-body">
+        Yes, all monetary contributions made through SaathiGhar to registered partner ashrams and elderly welfare programs are eligible for up to 50% tax exemption under Section 80G of the Indian Income Tax Act.
+      </div>
+    </div>
+
+    <div class="faq-card-item">
+      <div class="faq-card-header">
+        <span>How and when will I receive my 80G tax receipt?</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-card-body">
+        As soon as your payment is processed via Razorpay, a digital 80G receipt (with PAN details and 80G Registration Number) is automatically generated and sent to your registered email address within minutes.
+      </div>
+    </div>
+
+    <div class="faq-card-item">
+      <div class="faq-card-header">
+        <span>Is PAN card mandatory for claiming 80G benefits?</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-card-body">
+        As per Indian Income Tax regulations, providing your PAN number is required if you wish to receive an official 80G tax receipt for tax filing purposes. If you do not require a tax receipt, PAN is optional.
+      </div>
+    </div>
+
+    <!-- Category 2 -->
+    <div class="faq-category-title">
+      <span>🔒</span> Payments, Anonymity &amp; Security
+    </div>
+
+    <div class="faq-card-item">
+      <div class="faq-card-header">
+        <span>Are online payments safe on SaathiGhar?</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-card-body">
+        Yes! All online transactions are processed through <strong>Razorpay</strong>, India's leading PCI-DSS Level 1 compliant payment gateway. We support UPI (GPay, PhonePe, Paytm), NetBanking, Credit/Debit Cards, and Wallets. SaathiGhar does not store your card or bank details.
+      </div>
+    </div>
+
+    <div class="faq-card-item">
+      <div class="faq-card-header">
+        <span>Can I donate anonymously?</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-card-body">
+        Yes. You can simply check the <em>"Donate anonymously"</em> box on the donation checkout form. Your name will be hidden from the public Wall of Kindness and from public donor lists.
+      </div>
+    </div>
+
+    <!-- Category 3 -->
+    <div class="faq-category-title">
+      <span>🤝</span> Direct Impact &amp; Transparency
+    </div>
+
+    <div class="faq-card-item">
+      <div class="faq-card-header">
+        <span>How does my money reach the elderly resident?</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-card-body">
+        98% of resident sponsorships are directly remitted to the verified ashram care manager's bank account for purchasing meals, medicines, or personal care supplies. A tiny 2% platform fee covers payment processing fees.
+      </div>
+    </div>
+
+    <div class="faq-card-item">
+      <div class="faq-card-header">
+        <span>Will I get updates about the resident I sponsored?</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-card-body">
+        Yes! For resident sponsorships, donors receive periodic photo updates and gratitude notes from the ashram staff showcasing how your contribution provided meals, medicines, or comfort.
+      </div>
+    </div>
+
+    <!-- Help Banner -->
+    <div class="help-banner-card">
+      <h3>Have additional questions or need assistance?</h3>
+      <p>Our dedicated donor care team is here to assist you with receipts, custom sponsorships, or corporate CSR partnerships.</p>
+      <div class="help-contact-buttons">
+        <a href="mailto:support@saathighar.org" class="help-btn primary">✉️ Email support@saathighar.org</a>
+        <a href="tel:1800722844" class="help-btn secondary">📞 Call 1800-SAATHI</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Landing Page Footer System (Compact & Trust-Oriented) -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/images/logo.png" alt="SaathiGhar Logo">
+          <span class="logo-name" style="color:#fff;">SaathiGhar</span>
+        </div>
+        <p class="footer-desc">Reconnecting families with parents in old-age homes across India with love, transparency, and care.</p>
+        <div class="helpline-badge">
+          <span class="helpline-label">24/7 Donor Helpline</span>
+          <span class="helpline-number">1800-SAATHI</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="find-ashrams.html">Find Ashrams</a>
+          <a href="donate.html">Donate &amp; Sponsor</a>
+          <a href="index.html#how-it-works">How It Works</a>
+          <a href="index.html#stories">Stories</a>
+          <a href="donation-faq.html">Donation FAQs</a>
+          <a href="index.html#about">Contact Us</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Trust &amp; Security</h4>
+        <div class="footer-links">
+          <span>📜 80G Tax Deductible</span>
+          <span>🧾 Instant Email Receipt</span>
+          <span>🔒 Secure payments via Razorpay</span>
+          <span>✅ Verified Ashram Partners</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <p style="color:rgba(255,255,255,0.6);font-size:0.82rem;margin-bottom:10px;">Stay connected with stories and updates.</p>
+        <div class="social-links">
+          <a class="social-link" href="#" title="Facebook">f</a>
+          <a class="social-link" href="#" title="Instagram">&#128247;</a>
+          <a class="social-link" href="#" title="Twitter">X</a>
+          <a class="social-link" href="#" title="YouTube">&#9654;</a>
+          <a class="social-link" href="#" title="LinkedIn">in</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 SaathiGhar. All rights reserved. Made with ❤️ for every parent who deserves to be remembered.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Grievance Officer</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>
+document.querySelectorAll('.faq-card-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const parent = header.parentElement;
+    parent.classList.toggle('open');
+  });
+});
+</script>
+</body>
+</html>

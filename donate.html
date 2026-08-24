@@ -3,279 +3,1340 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Donate — SaathiGhar | Support Elderly Residents</title>
-<meta name="description" content="Sponsor a resident's month, donate to an ashram, or support the SaathiGhar platform. Every rupee counts.">
+<title>Donate & Sponsor Elderly Care — SaathiGhar</title>
+<meta name="description" content="Sponsor a resident's monthly meals, medicines, or support ashrams across India. 100% transparent giving with 80G tax benefits.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/header.css">
+<link rel="stylesheet" href="assets/css/home.css">
+
 <style>
-.donate-hero{background:linear-gradient(135deg,#7a4800,#D4A017);padding:80px 24px 60px;text-align:center;color:#fff;}
-.donate-hero h1{font-size:clamp(2rem,4vw,3rem);margin-bottom:12px;}
-.donate-hero p{opacity:.85;max-width:560px;margin:0 auto;}
-.donate-tabs{display:flex;gap:0;max-width:600px;margin:0 auto 40px;background:var(--cream);border-radius:16px;padding:6px;}
-.donate-tab{flex:1;padding:12px;text-align:center;border-radius:12px;cursor:pointer;font-weight:800;font-size:.9rem;color:var(--text-mid);transition:all .2s;}
-.donate-tab.active{background:#fff;color:var(--teal-dark);box-shadow:0 2px 10px rgba(0,0,0,.08);}
-.donate-panel{display:none;max-width:600px;margin:0 auto;}
-.donate-panel.active{display:block;}
-.amount-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0;}
-.amount-btn{border:2px solid #e8e0d8;background:#fff;border-radius:12px;padding:14px 8px;text-align:center;cursor:pointer;font-weight:800;font-size:1rem;color:var(--teal-dark);transition:all .15s;}
-.amount-btn:hover{border-color:var(--gold);}
-.amount-btn.selected{border-color:var(--gold);background:rgba(212,160,23,.08);}
-.amount-btn small{display:block;font-size:.68rem;font-weight:600;color:var(--text-light);margin-top:3px;}
-.custom-amount-wrap{position:relative;margin-top:6px;}
-.custom-amount-wrap span{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-weight:800;color:var(--teal-dark);font-size:1.1rem;}
-.custom-amount-wrap input{padding-left:30px;}
-.donate-card{background:#fff;border-radius:20px;box-shadow:var(--shadow-sm);padding:32px;}
-.impact-list{background:var(--cream);border-radius:12px;padding:18px 20px;margin:20px 0;}
-.impact-item{display:flex;align-items:center;gap:10px;font-size:.85rem;margin-bottom:8px;color:var(--text-mid);}
-.impact-item:last-child{margin-bottom:0;}
-.impact-icon{font-size:1.1rem;}
-.donate-submit{width:100%;padding:16px;border-radius:12px;background:linear-gradient(135deg,#D4A017,#F0C040);color:#5a3800;font-size:1rem;font-weight:900;border:none;cursor:pointer;margin-top:20px;transition:all .2s;}
-.donate-submit:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,160,23,.4);}
-.anon-toggle{display:flex;align-items:center;gap:10px;font-size:.85rem;font-weight:600;color:var(--text-mid);margin:12px 0;}
+/* ── Donate Page Unique Styles ── */
+.donate-hero {
+  background: linear-gradient(135deg, var(--teal-dark) 0%, #104364 50%, var(--teal) 100%);
+  padding: 70px 24px 50px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.donate-hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(240, 192, 64, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.donate-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(232, 112, 10, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.donate-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(240, 192, 64, 0.35);
+  color: var(--gold-light);
+  padding: 6px 18px;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.donate-hero h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  color: #ffffff;
+}
+
+.donate-hero p {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 640px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+}
+
+/* Stat Grid in Hero */
+.hero-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.hero-stat-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 14px 10px;
+  text-align: center;
+}
+
+.hero-stat-card .stat-val {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--gold-light);
+  display: block;
+}
+
+.hero-stat-card .stat-lbl {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+/* Tabs & Main Card */
+.donate-hub-section {
+  padding: 50px 24px;
+  background: var(--cream);
+}
+
+.donate-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.donate-tabs-nav {
+  display: flex;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 6px;
+  box-shadow: 0 4px 20px rgba(14, 58, 84, 0.06);
+  border: 1px solid rgba(14, 58, 84, 0.08);
+  margin-bottom: 24px;
+  gap: 4px;
+}
+
+.donate-tab-btn {
+  flex: 1;
+  padding: 12px 10px;
+  text-align: center;
+  border-radius: 14px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.donate-tab-btn:hover {
+  color: var(--teal-dark);
+  background: rgba(26, 82, 118, 0.04);
+}
+
+.donate-tab-btn.active {
+  background: var(--teal-dark);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(14, 58, 84, 0.2);
+}
+
+.donate-panel {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.donate-panel.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.donate-card {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(14, 58, 84, 0.08);
+  border: 1px solid rgba(14, 58, 84, 0.08);
+  padding: 32px;
+}
+
+.panel-header {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f0ece6;
+  padding-bottom: 16px;
+}
+
+.panel-header h2 {
+  font-size: 1.4rem;
+  color: var(--teal-dark);
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.panel-header p {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+
+/* Amount Selector Grid */
+.amount-selector-label {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--teal-dark);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.amount-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.amount-btn {
+  border: 2px solid #e5e0d8;
+  background: #faf8f5;
+  border-radius: 14px;
+  padding: 14px 6px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 1.05rem;
+  color: var(--teal-dark);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.amount-btn:hover {
+  border-color: var(--teal);
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+
+.amount-btn.selected {
+  border-color: var(--teal-dark);
+  background: linear-gradient(135deg, rgba(14, 58, 84, 0.06), rgba(26, 82, 118, 0.12));
+  color: var(--teal-dark);
+  box-shadow: 0 4px 12px rgba(14, 58, 84, 0.1);
+}
+
+.amount-btn small {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--saffron-dark);
+  margin-top: 3px;
+}
+
+.custom-amount-box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.custom-amount-box span {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 900;
+  color: var(--teal-dark);
+  font-size: 1.1rem;
+}
+
+.custom-amount-box input {
+  padding-left: 36px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 12px;
+  border: 2px solid #e5e0d8;
+  background: #fff;
+  width: 100%;
+  height: 46px;
+}
+
+.custom-amount-box input:focus {
+  border-color: var(--teal);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(26, 82, 118, 0.12);
+}
+
+/* Impact Box */
+.impact-box {
+  background: linear-gradient(135deg, #FFFDF9, #F5EFE6);
+  border: 1px solid rgba(232, 112, 10, 0.2);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+}
+
+.impact-box-title {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--saffron-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.impact-items-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.impact-item-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+.impact-item-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+}
+
+/* Form fields & 80G */
+.form-group-custom {
+  margin-bottom: 16px;
+}
+
+.form-label-custom {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--teal-dark);
+  margin-bottom: 5px;
+}
+
+.form-input-custom, .form-select-custom, .form-textarea-custom {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1.5px solid #e0d8ce;
+  background: #fff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+.form-input-custom:focus, .form-select-custom:focus, .form-textarea-custom:focus {
+  border-color: var(--teal);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(26, 82, 118, 0.1);
+}
+
+.tax-badge-box {
+  background: rgba(39, 174, 96, 0.08);
+  border: 1px dashed rgba(39, 174, 96, 0.4);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.tax-badge-text {
+  font-size: 0.8rem;
+  color: #1b6336;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.tax-badge-tag {
+  background: #27AE60;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 900;
+  padding: 3px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.donate-btn-primary {
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--saffron), #d46305);
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 900;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 20px rgba(232, 112, 10, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.donate-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(232, 112, 10, 0.35);
+  background: linear-gradient(135deg, #e8700a, #b85400);
+}
+
+/* Transparency Section */
+.transparency-section {
+  padding: 50px 24px;
+  background: #ffffff;
+}
+
+.section-head-center {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 36px;
+}
+
+.section-head-center h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  color: var(--teal-dark);
+  margin-bottom: 6px;
+}
+
+.section-head-center p {
+  font-size: 0.92rem;
+  color: var(--text-mid);
+}
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.flow-card {
+  background: var(--cream);
+  border-radius: 16px;
+  padding: 22px 18px;
+  text-align: center;
+  border: 1px solid rgba(14, 58, 84, 0.06);
+  position: relative;
+}
+
+.flow-step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--teal-dark);
+  color: var(--gold-light);
+  font-weight: 900;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.flow-card h3 {
+  font-size: 1.05rem;
+  color: var(--teal-dark);
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.flow-card p {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  line-height: 1.45;
+}
+
+/* Donor Wall Section */
+.donor-wall-section {
+  padding: 44px 24px;
+  background: var(--cream);
+}
+
+.donor-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.donor-card-item {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 3px 12px rgba(14, 58, 84, 0.04);
+  border: 1px solid rgba(14, 58, 84, 0.06);
+}
+
+.donor-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.donor-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal-dark), var(--teal));
+  color: #ffffff;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+.donor-name {
+  font-weight: 800;
+  font-size: 0.88rem;
+  color: var(--teal-dark);
+}
+
+.donor-badge-tag {
+  font-size: 0.7rem;
+  color: var(--saffron-dark);
+  font-weight: 700;
+}
+
+.donor-msg {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: 50px 24px;
+  background: #ffffff;
+}
+
+.faq-accordion-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.faq-item-custom {
+  border: 1px solid #e8e2d8;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.faq-question-custom {
+  padding: 14px 16px;
+  background: var(--cream);
+  font-weight: 800;
+  font-size: 0.92rem;
+  color: var(--teal-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.faq-answer-custom {
+  padding: 0 16px 14px;
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  line-height: 1.5;
+  display: none;
+  background: #ffffff;
+}
+
+.faq-item-custom.open .faq-answer-custom {
+  display: block;
+}
+
+/* ── Sleek Compact Landing-Footer Overrides ── */
+.site-footer {
+  padding: 38px 0 0 !important;
+  background: var(--teal-dark) !important;
+}
+
+.footer-grid {
+  gap: 28px !important;
+  padding-bottom: 24px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.footer-brand .footer-logo img {
+  height: 34px !important;
+  width: auto !important;
+}
+
+.footer-brand .logo-name {
+  font-size: 1.15rem !important;
+}
+
+.footer-desc {
+  font-size: 0.84rem !important;
+  line-height: 1.45 !important;
+  margin-bottom: 12px !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.helpline-badge {
+  padding: 6px 12px !important;
+  border-radius: 8px !important;
+}
+
+.helpline-badge .helpline-label {
+  font-size: 0.65rem !important;
+}
+
+.helpline-badge .helpline-number {
+  font-size: 1.05rem !important;
+}
+
+.footer-col h4 {
+  font-size: 0.82rem !important;
+  margin-bottom: 10px !important;
+  letter-spacing: 0.8px !important;
+}
+
+.footer-links {
+  gap: 6px !important;
+}
+
+.footer-links a, .footer-links span {
+  font-size: 0.84rem !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.social-link {
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 0.85rem !important;
+}
+
+.footer-bottom {
+  padding: 14px 0 !important;
+  font-size: 0.78rem !important;
+}
+
+@media (max-width: 768px) {
+  .hero-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .amount-grid { grid-template-columns: repeat(2, 1fr); }
+  .impact-items-list { grid-template-columns: 1fr; }
+  .flow-grid { grid-template-columns: 1fr; }
+  .donor-cards-grid { grid-template-columns: 1fr; }
+  .donate-card { padding: 20px 16px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 20px !important; }
+}
 </style>
 </head>
 <body>
-<div class="donate-hero">
-  <span class="eyebrow" style="color:#F0C040;opacity:1;">💛 Make a Difference</span>
-  <h1>Every Rupee Has a Face</h1>
-  <p>Behind every donation is a grandparent who deserves dignity, warmth, and the feeling of being loved — even from a distance.</p>
+
+<!-- Header Component -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="assets/images/logo.png" alt="SaathiGhar Logo">
+      <div class="logo-text">
+        <span class="logo-name">SaathiGhar</span>
+        <span class="logo-tagline">Doori Door Nahi Karti</span>
+      </div>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link" id="nav-home">Home</a>
+      <a href="find-ashrams.html" class="nav-link" id="nav-ashrams">Find Ashrams</a>
+      <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+      <a href="index.html#stories" class="nav-link">Stories</a>
+      <a href="donate.html" class="nav-link active">Donate</a>
+      <a href="index.html#about" class="nav-link">About</a>
+    </nav>
+    <div class="header-controls">
+      <div class="font-size-toggle">
+        <button class="fs-toggle-btn fs-sm" data-scale="0.9">A-</button>
+        <button class="fs-toggle-btn fs-md active" data-scale="1">A</button>
+        <button class="fs-toggle-btn fs-lg-btn" data-scale="1.2">A+</button>
+      </div>
+      <button class="sos-btn" id="sosBtn">&#128682; <span>Emergency</span></button>
+      <div class="login-dropdown" id="loginDropdown">
+        <button class="login-btn">Login &#9660;</button>
+        <div class="login-menu">
+          <a href="auth/login-family.html" class="login-menu-item" id="login-family-link">
+            <span class="menu-icon">&#128106;</span>
+            <div><strong>Family Member</strong><br><small>Track your parent's care</small></div>
+          </a>
+          <a href="auth/login-ashram.html" class="login-menu-item" id="login-ashram-link">
+            <span class="menu-icon">&#127969;</span>
+            <div><strong>Ashram Manager</strong><br><small>Manage residents &amp; families</small></div>
+          </a>
+          <a href="auth/login-volunteer.html" class="login-menu-item" id="login-volunteer-link">
+            <span class="menu-icon">&#129309;</span>
+            <div><strong>Volunteer / NGO</strong><br><small>Adopt a grandparent</small></div>
+          </a>
+          <a href="auth/login-resident.html" class="login-menu-item" id="login-resident-link">
+            <span class="menu-icon">&#129491;</span>
+            <div><strong>Resident Access</strong><br><small>Staff-assisted tablet login</small></div>
+          </a>
+          <a href="auth/login-admin.html" class="login-menu-item" id="login-admin-link" style="border-top:1px solid #f0ece6;">
+            <span class="menu-icon">&#9881;&#65039;</span>
+            <div><strong>Admin Portal</strong><br><small>Restricted — authorised only</small></div>
+          </a>
+        </div>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="find-ashrams.html" class="nav-link">Find Ashrams</a>
+  <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+  <a href="index.html#stories" class="nav-link">Stories</a>
+  <a href="donate.html" class="nav-link active">Donate</a>
+  <div class="mobile-menu-actions">
+    <button class="btn btn-primary btn-sm" onclick="document.getElementById('sosBtn').click()">Emergency</button>
+    <a href="auth/login-family.html" class="btn btn-teal btn-sm" id="mobile-login-btn">Login</a>
+  </div>
 </div>
 
-<div class="section">
-  <div class="container">
+<!-- SOS Emergency Modal -->
+<div class="overlay" id="sosModal" style="display:none;">
+  <div class="modal" style="text-align:center;">
+    <button class="modal-close" onclick="document.getElementById('sosModal').style.display='none'">&#10005;</button>
+    <div style="font-size:3rem;margin-bottom:12px;">&#128682;</div>
+    <h2 style="color:#C0392B;margin-bottom:8px;">Emergency Help</h2>
+    <p style="margin-bottom:24px;">Contact these helplines immediately for urgent assistance.</p>
+    <div class="helpline-numbers">
+      <div class="helpline-item"><span>SaathiGhar Helpline</span><span class="number">1800-SAATHI</span></div>
+      <div class="helpline-item"><span>Elder Helpline (Govt)</span><span class="number">14567</span></div>
+      <div class="helpline-item"><span>National Emergency</span><span class="number">112</span></div>
+      <div class="helpline-item"><span>Ambulance</span><span class="number">108</span></div>
+    </div>
+    <button class="btn btn-primary" style="margin-top:24px;width:100%;"
+      onclick="document.getElementById('sosModal').style.display='none'">Close</button>
+  </div>
+</div>
 
-    <div class="donate-tabs">
-      <div class="donate-tab active" data-panel="resident">👴 Sponsor a Resident</div>
-      <div class="donate-tab" data-panel="ashram">🏡 Donate to Ashram</div>
-      <div class="donate-tab" data-panel="platform">💙 Support Platform</div>
+<!-- Hero Section -->
+<section class="donate-hero">
+  <div class="container">
+    <div class="donate-hero-badge">
+      <span>💛 100% Transparent Elderly Care</span>
+    </div>
+    <h1>Every Rupee Brings Warmth &amp; Dignity</h1>
+    <p>Behind every donation is a grandparent in an ashram who receives nutritious meals, essential medicines, and the heartwarming joy of knowing someone cares.</p>
+
+    <div class="hero-stats-grid">
+      <div class="hero-stat-card">
+        <span class="stat-val">1,240+</span>
+        <span class="stat-lbl">Meals Delivered</span>
+      </div>
+      <div class="hero-stat-card">
+        <span class="stat-val">380+</span>
+        <span class="stat-lbl">Elderly Sponsored</span>
+      </div>
+      <div class="hero-stat-card">
+        <span class="stat-val">100%</span>
+        <span class="stat-lbl">Direct Ashram Transfer</span>
+      </div>
+      <div class="hero-stat-card">
+        <span class="stat-val">80G</span>
+        <span class="stat-lbl">Tax Benefit Eligible</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Interactive Donation Section -->
+<section class="donate-hub-section">
+  <div class="donate-container">
+
+    <!-- Navigation Tabs -->
+    <div class="donate-tabs-nav">
+      <button class="donate-tab-btn active" data-panel="resident">
+        <span>👴</span> Sponsor a Resident
+      </button>
+      <button class="donate-tab-btn" data-panel="ashram">
+        <span>🏡</span> Support an Ashram
+      </button>
+      <button class="donate-tab-btn" data-panel="platform">
+        <span>💙</span> Empower Platform
+      </button>
     </div>
 
     <!-- Panel 1: Sponsor a Resident -->
     <div class="donate-panel active" id="panel-resident">
       <div class="donate-card">
-        <h3 style="color:var(--teal-dark);margin-bottom:6px;">Sponsor a Resident's Month</h3>
-        <p style="font-size:.87rem;color:var(--text-mid);margin-bottom:20px;">Your donation covers meals, medicines, and small comforts for one elderly resident for a month. You receive a thank-you note with their first name.</p>
+        <div class="panel-header">
+          <h2>Sponsor a Resident's Care</h2>
+          <p>Fund monthly meals, essential medicines, and joyful activities for an elderly resident in need. You'll receive a warm thank-you note and photo update.</p>
+        </div>
 
-        <label class="auth-label">Choose amount</label>
+        <label class="amount-selector-label">Select Contribution Amount</label>
         <div class="amount-grid" id="resident-amounts">
-          <div class="amount-btn selected" data-amount="500">₹500<small>1 week meals</small></div>
-          <div class="amount-btn" data-amount="1000">₹1,000<small>Monthly meds</small></div>
-          <div class="amount-btn" data-amount="2500">₹2,500<small>Half month care</small></div>
-          <div class="amount-btn" data-amount="5000">₹5,000<small>Full month</small></div>
+          <div class="amount-btn selected" data-amount="500">
+            ₹500
+            <small>1 Week Meals</small>
+          </div>
+          <div class="amount-btn" data-amount="1000">
+            ₹1,000
+            <small>Monthly Meds</small>
+          </div>
+          <div class="amount-btn" data-amount="2500">
+            ₹2,500
+            <small>Half Month Care</small>
+          </div>
+          <div class="amount-btn" data-amount="5000">
+            ₹5,000
+            <small>Full Month Sponsor</small>
+          </div>
         </div>
-        <div class="custom-amount-wrap">
+
+        <div class="custom-amount-box">
           <span>₹</span>
-          <input class="auth-input" type="number" id="resident-custom" placeholder="Or enter custom amount" min="100">
+          <input type="number" id="resident-custom" placeholder="Or enter custom amount in ₹" min="100">
         </div>
 
-        <div class="impact-list">
-          <div class="impact-item"><span class="impact-icon">🍱</span> ₹500 sponsors nutritious meals for one week</div>
-          <div class="impact-item"><span class="impact-icon">💊</span> ₹1,000 covers a month of essential medicines</div>
-          <div class="impact-item"><span class="impact-icon">🎵</span> ₹2,500 funds activities, music, and therapy sessions</div>
-          <div class="impact-item"><span class="impact-icon">🏠</span> ₹5,000 covers complete care for a full month</div>
+        <!-- Dynamic Impact Preview -->
+        <div class="impact-box">
+          <div class="impact-box-title">
+            <span>✨</span> Your Direct Real-World Impact
+          </div>
+          <div class="impact-items-list">
+            <div class="impact-item-row">
+              <div class="impact-item-icon">🍱</div>
+              <span>Nutritious daily meals &amp; snacks</span>
+            </div>
+            <div class="impact-item-row">
+              <div class="impact-item-icon">💊</div>
+              <span>Essential monthly prescription refills</span>
+            </div>
+            <div class="impact-item-row">
+              <div class="impact-item-icon">🎶</div>
+              <span>Music therapy &amp; recreational supplies</span>
+            </div>
+            <div class="impact-item-row">
+              <div class="impact-item-icon">🩺</div>
+              <span>Regular doctor visits &amp; checkups</span>
+            </div>
+          </div>
         </div>
 
-        <div class="anon-toggle">
-          <input type="checkbox" id="anon-resident" style="width:18px;height:18px;">
-          <label for="anon-resident">Donate anonymously (your name will not be shown to the ashram)</label>
-        </div>
-        <div class="auth-form-group">
-          <label class="auth-label" for="donor-msg-resident">Personal message (optional)</label>
-          <textarea class="auth-input" id="donor-msg-resident" rows="2" placeholder="e.g. Wishing you warmth and happiness, Dadi…"></textarea>
+        <!-- 80G Tax Exemption -->
+        <div class="tax-badge-box">
+          <div class="tax-badge-text">
+            <strong>80G Tax Exemption Certificate Available</strong><br>
+            Claim up to 50% tax deduction under Section 80G of IT Act.
+          </div>
+          <span class="tax-badge-tag">80G Verified</span>
         </div>
 
-        <div style="font-size:.75rem;color:var(--text-light);margin-top:8px;">2% platform fee applies. 98% goes directly to the ashram.</div>
-        <button class="donate-submit" id="btn-donate-resident">💛 Donate Now via Razorpay</button>
+        <!-- Message & Options -->
+        <div class="form-group-custom">
+          <label class="form-label-custom" for="donor-msg-resident">Personal Note of Encouragement (Optional)</label>
+          <textarea class="form-textarea-custom" id="donor-msg-resident" rows="2" placeholder="e.g. Wishing you warm health and happiness, Dadi!"></textarea>
+        </div>
+
+        <div class="form-group-custom" style="display:flex;align-items:center;gap:10px;">
+          <input type="checkbox" id="anon-resident" style="width:18px;height:18px;cursor:pointer;">
+          <label for="anon-resident" style="font-size:0.88rem;font-weight:700;color:var(--text-mid);cursor:pointer;">
+            Donate anonymously (hide my name from public donor wall)
+          </label>
+        </div>
+
+        <div style="font-size:0.78rem;color:var(--text-light);margin-bottom:20px;">
+          🔒 256-bit encrypted checkout. 98% funds delivered directly to ashram resident care.
+        </div>
+
+        <button class="donate-btn-primary" id="btn-donate-resident">
+          <span>💛</span> Complete Donation via Razorpay
+        </button>
       </div>
     </div>
 
-    <!-- Panel 2: Donate to Ashram -->
+    <!-- Panel 2: Support an Ashram -->
     <div class="donate-panel" id="panel-ashram">
       <div class="donate-card">
-        <h3 style="color:var(--teal-dark);margin-bottom:6px;">Donate to an Ashram</h3>
-        <p style="font-size:.87rem;color:var(--text-mid);margin-bottom:20px;">Support a specific ashram's operations, facility upgrades, or special resident care programs.</p>
-
-        <div class="auth-form-group">
-          <label class="auth-label" for="ashram-search-donate">Select Ashram</label>
-          <input class="auth-input" type="text" id="ashram-search-donate" placeholder="Search by name or city…">
+        <div class="panel-header">
+          <h2>Support an Ashram Infrastructure</h2>
+          <p>Help partner old-age homes upgrade solar heating, medical equipment, dining halls, and emergency medical kits.</p>
         </div>
 
-        <label class="auth-label">Choose amount</label>
+        <div class="form-group-custom">
+          <label class="form-label-custom" for="ashram-select-dropdown">Choose Ashram Home</label>
+          <select class="form-select-custom" id="ashram-select-dropdown">
+            <option value="">-- All Verified Partner Ashrams --</option>
+            <option value="ashram-1">Matri Chhaya Senior Care Home (Vrindavan)</option>
+            <option value="ashram-2">Aanand Dham Elder Care Foundation (Pune)</option>
+            <option value="ashram-3">Seva Sadan Old Age Home (Delhi NCR)</option>
+            <option value="ashram-4">Shanti Niwas Elderly Ashram (Kolkata)</option>
+          </select>
+        </div>
+
+        <label class="amount-selector-label">Select Donation Amount</label>
         <div class="amount-grid" id="ashram-amounts">
           <div class="amount-btn selected" data-amount="1000">₹1,000</div>
           <div class="amount-btn" data-amount="2500">₹2,500</div>
           <div class="amount-btn" data-amount="5000">₹5,000</div>
           <div class="amount-btn" data-amount="10000">₹10,000</div>
         </div>
-        <div class="custom-amount-wrap">
+
+        <div class="custom-amount-box">
           <span>₹</span>
-          <input class="auth-input" type="number" id="ashram-custom" placeholder="Custom amount" min="100">
+          <input type="number" id="ashram-custom" placeholder="Or custom amount in ₹" min="100">
         </div>
 
-        <div class="anon-toggle" style="margin-top:14px;">
-          <input type="checkbox" id="anon-ashram" style="width:18px;height:18px;">
-          <label for="anon-ashram">Donate anonymously</label>
+        <div class="tax-badge-box">
+          <div class="tax-badge-text">
+            <strong>Instant 80G Tax Receipt</strong><br>
+            Receipt sent instantly to your email upon transaction completion.
+          </div>
+          <span class="tax-badge-tag">Tax Saved</span>
         </div>
-        <div style="font-size:.75rem;color:var(--text-light);margin-top:8px;">2% platform fee applies. 98% goes to the ashram.</div>
-        <button class="donate-submit" id="btn-donate-ashram">💛 Donate to Ashram</button>
+
+        <div class="form-group-custom" style="display:flex;align-items:center;gap:10px;">
+          <input type="checkbox" id="anon-ashram" style="width:18px;height:18px;cursor:pointer;">
+          <label for="anon-ashram" style="font-size:0.88rem;font-weight:700;color:var(--text-mid);cursor:pointer;">
+            Donate anonymously
+          </label>
+        </div>
+
+        <button class="donate-btn-primary" id="btn-donate-ashram">
+          <span>🏡</span> Donate to Ashram Infrastructure
+        </button>
       </div>
     </div>
 
-    <!-- Panel 3: Support Platform -->
+    <!-- Panel 3: Empower Platform -->
     <div class="donate-panel" id="panel-platform">
       <div class="donate-card">
-        <h3 style="color:var(--teal-dark);margin-bottom:6px;">Support the SaathiGhar Platform</h3>
-        <p style="font-size:.87rem;color:var(--text-mid);margin-bottom:20px;">Your donation keeps the platform running, funds Dadi AI for residents who can't afford it, and supports our team working for abandoned residents.</p>
-
-        <div class="impact-list">
-          <div class="impact-item"><span class="impact-icon">🤖</span> Funds Dadi AI for elderly residents in under-resourced ashrams</div>
-          <div class="impact-item"><span class="impact-icon">👩‍💼</span> Supports staff who reach out to abandoned residents</div>
-          <div class="impact-item"><span class="impact-icon">🛡️</span> Keeps the platform free for families who can't afford premium plans</div>
-          <div class="impact-item"><span class="impact-icon">📡</span> Maintains the SOS emergency alert system 24/7</div>
+        <div class="panel-header">
+          <h2>Empower the SaathiGhar Platform</h2>
+          <p>Your support keeps the platform free for low-income families, funds Dadi AI voice companion for lonely seniors, and maintains our 24/7 SOS helpline.</p>
         </div>
 
-        <label class="auth-label">Choose amount</label>
+        <div class="impact-box" style="margin-bottom:24px;">
+          <div class="impact-box-title">
+            <span>🤖</span> What Platform Support Achieves
+          </div>
+          <div class="impact-items-list">
+            <div class="impact-item-row">
+              <div class="impact-item-icon">🎙️</div>
+              <span>Powers Dadi AI Hindi/English voice calls</span>
+            </div>
+            <div class="impact-item-row">
+              <div class="impact-item-icon">🚨</div>
+              <span>Maintains 24/7 Emergency SOS Helpline</span>
+            </div>
+            <div class="impact-item-row">
+              <div class="impact-item-icon">📱</div>
+              <span>Free family video call portal for elders</span>
+            </div>
+            <div class="impact-item-row">
+              <div class="impact-item-icon">🤝</div>
+              <span>Supports field staff visiting lonely seniors</span>
+            </div>
+          </div>
+        </div>
+
+        <label class="amount-selector-label">Choose Contribution</label>
         <div class="amount-grid" id="platform-amounts">
           <div class="amount-btn selected" data-amount="200">₹200</div>
           <div class="amount-btn" data-amount="500">₹500</div>
           <div class="amount-btn" data-amount="1000">₹1,000</div>
           <div class="amount-btn" data-amount="2500">₹2,500</div>
         </div>
-        <div class="custom-amount-wrap">
+
+        <div class="custom-amount-box">
           <span>₹</span>
-          <input class="auth-input" type="number" id="platform-custom" placeholder="Custom amount" min="50">
+          <input type="number" id="platform-custom" placeholder="Custom platform contribution" min="50">
         </div>
 
-        <div style="font-size:.75rem;color:var(--text-light);margin-top:14px;">100% of this donation goes to SaathiGhar operations. No platform fee.</div>
-        <button class="donate-submit" style="background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;" id="btn-donate-platform">
-          💙 Support SaathiGhar
+        <button class="donate-btn-primary" id="btn-donate-platform" style="background: linear-gradient(135deg, var(--teal-dark), var(--teal));">
+          <span>💙</span> Support SaathiGhar Platform
         </button>
       </div>
     </div>
 
   </div>
-</div>
+</section>
 
-<!-- Footer -->
+<!-- Transparency Flow Section -->
+<section class="transparency-section">
+  <div class="container">
+    <div class="section-head-center">
+      <h2>How Your Gift Reaches The Elders</h2>
+      <p>We pride ourselves on complete transparency so you know exact impact of every rupee.</p>
+    </div>
+
+    <div class="flow-grid">
+      <div class="flow-card">
+        <div class="flow-step-num">1</div>
+        <h3>Direct Allocation</h3>
+        <p>Your contribution is routed to the designated resident or partner ashram care account instantly.</p>
+      </div>
+      <div class="flow-card">
+        <div class="flow-step-num">2</div>
+        <h3>Care Fulfillment</h3>
+        <p>Meals, medicines, and healthcare items are purchased and delivered by verified ashram caregivers.</p>
+      </div>
+      <div class="flow-card">
+        <div class="flow-step-num">3</div>
+        <h3>Thank-You Update</h3>
+        <p>You receive a photo update, gratitude note, and your official 80G tax deduction receipt via email.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wall of Kindness / Recent Donors -->
+<section class="donor-wall-section">
+  <div class="container">
+    <div class="section-head-center" style="margin-bottom:36px;">
+      <h2>Wall of Kindness</h2>
+      <p>Join hundreds of compassionate individuals making senior lives warmer every single day.</p>
+    </div>
+
+    <div class="donor-cards-grid">
+      <div class="donor-card-item">
+        <div class="donor-meta">
+          <div class="donor-avatar">R</div>
+          <div>
+            <div class="donor-name">Rahul Sharma</div>
+            <div class="donor-badge-tag">Sponsored 1 Month Care • Vrindavan</div>
+          </div>
+        </div>
+        <div class="donor-msg">"May every Dadi and Dada in ashrams feel cherished and cared for!"</div>
+      </div>
+
+      <div class="donor-card-item">
+        <div class="donor-meta">
+          <div class="donor-avatar" style="background:linear-gradient(135deg,#e8700a,#f0c040);">P</div>
+          <div>
+            <div class="donor-name">Priya &amp; Ankit</div>
+            <div class="donor-badge-tag">Sponsored Monthly Meds • Delhi NCR</div>
+          </div>
+        </div>
+        <div class="donor-msg">"Donating in loving memory of our Nani Ji. Thank you SaathiGhar for this initiative."</div>
+      </div>
+
+      <div class="donor-card-item">
+        <div class="donor-meta">
+          <div class="donor-avatar" style="background:linear-gradient(135deg,#27ae60,#2ecc71);">S</div>
+          <div>
+            <div class="donor-name">Sunita Mehra</div>
+            <div class="donor-badge-tag">Supported Ashram Meals • Pune</div>
+          </div>
+        </div>
+        <div class="donor-msg">"A small step to ensure no elderly parent eats alone or goes without medicines."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Accordion -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-head-center" style="margin-bottom:36px;">
+      <h2>Frequently Asked Questions</h2>
+      <p>Have questions about your donation? Find answers below.</p>
+    </div>
+
+    <div class="faq-accordion-wrap">
+      <div class="faq-item-custom">
+        <div class="faq-question-custom">
+          <span>Is my donation tax-deductible under 80G?</span>
+          <span>▼</span>
+        </div>
+        <div class="faq-answer-custom">
+          Yes! All donations made on SaathiGhar are eligible for 50% tax exemption under Section 80G of the Indian Income Tax Act. Your 80G tax receipt will be sent directly to your email.
+        </div>
+      </div>
+
+      <div class="faq-item-custom">
+        <div class="faq-question-custom">
+          <span>How do I know my donation actually reached the elder?</span>
+          <span>▼</span>
+        </div>
+        <div class="faq-answer-custom">
+          We provide 100% transparent tracking. You receive photo updates and digitized receipts from the partner ashram showing the delivery of meals or medicines.
+        </div>
+      </div>
+
+      <div class="faq-item-custom">
+        <div class="faq-question-custom">
+          <span>Can I donate anonymously?</span>
+          <span>▼</span>
+        </div>
+        <div class="faq-answer-custom">
+          Absolutely. Simply check the "Donate anonymously" option on the form. Your personal identity will be kept strictly private and hidden from the public wall.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sleek Compact Landing Page Footer System -->
 <footer class="site-footer">
   <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/images/logo.png" alt="SaathiGhar Logo">
+          <span class="logo-name" style="color:#fff;">SaathiGhar</span>
+        </div>
+        <p class="footer-desc">Reconnecting families with parents in old-age homes across India with love, transparency, and care.</p>
+        <div class="helpline-badge">
+          <span class="helpline-label">24/7 Donor Helpline</span>
+          <span class="helpline-number">1800-SAATHI</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="find-ashrams.html">Find Ashrams</a>
+          <a href="donate.html">Donate &amp; Sponsor</a>
+          <a href="index.html#how-it-works">How It Works</a>
+          <a href="index.html#stories">Stories</a>
+          <a href="donation-faq.html">Donation FAQs</a>
+          <a href="index.html#about">Contact Us</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Trust &amp; Security</h4>
+        <div class="footer-links">
+          <span>📜 80G Tax Deductible</span>
+          <span>🧾 Instant Email Receipt</span>
+          <span>🔒 Secure payments via Razorpay</span>
+          <span>✅ Verified Ashram Partners</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <p style="color:rgba(255,255,255,0.6);font-size:0.82rem;margin-bottom:10px;">Stay connected with stories and updates.</p>
+        <div class="social-links">
+          <a class="social-link" href="#" title="Facebook">f</a>
+          <a class="social-link" href="#" title="Instagram">&#128247;</a>
+          <a class="social-link" href="#" title="Twitter">X</a>
+          <a class="social-link" href="#" title="YouTube">&#9654;</a>
+          <a class="social-link" href="#" title="LinkedIn">in</a>
+        </div>
+      </div>
+    </div>
+
     <div class="footer-bottom">
-      <p>© 2025 SaathiGhar. Donations processed securely via Razorpay. <a href="privacy.html">Privacy Policy</a></p>
+      <p>© 2026 SaathiGhar. All rights reserved. Made with ❤️ for every parent who deserves to be remembered.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Grievance Officer</a>
+      </div>
     </div>
   </div>
 </footer>
 
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>window._sb=supabase.createClient('https://hznsdikphjreklshgeyu.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6bnNkaWtwaGpyZWtsc2hnZXl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NzQ0NjUsImV4cCI6MjA5MjQ1MDQ2NX0.BATyEw2PslvmOs4g8xn0jiV-UUUFqPDBfqEtHsPp5Ak');</script>
-<script src="assets/js/services.js"></script>
 <script>
-function showToast(msg,type='info'){
-  const el=document.createElement('div');el.className='toast '+type;
-  el.innerHTML=`${({success:'✅',error:'❌',info:'ℹ️'})[type]||'ℹ️'} <span>${msg}</span>`;
-  document.body.appendChild(el);setTimeout(()=>el.remove(),4500);
+  window._sb = supabase.createClient(
+    'https://hznsdikphjreklshgeyu.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6bnNkaWtwaGpyZWtsc2hnZXl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NzQ0NjUsImV4cCI6MjA5MjQ1MDQ2NX0.BATyEw2PslvmOs4g8xn0jiV-UUUFqPDBfqEtHsPp5Ak'
+  );
+</script>
+<script src="assets/js/services.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script>
+// Toast notification
+function showToast(msg, type='info') {
+  const el = document.createElement('div');
+  el.className = `toast ${type}`;
+  el.style.position = 'fixed';
+  el.style.bottom = '24px';
+  el.style.right = '24px';
+  el.style.background = type==='error' ? '#C0392B' : (type==='success' ? '#27AE60' : '#0E3A54');
+  el.style.color = '#fff';
+  el.style.padding = '14px 22px';
+  el.style.borderRadius = '12px';
+  el.style.boxShadow = '0 8px 24px rgba(0,0,0,0.2)';
+  el.style.zIndex = '9999';
+  el.style.fontWeight = '700';
+  el.style.fontSize = '0.9rem';
+  el.innerHTML = `${({success:'✅', error:'❌', info:'ℹ️'})[type]||'ℹ️'} <span>${msg}</span>`;
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 4500);
 }
 
-// Tabs
-document.querySelectorAll('.donate-tab').forEach(tab=>{
-  tab.addEventListener('click',()=>{
-    document.querySelectorAll('.donate-tab').forEach(t=>t.classList.remove('active'));
-    document.querySelectorAll('.donate-panel').forEach(p=>p.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById('panel-'+tab.dataset.panel)?.classList.add('active');
+// Tab Switching
+document.querySelectorAll('.donate-tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.donate-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.donate-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + btn.dataset.panel)?.classList.add('active');
   });
 });
 
-// Amount selector
+// Amount Selector logic
 function initAmounts(gridId, customId) {
-  const grid=document.getElementById(gridId);
-  const custom=document.getElementById(customId);
+  const grid = document.getElementById(gridId);
+  const custom = document.getElementById(customId);
   if(!grid) return;
-  grid.querySelectorAll('.amount-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      grid.querySelectorAll('.amount-btn').forEach(b=>b.classList.remove('selected'));
+  grid.querySelectorAll('.amount-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      grid.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
-      if(custom) custom.value='';
+      if(custom) custom.value = '';
     });
   });
-  custom?.addEventListener('input',()=>{
-    grid.querySelectorAll('.amount-btn').forEach(b=>b.classList.remove('selected'));
+  custom?.addEventListener('input', () => {
+    grid.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
   });
 }
+
 function getAmount(gridId, customId) {
-  const custom=document.getElementById(customId)?.value;
-  if(custom&&parseInt(custom)>0) return parseInt(custom);
-  const sel=document.querySelector(`#${gridId} .amount-btn.selected`);
-  return sel?parseInt(sel.dataset.amount):0;
+  const custom = document.getElementById(customId)?.value;
+  if(custom && parseInt(custom) > 0) return parseInt(custom);
+  const sel = document.querySelector(`#${gridId} .amount-btn.selected`);
+  return sel ? parseInt(sel.dataset.amount) : 0;
 }
 
-initAmounts('resident-amounts','resident-custom');
-initAmounts('ashram-amounts','ashram-custom');
-initAmounts('platform-amounts','platform-custom');
+initAmounts('resident-amounts', 'resident-custom');
+initAmounts('ashram-amounts', 'ashram-custom');
+initAmounts('platform-amounts', 'platform-custom');
 
-// Load Razorpay
-async function ensureRazorpay(){
-  if(window.Razorpay) return;
-  await new Promise(r=>{const s=document.createElement('script');s.src='https://checkout.razorpay.com/v1/checkout.js';s.onload=r;document.head.appendChild(s);});
+// FAQ Accordion
+document.querySelectorAll('.faq-question-custom').forEach(q => {
+  q.addEventListener('click', () => {
+    const parent = q.parentElement;
+    parent.classList.toggle('open');
+  });
+});
+
+// Ensure Razorpay
+async function ensureRazorpay() {
+  if (window.Razorpay) return;
+  await new Promise(r => {
+    const s = document.createElement('script');
+    s.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    s.onload = r;
+    document.head.appendChild(s);
+  });
 }
 
-// Guard: check if payments are configured
-function isPaymentReady(){
-  // Will be truthy only once a real key is set in services.js
+function isPaymentReady() {
   const key = (typeof RAZORPAY_KEY !== 'undefined') ? RAZORPAY_KEY : '';
-  if(!key || key.includes('REPLACE_WITH_YOUR_KEY')){
-    showToast('💳 Online payments are being set up. Please contact us at support@saathighar.org to donate directly.','info');
+  if (!key || key.includes('REPLACE_WITH_YOUR_KEY')) {
+    showToast('💳 Online payment gateway is in test setup mode. Contact support@saathighar.org to donate directly.', 'info');
     return false;
   }
   return true;
 }
 
-// Donate — Resident
-document.getElementById('btn-donate-resident')?.addEventListener('click',async()=>{
+// Payment Actions
+document.getElementById('btn-donate-resident')?.addEventListener('click', async () => {
   if(!isPaymentReady()) return;
-  const amount=getAmount('resident-amounts','resident-custom');
-  if(!amount||amount<100){showToast('Minimum donation is ₹100.','error');return;}
+  const amount = getAmount('resident-amounts', 'resident-custom');
+  if(!amount || amount < 100) {
+    showToast('Minimum donation amount is ₹100.', 'error');
+    return;
+  }
   await ensureRazorpay();
-  const {data:{session}}=await getSB().auth.getSession();
+  const { data: { session } } = await getSB().auth.getSession();
   await initiateDonation({
-    donorId:session?.user?.id||null,type:'resident',
-    targetResidentId:null,targetAshramId:null,
-    amountInr:amount,
-    isAnonymous:document.getElementById('anon-resident')?.checked||false,
-    message:document.getElementById('donor-msg-resident')?.value||'',
+    donorId: session?.user?.id || null,
+    type: 'resident',
+    targetResidentId: null,
+    targetAshramId: null,
+    amountInr: amount,
+    isAnonymous: document.getElementById('anon-resident')?.checked || false,
+    message: document.getElementById('donor-msg-resident')?.value || ''
   });
 });
 
-// Donate — Ashram
-document.getElementById('btn-donate-ashram')?.addEventListener('click',async()=>{
+document.getElementById('btn-donate-ashram')?.addEventListener('click', async () => {
   if(!isPaymentReady()) return;
-  const amount=getAmount('ashram-amounts','ashram-custom');
-  if(!amount||amount<100){showToast('Minimum donation is ₹100.','error');return;}
+  const amount = getAmount('ashram-amounts', 'ashram-custom');
+  if(!amount || amount < 100) {
+    showToast('Minimum donation amount is ₹100.', 'error');
+    return;
+  }
   await ensureRazorpay();
-  const {data:{session}}=await getSB().auth.getSession();
+  const { data: { session } } = await getSB().auth.getSession();
   await initiateDonation({
-    donorId:session?.user?.id||null,type:'ashram',
-    targetResidentId:null,targetAshramId:null,
-    amountInr:amount,
-    isAnonymous:document.getElementById('anon-ashram')?.checked||false,
-    message:'',
+    donorId: session?.user?.id || null,
+    type: 'ashram',
+    targetResidentId: null,
+    targetAshramId: document.getElementById('ashram-select-dropdown')?.value || null,
+    amountInr: amount,
+    isAnonymous: document.getElementById('anon-ashram')?.checked || false,
+    message: ''
   });
 });
 
-// Donate — Platform
-document.getElementById('btn-donate-platform')?.addEventListener('click',async()=>{
+document.getElementById('btn-donate-platform')?.addEventListener('click', async () => {
   if(!isPaymentReady()) return;
-  const amount=getAmount('platform-amounts','platform-custom');
-  if(!amount||amount<50){showToast('Minimum donation is ₹50.','error');return;}
+  const amount = getAmount('platform-amounts', 'platform-custom');
+  if(!amount || amount < 50) {
+    showToast('Minimum donation amount is ₹50.', 'error');
+    return;
+  }
   await ensureRazorpay();
-  const {data:{session}}=await getSB().auth.getSession();
+  const { data: { session } } = await getSB().auth.getSession();
   await initiateDonation({
-    donorId:session?.user?.id||null,type:'platform',
-    targetResidentId:null,targetAshramId:null,
-    amountInr:amount,isAnonymous:false,message:'',
+    donorId: session?.user?.id || null,
+    type: 'platform',
+    targetResidentId: null,
+    targetAshramId: null,
+    amountInr: amount,
+    isAnonymous: false,
+    message: ''
   });
 });
-
 </script>
 </body>
 </html>

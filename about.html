@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — SaathiGhar | Our Mission & Story</title>
+<meta name="description" content="SaathiGhar is India's first family accountability & elderly care platform. Reconnecting families with parents in old-age homes with love, dignity, and transparency.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/header.css">
+<link rel="stylesheet" href="assets/css/home.css">
+
+<style>
+/* ── About Page Unique Styles ── */
+.about-hero {
+  background: linear-gradient(135deg, var(--teal-dark) 0%, #104364 50%, var(--teal) 100%);
+  padding: 85px 24px 65px;
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(240, 192, 64, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.about-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(232, 112, 10, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.about-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(240, 192, 64, 0.35);
+  color: var(--gold-light);
+  padding: 6px 18px;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.about-hero h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.about-hero p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 680px;
+  margin: 0 auto 36px;
+  line-height: 1.6;
+}
+
+/* Stat Grid in Hero */
+.about-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.about-stat-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 16px 12px;
+  text-align: center;
+}
+
+.about-stat-card .stat-val {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--gold-light);
+  display: block;
+}
+
+.about-stat-card .stat-lbl {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+/* Story & Mission Section */
+.story-section {
+  padding: 70px 24px;
+  background: #ffffff;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.story-content h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.2rem;
+  color: var(--teal-dark);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.story-content p {
+  font-size: 0.96rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.story-quote-card {
+  background: linear-gradient(135deg, #FFFDF9, #F5EFE6);
+  border-left: 4px solid var(--saffron);
+  border-radius: 0 16px 16px 0;
+  padding: 20px 24px;
+  margin-top: 24px;
+  box-shadow: 0 4px 16px rgba(14, 58, 84, 0.04);
+}
+
+.story-quote-card p {
+  font-size: 1.02rem;
+  color: var(--teal-dark);
+  font-weight: 700;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.story-quote-card span {
+  font-size: 0.82rem;
+  color: var(--saffron-dark);
+  font-weight: 800;
+}
+
+.story-image-wrap {
+  position: relative;
+}
+
+.story-image-wrap img {
+  width: 100%;
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
+  object-fit: cover;
+}
+
+.story-badge-float {
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: 0 12px 32px rgba(14, 58, 84, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid rgba(14, 58, 84, 0.08);
+}
+
+.story-badge-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(232, 112, 10, 0.12);
+  color: var(--saffron);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+
+.story-badge-text strong {
+  font-size: 1rem;
+  color: var(--teal-dark);
+  display: block;
+}
+
+.story-badge-text span {
+  font-size: 0.78rem;
+  color: var(--text-mid);
+}
+
+/* Pillars Section */
+.pillars-section {
+  padding: 70px 24px;
+  background: var(--cream);
+}
+
+.section-head-center {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 48px;
+}
+
+.section-head-center h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.2rem;
+  color: var(--teal-dark);
+  margin-bottom: 10px;
+}
+
+.section-head-center p {
+  font-size: 0.98rem;
+  color: var(--text-mid);
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pillar-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px 20px;
+  box-shadow: 0 4px 20px rgba(14, 58, 84, 0.05);
+  border: 1px solid rgba(14, 58, 84, 0.06);
+  transition: all 0.25s ease;
+  text-align: center;
+}
+
+.pillar-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(14, 58, 84, 0.1);
+  border-color: var(--teal);
+}
+
+.pillar-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(14, 58, 84, 0.08), rgba(26, 82, 118, 0.15));
+  color: var(--teal-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin: 0 auto 18px;
+}
+
+.pillar-card h3 {
+  font-size: 1.1rem;
+  color: var(--teal-dark);
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.pillar-card p {
+  font-size: 0.86rem;
+  color: var(--text-mid);
+  line-height: 1.55;
+}
+
+/* Values & Philosophy */
+.values-section {
+  padding: 70px 24px;
+  background: #ffffff;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.value-card {
+  background: var(--cream);
+  border-radius: 20px;
+  padding: 30px 24px;
+  border: 1px solid rgba(14, 58, 84, 0.06);
+}
+
+.value-num {
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: var(--saffron);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.value-card h3 {
+  font-size: 1.2rem;
+  color: var(--teal-dark);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.value-card p {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+/* Call to Action Banner */
+.about-cta-section {
+  padding: 70px 24px;
+  background: linear-gradient(135deg, var(--teal-dark) 0%, #061925 100%);
+  color: #ffffff;
+  text-align: center;
+}
+
+.about-cta-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-cta-container h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.3rem;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.about-cta-container p {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.about-cta-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.about-cta-btn {
+  padding: 16px 32px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 0.98rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.about-cta-btn.primary {
+  background: linear-gradient(135deg, var(--saffron), #d46305);
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(232, 112, 10, 0.3);
+}
+
+.about-cta-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(232, 112, 10, 0.4);
+}
+
+.about-cta-btn.secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+}
+
+.about-cta-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Sleek Compact Footer Overrides */
+.site-footer {
+  padding: 38px 0 0 !important;
+  background: var(--teal-dark) !important;
+}
+
+.footer-grid {
+  gap: 28px !important;
+  padding-bottom: 24px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.footer-brand .footer-logo img {
+  height: 34px !important;
+  width: auto !important;
+}
+
+.footer-brand .logo-name {
+  font-size: 1.15rem !important;
+}
+
+.footer-desc {
+  font-size: 0.84rem !important;
+  line-height: 1.45 !important;
+  margin-bottom: 12px !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.helpline-badge {
+  padding: 6px 12px !important;
+  border-radius: 8px !important;
+}
+
+.helpline-badge .helpline-label {
+  font-size: 0.65rem !important;
+}
+
+.helpline-badge .helpline-number {
+  font-size: 1.05rem !important;
+}
+
+.footer-col h4 {
+  font-size: 0.82rem !important;
+  margin-bottom: 10px !important;
+  letter-spacing: 0.8px !important;
+}
+
+.footer-links {
+  gap: 6px !important;
+}
+
+.footer-links a, .footer-links span {
+  font-size: 0.84rem !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.social-link {
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 0.85rem !important;
+}
+
+.footer-bottom {
+  padding: 14px 0 !important;
+  font-size: 0.78rem !important;
+}
+
+@media (max-width: 992px) {
+  .story-grid { grid-template-columns: 1fr; gap: 36px; }
+  .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+  .values-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .about-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 20px !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header Component -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="assets/images/logo.png" alt="SaathiGhar Logo">
+      <div class="logo-text">
+        <span class="logo-name">SaathiGhar</span>
+        <span class="logo-tagline">Doori Door Nahi Karti</span>
+      </div>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="find-ashrams.html" class="nav-link">Find Ashrams</a>
+      <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+      <a href="index.html#stories" class="nav-link">Stories</a>
+      <a href="donate.html" class="nav-link">Donate</a>
+      <a href="about.html" class="nav-link active">About</a>
+    </nav>
+    <div class="header-controls">
+      <div class="font-size-toggle">
+        <button class="fs-toggle-btn fs-sm" data-scale="0.9">A-</button>
+        <button class="fs-toggle-btn fs-md active" data-scale="1">A</button>
+        <button class="fs-toggle-btn fs-lg-btn" data-scale="1.2">A+</button>
+      </div>
+      <button class="sos-btn" id="sosBtn">&#128682; <span>Emergency</span></button>
+      <div class="login-dropdown" id="loginDropdown">
+        <button class="login-btn">Login &#9660;</button>
+        <div class="login-menu">
+          <a href="auth/login-family.html" class="login-menu-item" id="login-family-link">
+            <span class="menu-icon">&#128106;</span>
+            <div><strong>Family Member</strong><br><small>Track your parent's care</small></div>
+          </a>
+          <a href="auth/login-ashram.html" class="login-menu-item" id="login-ashram-link">
+            <span class="menu-icon">&#127969;</span>
+            <div><strong>Ashram Manager</strong><br><small>Manage residents &amp; families</small></div>
+          </a>
+          <a href="auth/login-volunteer.html" class="login-menu-item" id="login-volunteer-link">
+            <span class="menu-icon">&#129309;</span>
+            <div><strong>Volunteer / NGO</strong><br><small>Adopt a grandparent</small></div>
+          </a>
+          <a href="auth/login-resident.html" class="login-menu-item" id="login-resident-link">
+            <span class="menu-icon">&#129491;</span>
+            <div><strong>Resident Access</strong><br><small>Staff-assisted tablet login</small></div>
+          </a>
+          <a href="auth/login-admin.html" class="login-menu-item" id="login-admin-link" style="border-top:1px solid #f0ece6;">
+            <span class="menu-icon">&#9881;&#65039;</span>
+            <div><strong>Admin Portal</strong><br><small>Restricted — authorised only</small></div>
+          </a>
+        </div>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="find-ashrams.html" class="nav-link">Find Ashrams</a>
+  <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+  <a href="index.html#stories" class="nav-link">Stories</a>
+  <a href="donate.html" class="nav-link">Donate</a>
+  <a href="about.html" class="nav-link active">About</a>
+  <div class="mobile-menu-actions">
+    <button class="btn btn-primary btn-sm" onclick="document.getElementById('sosBtn').click()">Emergency</button>
+    <a href="auth/login-family.html" class="btn btn-teal btn-sm" id="mobile-login-btn">Login</a>
+  </div>
+</div>
+
+<!-- SOS Emergency Modal -->
+<div class="overlay" id="sosModal" style="display:none;">
+  <div class="modal" style="text-align:center;">
+    <button class="modal-close" onclick="document.getElementById('sosModal').style.display='none'">&#10005;</button>
+    <div style="font-size:3rem;margin-bottom:12px;">&#128682;</div>
+    <h2 style="color:#C0392B;margin-bottom:8px;">Emergency Help</h2>
+    <p style="margin-bottom:24px;">Contact these helplines immediately for urgent assistance.</p>
+    <div class="helpline-numbers">
+      <div class="helpline-item"><span>SaathiGhar Helpline</span><span class="number">1800-SAATHI</span></div>
+      <div class="helpline-item"><span>Elder Helpline (Govt)</span><span class="number">14567</span></div>
+      <div class="helpline-item"><span>National Emergency</span><span class="number">112</span></div>
+      <div class="helpline-item"><span>Ambulance</span><span class="number">108</span></div>
+    </div>
+    <button class="btn btn-primary" style="margin-top:24px;width:100%;"
+      onclick="document.getElementById('sosModal').style.display='none'">Close</button>
+  </div>
+</div>
+
+<!-- Hero Section -->
+<section class="about-hero">
+  <div class="container">
+    <div class="about-hero-badge">
+      <span>🤝 Our Mission &amp; Story</span>
+    </div>
+    <h1>Doori Door Nahi Karti</h1>
+    <p>Because every parent in an ashram deserves to be remembered, cherished, and connected to family — no matter the distance.</p>
+
+    <div class="about-stats-grid">
+      <div class="about-stat-card">
+        <span class="stat-val">1,240+</span>
+        <span class="stat-lbl">Elderly Connected</span>
+      </div>
+      <div class="about-stat-card">
+        <span class="stat-val">85+</span>
+        <span class="stat-lbl">Verified Ashrams</span>
+      </div>
+      <div class="about-stat-card">
+        <span class="stat-val">24/7</span>
+        <span class="stat-lbl">Emergency Desk</span>
+      </div>
+      <div class="about-stat-card">
+        <span class="stat-val">100%</span>
+        <span class="stat-lbl">Direct Care Payout</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- The Story & Vision -->
+<section class="story-section">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-content">
+        <h2>Why We Founded SaathiGhar</h2>
+        <p>In India, over 1.5 million elderly citizens live in senior care homes and ashrams. While many facilities provide food and shelter, the deepest ache seniors face is <strong>loneliness</strong> — feeling disconnected from children working in distant cities or overseas.</p>
+        <p>SaathiGhar was created to solve this emotional gap. We built a digital ecosystem that makes family check-ins effortless, holds children accountable with gentle reminders, and empowers ashram staff to digitize resident healthcare records.</p>
+        
+        <div class="story-quote-card">
+          <p>"A phone call from a child is better than any prescription medicine for an elderly parent."</p>
+          <span>— SaathiGhar Founding Philosophy</span>
+        </div>
+      </div>
+
+      <div class="story-image-wrap">
+        <img src="assets/images/hero-elderly.png" alt="Elderly resident using tablet with caregiver">
+        <div class="story-badge-float">
+          <div class="story-badge-icon">💛</div>
+          <div class="story-badge-text">
+            <strong>100% Transparency</strong>
+            <span>Verified ashrams &amp; 80G tax receipts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Core Pillars -->
+<section class="pillars-section">
+  <div class="container">
+    <div class="section-head-center">
+      <h2>The 4 Pillars of SaathiGhar</h2>
+      <p>How we combine human empathy with modern technology to protect and connect senior citizens across India.</p>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">📱</div>
+        <h3>Family Portal</h3>
+        <p>Automated call reminders, check-in streaks, health updates, and staff-assisted video calls for children.</p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">🎙️</div>
+        <h3>Dadi AI Companion</h3>
+        <p>Empathetic voice companion in Hindi and English providing daily warmth, stories, and companionship to lonely seniors.</p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">🚨</div>
+        <h3>24/7 SOS Desk</h3>
+        <p>Direct emergency alert integration connecting seniors with 14567 Elder Line, 108 ambulance, and staff desks.</p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">💛</div>
+        <h3>Transparent Giving</h3>
+        <p>Direct resident sponsorship funding meals and medicines with photo proof and Section 80G tax deduction receipts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values & Philosophy -->
+<section class="values-section">
+  <div class="container">
+    <div class="section-head-center">
+      <h2>Our Core Values</h2>
+      <p>The principles that guide every decision, feature, and partnership at SaathiGhar.</p>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-card">
+        <span class="value-num">Value 01</span>
+        <h3>Compassion First</h3>
+        <p>Every feature is designed with elder-friendly accessibility — large fonts, voice controls, and staff assistance so technology never becomes a barrier.</p>
+      </div>
+
+      <div class="value-card">
+        <span class="value-num">Value 02</span>
+        <h3>Radical Transparency</h3>
+        <p>100% of donor funds reach partner ashram care accounts directly. We provide digitized delivery receipts and photo verification for every sponsorship.</p>
+      </div>
+
+      <div class="value-card">
+        <span class="value-num">Value 03</span>
+        <h3>Family Accountability</h3>
+        <p>We nudge adult children gently without shame, encouraging regular connection and financial responsibility for their aging parents.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Banner -->
+<section class="about-cta-section" style="background: linear-gradient(180deg, #FFFDF9 0%, #F4EFE6 100%); color: var(--teal-dark); border-top: 1px solid rgba(14,58,84,0.08); border-bottom: 1px solid rgba(14,58,84,0.08);">
+  <div class="about-cta-container">
+    <h2 style="color: var(--teal-dark);">Be Part of the SaathiGhar Movement</h2>
+    <p style="color: var(--text-mid);">Whether you are a family member looking to stay close to a parent, an ashram manager, or a donor wanting to sponsor a senior's month of care — you belong here.</p>
+
+    <div class="about-cta-buttons">
+      <a href="donate.html" class="about-cta-btn primary">💛 Sponsor a Resident's Month</a>
+      <a href="find-ashrams.html" class="about-cta-btn secondary" style="background: var(--teal-dark); color: #ffffff; border: 1px solid var(--teal-dark);">🔍 Explore Verified Ashrams</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/images/logo.png" alt="SaathiGhar Logo">
+          <span class="logo-name" style="color:#fff;">SaathiGhar</span>
+        </div>
+        <p class="footer-desc">Reconnecting families with parents in old-age homes across India with love, transparency, and care.</p>
+        <div class="helpline-badge">
+          <span class="helpline-label">24/7 Donor Helpline</span>
+          <span class="helpline-number">1800-SAATHI</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="find-ashrams.html">Find Ashrams</a>
+          <a href="donate.html">Donate &amp; Sponsor</a>
+          <a href="index.html#how-it-works">How It Works</a>
+          <a href="index.html#stories">Stories</a>
+          <a href="donation-faq.html">Donation FAQs</a>
+          <a href="about.html">About Us</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Trust &amp; Security</h4>
+        <div class="footer-links">
+          <span>📜 80G Tax Deductible</span>
+          <span>🧾 Instant Email Receipt</span>
+          <span>🔒 Secure payments via Razorpay</span>
+          <span>✅ Verified Ashram Partners</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <p style="color:rgba(255,255,255,0.6);font-size:0.82rem;margin-bottom:10px;">Stay connected with stories and updates.</p>
+        <div class="social-links">
+          <a class="social-link" href="#" title="Facebook">f</a>
+          <a class="social-link" href="#" title="Instagram">&#128247;</a>
+          <a class="social-link" href="#" title="Twitter">X</a>
+          <a class="social-link" href="#" title="YouTube">&#9654;</a>
+          <a class="social-link" href="#" title="LinkedIn">in</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 SaathiGhar. All rights reserved. Made with ❤️ for every parent who deserves to be remembered.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="privacy.html#contact">Grievance Officer</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

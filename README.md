@@ -121,16 +121,18 @@ SaathiGhar is designed around multiple user experiences:
                     │       Platform      │
                     └──────────┬──────────┘
                                │
-          ┌────────────────────┼────────────────────┐
-          │                    │                    │
-          ▼                    ▼                    ▼
-     👨‍👩‍👧 Family           🏢 Ashram          👴 Elderly
-       Portal              Portal              Interface
-          │                    │                    │
-          └────────────────────┼────────────────────┘
-                               │
-                    ┌──────────┴──────────┐
-                    │                    │
-                    ▼                    ▼
-                💝 Donations          🤖 Dadi AI
-                & Sponsorship
+          ┌────────────────────┼────────────────────┌────────────────────|
+          │                    │                    │                    |
+          | 
+          │                    │                    │                    |
+          ▼                    ▼                    ▼                    ▼ 
+       Family                Ashram              Volunteer             Elderly
+       Portal                Portal                Portal             Interface
+          │                    │                    │                    |
+          └────────────────────┼────────────────────┘────────────────────┘
+                                                                         │
+                                                              ┌──────────┴──────────┐
+                                                              │                     |
+                                                              ▼                     ▼
+                                                         Donations                Dadi AI
+                                                       & Sponsorship

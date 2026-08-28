@@ -1,612 +1,814 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Find Ashrams | SaathiGhar</title>
-<meta name="description" content="Find verified, rated old-age ashrams near you. Every ashram on SaathiGhar is inspected and monitored.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css">
-<link rel="stylesheet" href="assets/css/header.css">
-<link rel="stylesheet" href="assets/css/home.css">
-<link rel="stylesheet" href="assets/css/dashboard.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
-<style>
-.page-hero{background:linear-gradient(135deg,var(--teal-dark),var(--teal));padding:80px 0 60px;color:#fff;text-align:center;}
-.page-hero h1{color:#fff;margin-bottom:12px;}
-.page-hero p{color:rgba(255,255,255,0.8);font-size:1.1rem;max-width:600px;margin:0 auto;}
-.dir-wrap{padding:48px 0;}
-.fa-map-section{padding:0 0 32px;background:var(--cream);}
-.fa-map-wrap{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(26,82,118,0.12);}
-.fa-map-search-bar{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:1000;width:min(520px,90%);display:flex;gap:8px;}
-.fa-map-search-bar input{flex:1;padding:12px 16px 12px 42px;border-radius:12px;border:none;box-shadow:0 4px 20px rgba(0,0,0,0.18);font-size:0.9rem;font-family:inherit;outline:none;}
-.fa-map-search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.1rem;pointer-events:none;}
-.fa-map-locate-btn{padding:12px 14px;border-radius:12px;border:none;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.18);cursor:pointer;font-size:1.1rem;transition:all .2s;white-space:nowrap;}
-.fa-map-locate-btn:hover{background:#f0f8ff;}
-.fa-map-suggestions{display:none;position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.15);overflow:hidden;max-height:240px;overflow-y:auto;z-index:2000;}
-.fa-map-sug-item{padding:12px 16px;cursor:pointer;font-family:inherit;font-size:0.88rem;border-bottom:1px solid #f5f0ea;transition:background .1s;}
-.fa-map-sug-item:hover{background:#f5f0ea;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Find Ashrams | SaathiGhar</title>
+  <meta name="description"
+    content="Find verified, rated old-age ashrams near you. Every ashram on SaathiGhar is inspected and monitored.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Playfair+Display:ital,wght@1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, var(--teal-dark), var(--teal));
+      padding: 80px 0 60px;
+      color: #fff;
+      text-align: center;
+    }
+
+    .page-hero h1 {
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .page-hero p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .dir-wrap {
+      padding: 48px 0;
+    }
+
+    .fa-map-section {
+      padding: 0 0 32px;
+      background: var(--cream);
+    }
+
+    .fa-map-wrap {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(26, 82, 118, 0.12);
+    }
+
+    .fa-map-search-bar {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      width: min(520px, 90%);
+      display: flex;
+      gap: 8px;
+    }
+
+    .fa-map-search-bar input {
+      flex: 1;
+      padding: 12px 16px 12px 42px;
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .fa-map-search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      pointer-events: none;
+    }
+
+    .fa-map-locate-btn {
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: none;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+
+    .fa-map-locate-btn:hover {
+      background: #f0f8ff;
+    }
+
+    .fa-map-suggestions {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      max-height: 240px;
+      overflow-y: auto;
+      z-index: 2000;
+    }
+
+    .fa-map-sug-item {
+      padding: 12px 16px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.88rem;
+      border-bottom: 1px solid #f5f0ea;
+      transition: background .1s;
+    }
+
+    .fa-map-sug-item:hover {
+      background: #f5f0ea;
+    }
+  </style>
 </head>
+
 <body>
-<header class="site-header" id="siteHeader">
-  <div class="container header-inner">
-    <a href="index.html" class="header-logo">
-      <img src="assets/images/logo.png" alt="SaathiGhar Logo">
-      <div class="logo-text"><span class="logo-name">SaathiGhar</span><span class="logo-tagline">Doori Door Nahi Karti</span></div>
-    </a>
-    <nav class="main-nav">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="find-ashrams.html" class="nav-link active">Find Ashrams</a>
-      <a href="index.html#how-it-works" class="nav-link">How It Works</a>
-      <a href="index.html#stories" class="nav-link">Stories</a>
-      <a href="donate.html" class="nav-link">Donate</a>
-      <a href="about.html" class="nav-link">About</a>
-    </nav>
-    <div class="header-controls">
-      <button class="sos-btn" id="sosBtn">&#128682; <span>Emergency</span></button>
-      <div class="login-dropdown" id="loginDropdown">
-        <button class="login-btn">Login &#9660;</button>
-        <div class="login-menu">
-          <a href="dashboard.html" class="login-menu-item"><span class="menu-icon">&#128106;</span><div><strong>Family Member</strong><br><small>Track your parent</small></div></a>
-          <a href="ashram-dashboard.html" class="login-menu-item"><span class="menu-icon">&#127969;</span><div><strong>Ashram Manager</strong><br><small>Manage residents</small></div></a>
-          <a href="volunteer-hub.html" class="login-menu-item"><span class="menu-icon">&#129309;</span><div><strong>Volunteer / NGO</strong><br><small>Adopt a grandparent</small></div></a>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="index.html" class="header-logo">
+        <img src="assets/images/logo.png" alt="SaathiGhar Logo">
+        <div class="logo-text"><span class="logo-name">SaathiGhar</span><span class="logo-tagline">Doori Door Nahi
+            Karti</span></div>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="find-ashrams.html" class="nav-link active">Find Ashrams</a>
+        <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+        <a href="index.html#stories" class="nav-link">Stories</a>
+        <a href="donate.html" class="nav-link">Donate</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+      <div class="header-controls">
+        <button class="sos-btn" id="sosBtn">&#128682; <span>Emergency</span></button>
+        <div class="login-dropdown" id="loginDropdown">
+          <button class="login-btn">Login &#9660;</button>
+          <div class="login-menu">
+            <a href="dashboard.html" class="login-menu-item"><span class="menu-icon">&#128106;</span>
+              <div><strong>Family Member</strong><br><small>Track your parent</small></div>
+            </a>
+            <a href="ashram-dashboard.html" class="login-menu-item"><span class="menu-icon">&#127969;</span>
+              <div><strong>Ashram Manager</strong><br><small>Manage residents</small></div>
+            </a>
+            <a href="volunteer-hub.html" class="login-menu-item"><span class="menu-icon">&#129309;</span>
+              <div><strong>Volunteer / NGO</strong><br><small>Adopt a grandparent</small></div>
+            </a>
+          </div>
         </div>
-      </div>
-      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
-    </div>
-  </div>
-</header>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" class="nav-link">Home</a>
-  <a href="find-ashrams.html" class="nav-link active">Find Ashrams</a>
-  <a href="index.html#donate" class="nav-link">Donate</a>
-  <div class="mobile-menu-actions">
-    <a href="dashboard.html" class="btn btn-teal btn-sm">Login</a>
-  </div>
-</div>
-<div class="overlay" id="sosModal" style="display:none;">
-  <div class="modal" style="text-align:center;">
-    <button class="modal-close">&#10005;</button>
-    <div style="font-size:3rem;margin-bottom:12px;">&#128682;</div>
-    <h2 style="color:#C0392B;margin-bottom:8px;">Emergency Help</h2>
-    <p style="margin-bottom:24px;">Contact these helplines immediately.</p>
-    <div class="helpline-numbers">
-      <div class="helpline-item"><span>SaathiGhar Helpline</span><span class="number">1800-SAATHI</span></div>
-      <div class="helpline-item"><span>Elder Helpline (Govt)</span><span class="number">14567</span></div>
-      <div class="helpline-item"><span>National Emergency</span><span class="number">112</span></div>
-    </div>
-    <button class="btn btn-primary" style="margin-top:24px;width:100%;" onclick="document.getElementById('sosModal').style.display='none'">Close</button>
-  </div>
-</div>
-
-<div class="page-hero">
-  <div class="container">
-    <span style="display:inline-block;background:rgba(255,255,255,0.15);border-radius:50px;padding:5px 18px;font-size:0.85rem;font-weight:700;margin-bottom:16px;">&#9989; Every ashram is SaathiGhar Verified</span>
-    <h1>Find the Right Home for Your Parent</h1>
-    <p>Every ashram on SaathiGhar is verified, rated, and actively monitored for quality of care.</p>
-  </div>
-</div>
-
-<div class="fa-map-section">
-  <div class="container">
-    <div class="fa-map-wrap">
-      <div class="fa-map-search-bar">
-        <div style="flex:1;position:relative;">
-          <span class="fa-map-search-icon">🔍</span>
-          <input id="faMapSearch" type="text" placeholder="Search a city, pincode or location..." autocomplete="off">
-          <div class="fa-map-suggestions" id="faMapSuggestions"></div>
-        </div>
-        <button class="fa-map-locate-btn" id="faMapLocate" title="Use my location">📍 Near Me</button>
-      </div>
-      <div id="fa-map" style="width:100%;height:400px;"></div>
-    </div>
-  </div>
-</div>
-
-<div class="dir-wrap">
-  <div class="container">
-
-    <div class="directory-search-bar">
-      <div class="search-input-wrap" style="flex:2;">
-        <span class="search-icon">&#128269;</span>
-        <input type="text" id="ashramSearch" placeholder="Search by city, pincode or ashram name..." class="form-input" style="padding-left:42px;width:100%;border:none;background:var(--cream);">
-      </div>
-      <select id="stateFilter" class="form-input form-select" style="min-width:140px;">
-        <option value="">All States</option><option>Maharashtra</option><option>Delhi</option><option>Karnataka</option>
-        <option>Tamil Nadu</option><option>Rajasthan</option><option>West Bengal</option><option>Gujarat</option><option>Telangana</option>
-      </select>
-      <select id="sortFilter" class="form-input form-select" style="min-width:140px;">
-        <option>Sort: Rating</option><option>Sort: Price &#8593;</option><option>Sort: Price &#8595;</option><option>Sort: Recently Verified</option>
-      </select>
-      <div class="view-toggle">
-        <button class="view-btn active" title="List view">&#9776;</button>
-        <button class="view-btn" title="Grid view">&#9635;</button>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
       </div>
     </div>
+  </header>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="find-ashrams.html" class="nav-link active">Find Ashrams</a>
+    <a href="index.html#donate" class="nav-link">Donate</a>
+    <div class="mobile-menu-actions">
+      <a href="dashboard.html" class="btn btn-teal btn-sm">Login</a>
+    </div>
+  </div>
+  <div class="overlay" id="sosModal" style="display:none;">
+    <div class="modal" style="text-align:center;">
+      <button class="modal-close">&#10005;</button>
+      <div style="font-size:3rem;margin-bottom:12px;">&#128682;</div>
+      <h2 style="color:#C0392B;margin-bottom:8px;">Emergency Help</h2>
+      <p style="margin-bottom:24px;">Contact these helplines immediately.</p>
+      <div class="helpline-numbers">
+        <div class="helpline-item"><span>SaathiGhar Helpline</span><span class="number">1800-SAATHI</span></div>
+        <div class="helpline-item"><span>Elder Helpline (Govt)</span><span class="number">14567</span></div>
+        <div class="helpline-item"><span>National Emergency</span><span class="number">112</span></div>
+      </div>
+      <button class="btn btn-primary" style="margin-top:24px;width:100%;"
+        onclick="document.getElementById('sosModal').style.display='none'">Close</button>
+    </div>
+  </div>
 
-    <div class="directory-layout">
-      <aside class="filter-panel">
-        <h3>&#127775; Filters</h3>
-        <div class="filter-group">
-          <label>Monthly Fee Range</label>
-          <div class="filter-range">
-            <span>&#8377;5k</span>
-            <input type="range" min="5000" max="50000" value="30000" style="flex:1;">
-            <span>&#8377;50k</span>
+  <div class="page-hero">
+    <div class="container">
+      <span
+        style="display:inline-block;background:rgba(255,255,255,0.15);border-radius:50px;padding:5px 18px;font-size:0.85rem;font-weight:700;margin-bottom:16px;">&#9989;
+        Every ashram is SaathiGhar Verified</span>
+      <h1>Find the Right Home for Your Parent</h1>
+      <p>Every ashram on SaathiGhar is verified, rated, and actively monitored for quality of care.</p>
+    </div>
+  </div>
+
+  <div class="fa-map-section">
+    <div class="container">
+      <div class="fa-map-wrap">
+        <div class="fa-map-search-bar">
+          <div style="flex:1;position:relative;">
+            <span class="fa-map-search-icon">🔍</span>
+            <input id="faMapSearch" type="text" placeholder="Search a city, pincode or location..." autocomplete="off">
+            <div class="fa-map-suggestions" id="faMapSuggestions"></div>
           </div>
-          <div style="text-align:center;font-size:0.8rem;color:var(--saffron);font-weight:700;margin-top:4px;">Up to &#8377;30,000/mo</div>
+          <button class="fa-map-locate-btn" id="faMapLocate" title="Use my location">📍 Near Me</button>
         </div>
-        <div class="filter-group">
-          <label>Minimum Rating</label>
-          <div class="star-filter">
-            <button class="star-filter-btn">3&#9733;+</button>
-            <button class="star-filter-btn active">4&#9733;+</button>
-            <button class="star-filter-btn">4.5&#9733;+</button>
-          </div>
-        </div>
-        <div class="filter-group">
-          <label>Amenities</label>
-          <div class="amenity-checks">
-            <label class="amenity-check"><input type="checkbox" checked> &#128138; Medical Staff On-Call</label>
-            <label class="amenity-check"><input type="checkbox" checked> &#127807; Vegetarian Food</label>
-            <label class="amenity-check"><input type="checkbox"> &#9855; Wheelchair Access</label>
-            <label class="amenity-check"><input type="checkbox"> &#128246; Wi-Fi Available</label>
-            <label class="amenity-check"><input type="checkbox"> &#128367; Prayer / Meditation Room</label>
-            <label class="amenity-check"><input type="checkbox"> &#127961; Garden / Outdoor Space</label>
-            <label class="amenity-check"><input type="checkbox"> &#127976; Physiotherapy</label>
-          </div>
-        </div>
-        <div class="filter-group">
-          <label>Bed Availability</label>
-          <div class="amenity-checks">
-            <label class="amenity-check"><input type="checkbox" checked> Beds Available Now</label>
-            <label class="amenity-check"><input type="checkbox"> Show Waitlisted Too</label>
-          </div>
-        </div>
-        <div class="filter-group">
-          <label>Languages Spoken</label>
-          <div class="amenity-checks">
-            <label class="amenity-check"><input type="checkbox" checked> Hindi</label>
-            <label class="amenity-check"><input type="checkbox"> English</label>
-            <label class="amenity-check"><input type="checkbox"> Marathi</label>
-            <label class="amenity-check"><input type="checkbox"> Tamil</label>
-            <label class="amenity-check"><input type="checkbox"> Bengali</label>
-          </div>
-        </div>
-        <button class="reset-filters" onclick="window.showToast('Filters reset','info')">Reset All Filters</button>
-      </aside>
-
-      <div>
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
-          <p style="font-weight:700;color:var(--text-mid);">Showing <strong id="ashramCount" style="color:var(--teal);">6</strong> ashrams matching your criteria</p>
-          <span class="badge badge-teal">&#9989; All SaathiGhar Verified</span>
-        </div>
-
-        <div class="ashram-listings">
-
-          <div class="ashram-card" id="card-sunrise" data-name="Sunrise Senior Home" data-city="Pune" data-state="Maharashtra" data-rating="4.8">
-            <div class="ashram-card-gallery">
-              <img src="assets/images/hero-elderly.png" alt="Sunrise Senior Home">
-              <div class="ashram-verified"><span class="badge badge-verified">&#9989; SaathiGhar Verified</span></div>
-            </div>
-            <div class="ashram-card-info">
-              <div class="ashram-name">Sunrise Senior Home</div>
-              <div class="ashram-location">&#128205; Kothrud, Pune, Maharashtra</div>
-              <div class="ashram-meta">
-                <div class="ashram-rating"><span style="color:var(--gold);">&#9733;</span> 4.8 <span style="color:var(--text-light);font-weight:400;">(142 reviews)</span></div>
-                <div class="ashram-fee">&#8377;12,000 – &#8377;22,000/mo</div>
-                <div class="ashram-beds">&#128137; 5 beds available</div>
-              </div>
-              <div class="amenity-icons">
-                <span class="amenity-icon" title="Medical Staff">&#128138;</span>
-                <span class="amenity-icon" title="Wheelchair Access">&#9855;</span>
-                <span class="amenity-icon" title="Vegetarian Food">&#127807;</span>
-                <span class="amenity-icon" title="Wi-Fi">&#128246;</span>
-                <span class="amenity-icon" title="Prayer Room">&#128367;</span>
-                <span class="amenity-icon" title="Garden">&#127961;</span>
-              </div>
-              <div style="font-size:0.78rem;color:var(--text-light);margin-top:6px;">Last inspected: <strong>March 2025</strong> &bull; Capacity: 45 residents</div>
-              <div class="ashram-card-actions" style="margin-top:16px;">
-                <a href="portals/ashram/ashram-profile.html" class="btn btn-teal btn-sm">View Full Profile</a>
-                <button class="btn btn-sm" style="background:var(--cream);color:var(--teal);border:1px solid rgba(26,82,118,0.2);" data-toast="Ashram contact form opening soon!" data-toast-type="info">Contact Ashram</button>
-                <button class="btn btn-sm" style="background:rgba(212,160,23,0.12);color:var(--gold);border:1px solid rgba(212,160,23,0.3);" data-toast="Added to shortlist! &#11088;" data-toast-type="success">&#11088; Shortlist</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="ashram-card" id="card-anand" data-name="Anand Vriddhashram" data-city="Delhi" data-state="Delhi" data-rating="4.6">
-            <div class="ashram-card-gallery">
-              <img src="assets/images/volunteer.png" alt="Anand Ashram">
-              <div class="ashram-verified"><span class="badge badge-verified">&#9989; SaathiGhar Verified</span></div>
-            </div>
-            <div class="ashram-card-info">
-              <div class="ashram-name">Anand Vriddhashram</div>
-              <div class="ashram-location">&#128205; Dwarka, New Delhi</div>
-              <div class="ashram-meta">
-                <div class="ashram-rating"><span style="color:var(--gold);">&#9733;</span> 4.6 <span style="color:var(--text-light);font-weight:400;">(98 reviews)</span></div>
-                <div class="ashram-fee">&#8377;10,000 – &#8377;18,000/mo</div>
-                <div class="ashram-beds">&#128137; 3 beds available</div>
-              </div>
-              <div class="amenity-icons">
-                <span class="amenity-icon" title="Medical Staff">&#128138;</span>
-                <span class="amenity-icon" title="Vegetarian Food">&#127807;</span>
-                <span class="amenity-icon" title="Wi-Fi">&#128246;</span>
-                <span class="amenity-icon" title="Physiotherapy">&#127976;</span>
-              </div>
-              <div style="font-size:0.78rem;color:var(--text-light);margin-top:6px;">Last inspected: <strong>February 2025</strong> &bull; Capacity: 60 residents</div>
-              <div class="ashram-card-actions" style="margin-top:16px;">
-                <a href="portals/ashram/ashram-profile.html" class="btn btn-teal btn-sm">View Full Profile</a>
-                <button class="btn btn-sm" style="background:var(--cream);color:var(--teal);border:1px solid rgba(26,82,118,0.2);" data-toast="Ashram contact form opening soon!" data-toast-type="info">Contact Ashram</button>
-                <button class="btn btn-sm" style="background:rgba(212,160,23,0.12);color:var(--gold);border:1px solid rgba(212,160,23,0.3);" data-toast="Added to shortlist! &#11088;" data-toast-type="success">&#11088; Shortlist</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="ashram-card" id="card-shanti-niwas" data-name="Shanti Niwas Elder Care" data-city="Bangalore" data-state="Karnataka" data-rating="4.7">
-            <div class="ashram-card-gallery">
-              <img src="assets/images/family-call.png" alt="Shanti Niwas">
-              <div class="ashram-verified"><span class="badge badge-verified">&#9989; SaathiGhar Verified</span></div>
-            </div>
-            <div class="ashram-card-info">
-              <div class="ashram-name">Shanti Niwas Elder Care</div>
-              <div class="ashram-location">&#128205; Malleshwaram, Bangalore, Karnataka</div>
-              <div class="ashram-meta">
-                <div class="ashram-rating"><span style="color:var(--gold);">&#9733;</span> 4.7 <span style="color:var(--text-light);font-weight:400;">(211 reviews)</span></div>
-                <div class="ashram-fee">&#8377;14,000 – &#8377;28,000/mo</div>
-                <div class="ashram-beds">&#128137; 8 beds available</div>
-              </div>
-              <div class="amenity-icons">
-                <span class="amenity-icon" title="Medical Staff">&#128138;</span>
-                <span class="amenity-icon" title="Wheelchair Access">&#9855;</span>
-                <span class="amenity-icon" title="Vegetarian Food">&#127807;</span>
-                <span class="amenity-icon" title="Wi-Fi">&#128246;</span>
-                <span class="amenity-icon" title="Prayer Room">&#128367;</span>
-                <span class="amenity-icon" title="Garden">&#127961;</span>
-                <span class="amenity-icon" title="Physiotherapy">&#127976;</span>
-              </div>
-              <div style="font-size:0.78rem;color:var(--text-light);margin-top:6px;">Last inspected: <strong>April 2025</strong> &bull; Capacity: 80 residents</div>
-              <div class="ashram-card-actions" style="margin-top:16px;">
-                <a href="portals/ashram/ashram-profile.html" class="btn btn-teal btn-sm">View Full Profile</a>
-                <button class="btn btn-sm" style="background:var(--cream);color:var(--teal);border:1px solid rgba(26,82,118,0.2);" data-toast="Ashram contact form opening soon!" data-toast-type="info">Contact Ashram</button>
-                <button class="btn btn-sm" style="background:rgba(212,160,23,0.12);color:var(--gold);border:1px solid rgba(212,160,23,0.3);" data-toast="Added to shortlist! &#11088;" data-toast-type="success">&#11088; Shortlist</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="ashram-card" id="card-vatsalya" data-name="Vatsalya Senior Home" data-city="Jaipur" data-state="Rajasthan" data-rating="4.5">
-            <div class="ashram-card-gallery">
-              <img src="assets/images/hero-elderly.png" alt="Vatsalya Home">
-              <div class="ashram-verified"><span class="badge badge-verified">&#9989; SaathiGhar Verified</span></div>
-            </div>
-            <div class="ashram-card-info">
-              <div class="ashram-name">Vatsalya Senior Home</div>
-              <div class="ashram-location">&#128205; C-Scheme, Jaipur, Rajasthan</div>
-              <div class="ashram-meta">
-                <div class="ashram-rating"><span style="color:var(--gold);">&#9733;</span> 4.5 <span style="color:var(--text-light);font-weight:400;">(67 reviews)</span></div>
-                <div class="ashram-fee">&#8377;8,000 – &#8377;15,000/mo</div>
-                <div class="ashram-beds">&#128137; 2 beds available</div>
-              </div>
-              <div class="amenity-icons">
-                <span class="amenity-icon" title="Medical Staff">&#128138;</span>
-                <span class="amenity-icon" title="Vegetarian Food">&#127807;</span>
-                <span class="amenity-icon" title="Prayer Room">&#128367;</span>
-              </div>
-              <div style="font-size:0.78rem;color:var(--text-light);margin-top:6px;">Last inspected: <strong>January 2025</strong> &bull; Capacity: 30 residents</div>
-              <div class="ashram-card-actions" style="margin-top:16px;">
-                <a href="portals/ashram/ashram-profile.html" class="btn btn-teal btn-sm">View Full Profile</a>
-                <button class="btn btn-sm" style="background:var(--cream);color:var(--teal);border:1px solid rgba(26,82,118,0.2);" data-toast="Contact form coming soon!" data-toast-type="info">Contact Ashram</button>
-                <button class="btn btn-sm" style="background:rgba(212,160,23,0.12);color:var(--gold);border:1px solid rgba(212,160,23,0.3);" data-toast="Added to shortlist! &#11088;" data-toast-type="success">&#11088; Shortlist</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="ashram-card" id="card-prem-sadan" data-name="Prem Sadan Ashram" data-city="Kolkata" data-state="West Bengal" data-rating="4.4">
-            <div class="ashram-card-gallery">
-              <img src="assets/images/volunteer.png" alt="Prem Sadan">
-              <div class="ashram-verified"><span class="badge badge-verified">&#9989; SaathiGhar Verified</span></div>
-            </div>
-            <div class="ashram-card-info">
-              <div class="ashram-name">Prem Sadan Ashram</div>
-              <div class="ashram-location">&#128205; Salt Lake City, Kolkata, West Bengal</div>
-              <div class="ashram-meta">
-                <div class="ashram-rating"><span style="color:var(--gold);">&#9733;</span> 4.4 <span style="color:var(--text-light);font-weight:400;">(53 reviews)</span></div>
-                <div class="ashram-fee">&#8377;9,000 – &#8377;16,000/mo</div>
-                <div class="ashram-beds">&#128137; 6 beds available</div>
-              </div>
-              <div class="amenity-icons">
-                <span class="amenity-icon" title="Medical Staff">&#128138;</span>
-                <span class="amenity-icon" title="Vegetarian Food">&#127807;</span>
-                <span class="amenity-icon" title="Wi-Fi">&#128246;</span>
-                <span class="amenity-icon" title="Garden">&#127961;</span>
-              </div>
-              <div style="font-size:0.78rem;color:var(--text-light);margin-top:6px;">Last inspected: <strong>March 2025</strong> &bull; Capacity: 50 residents</div>
-              <div class="ashram-card-actions" style="margin-top:16px;">
-                <a href="portals/ashram/ashram-profile.html" class="btn btn-teal btn-sm">View Full Profile</a>
-                <button class="btn btn-sm" style="background:var(--cream);color:var(--teal);border:1px solid rgba(26,82,118,0.2);" data-toast="Contact form coming soon!" data-toast-type="info">Contact Ashram</button>
-                <button class="btn btn-sm" style="background:rgba(212,160,23,0.12);color:var(--gold);border:1px solid rgba(212,160,23,0.3);" data-toast="Added to shortlist! &#11088;" data-toast-type="success">&#11088; Shortlist</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="ashram-card" id="card-amrit" data-name="Amrit Jyoti Vriddhashram" data-city="Hyderabad" data-state="Telangana" data-rating="4.6">
-            <div class="ashram-card-gallery">
-              <img src="assets/images/family-call.png" alt="Amrit Jyoti">
-              <div class="ashram-verified"><span class="badge badge-verified">&#9989; SaathiGhar Verified</span></div>
-            </div>
-            <div class="ashram-card-info">
-              <div class="ashram-name">Amrit Jyoti Vriddhashram</div>
-              <div class="ashram-location">&#128205; Banjara Hills, Hyderabad, Telangana</div>
-              <div class="ashram-meta">
-                <div class="ashram-rating"><span style="color:var(--gold);">&#9733;</span> 4.6 <span style="color:var(--text-light);font-weight:400;">(89 reviews)</span></div>
-                <div class="ashram-fee">&#8377;11,000 – &#8377;20,000/mo</div>
-                <div class="ashram-beds">&#128137; 4 beds available</div>
-              </div>
-              <div class="amenity-icons">
-                <span class="amenity-icon" title="Medical Staff">&#128138;</span>
-                <span class="amenity-icon" title="Wheelchair Access">&#9855;</span>
-                <span class="amenity-icon" title="Vegetarian Food">&#127807;</span>
-                <span class="amenity-icon" title="Wi-Fi">&#128246;</span>
-                <span class="amenity-icon" title="Physiotherapy">&#127976;</span>
-              </div>
-              <div style="font-size:0.78rem;color:var(--text-light);margin-top:6px;">Last inspected: <strong>April 2025</strong> &bull; Capacity: 55 residents</div>
-              <div class="ashram-card-actions" style="margin-top:16px;">
-                <a href="portals/ashram/ashram-profile.html" class="btn btn-teal btn-sm">View Full Profile</a>
-                <button class="btn btn-sm" style="background:var(--cream);color:var(--teal);border:1px solid rgba(26,82,118,0.2);" data-toast="Contact form coming soon!" data-toast-type="info">Contact Ashram</button>
-                <button class="btn btn-sm" style="background:rgba(212,160,23,0.12);color:var(--gold);border:1px solid rgba(212,160,23,0.3);" data-toast="Added to shortlist! &#11088;" data-toast-type="success">&#11088; Shortlist</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="ashram-card" id="card-shanti-bhavan" data-name="Shanti Bhavan Ashram" data-city="Mumbai" data-state="Maharashtra" data-rating="4.5">
-            <div class="ashram-card-gallery">
-              <img src="assets/images/hero-elderly.png" alt="Shanti Bhavan Ashram">
-              <div class="ashram-verified"><span class="badge badge-verified">&#9989; SaathiGhar Verified</span></div>
-            </div>
-            <div class="ashram-card-info">
-              <div class="ashram-name">Shanti Bhavan Ashram</div>
-              <div class="ashram-location">&#128205; Andheri West, Mumbai, Maharashtra</div>
-              <div class="ashram-meta">
-                <div class="ashram-rating"><span style="color:var(--gold);">&#9733;</span> 4.5 <span style="color:var(--text-light);font-weight:400;">(134 reviews)</span></div>
-                <div class="ashram-fee">&#8377;13,000 – &#8377;24,000/mo</div>
-                <div class="ashram-beds">&#128137; 7 beds available</div>
-              </div>
-              <div class="amenity-icons">
-                <span class="amenity-icon" title="Medical Staff">&#128138;</span>
-                <span class="amenity-icon" title="Vegetarian Food">&#127807;</span>
-                <span class="amenity-icon" title="Wi-Fi">&#128246;</span>
-                <span class="amenity-icon" title="Garden">&#127961;</span>
-                <span class="amenity-icon" title="Wheelchair Access">&#9855;</span>
-              </div>
-              <div style="font-size:0.78rem;color:var(--text-light);margin-top:6px;">Last inspected: <strong>May 2025</strong> &bull; Capacity: 70 residents</div>
-              <div class="ashram-card-actions" style="margin-top:16px;">
-                <a href="portals/ashram/ashram-profile.html" class="btn btn-teal btn-sm">View Full Profile</a>
-                <button class="btn btn-sm" style="background:var(--cream);color:var(--teal);border:1px solid rgba(26,82,118,0.2);" data-toast="Contact form coming soon!" data-toast-type="info">Contact Ashram</button>
-                <button class="btn btn-sm" style="background:rgba(212,160,23,0.12);color:var(--gold);border:1px solid rgba(212,160,23,0.3);" data-toast="Added to shortlist! &#11088;" data-toast-type="success">&#11088; Shortlist</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="ashram-card" id="card-prem-sagar" data-name="Prem Sagar Elder Care" data-city="Chennai" data-state="Tamil Nadu" data-rating="4.3">
-            <div class="ashram-card-gallery">
-              <img src="assets/images/family-call.png" alt="Prem Sagar Elder Care">
-              <div class="ashram-verified"><span class="badge badge-verified">&#9989; SaathiGhar Verified</span></div>
-            </div>
-            <div class="ashram-card-info">
-              <div class="ashram-name">Prem Sagar Elder Care</div>
-              <div class="ashram-location">&#128205; Kilpauk, Chennai, Tamil Nadu</div>
-              <div class="ashram-meta">
-                <div class="ashram-rating"><span style="color:var(--gold);">&#9733;</span> 4.3 <span style="color:var(--text-light);font-weight:400;">(77 reviews)</span></div>
-                <div class="ashram-fee">&#8377;10,000 – &#8377;19,000/mo</div>
-                <div class="ashram-beds">&#128137; 4 beds available</div>
-              </div>
-              <div class="amenity-icons">
-                <span class="amenity-icon" title="Medical Staff">&#128138;</span>
-                <span class="amenity-icon" title="Vegetarian Food">&#127807;</span>
-                <span class="amenity-icon" title="Prayer Room">&#128367;</span>
-                <span class="amenity-icon" title="Garden">&#127961;</span>
-              </div>
-              <div style="font-size:0.78rem;color:var(--text-light);margin-top:6px;">Last inspected: <strong>March 2025</strong> &bull; Capacity: 45 residents</div>
-              <div class="ashram-card-actions" style="margin-top:16px;">
-                <a href="portals/ashram/ashram-profile.html" class="btn btn-teal btn-sm">View Full Profile</a>
-                <button class="btn btn-sm" style="background:var(--cream);color:var(--teal);border:1px solid rgba(26,82,118,0.2);" data-toast="Contact form coming soon!" data-toast-type="info">Contact Ashram</button>
-                <button class="btn btn-sm" style="background:rgba(212,160,23,0.12);color:var(--gold);border:1px solid rgba(212,160,23,0.3);" data-toast="Added to shortlist! &#11088;" data-toast-type="success">&#11088; Shortlist</button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div style="text-align:center;margin-top:40px;">
-          <button class="btn btn-teal" data-toast="Loading more ashrams..." data-toast-type="info">Load More Ashrams</button>
-        </div>
+        <div id="fa-map" style="width:100%;height:400px;"></div>
       </div>
     </div>
   </div>
-</div>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo-wrap"><img src="assets/images/logo.png" alt="Logo"><div><div class="brand-name">SaathiGhar</div><div class="brand-tagline">Doori Door Nahi Karti</div></div></div>
-        <p>India's first family accountability platform for elderly care in ashrams.</p>
-        <div class="helpline-display"><span class="helpline-label">24/7 Helpline</span><span class="helpline-number">1800-SAATHI</span></div>
+  <div class="dir-wrap">
+    <div class="container">
+
+      <div class="directory-search-bar">
+        <div class="search-input-wrap" style="flex:2;">
+          <span class="search-icon">&#128269;</span>
+          <input type="text" id="ashramSearch" placeholder="Search by city, pincode or ashram name..."
+            class="form-input" style="padding-left:42px;width:100%;border:none;background:var(--cream);">
+        </div>
+        <select id="stateFilter" class="form-input form-select" style="min-width:140px;">
+          <option value="">All States</option>
+          <option>Maharashtra</option>
+          <option>Delhi</option>
+          <option>Karnataka</option>
+          <option>Tamil Nadu</option>
+          <option>Rajasthan</option>
+          <option>West Bengal</option>
+          <option>Gujarat</option>
+          <option>Telangana</option>
+        </select>
+        <select id="sortFilter" class="form-input form-select" style="min-width:140px;">
+          <option>Sort: Rating</option>
+          <option>Sort: Price &#8593;</option>
+          <option>Sort: Price &#8595;</option>
+          <option>Sort: Recently Verified</option>
+        </select>
+        <div class="view-toggle">
+          <button class="view-btn active" title="List view">&#9776;</button>
+          <button class="view-btn" title="Grid view">&#9635;</button>
+        </div>
       </div>
-      <div class="footer-col"><h4>Quick Links</h4><div class="footer-links"><a href="index.html">Home</a><a href="find-ashrams.html">Find Ashrams</a><a href="dashboard.html">Family Dashboard</a><a href="index.html#donate">Donate</a></div></div>
-      <div class="footer-col"><h4>Support</h4><div class="footer-links"><a href="mailto:support@saathighar.org">support@saathighar.org</a><a href="#">Grievance Officer</a><a href="#">Report an Issue</a></div></div>
-      <div class="footer-col"><h4>Follow Us</h4><div class="social-links"><a class="social-link" href="#">f</a><a class="social-link" href="#">&#128247;</a><a class="social-link" href="#">X</a><a class="social-link" href="#">in</a></div></div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 SaathiGhar. All rights reserved.</p>
-      <div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></div>
+
+      <div class="directory-layout">
+        <aside class="filter-panel">
+          <h3>&#127775; Filters</h3>
+          <div class="filter-group">
+            <label>Monthly Fee Range</label>
+            <div class="filter-range">
+              <span>&#8377;5k</span>
+              <input type="range" min="5000" max="50000" value="30000" style="flex:1;">
+              <span>&#8377;50k</span>
+            </div>
+            <div style="text-align:center;font-size:0.8rem;color:var(--saffron);font-weight:700;margin-top:4px;">Up to
+              &#8377;30,000/mo</div>
+          </div>
+          <div class="filter-group">
+            <label>Minimum Rating</label>
+            <div class="star-filter">
+              <button class="star-filter-btn">3&#9733;+</button>
+              <button class="star-filter-btn active">4&#9733;+</button>
+              <button class="star-filter-btn">4.5&#9733;+</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label>Amenities</label>
+            <div class="amenity-checks">
+              <label class="amenity-check"><input type="checkbox" checked> &#128138; Medical Staff On-Call</label>
+              <label class="amenity-check"><input type="checkbox" checked> &#127807; Vegetarian Food</label>
+              <label class="amenity-check"><input type="checkbox"> &#9855; Wheelchair Access</label>
+              <label class="amenity-check"><input type="checkbox"> &#128246; Wi-Fi Available</label>
+              <label class="amenity-check"><input type="checkbox"> &#128367; Prayer / Meditation Room</label>
+              <label class="amenity-check"><input type="checkbox"> &#127961; Garden / Outdoor Space</label>
+              <label class="amenity-check"><input type="checkbox"> &#127976; Physiotherapy</label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label>Bed Availability</label>
+            <div class="amenity-checks">
+              <label class="amenity-check"><input type="checkbox" checked> Beds Available Now</label>
+              <label class="amenity-check"><input type="checkbox"> Show Waitlisted Too</label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label>Languages Spoken</label>
+            <div class="amenity-checks">
+              <label class="amenity-check"><input type="checkbox" checked> Hindi</label>
+              <label class="amenity-check"><input type="checkbox"> English</label>
+              <label class="amenity-check"><input type="checkbox"> Marathi</label>
+              <label class="amenity-check"><input type="checkbox"> Tamil</label>
+              <label class="amenity-check"><input type="checkbox"> Bengali</label>
+            </div>
+          </div>
+          <button class="reset-filters" onclick="window.showToast('Filters reset','info')">Reset All Filters</button>
+        </aside>
+
+        <div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+            <p style="font-weight:700;color:var(--text-mid);">Showing <strong id="ashramCount"
+                style="color:var(--teal);">6</strong> ashrams matching your criteria</p>
+            <span class="badge badge-teal">&#9989; All SaathiGhar Verified</span>
+          </div>
+
+          <div class="ashram-listings">
+
+            <div class="ashram-card" id="card-sunrise" data-name="Sunrise Senior Home" data-city="Pune"
+              data-state="Maharashtra" data-rating="4.8">
+              <div class="ashram-card-gallery">
+                <img src="assets/images/hero-elderly.png" alt="Sunrise Senior Home">
+                <div class="ashram-verified"><span class="badge badge-verified">&#9989; SaathiGhar Verified</span></div>
+              </div>
+              <div class="ashram-card-info">
+                <div class="ashram-name">Sunrise Senior Home</div>
+                <div class="ashram-location">&#128205; Kothrud, Pune, Maharashtra</div>
+                <div class="ashram-meta">
+                  <div class="ashram-rating"><span style="color:var(--gold);">&#9733;</span> 4.8 <span
+                      style="color:var(--text-light);font-weight:400;">(142 reviews)</span></div>
+                  <div class="ashram-fee">&#8377;12,000 – &#8377;22,000/mo</div>
+                  <div class="ashram-beds">&#128137; 5 beds available</div>
+                </div>
+                <div class="amenity-icons">
+                  <span class="amenity-icon" title="Medical Staff">&#128138;</span>
+                  <span class="amenity-icon" title="Wheelchair Access">&#9855;</span>
+                  <span class="amenity-icon" title="Vegetarian Food">&#127807;</span>
+                  <span class="amenity-icon" title="Wi-Fi">&#128246;</span>
+                  <span class="amenity-icon" title="Prayer Room">&#128367;</span>
+                  <span class="amenity-icon" title="Garden">&#127961;</span>
+                </div>
+                <div style="font-size:0.78rem;color:var(--text-light);margin-top:6px;">Last inspected: <strong>March
+                    2025</strong> &bull; Capacity: 45 residents</div>
+                <div class="ashram-card-actions" style="margin-top:16px;">
+                  <a href="portals/ashram/ashram-profile.html" class="btn btn-teal btn-sm">View Full Profile</a>
+                  <button class="btn btn-sm"
+                    style="background:var(--cream);color:var(--teal);border:1px solid rgba(26,82,118,0.2);"
+                    data-toast="Ashram contact form opening soon!" data-toast-type="info">Contact Ashram</button>
+                  <button class="btn btn-sm"
+                    style="background:rgba(212,160,23,0.12);color:var(--gold);border:1px solid rgba(212,160,23,0.3);"
+                    data-toast="Added to shortlist! &#11088;" data-toast-type="success">&#11088; Shortlist</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="ashram-card" id="card-anand" data-name="Anand Vriddhashram" data-city="Delhi" data-state="Delhi"
+              data-rating="4.6">
+              <div class="ashram-card-gallery">
+                <img src="assets/images/volunteer.png" alt="Anand Ashram">
+                <div class="ashram-verified"><span class="badge badge-verified">&#9989; SaathiGhar Verified</span></div>
+              </div>
+              <div class="ashram-card-info">
+                <div class="ashram-name">Anand Vriddhashram</div>
+                <div class="ashram-location">&#128205; Dwarka, New Delhi</div>
+                <div class="ashram-meta">
+                  <div class="ashram-rating"><span style="color:var(--gold);">&#9733;</span> 4.6 <span
+                      style="color:var(--text-light);font-weight:400;">(98 reviews)</span></div>
+                  <div class="ashram-fee">&#8377;10,000 – &#8377;18,000/mo</div>
+                  <div class="ashram-beds">&#128137; 3 beds available</div>
+                </div>
+                <div class="amenity-icons">
+                  <span class="amenity-icon" title="Medical Staff">&#128138;</span>
+                  <span class="amenity-icon" title="Vegetarian Food">&#127807;</span>
+                  <span class="amenity-icon" title="Wi-Fi">&#128246;</span>
+                  <span class="amenity-icon" title="Physiotherapy">&#127976;</span>
+                </div>
+                <div style="font-size:0.78rem;color:var(--text-light);margin-top:6px;">Last inspected: <strong>February
+                    2025</strong> &bull; Capacity: 60 residents</div>
+                <div class="ashram-card-actions" style="margin-top:16px;">
+                  <a href="portals/ashram/ashram-profile.html" class="btn btn-teal btn-sm">View Full Profile</a>
+                  <button class="btn btn-sm"
+                    style="background:var(--cream);color:var(--teal);border:1px solid rgba(26,82,118,0.2);"
+                    data-toast="Ashram contact form opening soon!" data-toast-type="info">Contact Ashram</button>
+                  <button class="btn btn-sm"
+                    style="background:rgba(212,160,23,0.12);color:var(--gold);border:1px solid rgba(212,160,23,0.3);"
+                    data-toast="Added to shortlist! &#11088;" data-toast-type="success">&#11088; Shortlist</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="ashram-card" id="card-shanti-niwas" data-name="Shanti Niwas Elder Care" data-city="Bangalore"
+              data-state="Karnataka" data-rating="4.7">
+              <div class="ashram-card-gallery">
+                <img src="assets/images/family-call.png" alt="Shanti Niwas">
+                <div class="ashram-verified"><span class="badge badge-verified">&#9989; SaathiGhar Verified</span></div>
+              </div>
+              <div class="ashram-card-info">
+                <div class="ashram-name">Shanti Niwas Elder Care</div>
+                <div class="ashram-location">&#128205; Malleshwaram, Bangalore, Karnataka</div>
+                <div class="ashram-meta">
+                  <div class="ashram-rating"><span style="color:var(--gold);">&#9733;</span> 4.7 <span
+                      style="color:var(--text-light);font-weight:400;">(211 reviews)</span></div>
+                  <div class="ashram-fee">&#8377;14,000 – &#8377;28,000/mo</div>
+                  <div class="ashram-beds">&#128137; 8 beds available</div>
+                </div>
+                <div class="amenity-icons">
+                  <span class="amenity-icon" title="Medical Staff">&#128138;</span>
+                  <span class="amenity-icon" title="Wheelchair Access">&#9855;</span>
+                  <span class="amenity-icon" title="Vegetarian Food">&#127807;</span>
+                  <span class="amenity-icon" title="Wi-Fi">&#128246;</span>
+                  <span class="amenity-icon" title="Prayer Room">&#128367;</span>
+                  <span class="amenity-icon" title="Garden">&#127961;</span>
+                  <span class="amenity-icon" title="Physiotherapy">&#127976;</span>
+                </div>
+                <div style="font-size:0.78rem;color:var(--text-light);margin-top:6px;">Last inspected: <strong>April
+                    2025</strong> &bull; Capacity: 80 residents</div>
+                <div class="ashram-card-actions" style="margin-top:16px;">
+                  <a href="portals/ashram/ashram-profile.html" class="btn btn-teal btn-sm">View Full Profile</a>
+                  <button class="btn btn-sm"
+                    style="background:var(--cream);color:var(--teal);border:1px solid rgba(26,82,118,0.2);"
+                    data-toast="Ashram contact form opening soon!" data-toast-type="info">Contact Ashram</button>
+                  <button class="btn btn-sm"
+                    style="background:rgba(212,160,23,0.12);color:var(--gold);border:1px solid rgba(212,160,23,0.3);"
+                    data-toast="Added to shortlist! &#11088;" data-toast-type="success">&#11088; Shortlist</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="ashram-card" id="card-vatsalya" data-name="Vatsalya Senior Home" data-city="Jaipur"
+              data-state="Rajasthan" data-rating="4.5">
+              <div class="ashram-card-gallery">
+                <img src="assets/images/hero-elderly.png" alt="Vatsalya Home">
+                <div class="ashram-verified"><span class="badge badge-verified">&#9989; SaathiGhar Verified</span></div>
+              </div>
+              <div class="ashram-card-info">
+                <div class="ashram-name">Vatsalya Senior Home</div>
+                <div class="ashram-location">&#128205; C-Scheme, Jaipur, Rajasthan</div>
+                <div class="ashram-meta">
+                  <div class="ashram-rating"><span style="color:var(--gold);">&#9733;</span> 4.5 <span
+                      style="color:var(--text-light);font-weight:400;">(67 reviews)</span></div>
+                  <div class="ashram-fee">&#8377;8,000 – &#8377;15,000/mo</div>
+                  <div class="ashram-beds">&#128137; 2 beds available</div>
+                </div>
+                <div class="amenity-icons">
+                  <span class="amenity-icon" title="Medical Staff">&#128138;</span>
+                  <span class="amenity-icon" title="Vegetarian Food">&#127807;</span>
+                  <span class="amenity-icon" title="Prayer Room">&#128367;</span>
+                </div>
+                <div style="font-size:0.78rem;color:var(--text-light);margin-top:6px;">Last inspected: <strong>January
+                    2025</strong> &bull; Capacity: 30 residents</div>
+                <div class="ashram-card-actions" style="margin-top:16px;">
+                  <a href="portals/ashram/ashram-profile.html" class="btn btn-teal btn-sm">View Full Profile</a>
+                  <button class="btn btn-sm"
+                    style="background:var(--cream);color:var(--teal);border:1px solid rgba(26,82,118,0.2);"
+                    data-toast="Contact form coming soon!" data-toast-type="info">Contact Ashram</button>
+                  <button class="btn btn-sm"
+                    style="background:rgba(212,160,23,0.12);color:var(--gold);border:1px solid rgba(212,160,23,0.3);"
+                    data-toast="Added to shortlist! &#11088;" data-toast-type="success">&#11088; Shortlist</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="ashram-card" id="card-prem-sadan" data-name="Prem Sadan Ashram" data-city="Kolkata"
+              data-state="West Bengal" data-rating="4.4">
+              <div class="ashram-card-gallery">
+                <img src="assets/images/volunteer.png" alt="Prem Sadan">
+                <div class="ashram-verified"><span class="badge badge-verified">&#9989; SaathiGhar Verified</span></div>
+              </div>
+              <div class="ashram-card-info">
+                <div class="ashram-name">Prem Sadan Ashram</div>
+                <div class="ashram-location">&#128205; Salt Lake City, Kolkata, West Bengal</div>
+                <div class="ashram-meta">
+                  <div class="ashram-rating"><span style="color:var(--gold);">&#9733;</span> 4.4 <span
+                      style="color:var(--text-light);font-weight:400;">(53 reviews)</span></div>
+                  <div class="ashram-fee">&#8377;9,000 – &#8377;16,000/mo</div>
+                  <div class="ashram-beds">&#128137; 6 beds available</div>
+                </div>
+                <div class="amenity-icons">
+                  <span class="amenity-icon" title="Medical Staff">&#128138;</span>
+                  <span class="amenity-icon" title="Vegetarian Food">&#127807;</span>
+                  <span class="amenity-icon" title="Wi-Fi">&#128246;</span>
+                  <span class="amenity-icon" title="Garden">&#127961;</span>
+                </div>
+                <div style="font-size:0.78rem;color:var(--text-light);margin-top:6px;">Last inspected: <strong>March
+                    2025</strong> &bull; Capacity: 50 residents</div>
+                <div class="ashram-card-actions" style="margin-top:16px;">
+                  <a href="portals/ashram/ashram-profile.html" class="btn btn-teal btn-sm">View Full Profile</a>
+                  <button class="btn btn-sm"
+                    style="background:var(--cream);color:var(--teal);border:1px solid rgba(26,82,118,0.2);"
+                    data-toast="Contact form coming soon!" data-toast-type="info">Contact Ashram</button>
+                  <button class="btn btn-sm"
+                    style="background:rgba(212,160,23,0.12);color:var(--gold);border:1px solid rgba(212,160,23,0.3);"
+                    data-toast="Added to shortlist! &#11088;" data-toast-type="success">&#11088; Shortlist</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="ashram-card" id="card-amrit" data-name="Amrit Jyoti Vriddhashram" data-city="Hyderabad"
+              data-state="Telangana" data-rating="4.6">
+              <div class="ashram-card-gallery">
+                <img src="assets/images/family-call.png" alt="Amrit Jyoti">
+                <div class="ashram-verified"><span class="badge badge-verified">&#9989; SaathiGhar Verified</span></div>
+              </div>
+              <div class="ashram-card-info">
+                <div class="ashram-name">Amrit Jyoti Vriddhashram</div>
+                <div class="ashram-location">&#128205; Banjara Hills, Hyderabad, Telangana</div>
+                <div class="ashram-meta">
+                  <div class="ashram-rating"><span style="color:var(--gold);">&#9733;</span> 4.6 <span
+                      style="color:var(--text-light);font-weight:400;">(89 reviews)</span></div>
+                  <div class="ashram-fee">&#8377;11,000 – &#8377;20,000/mo</div>
+                  <div class="ashram-beds">&#128137; 4 beds available</div>
+                </div>
+                <div class="amenity-icons">
+                  <span class="amenity-icon" title="Medical Staff">&#128138;</span>
+                  <span class="amenity-icon" title="Wheelchair Access">&#9855;</span>
+                  <span class="amenity-icon" title="Vegetarian Food">&#127807;</span>
+                  <span class="amenity-icon" title="Wi-Fi">&#128246;</span>
+                  <span class="amenity-icon" title="Physiotherapy">&#127976;</span>
+                </div>
+                <div style="font-size:0.78rem;color:var(--text-light);margin-top:6px;">Last inspected: <strong>April
+                    2025</strong> &bull; Capacity: 55 residents</div>
+                <div class="ashram-card-actions" style="margin-top:16px;">
+                  <a href="portals/ashram/ashram-profile.html" class="btn btn-teal btn-sm">View Full Profile</a>
+                  <button class="btn btn-sm"
+                    style="background:var(--cream);color:var(--teal);border:1px solid rgba(26,82,118,0.2);"
+                    data-toast="Contact form coming soon!" data-toast-type="info">Contact Ashram</button>
+                  <button class="btn btn-sm"
+                    style="background:rgba(212,160,23,0.12);color:var(--gold);border:1px solid rgba(212,160,23,0.3);"
+                    data-toast="Added to shortlist! &#11088;" data-toast-type="success">&#11088; Shortlist</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="ashram-card" id="card-shanti-bhavan" data-name="Shanti Bhavan Ashram" data-city="Mumbai"
+              data-state="Maharashtra" data-rating="4.5">
+              <div class="ashram-card-gallery">
+                <img src="assets/images/hero-elderly.png" alt="Shanti Bhavan Ashram">
+                <div class="ashram-verified"><span class="badge badge-verified">&#9989; SaathiGhar Verified</span></div>
+              </div>
+              <div class="ashram-card-info">
+                <div class="ashram-name">Shanti Bhavan Ashram</div>
+                <div class="ashram-location">&#128205; Andheri West, Mumbai, Maharashtra</div>
+                <div class="ashram-meta">
+                  <div class="ashram-rating"><span style="color:var(--gold);">&#9733;</span> 4.5 <span
+                      style="color:var(--text-light);font-weight:400;">(134 reviews)</span></div>
+                  <div class="ashram-fee">&#8377;13,000 – &#8377;24,000/mo</div>
+                  <div class="ashram-beds">&#128137; 7 beds available</div>
+                </div>
+                <div class="amenity-icons">
+                  <span class="amenity-icon" title="Medical Staff">&#128138;</span>
+                  <span class="amenity-icon" title="Vegetarian Food">&#127807;</span>
+                  <span class="amenity-icon" title="Wi-Fi">&#128246;</span>
+                  <span class="amenity-icon" title="Garden">&#127961;</span>
+                  <span class="amenity-icon" title="Wheelchair Access">&#9855;</span>
+                </div>
+                <div style="font-size:0.78rem;color:var(--text-light);margin-top:6px;">Last inspected: <strong>May
+                    2025</strong> &bull; Capacity: 70 residents</div>
+                <div class="ashram-card-actions" style="margin-top:16px;">
+                  <a href="portals/ashram/ashram-profile.html" class="btn btn-teal btn-sm">View Full Profile</a>
+                  <button class="btn btn-sm"
+                    style="background:var(--cream);color:var(--teal);border:1px solid rgba(26,82,118,0.2);"
+                    data-toast="Contact form coming soon!" data-toast-type="info">Contact Ashram</button>
+                  <button class="btn btn-sm"
+                    style="background:rgba(212,160,23,0.12);color:var(--gold);border:1px solid rgba(212,160,23,0.3);"
+                    data-toast="Added to shortlist! &#11088;" data-toast-type="success">&#11088; Shortlist</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="ashram-card" id="card-prem-sagar" data-name="Prem Sagar Elder Care" data-city="Chennai"
+              data-state="Tamil Nadu" data-rating="4.3">
+              <div class="ashram-card-gallery">
+                <img src="assets/images/family-call.png" alt="Prem Sagar Elder Care">
+                <div class="ashram-verified"><span class="badge badge-verified">&#9989; SaathiGhar Verified</span></div>
+              </div>
+              <div class="ashram-card-info">
+                <div class="ashram-name">Prem Sagar Elder Care</div>
+                <div class="ashram-location">&#128205; Kilpauk, Chennai, Tamil Nadu</div>
+                <div class="ashram-meta">
+                  <div class="ashram-rating"><span style="color:var(--gold);">&#9733;</span> 4.3 <span
+                      style="color:var(--text-light);font-weight:400;">(77 reviews)</span></div>
+                  <div class="ashram-fee">&#8377;10,000 – &#8377;19,000/mo</div>
+                  <div class="ashram-beds">&#128137; 4 beds available</div>
+                </div>
+                <div class="amenity-icons">
+                  <span class="amenity-icon" title="Medical Staff">&#128138;</span>
+                  <span class="amenity-icon" title="Vegetarian Food">&#127807;</span>
+                  <span class="amenity-icon" title="Prayer Room">&#128367;</span>
+                  <span class="amenity-icon" title="Garden">&#127961;</span>
+                </div>
+                <div style="font-size:0.78rem;color:var(--text-light);margin-top:6px;">Last inspected: <strong>March
+                    2025</strong> &bull; Capacity: 45 residents</div>
+                <div class="ashram-card-actions" style="margin-top:16px;">
+                  <a href="portals/ashram/ashram-profile.html" class="btn btn-teal btn-sm">View Full Profile</a>
+                  <button class="btn btn-sm"
+                    style="background:var(--cream);color:var(--teal);border:1px solid rgba(26,82,118,0.2);"
+                    data-toast="Contact form coming soon!" data-toast-type="info">Contact Ashram</button>
+                  <button class="btn btn-sm"
+                    style="background:rgba(212,160,23,0.12);color:var(--gold);border:1px solid rgba(212,160,23,0.3);"
+                    data-toast="Added to shortlist! &#11088;" data-toast-type="success">&#11088; Shortlist</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div style="text-align:center;margin-top:40px;">
+            <button class="btn btn-teal" data-toast="Loading more ashrams..." data-toast-type="info">Load More
+              Ashrams</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</footer>
-<script src="assets/js/main.js"></script>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-wrap"><img src="assets/images/logo.png" alt="Logo">
+            <div>
+              <div class="brand-name">SaathiGhar</div>
+              <div class="brand-tagline">Doori Door Nahi Karti</div>
+            </div>
+          </div>
+          <p>India's first family accountability platform for elderly care in ashrams.</p>
+          <div class="helpline-display"><span class="helpline-label">24/7 Helpline</span><span
+              class="helpline-number">1800-SAATHI</span></div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <div class="footer-links"><a href="index.html">Home</a><a href="find-ashrams.html">Find Ashrams</a><a
+              href="dashboard.html">Family Dashboard</a><a href="index.html#donate">Donate</a></div>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <div class="footer-links"><a href="mailto:support@saathighar.org">support@saathighar.org</a><a
+              href="#">Grievance Officer</a><a href="#">Report an Issue</a></div>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="social-links"><a class="social-link" href="#">f</a><a class="social-link" href="#">&#128247;</a><a
+              class="social-link" href="#">X</a><a class="social-link" href="#">in</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 SaathiGhar. All rights reserved.</p>
+        <div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
 
-<script>
-(function(){
-  // Must match card IDs exactly
-  const ASHRAMS=[
-    {name:'Sunrise Senior Home',     city:'Pune',       cardId:'card-sunrise',      state:'Maharashtra', lat:18.5094, lng:73.8268, rating:4.8, beds:5,  fee:'₹12k–₹22k'},
-    {name:'Anand Vriddhashram',      city:'Delhi',      cardId:'card-anand',        state:'Delhi',       lat:28.5921, lng:77.0460, rating:4.6, beds:3,  fee:'₹10k–₹18k'},
-    {name:'Shanti Niwas Elder Care', city:'Bangalore',  cardId:'card-shanti-niwas', state:'Karnataka',   lat:13.0048, lng:77.5695, rating:4.7, beds:8,  fee:'₹14k–₹28k'},
-    {name:'Vatsalya Senior Home',    city:'Jaipur',     cardId:'card-vatsalya',     state:'Rajasthan',   lat:26.9154, lng:75.8189, rating:4.5, beds:2,  fee:'₹8k–₹15k'},
-    {name:'Prem Sadan Ashram',       city:'Kolkata',    cardId:'card-prem-sadan',   state:'West Bengal', lat:22.5847, lng:88.4274, rating:4.4, beds:6,  fee:'₹9k–₹16k'},
-    {name:'Amrit Jyoti Vriddhashram',city:'Hyderabad',  cardId:'card-amrit',        state:'Telangana',   lat:17.4126, lng:78.4482, rating:4.6, beds:4,  fee:'₹11k–₹20k'},
-    {name:'Shanti Bhavan Ashram',    city:'Mumbai',     cardId:'card-shanti-bhavan',state:'Maharashtra', lat:19.1136, lng:72.8697, rating:4.5, beds:7,  fee:'₹13k–₹24k'},
-    {name:'Prem Sagar Elder Care',   city:'Chennai',    cardId:'card-prem-sagar',   state:'Tamil Nadu',  lat:13.0475, lng:80.2489, rating:4.3, beds:4,  fee:'₹10k–₹19k'},
-  ];
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 
-  const map = L.map('fa-map', {zoomControl:true, scrollWheelZoom:false}).setView([22, 80], 5);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd', maxZoom: 19
-  }).addTo(map);
+  <script>
+    (function () {
+      // Must match card IDs exactly
+      const ASHRAMS = [
+        { name: 'Sunrise Senior Home', city: 'Pune', cardId: 'card-sunrise', state: 'Maharashtra', lat: 18.5094, lng: 73.8268, rating: 4.8, beds: 5, fee: '₹12k–₹22k' },
+        { name: 'Anand Vriddhashram', city: 'Delhi', cardId: 'card-anand', state: 'Delhi', lat: 28.5921, lng: 77.0460, rating: 4.6, beds: 3, fee: '₹10k–₹18k' },
+        { name: 'Shanti Niwas Elder Care', city: 'Bangalore', cardId: 'card-shanti-niwas', state: 'Karnataka', lat: 13.0048, lng: 77.5695, rating: 4.7, beds: 8, fee: '₹14k–₹28k' },
+        { name: 'Vatsalya Senior Home', city: 'Jaipur', cardId: 'card-vatsalya', state: 'Rajasthan', lat: 26.9154, lng: 75.8189, rating: 4.5, beds: 2, fee: '₹8k–₹15k' },
+        { name: 'Prem Sadan Ashram', city: 'Kolkata', cardId: 'card-prem-sadan', state: 'West Bengal', lat: 22.5847, lng: 88.4274, rating: 4.4, beds: 6, fee: '₹9k–₹16k' },
+        { name: 'Amrit Jyoti Vriddhashram', city: 'Hyderabad', cardId: 'card-amrit', state: 'Telangana', lat: 17.4126, lng: 78.4482, rating: 4.6, beds: 4, fee: '₹11k–₹20k' },
+        { name: 'Shanti Bhavan Ashram', city: 'Mumbai', cardId: 'card-shanti-bhavan', state: 'Maharashtra', lat: 19.1136, lng: 72.8697, rating: 4.5, beds: 7, fee: '₹13k–₹24k' },
+        { name: 'Prem Sagar Elder Care', city: 'Chennai', cardId: 'card-prem-sagar', state: 'Tamil Nadu', lat: 13.0475, lng: 80.2489, rating: 4.3, beds: 4, fee: '₹10k–₹19k' },
+      ];
 
-  function makePinIcon(active) {
-    const bg = active
-      ? 'linear-gradient(135deg,#e74c3c,#c0392b)'
-      : 'linear-gradient(135deg,#1A5276,#2980B9)';
-    const size = active ? '18px' : '14px';
-    return L.divIcon({
-      className: '',
-      html: `<div style="background:${bg};width:${size};height:${size};border-radius:50%;border:3px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,0.35);transition:all .25s;"></div>`,
-      iconAnchor: [active ? 9 : 7, active ? 9 : 7]
-    });
-  }
+      const map = L.map('fa-map', { zoomControl: true, scrollWheelZoom: false }).setView([22, 80], 5);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd', maxZoom: 19
+      }).addTo(map);
 
-  // Build markers — skip duplicates (first ASHRAMS entry was a typo, remove it)
-  const UNIQUE_ASHRAMS = ASHRAMS.filter((a,i,arr) => arr.findIndex(x=>x.cardId===a.cardId)===i);
+      function makePinIcon(active) {
+        const bg = active
+          ? 'linear-gradient(135deg,#e74c3c,#c0392b)'
+          : 'linear-gradient(135deg,#1A5276,#2980B9)';
+        const size = active ? '18px' : '14px';
+        return L.divIcon({
+          className: '',
+          html: `<div style="background:${bg};width:${size};height:${size};border-radius:50%;border:3px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,0.35);transition:all .25s;"></div>`,
+          iconAnchor: [active ? 9 : 7, active ? 9 : 7]
+        });
+      }
 
-  const markerMap = {}; // cardId → Leaflet marker
-  UNIQUE_ASHRAMS.forEach(a => {
-    const m = L.marker([a.lat, a.lng], {icon: makePinIcon(false)}).addTo(map);
+      // Build markers — skip duplicates (first ASHRAMS entry was a typo, remove it)
+      const UNIQUE_ASHRAMS = ASHRAMS.filter((a, i, arr) => arr.findIndex(x => x.cardId === a.cardId) === i);
 
-    m.bindPopup(`<div style="font-family:Nunito,sans-serif;min-width:180px;">
+      const markerMap = {}; // cardId → Leaflet marker
+      UNIQUE_ASHRAMS.forEach(a => {
+        const m = L.marker([a.lat, a.lng], { icon: makePinIcon(false) }).addTo(map);
+
+        m.bindPopup(`<div style="font-family:Nunito,sans-serif;min-width:180px;">
       <strong style="font-size:0.95rem;color:#1A5276;">${a.name}</strong><br>
       <span style="font-size:0.8rem;color:#777;">📍 ${a.city}, ${a.state}</span><br>
       <span style="font-size:0.82rem;color:#D4A017;">⭐ ${a.rating}</span> &nbsp;
       <span style="font-size:0.82rem;color:#2ecc71;">🛏 ${a.beds} beds</span><br>
       <span style="font-size:0.8rem;color:#555;">${a.fee}/mo</span><br>
       <a href="portals/ashram/ashram-profile.html" style="display:inline-block;margin-top:8px;padding:6px 12px;background:#1A5276;color:#fff;border-radius:8px;font-size:0.78rem;font-weight:700;text-decoration:none;">View Profile →</a>
-    </div>`, {maxWidth:220});
+    </div>`, { maxWidth: 220 });
 
-    // ── Click: highlight active pin + scroll to card ──
-    m.on('click', () => {
-      // Reset all pins
-      UNIQUE_ASHRAMS.forEach(b => markerMap[b.cardId]?.setIcon(makePinIcon(false)));
-      // Activate this pin
-      m.setIcon(makePinIcon(true));
+        // ── Click: highlight active pin + scroll to card ──
+        m.on('click', () => {
+          // Reset all pins
+          UNIQUE_ASHRAMS.forEach(b => markerMap[b.cardId]?.setIcon(makePinIcon(false)));
+          // Activate this pin
+          m.setIcon(makePinIcon(true));
 
-      // Scroll to and highlight the card
-      const card = document.getElementById(a.cardId);
-      if (card) {
-        card.scrollIntoView({behavior:'smooth', block:'center'});
-        card.style.transition = 'box-shadow .3s, transform .3s';
-        card.style.boxShadow = '0 0 0 3px #1A5276, 0 8px 32px rgba(26,82,118,0.25)';
-        card.style.transform = 'scale(1.01)';
-        setTimeout(() => {
-          card.style.boxShadow = '';
-          card.style.transform = '';
-        }, 2200);
-      }
-    });
-
-    markerMap[a.cardId] = m;
-  });
-
-  // ── Expose update function so main.js filter can call it ──
-  window._sgMapUpdatePins = function(visibleCardIds) {
-    const visibleCoords = [];
-    UNIQUE_ASHRAMS.forEach(a => {
-      const marker = markerMap[a.cardId];
-      if (!marker) return;
-      const isVisible = !visibleCardIds || visibleCardIds.has(a.cardId);
-      marker.setOpacity(isVisible ? 1 : 0.18);
-      marker.setZIndexOffset(isVisible ? 0 : -100);
-      if (isVisible) visibleCoords.push([a.lat, a.lng]);
-    });
-
-    // Instant Map Responsiveness — adjust camera immediately to visible ashram pins
-    if (visibleCoords.length === 1) {
-      map.setView(visibleCoords[0], 12, { animate: true });
-    } else if (visibleCoords.length > 1 && visibleCoords.length < UNIQUE_ASHRAMS.length) {
-      map.fitBounds(L.latLngBounds(visibleCoords), { padding: [40, 40], maxZoom: 12, animate: true });
-    } else if (!visibleCardIds || visibleCardIds.size === UNIQUE_ASHRAMS.length) {
-      map.setView([22, 80], 5, { animate: true });
-    }
-  };
-
-  // ── Near Me button ──
-  document.getElementById('faMapLocate')?.addEventListener('click', () => {
-    if (!navigator.geolocation) { alert('Geolocation not supported.'); return; }
-    const btn = document.getElementById('faMapLocate');
-    btn.textContent = '⏳ Locating…'; btn.disabled = true;
-    navigator.geolocation.getCurrentPosition(pos => {
-      btn.textContent = '📍 Near Me'; btn.disabled = false;
-      map.setView([pos.coords.latitude, pos.coords.longitude], 11);
-      L.marker([pos.coords.latitude, pos.coords.longitude], {
-        icon: L.divIcon({className:'', html:'<div style="background:#e74c3c;width:16px;height:16px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.3);"></div>', iconAnchor:[8,8]})
-      }).addTo(map).bindPopup('📍 <strong>You are here</strong>').openPopup();
-    }, () => { btn.textContent = '📍 Near Me'; btn.disabled = false; alert('Could not get location.'); });
-  });
-
-  // ── Bi-directional Sync between Map Search & Listing Search ──
-  const mapSearchInp = document.getElementById('faMapSearch');
-  const listSearchInp = document.getElementById('ashramSearch');
-  const sug = document.getElementById('faMapSuggestions');
-
-  if (mapSearchInp && listSearchInp) {
-    mapSearchInp.addEventListener('input', () => {
-      listSearchInp.value = mapSearchInp.value;
-      listSearchInp.dispatchEvent(new Event('input', { bubbles: true }));
-    });
-
-    listSearchInp.addEventListener('input', () => {
-      if (document.activeElement !== mapSearchInp) {
-        mapSearchInp.value = listSearchInp.value;
-      }
-    });
-  }
-
-  // ── Optional Geocoding Suggestions dropdown for unknown places ──
-  let debounceTimer;
-  mapSearchInp?.addEventListener('input', () => {
-    clearTimeout(debounceTimer);
-    const q = mapSearchInp.value.trim();
-    if (q.length < 3) { sug.style.display = 'none'; return; }
-    debounceTimer = setTimeout(async () => {
-      try {
-        const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q + ' India')}&format=json&limit=5&addressdetails=1`, {
-          headers: {'Accept-Language': 'en', 'User-Agent': 'SaathiGhar/1.0'}
+          // Scroll to and highlight the card
+          const card = document.getElementById(a.cardId);
+          if (card) {
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            card.style.transition = 'box-shadow .3s, transform .3s';
+            card.style.boxShadow = '0 0 0 3px #1A5276, 0 8px 32px rgba(26,82,118,0.25)';
+            card.style.transform = 'scale(1.01)';
+            setTimeout(() => {
+              card.style.boxShadow = '';
+              card.style.transform = '';
+            }, 2200);
+          }
         });
-        const data = await res.json();
-        if (!data.length) { sug.style.display = 'none'; return; }
-        sug.style.display = 'block';
-        sug.innerHTML = data.map(d =>
-          `<div class="fa-map-sug-item" data-lat="${d.lat}" data-lng="${d.lon}" data-label="${d.display_name.split(',').slice(0,2).join(', ')}">${d.display_name.split(',').slice(0,3).join(', ')}</div>`
-        ).join('');
-        sug.querySelectorAll('.fa-map-sug-item').forEach(el => {
-          el.addEventListener('click', () => {
-            const lat = parseFloat(el.dataset.lat);
-            const lng = parseFloat(el.dataset.lng);
-            map.setView([lat, lng], 12);
-            mapSearchInp.value = el.dataset.label;
-            if (listSearchInp) {
-              listSearchInp.value = el.dataset.label;
-              listSearchInp.dispatchEvent(new Event('input', { bubbles: true }));
-            }
-            sug.style.display = 'none';
-          });
+
+        markerMap[a.cardId] = m;
+      });
+
+      // ── Expose update function so main.js filter can call it ──
+      window._sgMapUpdatePins = function (visibleCardIds) {
+        const visibleCoords = [];
+        UNIQUE_ASHRAMS.forEach(a => {
+          const marker = markerMap[a.cardId];
+          if (!marker) return;
+          const isVisible = !visibleCardIds || visibleCardIds.has(a.cardId);
+          marker.setOpacity(isVisible ? 1 : 0.18);
+          marker.setZIndexOffset(isVisible ? 0 : -100);
+          if (isVisible) visibleCoords.push([a.lat, a.lng]);
         });
-      } catch(e) { sug.style.display = 'none'; }
-    }, 400);
-  });
-  document.addEventListener('click', e => { if (!mapSearchInp?.contains(e.target) && !sug?.contains(e.target)) sug.style.display = 'none'; });
-})();
-</script>
-</body></html>
-
+
+        // Instant Map Responsiveness — adjust camera immediately to visible ashram pins
+        if (visibleCoords.length === 1) {
+          map.setView(visibleCoords[0], 12, { animate: true });
+        } else if (visibleCoords.length > 1 && visibleCoords.length < UNIQUE_ASHRAMS.length) {
+          map.fitBounds(L.latLngBounds(visibleCoords), { padding: [40, 40], maxZoom: 12, animate: true });
+        } else if (!visibleCardIds || visibleCardIds.size === UNIQUE_ASHRAMS.length) {
+          map.setView([22, 80], 5, { animate: true });
+        }
+      };
+
+      // ── Near Me button ──
+      document.getElementById('faMapLocate')?.addEventListener('click', () => {
+        if (!navigator.geolocation) { alert('Geolocation not supported.'); return; }
+        const btn = document.getElementById('faMapLocate');
+        btn.textContent = '⏳ Locating…'; btn.disabled = true;
+        navigator.geolocation.getCurrentPosition(pos => {
+          btn.textContent = '📍 Near Me'; btn.disabled = false;
+          map.setView([pos.coords.latitude, pos.coords.longitude], 11);
+          L.marker([pos.coords.latitude, pos.coords.longitude], {
+            icon: L.divIcon({ className: '', html: '<div style="background:#e74c3c;width:16px;height:16px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.3);"></div>', iconAnchor: [8, 8] })
+          }).addTo(map).bindPopup('📍 <strong>You are here</strong>').openPopup();
+        }, () => { btn.textContent = '📍 Near Me'; btn.disabled = false; alert('Could not get location.'); });
+      });
+
+      // ── Bi-directional Sync between Map Search & Listing Search ──
+      const mapSearchInp = document.getElementById('faMapSearch');
+      const listSearchInp = document.getElementById('ashramSearch');
+      const sug = document.getElementById('faMapSuggestions');
+
+      if (mapSearchInp && listSearchInp) {
+        mapSearchInp.addEventListener('input', () => {
+          listSearchInp.value = mapSearchInp.value;
+          listSearchInp.dispatchEvent(new Event('input', { bubbles: true }));
+        });
+
+        listSearchInp.addEventListener('input', () => {
+          if (document.activeElement !== mapSearchInp) {
+            mapSearchInp.value = listSearchInp.value;
+          }
+        });
+      }
+
+      // ── Optional Geocoding Suggestions dropdown for unknown places ──
+      let debounceTimer;
+      mapSearchInp?.addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        const q = mapSearchInp.value.trim();
+        if (q.length < 3) { sug.style.display = 'none'; return; }
+        debounceTimer = setTimeout(async () => {
+          try {
+            const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q + ' India')}&format=json&limit=5&addressdetails=1`, {
+              headers: { 'Accept-Language': 'en', 'User-Agent': 'SaathiGhar/1.0' }
+            });
+            const data = await res.json();
+            if (!data.length) { sug.style.display = 'none'; return; }
+            sug.style.display = 'block';
+            sug.innerHTML = data.map(d =>
+              `<div class="fa-map-sug-item" data-lat="${d.lat}" data-lng="${d.lon}" data-label="${d.display_name.split(',').slice(0, 2).join(', ')}">${d.display_name.split(',').slice(0, 3).join(', ')}</div>`
+            ).join('');
+            sug.querySelectorAll('.fa-map-sug-item').forEach(el => {
+              el.addEventListener('click', () => {
+                const lat = parseFloat(el.dataset.lat);
+                const lng = parseFloat(el.dataset.lng);
+                map.setView([lat, lng], 12);
+                mapSearchInp.value = el.dataset.label;
+                if (listSearchInp) {
+                  listSearchInp.value = el.dataset.label;
+                  listSearchInp.dispatchEvent(new Event('input', { bubbles: true }));
+                }
+                sug.style.display = 'none';
+              });
+            });
+          } catch (e) { sug.style.display = 'none'; }
+        }, 400);
+      });
+      document.addEventListener('click', e => { if (!mapSearchInp?.contains(e.target) && !sug?.contains(e.target)) sug.style.display = 'none'; });
+    })();
+  </script>
+</body>
+
+</html>

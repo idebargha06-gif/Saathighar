@@ -281,6 +281,27 @@
   margin-bottom: 10px;
 }
 
+/* ── Responsive About Page Rules ── */
+@media (max-width: 1024px) {
+  .pillars-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .story-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+}
+@media (max-width: 768px) {
+  .about-hero { padding: 55px 16px 40px; }
+  .about-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .story-grid { grid-template-columns: 1fr; gap: 32px; }
+  .story-section, .pillars-section { padding: 40px 16px; }
+}
+@media (max-width: 640px) {
+  .pillars-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .about-stats-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .about-stat-card { padding: 10px 6px; }
+  .about-stat-card .stat-val { font-size: 1.25rem; }
+  .about-stat-card .stat-lbl { font-size: 0.65rem; }
+}
+
 .pillar-card p {
   font-size: 0.86rem;
   color: var(--text-mid);

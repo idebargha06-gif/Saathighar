@@ -5,15 +5,15 @@
 // ============================================================
 
 async function initPortalHeader(opts = {}) {
-  const role   = opts.role   || 'family';
+  const role = opts.role || 'family';
   const logoHref = opts.logoHref || '../index.html';
 
   const roleLabels = {
-    family:    'Family Portal',
-    ashram:    'Ashram Portal',
+    family: 'Family Portal',
+    ashram: 'Ashram Portal',
     volunteer: 'Volunteer Hub',
-    resident:  'Resident Home',
-    admin:     'Admin Panel',
+    resident: 'Resident Home',
+    admin: 'Admin Panel',
   };
 
   // ── Get current user ──
@@ -40,8 +40,8 @@ async function initPortalHeader(opts = {}) {
         <div class="portal-user-menu" id="portal-user-menu">
           <div class="portal-user-avatar" id="portal-avatar">
             ${profile?.avatar_url
-              ? `<img src="${profile.avatar_url}" alt="Avatar">`
-              : '👤'}
+        ? `<img src="${profile.avatar_url}" alt="Avatar">`
+        : '👤'}
           </div>
           <div>
             <div class="portal-user-name">${profile?.full_name || session.user.email}</div>
@@ -63,9 +63,9 @@ async function initPortalHeader(opts = {}) {
   }
 
   // ── Store profile globally for portal pages ──
-  window.sgProfile  = profile;
-  window.sgSession  = session;
-  window.sgUserId   = session.user.id;
+  window.sgProfile = profile;
+  window.sgSession = session;
+  window.sgUserId = session.user.id;
 
   return { profile, session };
 }
@@ -130,7 +130,7 @@ function initSOSButton(btnId) {
     if (!confirm('🚨 Trigger Emergency SOS?\n\nThis will immediately alert ashram staff and notify your primary family contact.')) return;
     try {
       const residentId = window.sgProfile?.resident_id || null;
-      const ashramId   = window.sgProfile?.ashram_id   || null;
+      const ashramId = window.sgProfile?.ashram_id || null;
       await triggerSOS(residentId, ashramId, window.sgUserId, 'Emergency button pressed');
       btn.textContent = '✅';
       btn.style.animation = 'none';

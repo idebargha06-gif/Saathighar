@@ -121,28 +121,28 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Ashram listing filter engine ──
   const searchInput = document.getElementById('ashramSearch');
   const stateSelect = document.getElementById('stateFilter');
-  const countEl    = document.getElementById('ashramCount');
-  const listingsEl  = document.querySelector('.ashram-listings');
-  const ratingBtns  = document.querySelectorAll('.star-filter-btn');
+  const countEl = document.getElementById('ashramCount');
+  const listingsEl = document.querySelector('.ashram-listings');
+  const ratingBtns = document.querySelectorAll('.star-filter-btn');
 
   let activeMinRating = 0; // start open — no rating filter by default
 
   function applyAshramFilters() {
-    const q     = (searchInput?.value || '').toLowerCase().trim();
+    const q = (searchInput?.value || '').toLowerCase().trim();
     const state = (stateSelect?.value || '').trim();
     const allCards = document.querySelectorAll('.ashram-card');
-    let   visible  = 0;
+    let visible = 0;
     const visibleIds = new Set();
 
     allCards.forEach(card => {
-      const name      = (card.dataset.name  || card.querySelector('.ashram-name')?.textContent || '').toLowerCase();
-      const city      = (card.dataset.city  || '').toLowerCase();
+      const name = (card.dataset.name || card.querySelector('.ashram-name')?.textContent || '').toLowerCase();
+      const city = (card.dataset.city || '').toLowerCase();
       const cardState = (card.dataset.state || '');
-      const rating    = parseFloat(card.dataset.rating || '5');
-      const fullText  = card.textContent.toLowerCase();
+      const rating = parseFloat(card.dataset.rating || '5');
+      const fullText = card.textContent.toLowerCase();
 
-      const okSearch = !q     || name.includes(q) || city.includes(q) || fullText.includes(q);
-      const okState  = !state || state === 'All States' || cardState === state;
+      const okSearch = !q || name.includes(q) || city.includes(q) || fullText.includes(q);
+      const okState = !state || state === 'All States' || cardState === state;
       const okRating = activeMinRating === 0 || rating >= activeMinRating;
 
       const show = okSearch && okState && okRating;

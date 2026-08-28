@@ -2,13 +2,18 @@ import json
 from pathlib import Path
 from datetime import datetime, timezone
 
-detection = json.loads(Path('.graphify_detect.json').read_text())
-extract = json.loads(Path('.graphify_extract.json').read_text())
+ROOT_DIR = Path(__file__).resolve().parent.parent
+
+detection_path = ROOT_DIR / '.graphify_detect.json'
+extract_path = ROOT_DIR / '.graphify_extract.json'
+
+detection = json.loads(detection_path.read_text()) if detection_path.exists() else {}
+extract = json.loads(extract_path.read_text()) if extract_path.exists() else {}
 
 input_tok = extract.get('input_tokens', 0)
 output_tok = extract.get('output_tokens', 0)
 
-cost_path = Path('graphify-out/cost.json')
+cost_path = ROOT_DIR / 'graphify-out' / 'cost.json'
 if cost_path.exists():
     cost = json.loads(cost_path.read_text())
 else:

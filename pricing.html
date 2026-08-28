@@ -54,16 +54,18 @@
 .fee-percent{font-size:2.5rem;font-weight:900;color:var(--gold);}
 .fee-label{font-size:.85rem;color:rgba(255,255,255,.7);margin-top:6px;}
 .free-badge{display:inline-block;background:rgba(39,174,96,.2);color:#4ade80;border:1px solid rgba(39,174,96,.3);border-radius:8px;padding:3px 10px;font-size:.75rem;font-weight:800;margin-top:6px;}
-.compare-table{max-width:1000px;margin:60px auto;padding:0 24px;}
-.compare-table table{width:100%;border-collapse:collapse;}
+.compare-table{max-width:1000px;margin:60px auto;padding:0 24px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.compare-table table{width:100%;min-width:600px;border-collapse:collapse;}
 .compare-table th{background:var(--teal);color:#fff;padding:14px 16px;text-align:left;font-size:.85rem;}
 .compare-table th:first-child{border-radius:10px 0 0 0;}
 .compare-table th:last-child{border-radius:0 10px 0 0;}
 .compare-table td{padding:13px 16px;border-bottom:1px solid #f0ece6;font-size:.85rem;color:var(--text-mid);}
 .compare-table tr:hover td{background:var(--cream);}
 .compare-table td:first-child{font-weight:700;color:var(--teal-dark);}
-@media(max-width:1024px){.plans-grid{grid-template-columns:repeat(2,1fr);}.fee-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:640px){.plans-grid{grid-template-columns:1fr;}.fee-grid{grid-template-columns:1fr;}}
+@media(max-width:1024px){.plans-grid{grid-template-columns:repeat(2,1fr);padding:40px 24px;}.fee-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:768px){.compare-table{padding:0 16px;margin:40px auto;}}
+@media(max-width:640px){.plans-grid{grid-template-columns:1fr;padding:32px 16px;}.fee-grid{grid-template-columns:1fr;}.plan-card.popular{transform:none;}.plan-card.popular:hover{transform:translateY(-4px);}}
+@media(max-width:480px){.billing-toggle{flex-direction:column;gap:8px;}.pricing-hero{padding:60px 16px 40px;}}
 </style>
 </head>
 <body>
